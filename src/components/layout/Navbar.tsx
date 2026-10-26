@@ -126,7 +126,7 @@ export function Navbar() {
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-1.5 rounded-full text-[#F2EFE8] hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] transition-colors"
+                className="p-2 rounded-full text-[#F2EFE8] bg-white/5 hover:bg-white/10 border border-[#A8CBB7]/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] transition-all flex items-center justify-center"
                 aria-expanded={mobileMenuOpen}
                 aria-controls="mobile-navigation-menu"
                 aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
@@ -151,7 +151,7 @@ export function Navbar() {
       {/* 2. Left-to-Right Sliding Side Drawer */}
       <aside
         id="mobile-navigation-menu"
-        className={`md:hidden fixed inset-y-0 left-0 w-[285px] sm:w-[320px] max-w-[85vw] h-full bg-[#171717] border-r border-[#A8CBB7]/20 shadow-2xl shadow-black z-50 flex flex-col justify-between transition-transform duration-300 ease-in-out ${
+        className={`md:hidden fixed inset-y-0 left-0 w-[290px] sm:w-[320px] max-w-[85vw] h-full bg-[#171717] border-r border-[#A8CBB7]/20 shadow-2xl shadow-black z-[60] flex flex-col justify-between transition-transform duration-300 ease-in-out ${
           mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
         role="dialog"

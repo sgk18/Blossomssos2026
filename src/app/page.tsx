@@ -68,6 +68,14 @@ export default function HomePage() {
               </div>
             </div>
 
+            {/* Festival Motto Pill Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#06110C]/80 border border-[#A8CBB7]/25 text-xs sm:text-sm font-tech text-[#F2EFE8] backdrop-blur-md shadow-md">
+              <span className="text-[#A8CBB7]">Motto:</span>
+              <span className="font-bold text-[#FFE082] uppercase tracking-wider">&lsquo;Be the Best&rsquo;</span>
+              <span className="text-[#A8CBB7]/40">•</span>
+              <span className="text-[#F2EFE8]/80">Over 7,000 Students • 32 Cultural Arenas</span>
+            </div>
+
             {/* Official Slogan Graphic Banner */}
             <div className="flex flex-col items-center gap-3 max-w-3xl w-full px-2 sm:px-4">
               <div className="relative w-full max-w-sm sm:max-w-xl md:max-w-2xl h-24 sm:h-36 md:h-44 my-1 sm:my-2 flex items-center justify-center">
@@ -75,12 +83,12 @@ export default function HomePage() {
                   src="/blossoms_slogan.webp"
                   alt="From flames to flights, White Onyx Ignites"
                   fill
-                  className="object-contain filter invert drop-shadow-[0_2px_16px_rgba(168,203,183,0.45)] scale-105 sm:scale-115 transition-transform"
+                  className="object-contain drop-shadow-[0_4px_24px_rgba(245,158,11,0.65)] scale-105 sm:scale-115 transition-transform"
                   priority
                 />
               </div>
 
-              <p className="font-tech text-[10px] sm:text-xs md:text-sm font-semibold tracking-widest text-[#A8CBB7] uppercase text-center px-4">
+              <p className="font-tech text-xs sm:text-sm md:text-base font-bold tracking-widest uppercase text-center px-4 bg-gradient-to-r from-[#FFE082] via-[#FFD700] to-[#F59E0B] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(245,158,11,0.5)]">
                 &ldquo;From Flames to Flights, White Onyx Ignites.&rdquo;
               </p>
             </div>
