@@ -16,7 +16,7 @@ interface HeroBackgroundProps {
 /**
  * HeroBackground — Visual Architecture
  * 
- * Minimalist, high-end editorial convergence visual with React Bits GhostFibers.
+ * Minimalist, high-end visual background with React Bits GhostFibers.
  * Palette:
  * - Base: Deep Forest Green (#06110C)
  * - Fiber Glow: Sage Mint (#A8CBB7)

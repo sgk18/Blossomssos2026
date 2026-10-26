@@ -4,13 +4,10 @@ export function EventCategoriesCarouselSkeleton() {
   return (
     <div className="w-full max-w-6xl flex flex-col items-center animate-pulse" aria-hidden="true">
       {/* Pills skeleton */}
-      <div className="w-full max-w-5xl flex flex-wrap items-center justify-between gap-3 mb-6 px-2">
-        <div className="flex gap-2">
-          {[1, 2, 3, 4, 5].map((i) => (
-            <div key={i} className="h-8 w-24 bg-[#06110C] rounded-xl border border-[#A8CBB7]/10" />
-          ))}
-        </div>
-        <div className="h-8 w-36 bg-[#06110C] rounded-xl border border-[#A8CBB7]/10" />
+      <div className="w-full max-w-5xl flex flex-wrap items-center justify-center gap-2 mb-6 px-2">
+        {[1, 2, 3, 4, 5].map((i) => (
+          <div key={i} className="h-8 w-24 bg-[#06110C] rounded-xl border border-[#A8CBB7]/10" />
+        ))}
       </div>
 
       {/* 3D Stage skeleton */}

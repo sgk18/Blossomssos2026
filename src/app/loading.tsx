@@ -15,7 +15,7 @@ export default function Loading() {
           Loading Blossoms SOS...
         </p>
         <p className="text-xs text-[#A8CBB7]/80 font-mono">
-          Where Worlds Converge
+          Be the Best • Team Onyx
         </p>
       </div>
     </div>
