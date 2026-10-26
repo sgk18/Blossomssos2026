@@ -110,27 +110,27 @@ export function ScheduleView({ historicalSchedule }: ScheduleViewProps) {
                   {items.map((item) => (
                     <div
                       key={item.id}
-                      className="p-4 rounded-2xl bg-[#06110C]/80 border border-[#A8CBB7]/15 hover:border-[#A8CBB7]/40 transition-colors flex items-start justify-between gap-4 backdrop-blur-sm"
+                      className="p-4 rounded-2xl bg-[#06110C]/80 border border-[#A8CBB7]/15 hover:border-[#A8CBB7]/40 transition-colors flex flex-col xs:flex-row xs:items-start justify-between gap-3 xs:gap-4 backdrop-blur-sm"
                     >
-                      <div className="space-y-1.5">
+                      <div className="space-y-1.5 flex-1 min-w-0">
                         <div className="flex items-center gap-2">
-                          <h3 className="text-sm font-bold text-[#F2EFE8]">
+                          <h3 className="text-sm font-bold text-[#F2EFE8] leading-snug">
                             {item.eventName}
                           </h3>
                         </div>
                         <div className="flex flex-wrap items-center gap-3 text-xs text-[#F2EFE8]/75">
                           <span className="flex items-center gap-1 font-normal">
-                            <Clock className="w-3.5 h-3.5 text-[#F2EFE8]/60" />
-                            {item.timeDisplay}
+                            <Clock className="w-3.5 h-3.5 text-[#F2EFE8]/60 shrink-0" />
+                            <span>{item.timeDisplay}</span>
                           </span>
                           <span className="flex items-center gap-1 font-normal">
-                            <MapPin className="w-3.5 h-3.5 text-[#A8CBB7]" />
-                            {item.venueDisplay}
+                            <MapPin className="w-3.5 h-3.5 text-[#A8CBB7] shrink-0" />
+                            <span>{item.venueDisplay}</span>
                           </span>
                         </div>
                       </div>
 
-                      <div className="shrink-0 flex flex-col items-end gap-1">
+                      <div className="shrink-0 flex items-center xs:flex-col xs:items-end justify-between xs:justify-start gap-2 xs:gap-1 pt-2 xs:pt-0 border-t xs:border-t-0 border-[#A8CBB7]/10">
                         <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold bg-[#171717] text-[#F2EFE8]/70 border border-[#A8CBB7]/15 capitalize">
                           <CheckCircle2 className="w-3 h-3 text-[#A8CBB7]" />
                           Official

@@ -65,7 +65,7 @@ export function WinnersView({ winners }: WinnersViewProps) {
           {filteredWinners.map((entry, idx) => (
             <article 
               key={idx}
-              className="p-6 rounded-2xl bg-[#06110C]/80 border border-[#A8CBB7]/15 hover:border-[#A8CBB7]/40 transition-all flex flex-col justify-between space-y-5 backdrop-blur-md shadow-md"
+              className="p-4 sm:p-6 rounded-2xl bg-[#06110C]/80 border border-[#A8CBB7]/15 hover:border-[#A8CBB7]/40 transition-all flex flex-col justify-between space-y-4 sm:space-y-5 backdrop-blur-md shadow-md"
             >
               <div>
                 {/* Event Name & Venue */}
