@@ -21,7 +21,6 @@ const CircularCarousel = dynamic(
 );
 import { 
   ArrowRight, 
-  Sparkles, 
   Layers
 } from 'lucide-react';
 import type { CircularCarouselItem } from '@/components/ui/CircularCarousel/CircularCarousel';

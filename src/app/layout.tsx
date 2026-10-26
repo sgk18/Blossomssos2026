@@ -34,12 +34,15 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.canonicalUrl),
   icons: {
     icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/favicon.webp', type: 'image/png' },
-      { url: '/blossoms_logo.webp', type: 'image/png' },
+      { url: '/blossoms_logo.webp', type: 'image/webp' },
+      { url: '/blossoms_logo.png', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any' },
     ],
-    shortcut: '/favicon.ico',
-    apple: '/blossoms_logo.webp',
+    shortcut: '/blossoms_logo.webp',
+    apple: [
+      { url: '/blossoms_logo.webp', type: 'image/webp' },
+      { url: '/blossoms_logo.png', type: 'image/png' },
+    ],
   },
   openGraph: {
     title: `${siteConfig.shortName} | ${siteConfig.institution}`,
@@ -59,8 +62,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sansFont.variable} ${orbitronFont.variable} ${spaceFont.variable}`}>
       <head>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="alternate icon" href="/favicon.webp" type="image/png" />
+        <link rel="icon" href="/blossoms_logo.webp" type="image/webp" />
+        <link rel="alternate icon" href="/blossoms_logo.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/blossoms_logo.webp" />
       </head>
       <body className="min-h-screen flex flex-col bg-[#171717] text-[#F2EFE8] font-sans antialiased selection:bg-[#A31C1B]/40 selection:text-[#F2EFE8]">
 

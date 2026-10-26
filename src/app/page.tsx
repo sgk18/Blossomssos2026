@@ -284,10 +284,9 @@ export default function HomePage() {
                 href={siteConfig.registrationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="clay-btn-accent font-tech px-6 py-3 rounded-xl font-bold text-sm flex items-center gap-2 shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
+                className="clay-btn-accent font-tech px-6 py-3 rounded-xl font-bold text-sm flex items-center justify-center shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
               >
                 <span>Register for Slot</span>
-                <ExternalLink className="w-4 h-4" />
               </a>
             )}
             <Link
@@ -523,10 +522,9 @@ export default function HomePage() {
                   href={siteConfig.registrationUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="clay-btn-accent font-tech px-8 py-4 rounded-2xl font-bold text-sm flex items-center gap-2 shadow-xl hover:scale-105 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
+                  className="clay-btn-accent font-tech px-8 py-4 rounded-2xl font-bold text-sm flex items-center justify-center shadow-xl hover:scale-105 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
                 >
                   <span>Register Now</span>
-                  <ExternalLink className="w-4 h-4" />
                 </a>
               </div>
             </div>
