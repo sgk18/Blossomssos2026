@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import { ScheduleItem } from '@/types/content';
-import { Calendar, Clock, MapPin, Filter, CheckCircle2 } from 'lucide-react';
+import Link from 'next/link';
+import { Calendar, Clock, MapPin, Filter, CheckCircle2, ArrowRight } from 'lucide-react';
 
 interface ScheduleViewProps {
   historicalSchedule: ScheduleItem[];
@@ -134,9 +135,14 @@ export function ScheduleView({ historicalSchedule }: ScheduleViewProps) {
                           <CheckCircle2 className="w-3 h-3 text-[#D1FF42]" />
                           Official
                         </span>
-                        <span className="text-[10px] text-[#C7D1DD]/70 uppercase tracking-wider font-mono">
-                          {item.category}
-                        </span>
+                        <Link
+                          href={`/events/${item.category}`}
+                          className="text-[10px] text-[#D1FF42] hover:underline uppercase tracking-wider font-mono flex items-center gap-1 group/cat"
+                          title={`View ${item.category} category details`}
+                        >
+                          <span>{item.category}</span>
+                          <ArrowRight className="w-2.5 h-2.5 group-hover/cat:translate-x-0.5 transition-transform" />
+                        </Link>
                       </div>
                     </div>
                   ))}

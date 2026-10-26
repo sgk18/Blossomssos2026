@@ -1,72 +1,83 @@
 @import "tailwindcss";
 
 @theme {
-  /* Exact Primary Brand Colors */
-  --color-elite-blue: #0251B0;
-  --color-volt-lime: #D1FF42;
-  --color-blue-grey: #C7D1DD;
-  --color-white: #FFFFFF;
-  --color-ink-navy: #101827;
+  /* Core Aesthetic Palette: Charcoal, Forest, Crimson, Mint, Ivory */
+  --color-charcoal-black: #171717;
+  --color-deep-forest-green: #06110C;
+  --color-crimson-red: #A31C1B;
+  --color-sage-mint: #A8CBB7;
+  --color-soft-ivory: #F2EFE8;
 
   /* Semantic Brand Mappings */
-  --color-brand-primary: #0251B0;
-  --color-brand-accent: #D1FF42;
-  --color-brand-muted: #C7D1DD;
-  --color-brand-dark: #101827;
-  --color-brand-surface: #162032;
-  --color-brand-surface-hover: #1E2B42;
-  --color-brand-surface-elevated: #22324D;
+  --color-brand-primary: #06110C;
+  --color-brand-accent: #A31C1B;
+  --color-brand-secondary: #A8CBB7;
+  --color-brand-light: #F2EFE8;
+  --color-brand-dark: #171717;
 
-  --color-background: #101827;
-  --color-background-muted: #0B101B;
-  --color-surface: #162032;
-  --color-surface-hover: #1E2B42;
-  --color-surface-elevated: #22324D;
-  --color-primary: #0251B0;
-  --color-primary-hover: #013E87;
-  --color-accent: #D1FF42;
-  --color-accent-hover: #BCE836;
-  --color-muted: #C7D1DD;
+  /* Surface & Background Tokens */
+  --color-background: #171717;
+  --color-background-muted: #06110C;
+  --color-surface: #1E2320;
+  --color-surface-hover: #262D29;
+  --color-surface-elevated: #2D3631;
+
+  /* Accent & Interactive Tokens */
+  --color-primary: #A31C1B;
+  --color-primary-hover: #BF2423;
+  --color-accent: #A8CBB7;
+  --color-accent-hover: #C2DDD0;
+  --color-muted: #A8CBB7;
+
+  /* Typography Tokens */
+  --font-angular: var(--font-orbitron), sans-serif;
+  --font-tech: var(--font-space), monospace, sans-serif;
+  --font-body: var(--font-body), system-ui, -apple-system, sans-serif;
 }
 
 @layer base {
   :root {
-    /* Exact Primary Brand Colors */
-    --color-elite-blue: #0251B0;
-    --color-volt-lime: #D1FF42;
-    --color-blue-grey: #C7D1DD;
-    --color-white: #FFFFFF;
-    --color-ink-navy: #101827;
+    /* Palette Tokens */
+    --color-charcoal: #171717;
+    --color-forest: #06110C;
+    --color-crimson: #A31C1B;
+    --color-crimson-hover: #BF2423;
+    --color-mint: #A8CBB7;
+    --color-mint-hover: #C2DDD0;
+    --color-ivory: #F2EFE8;
 
     /* Semantic Token Assignments */
-    --color-primary: #0251B0;
-    --color-primary-hover: #013E87;
-    --color-primary-foreground: #FFFFFF;
+    --color-primary: #A31C1B;
+    --color-primary-hover: #BF2423;
+    --color-primary-foreground: #F2EFE8;
 
-    --color-accent: #D1FF42;
-    --color-accent-hover: #BCE836;
-    --color-accent-foreground: #101827;
+    --color-accent: #A8CBB7;
+    --color-accent-hover: #C2DDD0;
+    --color-accent-foreground: #06110C;
 
-    --color-background: #101827;
-    --color-background-muted: #0B101B;
+    --color-background: #171717;
+    --color-background-muted: #06110C;
 
-    --color-surface: #162032;
-    --color-surface-hover: #1E2B42;
-    --color-surface-elevated: #22324D;
-    --color-surface-glass: rgba(22, 32, 50, 0.72);
-    --color-surface-glass-strong: rgba(22, 32, 50, 0.88);
+    --color-surface: #1C221F;
+    --color-surface-hover: #252D29;
+    --color-surface-elevated: #2E3833;
+    --color-surface-glass: rgba(6, 17, 12, 0.76);
+    --color-surface-glass-strong: rgba(23, 23, 23, 0.88);
 
-    --color-text: #FFFFFF;
-    --color-text-muted: #C7D1DD;
-    --color-text-inverted: #101827;
+    --color-text: #F2EFE8;
+    --color-text-muted: #A8CBB7;
+    --color-text-dim: rgba(242, 239, 232, 0.65);
+    --color-text-inverted: #06110C;
 
-    --color-border: rgba(199, 209, 221, 0.16);
-    --color-border-strong: rgba(209, 255, 66, 0.4);
+    --color-border: rgba(168, 203, 183, 0.16);
+    --color-border-subtle: rgba(242, 239, 232, 0.08);
+    --color-border-strong: rgba(168, 203, 183, 0.35);
+    --color-border-accent: rgba(163, 28, 27, 0.45);
 
-    --color-focus: #D1FF42;
+    --color-focus: #A8CBB7;
     --color-success: #10B981;
     --color-warning: #F59E0B;
-    --color-error: #EF4444;
+    --color-error: #A31C1B;
 
     /* Spacing & Layout Tokens */
     --max-content-width: 80rem; /* 1280px */
@@ -76,15 +87,17 @@
     --radius-xl: 1.5rem;
     --radius-full: 9999px;
 
-    /* Glassmorphism Tokens (40% Influence) */
-    --glass-background: rgba(22, 32, 50, 0.72);
-    --glass-border: rgba(199, 209, 221, 0.16);
+    /* Glassmorphism Tokens */
+    --glass-background: rgba(6, 17, 12, 0.78);
+    --glass-background-charcoal: rgba(23, 23, 23, 0.82);
+    --glass-border: rgba(168, 203, 183, 0.16);
+    --glass-border-subtle: rgba(242, 239, 232, 0.1);
     --glass-blur: 16px;
 
-    /* Claymorphism Tokens (10% Influence) */
-    --clay-shadow-primary: inset 0 1px 1px rgba(255, 255, 255, 0.35), 0 4px 14px rgba(2, 81, 176, 0.35);
-    --clay-shadow-accent: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 4px 14px rgba(209, 255, 66, 0.25);
-    --clay-shadow-pressed: inset 0 2px 4px rgba(0, 0, 0, 0.35), 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Claymorphism Tokens */
+    --clay-shadow-primary: inset 0 1px 1px rgba(255, 255, 255, 0.25), 0 4px 14px rgba(163, 28, 27, 0.35);
+    --clay-shadow-accent: inset 0 1px 1px rgba(255, 255, 255, 0.45), 0 4px 14px rgba(168, 203, 183, 0.2);
+    --clay-shadow-pressed: inset 0 2px 4px rgba(0, 0, 0, 0.45), 0 2px 4px rgba(0, 0, 0, 0.2);
 
     /* Motion Tokens */
     --transition-micro: 120ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -98,8 +111,8 @@
   }
 
   ::selection {
-    background-color: var(--color-elite-blue);
-    color: var(--color-white);
+    background-color: var(--color-primary);
+    color: var(--color-text);
   }
 
   body {
@@ -113,7 +126,35 @@
   }
 }
 
-/* Glassmorphism Surfaces (40%) */
+/* =========================================================
+   NEXUS TYPOGRAPHY DIRECTION
+   - Display headings: bold, angular, futuristic, high visual impact (Orbitron)
+   - Secondary headings & UI controls: clean, geometric sans-serif (Space Grotesk)
+   - Body copy: readable, understated sans-serif (Plus Jakarta Sans)
+   ========================================================= */
+.font-angular {
+  font-family: var(--font-orbitron), sans-serif;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.font-angular-bold {
+  font-family: var(--font-orbitron), sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+}
+
+.font-tech {
+  font-family: var(--font-space), monospace, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.font-body {
+  font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+}
+
+/* Glassmorphism Surfaces */
 .glass-panel {
   background: var(--glass-background);
   backdrop-filter: blur(var(--glass-blur));
@@ -122,26 +163,26 @@
 }
 
 .glass-card {
-  background: rgba(22, 32, 50, 0.65);
+  background: rgba(6, 17, 12, 0.65);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(199, 209, 221, 0.14);
+  border: 1px solid rgba(168, 203, 183, 0.14);
   transition: border-color var(--transition-standard), transform var(--transition-standard), background var(--transition-standard);
 }
 
 .glass-card:hover {
-  background: rgba(22, 32, 50, 0.85);
-  border-color: rgba(209, 255, 66, 0.35);
+  background: rgba(6, 17, 12, 0.85);
+  border-color: rgba(168, 203, 183, 0.35);
 }
 
 .glass-nav {
-  background: rgba(16, 24, 39, 0.85);
+  background: rgba(23, 23, 23, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(199, 209, 221, 0.14);
+  border-bottom: 1px solid rgba(168, 203, 183, 0.14);
 }
 
-/* Claymorphism Subtle Tactile Controls (10%) */
+/* Claymorphism Subtle Tactile Controls */
 .clay-btn-primary {
   background: var(--color-primary);
   color: var(--color-primary-foreground);
@@ -151,7 +192,7 @@
 .clay-btn-primary:hover {
   background: var(--color-primary-hover);
   transform: translateY(-1px);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 6px 18px rgba(2, 81, 176, 0.45);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35), 0 6px 18px rgba(163, 28, 27, 0.45);
 }
 .clay-btn-primary:active {
   transform: translateY(1px);
@@ -168,7 +209,7 @@
 .clay-btn-accent:hover {
   background: var(--color-accent-hover);
   transform: translateY(-1px);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 6px 18px rgba(209, 255, 66, 0.35);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.65), 0 6px 18px rgba(168, 203, 183, 0.35);
 }
 .clay-btn-accent:active {
   transform: translateY(1px);

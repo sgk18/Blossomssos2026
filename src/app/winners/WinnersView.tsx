@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import { WinnerEntry } from '@/types/content';
-import { Trophy, Search, Award, ShieldCheck, MapPin } from 'lucide-react';
+import Link from 'next/link';
+import { Trophy, Search, Award, ShieldCheck, MapPin, ArrowRight, Compass, Calendar } from 'lucide-react';
 
 interface WinnersViewProps {
   winners: WinnerEntry[];
@@ -124,6 +125,33 @@ export function WinnersView({ winners }: WinnersViewProps) {
           ))}
         </div>
       )}
+
+      {/* Navigation Footer Callout */}
+      <div className="p-6 sm:p-8 rounded-3xl bg-[#162032]/80 border border-[#C7D1DD]/15 backdrop-blur-md flex flex-col md:flex-row items-center justify-between gap-6 shadow-lg">
+        <div className="space-y-1 text-center md:text-left">
+          <h4 className="text-base font-bold text-[#FFFFFF]">Looking for Upcoming Competition Formats?</h4>
+          <p className="text-xs text-[#C7D1DD]">
+            Explore the 32 competitive formats, evaluation criteria, and schedule timelines for the active cycle.
+          </p>
+        </div>
+        <div className="flex flex-wrap items-center gap-3 shrink-0">
+          <Link
+            href="/events"
+            className="clay-btn-accent px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm"
+          >
+            <Compass className="w-3.5 h-3.5" />
+            <span>Explore 5 Disciplines</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+          <Link
+            href="/schedule"
+            className="px-4 py-2.5 rounded-xl bg-[#101827] hover:bg-[#1E2B42] text-[#C7D1DD] hover:text-[#FFFFFF] border border-[#C7D1DD]/20 text-xs font-semibold flex items-center gap-1.5 transition-colors"
+          >
+            <Calendar className="w-3.5 h-3.5 text-[#D1FF42]" />
+            <span>View Schedule</span>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
