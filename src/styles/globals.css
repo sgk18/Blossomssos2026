@@ -127,19 +127,19 @@
 }
 
 /* =========================================================
-   NEXUS TYPOGRAPHY DIRECTION
-   - Display headings: bold, angular, futuristic, high visual impact (Orbitron)
-   - Secondary headings & UI controls: clean, geometric sans-serif (Space Grotesk)
+   TYPOGRAPHY UTILITIES
+   - Display headings: bold, angular, futuristic (Orbitron)
+   - Secondary headings & UI controls: clean, geometric (Space Grotesk)
    - Body copy: readable, understated sans-serif (Plus Jakarta Sans)
    ========================================================= */
 .font-angular {
-  font-family: var(--font-orbitron), sans-serif;
+  font-family: var(--font-orbitron), var(--font-space), sans-serif;
   letter-spacing: -0.02em;
   text-transform: uppercase;
 }
 
 .font-angular-bold {
-  font-family: var(--font-orbitron), sans-serif;
+  font-family: var(--font-orbitron), var(--font-space), sans-serif;
   font-weight: 900;
   letter-spacing: -0.035em;
   text-transform: uppercase;

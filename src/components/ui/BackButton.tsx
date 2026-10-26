@@ -12,7 +12,7 @@ interface BackButtonProps {
 
 export function BackButton({ 
   label = 'Go Back', 
-  className = 'px-4 py-2.5 rounded-xl bg-[#162032] hover:bg-[#1E2B42] text-[#C7D1DD] hover:text-[#FFFFFF] border border-[#C7D1DD]/20 text-xs font-semibold flex items-center justify-center gap-2 transition-colors',
+  className = 'px-4 py-2.5 rounded-xl bg-[#06110C] hover:bg-[#06110C]/90 text-[#F2EFE8] border border-[#A8CBB7]/20 text-xs font-semibold flex items-center justify-center gap-2 transition-colors',
   fallbackUrl = '/'
 }: BackButtonProps) {
   const router = useRouter();
@@ -32,7 +32,7 @@ export function BackButton({
       className={className}
       aria-label={label}
     >
-      <ArrowLeft className="w-4 h-4 text-[#D1FF42]" />
+      <ArrowLeft className="w-4 h-4 text-[#A8CBB7]" />
       <span>{label}</span>
     </button>
   );

@@ -13,7 +13,7 @@ interface SpectralDrapeBoundaryProps {
  * 
  * Clean isolation boundary for the React Bits Pro Spectral Drape component.
  * Free of wipeout elements, blocking overlays, and CPU thrashing.
- * Color Tokens: Electric Blue (#0251B0), Volt Lime (#D1FF42), Ink Navy (#101827).
+ * Color Tokens: Deep Forest Green (#06110C), Charcoal (#171717), Sage Mint (#A8CBB7), Crimson Red (#A31C1B).
  */
 export function SpectralDrapeBoundary({
   className = '',
@@ -37,7 +37,7 @@ export function SpectralDrapeBoundary({
   if (!hasMounted) {
     return (
       <div 
-        className={`absolute inset-0 pointer-events-none bg-[#101827] ${className}`} 
+        className={`absolute inset-0 pointer-events-none bg-[#171717] ${className}`} 
         aria-hidden="true" 
       />
     );
@@ -47,7 +47,7 @@ export function SpectralDrapeBoundary({
   if (prefersReducedMotion) {
     return (
       <div 
-        className={`absolute inset-0 pointer-events-none bg-[#101827] ${className}`} 
+        className={`absolute inset-0 pointer-events-none bg-[#171717] ${className}`} 
         aria-hidden="true" 
       />
     );
@@ -65,13 +65,13 @@ export function SpectralDrapeBoundary({
         <div 
           className="absolute -top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full opacity-20 blur-[120px]"
           style={{
-            background: 'radial-gradient(circle, #0251B0 0%, #101827 70%)',
+            background: 'radial-gradient(circle, #06110C 0%, #171717 70%)',
           }}
         />
         <div 
           className="absolute -bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full opacity-15 blur-[100px]"
           style={{
-            background: 'radial-gradient(circle, #D1FF42 0%, transparent 65%)',
+            background: 'radial-gradient(circle, #A8CBB7 0%, transparent 65%)',
           }}
         />
       </div>

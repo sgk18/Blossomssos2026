@@ -79,13 +79,13 @@ export function Navbar() {
                 BLOSSOMS
               </span>
               <span className="font-tech text-[9px] sm:text-[10px] text-[#A8CBB7] tracking-widest uppercase leading-none font-semibold">
-                SOS 2026–27
+                SOS
               </span>
             </div>
           </Link>
 
           {/* 2. Center: Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1 lg:gap-1.5" aria-label="Main Navigation">
+          <nav className="hidden md:flex items-center gap-1 lg:gap-1.5 font-tech" aria-label="Main Navigation">
             {NAV_LINKS.map((link) => {
               const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
               
@@ -184,7 +184,7 @@ export function Navbar() {
               </div>
             </div>
 
-            <nav className="flex flex-col gap-1.5 pt-1" aria-label="Mobile Navigation Links">
+            <nav className="flex flex-col gap-1.5 pt-1 font-tech" aria-label="Mobile Navigation Links">
               {NAV_LINKS.map((link) => {
                 const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
                 return (
@@ -206,7 +206,7 @@ export function Navbar() {
             </nav>
 
             {/* Mobile Actions */}
-            <div className="pt-2 flex flex-col gap-2">
+            <div className="pt-2 flex flex-col gap-2 font-tech">
               {siteConfig.registrationUrl && (
                 <a
                   href={siteConfig.registrationUrl}

@@ -14,10 +14,10 @@ export function Footer() {
   };
 
   return (
-    <footer className="w-full border-t border-[#C7D1DD]/15 bg-[#0B101B] text-[#C7D1DD] text-sm relative overflow-hidden z-20" role="contentinfo">
+    <footer className="w-full border-t border-[#A8CBB7]/15 bg-[#171717] text-[#F2EFE8] text-sm relative overflow-hidden z-20" role="contentinfo">
       {/* Ambient Radial Top Glow */}
       <div 
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 max-w-4xl h-24 bg-[#0251B0]/15 blur-3xl pointer-events-none"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 max-w-4xl h-24 bg-[#A8CBB7]/5 blur-3xl pointer-events-none"
         aria-hidden="true" 
       />
 
@@ -28,7 +28,7 @@ export function Footer() {
           {/* Column 1: Brand & Official University Logos (lg:col-span-4) */}
           <div className="lg:col-span-4 space-y-5">
             <div className="flex items-center gap-3">
-              <div className="relative w-11 h-11 rounded-2xl bg-[#162032] border border-[#C7D1DD]/25 p-1.5 flex items-center justify-center shadow-md shadow-[#0251B0]/20">
+              <div className="relative w-11 h-11 rounded-2xl bg-[#06110C] border border-[#A8CBB7]/25 p-1.5 flex items-center justify-center shadow-md shadow-black/40">
                 <Image
                   src="/blossoms_logo.webp"
                   alt="Blossoms SOS Logo"
@@ -38,16 +38,16 @@ export function Footer() {
                 />
               </div>
               <div className="flex flex-col">
-                <span className="font-sans font-extrabold text-base sm:text-lg text-[#FFFFFF] tracking-wide leading-tight">
+                <span className="font-angular font-black text-base sm:text-lg text-[#F2EFE8] tracking-wide leading-tight">
                   {siteConfig.shortName.toUpperCase()}
                 </span>
-                <span className="text-[10px] font-mono text-[#D1FF42] uppercase tracking-wider font-semibold">
-                  {siteConfig.faculty}
+                <span className="font-tech text-[10px] text-[#A8CBB7] uppercase tracking-wider font-semibold">
+                  SOS • {siteConfig.faculty}
                 </span>
               </div>
             </div>
 
-            <p className="text-xs sm:text-sm text-[#C7D1DD] leading-relaxed font-normal max-w-sm">
+            <p className="font-body text-xs sm:text-sm text-[#F2EFE8]/75 leading-relaxed font-normal max-w-sm">
               The premier annual inter-deanery cultural celebration of the School of Sciences at CHRIST (Deemed to be University), Bangalore. Where scientific rigor converges with creative expression.
             </p>
 
@@ -57,7 +57,7 @@ export function Footer() {
                 href="https://www.christuniversity.in" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center bg-white/95 hover:bg-white px-3.5 py-1.5 rounded-xl shadow-md border border-white/40 transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D1FF42]"
+                className="inline-flex items-center bg-white/95 hover:bg-white px-3.5 py-1.5 rounded-xl shadow-md border border-white/40 transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
                 title="CHRIST (Deemed to be University) Official Website"
               >
                 <Image
@@ -68,7 +68,7 @@ export function Footer() {
                   className="h-6 w-auto object-contain"
                 />
               </a>
-              <span className="text-[11px] font-mono px-3 py-1 rounded-full bg-[#162032] text-[#D1FF42] border border-[#C7D1DD]/20 font-semibold shadow-sm">
+              <span className="font-tech text-[11px] px-3 py-1 rounded-full bg-[#06110C] text-[#A8CBB7] border border-[#A8CBB7]/25 font-semibold shadow-sm">
                 Central Campus
               </span>
             </div>
@@ -76,33 +76,33 @@ export function Footer() {
 
           {/* Column 2: Quick Links (lg:col-span-2) */}
           <div className="lg:col-span-2 space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[#FFFFFF] font-mono flex items-center gap-2">
-              <Compass className="w-3.5 h-3.5 text-[#D1FF42]" />
+            <h3 className="font-tech text-xs font-bold uppercase tracking-wider text-[#F2EFE8] flex items-center gap-2">
+              <Compass className="w-3.5 h-3.5 text-[#A8CBB7]" />
               <span>Explore</span>
             </h3>
-            <ul className="space-y-2.5 text-xs">
+            <ul className="space-y-2.5 text-xs font-tech">
               <li>
-                <Link href="/" className="hover:text-[#D1FF42] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D1FF42] rounded">
+                <Link href="/" className="text-[#F2EFE8]/75 hover:text-[#A8CBB7] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] rounded">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-[#D1FF42] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D1FF42] rounded">
+                <Link href="/about" className="text-[#F2EFE8]/75 hover:text-[#A8CBB7] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] rounded">
                   About the Festival
                 </Link>
               </li>
               <li>
-                <Link href="/events" className="hover:text-[#D1FF42] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D1FF42] rounded">
+                <Link href="/events" className="text-[#F2EFE8]/75 hover:text-[#A8CBB7] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] rounded">
                   All Disciplines
                 </Link>
               </li>
               <li>
-                <Link href="/schedule" className="hover:text-[#D1FF42] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D1FF42] rounded">
+                <Link href="/schedule" className="text-[#F2EFE8]/75 hover:text-[#A8CBB7] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] rounded">
                   Festival Schedule
                 </Link>
               </li>
               <li>
-                <Link href="/winners" className="hover:text-[#D1FF42] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D1FF42] rounded">
+                <Link href="/winners" className="text-[#F2EFE8]/75 hover:text-[#A8CBB7] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] rounded">
                   Competition Results
                 </Link>
               </li>
@@ -111,39 +111,39 @@ export function Footer() {
 
           {/* Column 3: The Five Pillars (lg:col-span-3) */}
           <div className="lg:col-span-3 space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[#FFFFFF] font-mono flex items-center gap-2">
-              <Sparkles className="w-3.5 h-3.5 text-[#D1FF42]" />
+            <h3 className="font-tech text-xs font-bold uppercase tracking-wider text-[#F2EFE8] flex items-center gap-2">
+              <Sparkles className="w-3.5 h-3.5 text-[#A8CBB7]" />
               <span>5 Pillars</span>
             </h3>
-            <ul className="space-y-2.5 text-xs">
+            <ul className="space-y-2.5 text-xs font-tech">
               <li>
-                <Link href="/events/art" className="hover:text-[#D1FF42] transition-colors flex items-center justify-between group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D1FF42] rounded">
+                <Link href="/events/art" className="text-[#F2EFE8]/75 hover:text-[#A8CBB7] transition-colors flex items-center justify-between group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] rounded">
                   <span>Art Competitions</span>
-                  <span className="text-[10px] font-mono text-[#C7D1DD]/60 group-hover:text-[#D1FF42]">9 Events</span>
+                  <span className="text-[10px] text-[#A8CBB7]/70 group-hover:text-[#A8CBB7]">9 Events</span>
                 </Link>
               </li>
               <li>
-                <Link href="/events/literary" className="hover:text-[#D1FF42] transition-colors flex items-center justify-between group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D1FF42] rounded">
+                <Link href="/events/literary" className="text-[#F2EFE8]/75 hover:text-[#A8CBB7] transition-colors flex items-center justify-between group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] rounded">
                   <span>Literary Events</span>
-                  <span className="text-[10px] font-mono text-[#C7D1DD]/60 group-hover:text-[#D1FF42]">8 Events</span>
+                  <span className="text-[10px] text-[#A8CBB7]/70 group-hover:text-[#A8CBB7]">8 Events</span>
                 </Link>
               </li>
               <li>
-                <Link href="/events/music" className="hover:text-[#D1FF42] transition-colors flex items-center justify-between group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D1FF42] rounded">
+                <Link href="/events/music" className="text-[#F2EFE8]/75 hover:text-[#A8CBB7] transition-colors flex items-center justify-between group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] rounded">
                   <span>Music &amp; Bands</span>
-                  <span className="text-[10px] font-mono text-[#C7D1DD]/60 group-hover:text-[#D1FF42]">5 Events</span>
+                  <span className="text-[10px] text-[#A8CBB7]/70 group-hover:text-[#A8CBB7]">5 Events</span>
                 </Link>
               </li>
               <li>
-                <Link href="/events/theatre" className="hover:text-[#D1FF42] transition-colors flex items-center justify-between group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D1FF42] rounded">
+                <Link href="/events/theatre" className="text-[#F2EFE8]/75 hover:text-[#A8CBB7] transition-colors flex items-center justify-between group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] rounded">
                   <span>Theatre &amp; Stagecraft</span>
-                  <span className="text-[10px] font-mono text-[#C7D1DD]/60 group-hover:text-[#D1FF42]">6 Events</span>
+                  <span className="text-[10px] text-[#A8CBB7]/70 group-hover:text-[#A8CBB7]">6 Events</span>
                 </Link>
               </li>
               <li>
-                <Link href="/events/dance" className="hover:text-[#D1FF42] transition-colors flex items-center justify-between group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D1FF42] rounded">
+                <Link href="/events/dance" className="text-[#F2EFE8]/75 hover:text-[#A8CBB7] transition-colors flex items-center justify-between group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] rounded">
                   <span>Dance &amp; Choreography</span>
-                  <span className="text-[10px] font-mono text-[#C7D1DD]/60 group-hover:text-[#D1FF42]">3 Events</span>
+                  <span className="text-[10px] text-[#A8CBB7]/70 group-hover:text-[#A8CBB7]">3 Events</span>
                 </Link>
               </li>
             </ul>
@@ -151,8 +151,8 @@ export function Footer() {
 
           {/* Column 4: Contact, Socials & Campus Location (lg:col-span-3) */}
           <div className="lg:col-span-3 space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[#FFFFFF] font-mono flex items-center gap-2">
-              <Building className="w-3.5 h-3.5 text-[#D1FF42]" />
+            <h3 className="font-tech text-xs font-bold uppercase tracking-wider text-[#F2EFE8] flex items-center gap-2">
+              <Building className="w-3.5 h-3.5 text-[#A8CBB7]" />
               <span>Connect &amp; Location</span>
             </h3>
             
@@ -163,7 +163,7 @@ export function Footer() {
                   href={siteConfig.socialLinks.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#162032] border border-[#C7D1DD]/20 text-xs font-semibold text-[#C7D1DD] hover:text-[#D1FF42] hover:border-[#D1FF42]/40 transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D1FF42]"
+                  className="font-tech inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#06110C] border border-[#A8CBB7]/20 text-xs font-semibold text-[#F2EFE8] hover:text-[#A8CBB7] hover:border-[#A8CBB7]/40 transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
                   aria-label="Instagram @blossoms_sos"
                 >
                   <svg className="w-4 h-4 fill-currentColor" viewBox="0 0 24 24">
@@ -175,19 +175,19 @@ export function Footer() {
             </div>
 
             {/* Address & Email Card */}
-            <div className="p-4 rounded-2xl bg-[#162032]/70 border border-[#C7D1DD]/15 backdrop-blur-sm space-y-2.5 text-xs">
+            <div className="p-4 rounded-2xl bg-[#06110C]/80 border border-[#A8CBB7]/15 backdrop-blur-sm space-y-2.5 text-xs font-body">
               <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-[#D1FF42] shrink-0 mt-0.5" />
-                <span className="text-[#C7D1DD] leading-relaxed">
+                <MapPin className="w-4 h-4 text-[#A8CBB7] shrink-0 mt-0.5" />
+                <span className="text-[#F2EFE8]/80 leading-relaxed">
                   CHRIST (Deemed to be University), Hosur Road, Bengaluru 560029
                 </span>
               </div>
               {siteConfig.contactEmail && (
-                <div className="flex items-center gap-2 pt-1 border-t border-[#C7D1DD]/10">
-                  <Mail className="w-3.5 h-3.5 text-[#D1FF42] shrink-0" />
+                <div className="flex items-center gap-2 pt-1 border-t border-[#A8CBB7]/10 font-tech">
+                  <Mail className="w-3.5 h-3.5 text-[#A31C1B] shrink-0" />
                   <a 
                     href={`mailto:${siteConfig.contactEmail}`} 
-                    className="text-xs text-[#C7D1DD] hover:text-[#D1FF42] transition-colors focus-visible:outline-none focus-visible:underline"
+                    className="text-xs text-[#F2EFE8]/80 hover:text-[#A8CBB7] transition-colors focus-visible:outline-none focus-visible:underline"
                   >
                     {siteConfig.contactEmail}
                   </a>
@@ -199,25 +199,25 @@ export function Footer() {
         </div>
 
         {/* Bottom Utility Bar: Copyright, Navigation Links & Tactile Back to Top */}
-        <div className="mt-14 pt-8 border-t border-[#C7D1DD]/15 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-[#C7D1DD]/70">
-          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-2 text-center sm:text-left">
+        <div className="mt-14 pt-8 border-t border-[#A8CBB7]/15 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-[#F2EFE8]/60">
+          <div className="font-body flex flex-col sm:flex-row items-center sm:items-start gap-2 text-center sm:text-left">
             <p>© {currentYear} School of Sciences, CHRIST (Deemed to be University). All rights reserved.</p>
-            <span className="hidden sm:inline text-[#C7D1DD]/40">•</span>
-            <p className="text-[11px] text-[#C7D1DD]/50">Curated for Inter-Deanery Excellence</p>
+            <span className="hidden sm:inline text-[#A8CBB7]/40">•</span>
+            <p className="font-tech text-[11px] text-[#A8CBB7]">Curated for Inter-Deanery Excellence</p>
           </div>
 
           <div className="flex items-center gap-6">
-            <div className="flex items-center gap-5 text-xs">
-              <Link href="/about" className="hover:text-[#D1FF42] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D1FF42] rounded">
+            <div className="font-tech flex items-center gap-5 text-xs">
+              <Link href="/about" className="hover:text-[#A8CBB7] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] rounded">
                 About
               </Link>
-              <Link href="/events" className="hover:text-[#D1FF42] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D1FF42] rounded">
+              <Link href="/events" className="hover:text-[#A8CBB7] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] rounded">
                 Disciplines
               </Link>
-              <Link href="/schedule" className="hover:text-[#D1FF42] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D1FF42] rounded">
+              <Link href="/schedule" className="hover:text-[#A8CBB7] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] rounded">
                 Schedule
               </Link>
-              <Link href="/winners" className="hover:text-[#D1FF42] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D1FF42] rounded">
+              <Link href="/winners" className="hover:text-[#A8CBB7] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] rounded">
                 Results
               </Link>
             </div>
@@ -226,7 +226,7 @@ export function Footer() {
             <button
               type="button"
               onClick={scrollToTop}
-              className="clay-btn-accent px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D1FF42] transition-transform hover:scale-105 active:scale-95"
+              className="font-tech clay-btn-accent px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] transition-transform hover:scale-105 active:scale-95"
               aria-label="Scroll back to top of page"
             >
               <span>Top</span>

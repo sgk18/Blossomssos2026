@@ -14,8 +14,8 @@ const sansFont = Plus_Jakarta_Sans({
 const orbitronFont = Orbitron({
   subsets: ['latin'],
   variable: '--font-orbitron',
-  display: 'swap',
   weight: ['600', '700', '800', '900'],
+  display: 'swap',
 });
 
 const spaceFont = Space_Grotesk({
@@ -62,7 +62,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="alternate icon" href="/favicon.webp" type="image/png" />
       </head>
-      <body className="min-h-screen flex flex-col bg-[#171717] text-[#F2EFE8] antialiased selection:bg-[#A31C1B] selection:text-[#F2EFE8]">
+      <body className="min-h-screen flex flex-col bg-[#171717] text-[#F2EFE8] font-sans antialiased selection:bg-[#A31C1B]/40 selection:text-[#F2EFE8]">
 
         {/* Skip to Content for WCAG 2.2 AA Keyboard Accessibility */}
         <a 
