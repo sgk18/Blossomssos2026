@@ -78,7 +78,7 @@ export default function HomePage() {
             </div>
 
             {/* Official Festival Motto & Slogan Graphic */}
-            <div className="flex flex-col items-center gap-4 max-w-2xl">
+            <div className="flex flex-col items-center gap-4 max-w-3xl">
               <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[#06110C]/70 border border-[#A8CBB7]/20 text-xs sm:text-sm font-tech text-[#F2EFE8]">
                 <span>Motto:</span>
                 <span className="font-bold text-[#A8CBB7] uppercase tracking-wider">&lsquo;Be the Best&rsquo;</span>
@@ -86,18 +86,18 @@ export default function HomePage() {
                 <span className="text-[#F2EFE8]/80">Over 7,000 Students • 32 Cultural Arenas</span>
               </div>
 
-              {/* Slogan Banner ("Flames to Flight") */}
-              <div className="relative w-full max-w-md h-20 sm:h-24 my-1 flex items-center justify-center">
+              {/* Slogan Banner ("Flames to Flight") - Enlarged for visual impact */}
+              <div className="relative w-full max-w-lg sm:max-w-xl md:max-w-2xl h-32 sm:h-40 md:h-48 my-2 flex items-center justify-center">
                 <Image
                   src="/blossoms_slogan.webp"
                   alt="From flames to flights, White Onyx Ignites"
                   fill
-                  className="object-contain filter invert drop-shadow-[0_2px_12px_rgba(168,203,183,0.35)]"
+                  className="object-contain filter invert drop-shadow-[0_2px_16px_rgba(168,203,183,0.45)] scale-110 sm:scale-115 transition-transform"
                   priority
                 />
               </div>
 
-              <p className="font-tech text-xs sm:text-sm font-semibold tracking-wider text-[#A8CBB7] uppercase">
+              <p className="font-tech text-xs sm:text-sm md:text-base font-semibold tracking-widest text-[#A8CBB7] uppercase">
                 &ldquo;From Flames to Flights, White Onyx Ignites.&rdquo;
               </p>
             </div>
