@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 160" width="140" height="160" fill="none">
+  <defs>
+    <linearGradient id="shield-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0251B0"/>
+      <stop offset="100%" stop-color="#0B2B64"/>
+    </linearGradient>
+    <linearGradient id="crest-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5D061"/>
+      <stop offset="100%" stop-color="#E5A93B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- University Shield Outer Contour -->
+  <path d="M70 12 L124 24 V85 C124 122, 98 145, 70 154 C42 145, 16 122, 16 85 V24 Z" 
+        fill="url(#shield-grad)" 
+        stroke="url(#crest-gold)" 
+        stroke-width="4" 
+        stroke-linejoin="round"/>
+
+  <!-- Inner Inset Shield -->
+  <path d="M70 22 L114 32 V82 C114 113, 92 133, 70 142 C48 133, 26 113, 26 82 V32 Z" 
+        fill="none" 
+        stroke="url(#crest-gold)" 
+        stroke-width="1.5" 
+        stroke-opacity="0.6"/>
+
+  <!-- Cross / Grid Division -->
+  <line x1="70" y1="32" x2="70" y2="135" stroke="url(#crest-gold)" stroke-width="2"/>
+  <line x1="28" y1="75" x2="112" y2="75" stroke="url(#crest-gold)" stroke-width="2"/>
+
+  <!-- Top-Left: Star of Wisdom -->
+  <path d="M48 44 L51 52 L59 52 L53 57 L55 65 L48 60 L41 65 L43 57 L37 52 L45 52 Z" 
+        fill="url(#crest-gold)"/>
+
+  <!-- Top-Right: Open Book (Excellence & Service) -->
+  <path d="M82 48 C87 46, 92 46, 96 49 V64 C92 61, 87 61, 82 63 Z" fill="url(#crest-gold)"/>
+  <path d="M96 49 C100 46, 105 46, 110 48 V63 C105 61, 100 61, 96 64 Z" fill="url(#crest-gold)"/>
+
+  <!-- Bottom-Left: Lamp of Knowledge -->
+  <path d="M38 102 C38 98, 44 95, 52 95 C56 95, 60 97, 62 100 L56 103 C54 104, 46 104, 38 102 Z" fill="url(#crest-gold)"/>
+  <path d="M50 88 C49 91, 51 93, 52 94 C53 93, 55 91, 54 88 C53 86, 51 86, 50 88 Z" fill="#FF5E98"/>
+
+  <!-- Bottom-Right: Tree of Life / Science -->
+  <circle cx="94" cy="95" r="3.5" fill="url(#crest-gold)"/>
+  <path d="M94 98 V110 M88 104 L94 101 L100 104" stroke="url(#crest-gold)" stroke-width="2" stroke-linecap="round"/>
+</svg>

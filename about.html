@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Blossoms</title>
+    
+    <!-- Link to the MAIN stylesheet (for header, footer, and theme) -->
+    <link rel="stylesheet" href="styleindex.css">
+    
+    <!-- Link to the NEW stylesheet (for this page's content only) -->
+    <link rel="stylesheet" href="styleabout.css">
+    
+    <!-- Icon library for trophies & footer -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!--
+      Scene 1: Flower particles container
+    -->
+    <div id="flower-particles-container"></div>
+
+    <!--
+      Header with Animations
+      Same as index.html with animation classes
+    -->
+    <header id="main-header" class="logo-center">
+        <!-- The logo container -->
+        <div id="logo-container" class="animation-element">
+            <img src="blossoms_logo.png" alt="Blossoms Logo" id="blossoms-logo">
+        </div>
+
+        <!-- The nav links -->
+        <nav id="main-nav" class="animation-element">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="index.html#events">Events</a>
+            <a href="schedule.html">Schedules</a>
+            <a href="winners.html">Winners</a>
+        </nav>
+
+        <!-- Collage Logo Container -->
+        <div id="collage-logo-container" class="animation-element">
+            <img src="Christ_logo.png" alt="Collage Logo" id="collage-logo">
+        </div>
+    </header>
+
+    <!--
+      Main Page Content
+    -->
+    <main id="main-content">
+
+        <!-- Combined About Hero Section with Content and Video -->
+        <section id="about-hero" class="content-section">
+            <h1 class="section-title">About Blossoms & The School of Sciences Journey</h1>
+            <img src="blossoms_team.png" alt="Team Logo" class="hero-logo">
+
+            <!-- About Blossoms Content and Video -->
+            <div class="about-container">
+                <div class="about-text">
+                    <p class="description">
+                        Blossoms is the intra-deanery cultural fest at Christ (Deemed To Be University) Bangalore with the motto 'Be the best'. This is a unique venture where all 7000 students of Christ University, Bangalore participate in a cultural event. The events are divided into four categories - Art, Theatre, Stage & Literary. Students compete in multiple events across these categories. The winners lay their hands on the Inter-Deanery trophy for Artistic Excellence and Service.
+                    </p>
+                </div>
+                <div class="about-video">
+                    <video autoplay muted loop poster="https://placehold.co/600x400/ec407a/white?text=About+Video">
+                        <source src="blossoms-24.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- Journey Section -->
+        <section id="journey" class="content-section animate-on-scroll">
+            <h2 class="section-title">The Journey Through Blossoms</h2>
+            <div class="journey-container">
+                <div class="journey-phase">
+                    <i class="fas fa-users"></i>
+                    <h3>Intra-Deanery Prelims</h3>
+                    <p>The initial round sees fierce but friendly competition within individual deaneries, identifying the brightest stars and strongest contenders.</p>
+                </div>
+                <div class="journey-phase">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Inter-Deanery Finals</h3>
+                    <p>The champions from each deanery then advance to the grand stage, where they compete at an inter-deanery level, vying for ultimate glory and the coveted Blossoms title.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Onyx Section -->
+        <section id="team-onyx" class="content-section animate-on-scroll">
+            <h2 class="section-title">Representing the School of Sciences: Team Onyx</h2>
+            <div class="team-info">
+                <p>As part of the vibrant tapestry of Blossoms, the School of Sciences proudly fields its own dedicated team. We are Team Onyx, embodying the spirit of innovation, precision, and boundless creativity inherent to the sciences.</p>
+                <div class="team-details">
+                    <div class="detail-item">
+                        <i class="fas fa-palette"></i>
+                        <h4>Team Color</h4>
+                        <p>White – symbolizing clarity, brilliance, and the unity that empowers us.</p>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-gem"></i>
+                        <h4>Team Name</h4>
+                        <p>Onyx – representing strength, resilience, and the polished excellence we bring to every challenge.</p>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-fire"></i>
+                        <h4>Team Slogan</h4>
+                        <p>"From flames to flights, White Onyx Ignites." – A testament to our journey, transforming raw passion and scientific insight into soaring artistic achievements that captivate and inspire.</p>
+                    </div>
+                </div>
+                <div class="call-to-action">
+                    <p>At Blossoms, Team Onyx from the School of Sciences aims not just to participate, but to lead. We encourage all our students to embrace this incredible opportunity – to join us, participate actively across all events, and help us secure a commanding lead in the inter-deanery finals.</p>
+                    <p>This is more than a competition; it's a celebration of talent, a forging of camaraderie, and a testament to the diverse capabilities within the School of Sciences. Join us in making Blossoms an unforgettable experience for Team Onyx!</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 
+      Footer 
+      This is the same footer from index.html
+    -->
+    <footer class="animate-on-scroll">
+        <div class="footer-container">
+            <!-- Column 1: Logo and About -->
+            <div class="footer-column about">
+                <div class="footer-logo">
+                    <img src="blossoms_logo.png" alt="Blossoms Logo">
+                    <h3>Blossoms 2025</h3>
+                </div>
+                <p>
+                    Blossoms is the intra-deanery cultural fest at Christ (Deemed To Be University) Bangalore, School of Sciences.
+                </p>
+            </div>
+            
+            <!-- Column 2: Quick Links -->
+            <div class="footer-column links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="index.html#events">Events</a></li>
+                    <li><a href="schedule.html">Schedules</a></li>
+                    <li><a href="winners.html">Winners</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Socials and Contact -->
+            <div class="footer-column social">
+                <h4>Follow Us</h4>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/blossoms_sos/?hl=en" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/www.christuniversity.in" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.linkedin.com/school/christ-university-bangalore/posts/?feedView=all" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <h4>Contact</h4>
+                <p>
+                    <i class="fas fa-map-marker-alt"></i> 
+                    Christ (Deemed To Be University), Bangalore
+                </p>
+                <p>
+                    <i class="fas fa-envelope"></i>
+                    blossoms.sos@christuniversity.in
+                </p>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>
+                © 2025 Blossoms - School of Sciences, Christ (Deemed To Be University). All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+
+    <!-- 
+      Link to the MAIN JavaScript file 
+      This is safe now because we added checks.
+    -->
+    <script src="scriptabout.js" defer></script>
+
+    <script src="scriptindex.js" defer></script>
+</body>
+</html>

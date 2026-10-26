@@ -1,0 +1,228 @@
+@import "tailwindcss";
+
+@theme {
+  /* Exact Primary Brand Colors */
+  --color-elite-blue: #0251B0;
+  --color-volt-lime: #D1FF42;
+  --color-blue-grey: #C7D1DD;
+  --color-white: #FFFFFF;
+  --color-ink-navy: #101827;
+
+  /* Semantic Brand Mappings */
+  --color-brand-primary: #0251B0;
+  --color-brand-accent: #D1FF42;
+  --color-brand-muted: #C7D1DD;
+  --color-brand-dark: #101827;
+  --color-brand-surface: #162032;
+  --color-brand-surface-hover: #1E2B42;
+  --color-brand-surface-elevated: #22324D;
+
+  --color-background: #101827;
+  --color-background-muted: #0B101B;
+  --color-surface: #162032;
+  --color-surface-hover: #1E2B42;
+  --color-surface-elevated: #22324D;
+  --color-primary: #0251B0;
+  --color-primary-hover: #013E87;
+  --color-accent: #D1FF42;
+  --color-accent-hover: #BCE836;
+  --color-muted: #C7D1DD;
+}
+
+@layer base {
+  :root {
+    /* Exact Primary Brand Colors */
+    --color-elite-blue: #0251B0;
+    --color-volt-lime: #D1FF42;
+    --color-blue-grey: #C7D1DD;
+    --color-white: #FFFFFF;
+    --color-ink-navy: #101827;
+
+    /* Semantic Token Assignments */
+    --color-primary: #0251B0;
+    --color-primary-hover: #013E87;
+    --color-primary-foreground: #FFFFFF;
+
+    --color-accent: #D1FF42;
+    --color-accent-hover: #BCE836;
+    --color-accent-foreground: #101827;
+
+    --color-background: #101827;
+    --color-background-muted: #0B101B;
+
+    --color-surface: #162032;
+    --color-surface-hover: #1E2B42;
+    --color-surface-elevated: #22324D;
+    --color-surface-glass: rgba(22, 32, 50, 0.72);
+    --color-surface-glass-strong: rgba(22, 32, 50, 0.88);
+
+    --color-text: #FFFFFF;
+    --color-text-muted: #C7D1DD;
+    --color-text-inverted: #101827;
+
+    --color-border: rgba(199, 209, 221, 0.16);
+    --color-border-strong: rgba(209, 255, 66, 0.4);
+
+    --color-focus: #D1FF42;
+    --color-success: #10B981;
+    --color-warning: #F59E0B;
+    --color-error: #EF4444;
+
+    /* Spacing & Layout Tokens */
+    --max-content-width: 80rem; /* 1280px */
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+    --radius-full: 9999px;
+
+    /* Glassmorphism Tokens (40% Influence) */
+    --glass-background: rgba(22, 32, 50, 0.72);
+    --glass-border: rgba(199, 209, 221, 0.16);
+    --glass-blur: 16px;
+
+    /* Claymorphism Tokens (10% Influence) */
+    --clay-shadow-primary: inset 0 1px 1px rgba(255, 255, 255, 0.35), 0 4px 14px rgba(2, 81, 176, 0.35);
+    --clay-shadow-accent: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 4px 14px rgba(209, 255, 66, 0.25);
+    --clay-shadow-pressed: inset 0 2px 4px rgba(0, 0, 0, 0.35), 0 2px 4px rgba(0, 0, 0, 0.2);
+
+    /* Motion Tokens */
+    --transition-micro: 120ms cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-standard: 240ms cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-gentle: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  * {
+    border-color: var(--color-border);
+    box-sizing: border-box;
+  }
+
+  ::selection {
+    background-color: var(--color-elite-blue);
+    color: var(--color-white);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-body, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Glassmorphism Surfaces (40%) */
+.glass-panel {
+  background: var(--glass-background);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+}
+
+.glass-card {
+  background: rgba(22, 32, 50, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(199, 209, 221, 0.14);
+  transition: border-color var(--transition-standard), transform var(--transition-standard), background var(--transition-standard);
+}
+
+.glass-card:hover {
+  background: rgba(22, 32, 50, 0.85);
+  border-color: rgba(209, 255, 66, 0.35);
+}
+
+.glass-nav {
+  background: rgba(16, 24, 39, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(199, 209, 221, 0.14);
+}
+
+/* Claymorphism Subtle Tactile Controls (10%) */
+.clay-btn-primary {
+  background: var(--color-primary);
+  color: var(--color-primary-foreground);
+  box-shadow: var(--clay-shadow-primary);
+  transition: transform var(--transition-micro), box-shadow var(--transition-micro), background-color var(--transition-micro);
+}
+.clay-btn-primary:hover {
+  background: var(--color-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 6px 18px rgba(2, 81, 176, 0.45);
+}
+.clay-btn-primary:active {
+  transform: translateY(1px);
+  box-shadow: var(--clay-shadow-pressed);
+}
+
+.clay-btn-accent {
+  background: var(--color-accent);
+  color: var(--color-accent-foreground);
+  box-shadow: var(--clay-shadow-accent);
+  font-weight: 700;
+  transition: transform var(--transition-micro), box-shadow var(--transition-micro), background-color var(--transition-micro);
+}
+.clay-btn-accent:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-1px);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 6px 18px rgba(209, 255, 66, 0.35);
+}
+.clay-btn-accent:active {
+  transform: translateY(1px);
+  box-shadow: var(--clay-shadow-pressed);
+}
+
+/* Screen Reader Only Utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Event Photos Infinite Marquee */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Universal Reduced Motion Accessibility Overrides (WCAG 2.2 AA) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .ghost-fibers-container,
+  canvas {
+    animation: none !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
