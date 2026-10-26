@@ -38,6 +38,7 @@ export interface EditionConfig {
 export interface SiteConfig {
   name: string;
   shortName: string;
+  themeName?: string;
   institution: string;
   faculty: string;
   tagline: string;

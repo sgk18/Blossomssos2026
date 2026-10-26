@@ -12,8 +12,8 @@ const CircularCarousel = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="w-full h-full flex flex-col items-center justify-center gap-3 text-xs text-[#C7D1DD] font-mono">
-        <div className="w-8 h-8 rounded-full border-2 border-t-[#D1FF42] border-[#C7D1DD]/20 animate-spin" />
+      <div className="w-full h-full flex flex-col items-center justify-center gap-3 text-xs text-[#F2EFE8]/70 font-mono">
+        <div className="w-8 h-8 rounded-full border-2 border-t-[#A8CBB7] border-[#A8CBB7]/20 animate-spin" />
         <span>Initializing 3D Stage...</span>
       </div>
     ),
@@ -56,8 +56,8 @@ const CATEGORY_ITEMS: CategoryCarouselItem[] = [
     description: 'Visual arts competitions ranging from fine brushwork, photography, and digital graphics to traditional floor and body arts.',
     src: '/art.webp',
     alt: 'Art Category - 9 competitions including photography, painting, digital poster, and rangoli',
-    themeColor: '#0251B0',
-    accentColor: '#D1FF42',
+    themeColor: '#06110C',
+    accentColor: '#A8CBB7',
     eventCount: 9,
     featuredEvents: ['Photography', 'Painting', 'Digital Poster', 'Rangoli', 'Mehendi']
   },
@@ -69,8 +69,8 @@ const CATEGORY_ITEMS: CategoryCarouselItem[] = [
     description: 'Intellectual and expressive competitions including formal debate, impromptu speaking, rapid-fire trivia, and written composition.',
     src: '/literary.webp',
     alt: 'Literary Category - 8 competitions including debate, quiz, extempore, and jam',
-    themeColor: '#0251B0',
-    accentColor: '#C7D1DD',
+    themeColor: '#171717',
+    accentColor: '#F2EFE8',
     eventCount: 8,
     featuredEvents: ['Debate', 'Quiz', 'Extempore', 'Creative Writing', 'JAM']
   },
@@ -82,8 +82,8 @@ const CATEGORY_ITEMS: CategoryCarouselItem[] = [
     description: 'Solo and ensemble musical contests spanning traditional Indian folk vocalizations, Western acoustic sets, and full band battles.',
     src: '/music.webp',
     alt: 'Music Category - 5 competitions including folk singing, acoustic, and battle of the bands',
-    themeColor: '#D1FF42',
-    accentColor: '#0251B0',
+    themeColor: '#A31C1B',
+    accentColor: '#F2EFE8',
     eventCount: 5,
     featuredEvents: ['Battle of Bands (Western)', 'Indian Folk Singing', 'Acoustic Solo', 'Battle of Bands (Indian)']
   },
@@ -95,8 +95,8 @@ const CATEGORY_ITEMS: CategoryCarouselItem[] = [
     description: 'Stage and screen performance disciplines including solo character portrayals, impactful street plays, proscenium drama, and short films.',
     src: '/theater.webp',
     alt: 'Theatre Category - 6 competitions including street play, proscenium, mime, and short film',
-    themeColor: '#0251B0',
-    accentColor: '#D1FF42',
+    themeColor: '#06110C',
+    accentColor: '#A8CBB7',
     eventCount: 6,
     featuredEvents: ['Street Theatre', 'Proscenium', 'Mono Acting', 'Short Film', 'Mime']
   },
@@ -108,8 +108,8 @@ const CATEGORY_ITEMS: CategoryCarouselItem[] = [
     description: 'Expressive movement competitions celebrating classical Indian mudras, contemporary duets, and high-energy ensemble formations.',
     src: '/dance.webp',
     alt: 'Dance Category - 4 competitions including classical, duet, and group non-themed',
-    themeColor: '#D1FF42',
-    accentColor: '#0251B0',
+    themeColor: '#A8CBB7',
+    accentColor: '#06110C',
     eventCount: 4,
     featuredEvents: ['Dance Duet', 'Indian Group (Non-themed)', 'Classical Group']
   }
@@ -155,14 +155,14 @@ export default function EventCategoriesCarousel({
     <div className="w-full flex flex-col items-center">
       {showHeading && (
         <div className="max-w-3xl text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#162032] border border-[#C7D1DD]/20 text-xs font-semibold text-[#D1FF42] mb-3 shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-[#D1FF42]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#06110C] border border-[#A8CBB7]/20 text-xs font-semibold text-[#A8CBB7] mb-3 shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 text-[#A8CBB7]" />
             <span>Interactive 3D Disciplines Ring</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#FFFFFF] tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#F2EFE8] tracking-tight">
             Event Categories in 3D
           </h2>
-          <p className="mt-3 text-sm text-[#C7D1DD] font-normal leading-relaxed">
+          <p className="mt-3 text-sm text-[#F2EFE8]/75 font-normal leading-relaxed">
             Drag, throw, or click any discipline card in real-time 3D space. Select below to explore competition guidelines.
           </p>
         </div>
@@ -183,8 +183,8 @@ export default function EventCategoriesCarousel({
                 }}
                 className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
                   isActive
-                    ? 'bg-[#0251B0] text-[#FFFFFF] shadow-[0_4px_16px_rgba(2,81,176,0.5)] ring-1 ring-[#D1FF42]/60 scale-105'
-                    : 'bg-[#162032]/80 text-[#C7D1DD] hover:text-[#FFFFFF] hover:bg-[#1E2B42] border border-[#C7D1DD]/15'
+                    ? 'bg-[#06110C] text-[#F2EFE8] border border-[#A8CBB7]/40 ring-1 ring-[#A8CBB7]/40 shadow-md scale-105'
+                    : 'bg-[#171717]/80 text-[#F2EFE8]/75 hover:text-[#F2EFE8] hover:bg-[#171717] border border-[#A8CBB7]/15'
                 }`}
                 aria-pressed={isActive}
               >
@@ -200,7 +200,7 @@ export default function EventCategoriesCarousel({
         <div className="flex items-center gap-2">
           {/* Preset Selector (Only in carousel view) */}
           {viewMode === 'carousel' && (
-            <div className="hidden sm:inline-flex items-center bg-[#162032] p-1 rounded-xl border border-[#C7D1DD]/15 text-xs">
+            <div className="hidden sm:inline-flex items-center bg-[#06110C] p-1 rounded-xl border border-[#A8CBB7]/15 text-xs">
               {(['cylinder', 'orbit', 'wheel', 'panorama'] as const).map((p) => (
                 <button
                   key={p}
@@ -208,8 +208,8 @@ export default function EventCategoriesCarousel({
                   onClick={() => setPreset(p)}
                   className={`px-2.5 py-1 rounded-lg capitalize font-medium transition-all ${
                     preset === p
-                      ? 'bg-[#0251B0] text-[#FFFFFF] font-bold shadow-sm'
-                      : 'text-[#C7D1DD] hover:text-[#FFFFFF]'
+                      ? 'bg-[#171717] text-[#F2EFE8] font-bold border border-[#A8CBB7]/30 shadow-sm'
+                      : 'text-[#F2EFE8]/70 hover:text-[#F2EFE8]'
                   }`}
                 >
                   {p}
@@ -225,8 +225,8 @@ export default function EventCategoriesCarousel({
               onClick={() => setAutoplay(autoplay === 'drift' ? 'off' : 'drift')}
               className={`p-2 rounded-xl border transition-all text-xs flex items-center gap-1.5 ${
                 autoplay === 'drift'
-                  ? 'bg-[#162032] border-[#D1FF42]/40 text-[#D1FF42]'
-                  : 'bg-[#162032]/60 border-[#C7D1DD]/15 text-[#C7D1DD]'
+                  ? 'bg-[#06110C] border-[#A8CBB7]/40 text-[#A8CBB7]'
+                  : 'bg-[#06110C]/60 border-[#A8CBB7]/15 text-[#F2EFE8]/60'
               }`}
               title={autoplay === 'drift' ? 'Pause Drift' : 'Start Auto-Drift'}
               aria-label={autoplay === 'drift' ? 'Pause Carousel Drift' : 'Start Carousel Drift'}
@@ -241,7 +241,7 @@ export default function EventCategoriesCarousel({
             <button
               type="button"
               onClick={() => setDirection(direction === 'left' ? 'right' : 'left')}
-              className="p-2 rounded-xl bg-[#162032] border border-[#C7D1DD]/15 text-[#C7D1DD] hover:text-[#FFFFFF] transition-all"
+              className="p-2 rounded-xl bg-[#06110C] border border-[#A8CBB7]/15 text-[#F2EFE8]/75 hover:text-[#F2EFE8] transition-all"
               title="Reverse Carousel Direction"
               aria-label="Reverse Carousel Direction"
             >
@@ -250,12 +250,12 @@ export default function EventCategoriesCarousel({
           )}
 
           {/* Carousel vs Grid View Toggle */}
-          <div className="inline-flex items-center bg-[#162032] p-1 rounded-xl border border-[#C7D1DD]/15">
+          <div className="inline-flex items-center bg-[#06110C] p-1 rounded-xl border border-[#A8CBB7]/15">
             <button
               type="button"
               onClick={() => setViewMode('carousel')}
               className={`p-1.5 rounded-lg transition-all ${
-                viewMode === 'carousel' ? 'bg-[#0251B0] text-[#FFFFFF]' : 'text-[#C7D1DD] hover:text-[#FFFFFF]'
+                viewMode === 'carousel' ? 'bg-[#171717] text-[#F2EFE8] border border-[#A8CBB7]/25' : 'text-[#F2EFE8]/60 hover:text-[#F2EFE8]'
               }`}
               title="3D Ring View"
               aria-label="Switch to 3D Carousel view"
@@ -266,7 +266,7 @@ export default function EventCategoriesCarousel({
               type="button"
               onClick={() => setViewMode('grid')}
               className={`p-1.5 rounded-lg transition-all ${
-                viewMode === 'grid' ? 'bg-[#0251B0] text-[#FFFFFF]' : 'text-[#C7D1DD] hover:text-[#FFFFFF]'
+                viewMode === 'grid' ? 'bg-[#171717] text-[#F2EFE8] border border-[#A8CBB7]/25' : 'text-[#F2EFE8]/60 hover:text-[#F2EFE8]'
               }`}
               title="Grid View"
               aria-label="Switch to Grid view"
@@ -282,16 +282,16 @@ export default function EventCategoriesCarousel({
         <div className="w-full max-w-6xl flex flex-col items-center">
           {/* 3D Circular Carousel Stage */}
           <div 
-            className="w-full h-[440px] sm:h-[500px] md:h-[540px] relative rounded-3xl overflow-hidden bg-gradient-to-b from-[#162032]/40 via-[#101827]/70 to-[#0B101B] border border-[#C7D1DD]/15 shadow-2xl backdrop-blur-md"
+            className="w-full h-[440px] sm:h-[500px] md:h-[540px] relative rounded-3xl overflow-hidden bg-gradient-to-b from-[#06110C]/80 via-[#171717]/90 to-[#06110C] border border-[#A8CBB7]/20 shadow-2xl backdrop-blur-md"
           >
             {/* Ambient Lighting Gradients */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] bg-[#0251B0]/20 rounded-full blur-[100px] pointer-events-none" />
-            <div className="absolute top-1/3 left-1/3 w-[300px] h-[250px] bg-[#D1FF42]/10 rounded-full blur-[90px] pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] bg-[#A8CBB7]/10 rounded-full blur-[100px] pointer-events-none" />
+            <div className="absolute top-1/3 left-1/3 w-[300px] h-[250px] bg-[#A31C1B]/10 rounded-full blur-[90px] pointer-events-none" />
 
             {/* Prompt Hint */}
             <div className="absolute top-4 inset-x-0 flex justify-center pointer-events-none z-10">
-              <span className="px-3 py-1 rounded-full bg-[#101827]/80 border border-[#C7D1DD]/20 text-[11px] text-[#C7D1DD] font-mono backdrop-blur-md flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-[#D1FF42] animate-pulse" />
+              <span className="px-3 py-1 rounded-full bg-[#06110C]/80 border border-[#A8CBB7]/20 text-[11px] text-[#F2EFE8]/80 font-mono backdrop-blur-md flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-[#A8CBB7] animate-pulse" />
                 <span>Drag to spin • Click card to inspect &amp; open</span>
               </span>
             </div>
@@ -311,7 +311,7 @@ export default function EventCategoriesCarousel({
               pauseOnHover={true}
               focusOnClick={true}
               captions={true}
-              fadeColor="#101827"
+              fadeColor="#171717"
               innerShade={0.45}
               cornerRadius={16}
               direction={direction}
@@ -322,49 +322,45 @@ export default function EventCategoriesCarousel({
           </div>
 
           {/* Interactive Active Category Details Spotlight Card */}
-          <div className="w-full max-w-4xl mt-6 p-6 sm:p-8 rounded-3xl bg-[#162032]/85 border border-[#C7D1DD]/20 shadow-xl backdrop-blur-md transition-all duration-300">
+          <div className="w-full max-w-4xl mt-6 p-6 sm:p-8 rounded-3xl bg-[#06110C]/85 border border-[#A8CBB7]/25 shadow-xl backdrop-blur-md transition-all duration-300">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
               
               {/* Category Info */}
               <div className="space-y-3 flex-1">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#101827] border border-[#C7D1DD]/20 text-[#D1FF42] shadow-inner">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#171717] border border-[#A8CBB7]/25 text-[#A8CBB7] shadow-inner">
                     <CategoryIcon category={currentCategory.slug} size={28} />
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <h3 className="text-2xl font-black text-[#FFFFFF] tracking-tight">
+                      <h3 className="text-2xl font-black text-[#F2EFE8] tracking-tight">
                         {currentCategory.title}
                       </h3>
                       <span 
-                        className="px-2.5 py-0.5 rounded-full text-xs font-bold"
-                        style={{
-                          backgroundColor: currentCategory.accentColor,
-                          color: currentCategory.accentColor === '#D1FF42' || currentCategory.accentColor === '#C7D1DD' ? '#101827' : '#FFFFFF'
-                        }}
+                        className="px-2.5 py-0.5 rounded-full text-xs font-bold border border-[#A8CBB7]/30 bg-[#171717] text-[#A8CBB7]"
                       >
                         {currentCategory.eventCount} Competitions
                       </span>
                     </div>
-                    <p className="text-xs text-[#D1FF42] font-mono mt-0.5 font-medium">
+                    <p className="text-xs text-[#A8CBB7] font-mono mt-0.5 font-medium">
                       {currentCategory.tagline}
                     </p>
                   </div>
                 </div>
 
-                <p className="text-xs sm:text-sm text-[#C7D1DD] leading-relaxed font-normal">
+                <p className="text-xs sm:text-sm text-[#F2EFE8]/75 leading-relaxed font-normal">
                   {currentCategory.description}
                 </p>
 
                 {/* Sub-event tags */}
                 <div className="pt-1 flex flex-wrap items-center gap-1.5">
-                  <span className="text-[11px] font-mono text-[#C7D1DD]/70 font-semibold mr-1">
+                  <span className="text-[11px] font-mono text-[#A8CBB7]/80 font-semibold mr-1">
                     Featured:
                   </span>
                   {currentCategory.featuredEvents.map((ev) => (
                     <span
                       key={ev}
-                      className="px-2.5 py-0.5 rounded-lg bg-[#101827]/80 border border-[#C7D1DD]/15 text-[11px] text-[#FFFFFF]"
+                      className="px-2.5 py-0.5 rounded-lg bg-[#171717] border border-[#A8CBB7]/15 text-[11px] text-[#F2EFE8]"
                     >
                       {ev}
                     </span>
@@ -376,7 +372,7 @@ export default function EventCategoriesCarousel({
               <div className="flex flex-col sm:flex-row md:flex-col gap-3 shrink-0">
                 <Link
                   href={`/events/${currentCategory.slug}`}
-                  className="clay-btn-accent px-6 py-3 rounded-xl font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-[#0251B0]/20 hover:scale-105 transition-all text-center"
+                  className="clay-btn-accent px-6 py-3 rounded-xl font-bold text-xs flex items-center justify-center gap-2 shadow-lg hover:scale-105 transition-all text-center"
                 >
                   <span>Explore {currentCategory.title} Competitions</span>
                   <ArrowRight className="w-4 h-4" />
@@ -384,9 +380,9 @@ export default function EventCategoriesCarousel({
 
                 <Link
                   href="/schedule"
-                  className="px-6 py-2.5 rounded-xl bg-[#101827] hover:bg-[#1E2B42] text-[#C7D1DD] hover:text-[#FFFFFF] border border-[#C7D1DD]/20 text-xs font-semibold flex items-center justify-center gap-2 transition-all text-center"
+                  className="px-6 py-2.5 rounded-xl bg-[#171717] hover:bg-[#171717]/80 text-[#F2EFE8] border border-[#A8CBB7]/20 text-xs font-semibold flex items-center justify-center gap-2 transition-all text-center"
                 >
-                  <Layers className="w-3.5 h-3.5 text-[#D1FF42]" />
+                  <Layers className="w-3.5 h-3.5 text-[#A8CBB7]" />
                   <span>Check Category Timings</span>
                 </Link>
               </div>

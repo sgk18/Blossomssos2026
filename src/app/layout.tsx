@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Plus_Jakarta_Sans, Playfair_Display } from 'next/font/google';
+import { Plus_Jakarta_Sans, Space_Grotesk, Orbitron } from 'next/font/google';
 import '@/styles/globals.css';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
@@ -11,9 +11,16 @@ const sansFont = Plus_Jakarta_Sans({
   display: 'swap',
 });
 
-const displayFont = Playfair_Display({
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
-  variable: '--font-display',
+  variable: '--font-space',
+  display: 'swap',
+});
+
+const orbitron = Orbitron({
+  subsets: ['latin'],
+  variable: '--font-orbitron',
+  weight: ['600', '700', '800', '900'],
   display: 'swap',
 });
 
@@ -49,17 +56,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${sansFont.variable} ${displayFont.variable}`}>
+    <html lang="en" className={`${sansFont.variable} ${spaceGrotesk.variable} ${orbitron.variable}`}>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="alternate icon" href="/favicon.webp" type="image/png" />
       </head>
-      <body className="min-h-screen flex flex-col bg-[#101827] text-[#FFFFFF] antialiased selection:bg-[#0251B0] selection:text-[#FFFFFF]">
+      <body className="min-h-screen flex flex-col bg-[#171717] text-[#F2EFE8] font-sans antialiased selection:bg-[#A31C1B]/40 selection:text-[#F2EFE8]">
 
         {/* Skip to Content for WCAG 2.2 AA Keyboard Accessibility */}
         <a 
           href="#main-content" 
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 px-4 py-2 bg-[#D1FF42] text-[#101827] font-bold rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-[#0251B0]"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 px-4 py-2 bg-[#A31C1B] text-[#F2EFE8] font-bold rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-[#A8CBB7]"
         >
           Skip to main content
         </a>

@@ -56,15 +56,15 @@ export function Navbar() {
     <>
       {/* Floating Glass Navigation Header */}
       <header className="fixed top-3 sm:top-4 inset-x-0 z-50 flex justify-center px-3 sm:px-6 pointer-events-none">
-        <div className="pointer-events-auto w-full max-w-6xl inline-flex items-center justify-between p-1.5 sm:p-2 rounded-full bg-[#101827]/90 backdrop-blur-xl border border-[#C7D1DD]/20 shadow-2xl shadow-black/70 ring-1 ring-white/10 transition-all">
+        <div className="pointer-events-auto w-full max-w-6xl inline-flex items-center justify-between p-1.5 sm:p-2 rounded-full bg-[#171717]/85 backdrop-blur-xl border border-[#A8CBB7]/20 shadow-2xl shadow-black/80 ring-1 ring-[#A8CBB7]/10 transition-all">
           
           {/* 1. Left: Blossoms Brand Mark */}
           <Link 
             href="/" 
-            className="flex items-center gap-2.5 pl-2 pr-3 py-1 rounded-full hover:bg-white/5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D1FF42] transition-colors"
-            aria-label="Blossoms SOS 2025 Homepage"
+            className="flex items-center gap-2.5 pl-2 pr-3 py-1 rounded-full hover:bg-white/5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] transition-colors"
+            aria-label="Blossoms SOS 2026–27 Homepage"
           >
-            <div className="relative w-8 h-8 sm:w-9 sm:h-9 shrink-0 flex items-center justify-center rounded-full bg-[#162032] border border-[#C7D1DD]/30 overflow-hidden shadow-sm group-hover:scale-105 transition-transform">
+            <div className="relative w-8 h-8 sm:w-9 sm:h-9 shrink-0 flex items-center justify-center rounded-full bg-[#06110C] border border-[#A8CBB7]/25 overflow-hidden shadow-sm group-hover:scale-105 transition-transform">
               <Image 
                 src="/blossoms_logo.webp" 
                 alt="Blossoms Logo" 
@@ -75,17 +75,17 @@ export function Navbar() {
               />
             </div>
             <div className="flex flex-col text-left">
-              <span className="font-bold text-xs sm:text-sm tracking-wider text-[#FFFFFF] leading-tight">
+              <span className="font-angular text-xs sm:text-sm tracking-wider text-[#F2EFE8] leading-tight">
                 BLOSSOMS
               </span>
-              <span className="text-[9px] sm:text-[10px] font-mono text-[#D1FF42] tracking-wider uppercase leading-none font-semibold">
-                SOS 2025
+              <span className="text-[9px] sm:text-[10px] font-tech text-[#A8CBB7] tracking-widest uppercase leading-none font-semibold">
+                SOS 2026–27
               </span>
             </div>
           </Link>
 
           {/* 2. Center: Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1 lg:gap-1.5" aria-label="Main Navigation">
+          <nav className="hidden md:flex items-center gap-1 lg:gap-1.5 font-tech" aria-label="Main Navigation">
             {NAV_LINKS.map((link) => {
               const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
               
@@ -93,10 +93,10 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-150 flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D1FF42] ${
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-150 flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] ${
                     isActive
-                      ? 'bg-[#0251B0] text-[#FFFFFF] font-bold shadow-md shadow-[#0251B0]/30'
-                      : 'text-[#C7D1DD] hover:text-[#FFFFFF] hover:bg-white/5'
+                      ? 'bg-[#06110C] text-[#F2EFE8] font-bold border border-[#A8CBB7]/35 shadow-md shadow-black/40'
+                      : 'text-[#F2EFE8]/75 hover:text-[#F2EFE8] hover:bg-white/5'
                   }`}
                   aria-current={isActive ? 'page' : undefined}
                 >
@@ -113,7 +113,7 @@ export function Navbar() {
               href="https://www.christuniversity.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white/95 hover:bg-white px-2.5 py-1 rounded-full flex items-center gap-2 shadow-sm border border-white/40 transition-all hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0251B0]"
+              className="bg-white/95 hover:bg-white px-2.5 py-1 rounded-full flex items-center gap-2 shadow-sm border border-white/40 transition-all hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
               title="CHRIST (Deemed to be University)"
               aria-label="Christ University Official Website"
             >
@@ -133,7 +133,7 @@ export function Navbar() {
                 href={siteConfig.registrationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden lg:flex clay-btn-accent px-3 py-1.5 rounded-full text-[11px] font-bold items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D1FF42]"
+                className="hidden lg:flex clay-btn-accent px-3 py-1.5 rounded-full text-[11px] font-bold items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
               >
                 <span>Register</span>
                 <ArrowUpRight className="w-3 h-3" />
@@ -145,12 +145,12 @@ export function Navbar() {
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-1.5 rounded-full text-[#FFFFFF] hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D1FF42] transition-colors"
+                className="p-1.5 rounded-full text-[#F2EFE8] hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] transition-colors"
                 aria-expanded={mobileMenuOpen}
                 aria-controls="mobile-navigation-menu"
                 aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
               >
-                {mobileMenuOpen ? <X className="w-4 h-4 text-[#D1FF42]" /> : <Menu className="w-4 h-4" />}
+                {mobileMenuOpen ? <X className="w-4 h-4 text-[#A8CBB7]" /> : <Menu className="w-4 h-4 text-[#F2EFE8]" />}
               </button>
             </div>
           </div>
@@ -162,7 +162,7 @@ export function Navbar() {
         <>
           {/* Dimmed Backdrop */}
           <div 
-            className="md:hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-40 transition-opacity"
+            className="md:hidden fixed inset-0 bg-black/75 backdrop-blur-sm z-40 transition-opacity"
             onClick={() => setMobileMenuOpen(false)}
             aria-hidden="true"
           />
@@ -170,21 +170,21 @@ export function Navbar() {
           {/* Floating Pill Menu Drawer */}
           <div 
             id="mobile-navigation-menu"
-            className="md:hidden fixed top-20 inset-x-4 max-w-sm mx-auto p-5 rounded-3xl bg-[#101827]/95 backdrop-blur-2xl border border-[#C7D1DD]/20 shadow-2xl shadow-black/80 space-y-4 z-50 animate-in fade-in zoom-in-95 duration-200"
+            className="md:hidden fixed top-20 inset-x-4 max-w-sm mx-auto p-5 rounded-3xl bg-[#171717]/95 backdrop-blur-2xl border border-[#A8CBB7]/20 shadow-2xl shadow-black/90 space-y-4 z-50 animate-in fade-in zoom-in-95 duration-200"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile Navigation Menu"
           >
-            <div className="px-2 py-1 border-b border-[#C7D1DD]/15 flex items-center justify-between pb-3">
+            <div className="px-2 py-1 border-b border-[#A8CBB7]/15 flex items-center justify-between pb-3">
               <div className="flex items-center gap-2">
                 <Image src="/blossoms_logo.webp" alt="Blossoms" width={24} height={24} className="object-contain" />
-                <span className="text-xs font-bold uppercase tracking-wider text-[#FFFFFF]">
-                  Blossoms SOS 2025
+                <span className="font-angular text-xs font-bold tracking-wider text-[#F2EFE8]">
+                  Blossoms SOS 2026–27
                 </span>
               </div>
             </div>
 
-            <nav className="flex flex-col gap-1.5 pt-1" aria-label="Mobile Navigation Links">
+            <nav className="flex flex-col gap-1.5 pt-1 font-tech" aria-label="Mobile Navigation Links">
               {NAV_LINKS.map((link) => {
                 const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
                 return (
@@ -192,10 +192,10 @@ export function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`px-4 py-2.5 rounded-xl text-sm font-medium flex items-center justify-between transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D1FF42] ${
+                    className={`px-4 py-2.5 rounded-xl text-sm font-semibold flex items-center justify-between transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] ${
                       isActive
-                        ? 'bg-[#0251B0] text-[#FFFFFF] font-bold shadow-md shadow-[#0251B0]/30'
-                        : 'text-[#C7D1DD] hover:text-[#FFFFFF] hover:bg-white/5'
+                        ? 'bg-[#06110C] text-[#F2EFE8] font-bold border border-[#A8CBB7]/30 shadow-md shadow-black/50'
+                        : 'text-[#F2EFE8]/75 hover:text-[#F2EFE8] hover:bg-white/5'
                     }`}
                     aria-current={isActive ? 'page' : undefined}
                   >
@@ -206,7 +206,7 @@ export function Navbar() {
             </nav>
 
             {/* Mobile Actions */}
-            <div className="pt-2 flex flex-col gap-2">
+            <div className="pt-2 flex flex-col gap-2 font-tech">
               {siteConfig.registrationUrl && (
                 <a
                   href={siteConfig.registrationUrl}
@@ -220,10 +220,10 @@ export function Navbar() {
               )}
             </div>
 
-            <div className="pt-3 border-t border-[#C7D1DD]/15 text-[11px] text-[#C7D1DD] px-2 flex items-center justify-between">
+            <div className="pt-3 border-t border-[#A8CBB7]/15 text-[11px] text-[#F2EFE8]/70 px-2 flex items-center justify-between">
               <div>
-                <p className="font-semibold text-[#FFFFFF]">School of Sciences</p>
-                <p className="text-[10px] text-[#C7D1DD]/70">CHRIST (Deemed to be University)</p>
+                <p className="font-semibold text-[#F2EFE8]">School of Sciences</p>
+                <p className="text-[10px] text-[#A8CBB7]/80">CHRIST (Deemed to be University)</p>
               </div>
               <div className="bg-white px-2 py-1 rounded-md">
                 <Image src="/Christ_logo.webp" alt="Christ Logo" width={56} height={20} className="h-4 w-auto object-contain" />
