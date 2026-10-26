@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { siteConfig } from '@/data/site-config';
-import { Info, ArrowRight, Sparkles } from 'lucide-react';
+import { Info, ArrowRight } from 'lucide-react';
 import { EVENT_CATEGORIES } from '@/content/events';
 import { EventCategoriesCarouselSkeleton } from '@/components/events/EventCategoriesCarouselSkeleton';
 
@@ -28,7 +28,6 @@ export default function EventsPage() {
       {/* Page Header */}
       <div className="max-w-3xl mb-10">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#06110C] border border-[#A8CBB7]/25 text-xs font-semibold text-[#A8CBB7] mb-4 shadow-sm">
-          <Sparkles className="w-3.5 h-3.5 text-[#A8CBB7]" />
           <span>Curated Disciplines • {totalEvents} Official Sub-Events</span>
         </div>
         <h1 className="text-4xl sm:text-5xl font-extrabold text-[#F2EFE8] tracking-tight leading-tight">

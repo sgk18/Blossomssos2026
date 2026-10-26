@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { siteConfig } from '@/data/site-config';
-import { MapPin, Mail, Compass, Sparkles, Building, ArrowUp } from 'lucide-react';
+import { MapPin, Mail, Compass, Building, ArrowUp } from 'lucide-react';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -112,7 +112,6 @@ export function Footer() {
           {/* Column 3: The Five Pillars (lg:col-span-3) */}
           <div className="lg:col-span-3 space-y-4">
             <h3 className="font-tech text-xs font-bold uppercase tracking-wider text-[#F2EFE8] flex items-center gap-2">
-              <Sparkles className="w-3.5 h-3.5 text-[#A8CBB7]" />
               <span>5 Pillars</span>
             </h3>
             <ul className="space-y-2.5 text-xs font-tech">

@@ -143,7 +143,6 @@ export default function EventCategoriesCarousel({
       {showHeading && (
         <div className="max-w-3xl text-center mb-8">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#06110C] border border-[#A8CBB7]/20 text-xs font-semibold text-[#A8CBB7] mb-3 shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-[#A8CBB7]" />
             <span>Interactive 3D Disciplines Ring</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[#F2EFE8] tracking-tight">

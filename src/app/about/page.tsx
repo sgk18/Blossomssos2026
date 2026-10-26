@@ -12,9 +12,7 @@ import {
   Palette, 
   Flame, 
   Gem, 
-  Sparkles,
-  ExternalLink,
-  ArrowRight,
+  ArrowRight, 
   Calendar
 } from 'lucide-react';
 import { siteConfig } from '@/data/site-config';
@@ -31,7 +29,6 @@ export default function AboutPage() {
       {/* Header Banner */}
       <div className="max-w-4xl mb-16 space-y-4">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#06110C] border border-[#A8CBB7]/25 text-xs font-semibold text-[#A8CBB7] shadow-sm font-tech">
-          <Sparkles className="w-3.5 h-3.5 text-[#A8CBB7]" />
           <span>School of Sciences • Team Onyx</span>
         </div>
         
@@ -132,7 +129,6 @@ export default function AboutPage() {
           {/* Section 3: Team Onyx Identity */}
           <section className="space-y-6">
             <h2 className="font-tech text-2xl font-bold text-[#F2EFE8] flex items-center gap-3">
-              <Sparkles className="w-6 h-6 text-[#A8CBB7]" />
               <span>Representing the School of Sciences: Team Onyx</span>
             </h2>
 
@@ -292,10 +288,9 @@ export default function AboutPage() {
                 href={siteConfig.registrationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full clay-btn-accent font-tech py-3 rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-md hover:scale-105 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
+                className="w-full clay-btn-accent font-tech py-3 rounded-xl text-xs font-bold flex items-center justify-center shadow-md hover:scale-105 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
               >
                 <span>Register for Events</span>
-                <ExternalLink className="w-3.5 h-3.5" />
               </a>
             )}
             <a

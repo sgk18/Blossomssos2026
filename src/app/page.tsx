@@ -6,8 +6,7 @@ import { HeroBackground } from '@/components/hero/HeroBackground';
 import { siteConfig } from '@/data/site-config';
 import { 
   ArrowRight, 
-  ExternalLink, 
-  Sparkles, 
+  ExternalLink,  
   Calendar, 
   FileText 
 } from 'lucide-react';
@@ -42,14 +41,6 @@ export default function HomePage() {
         <HeroBackground>
           <div className="max-w-5xl mx-auto flex flex-col items-center text-center gap-6 pt-10 sm:pt-14 pb-12">
             
-            {/* Status Announcement Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#06110C]/85 border border-[#A8CBB7]/30 text-xs font-semibold text-[#A8CBB7] backdrop-blur-md shadow-md animate-in fade-in duration-500 font-tech">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#A8CBB7] animate-pulse" />
-              <span className="tracking-wide">
-                CHRIST (Deemed to be University) • School of Sciences
-              </span>
-            </div>
-
             {/* Main Title & Team Insignia */}
             <div className="space-y-4 max-w-4xl flex flex-col items-center">
               <h1 
@@ -112,9 +103,7 @@ export default function HomePage() {
                   id="register-button"
                   className="clay-btn-accent font-tech px-8 py-3.5 rounded-2xl font-bold text-sm sm:text-base flex items-center gap-2.5 shadow-xl hover:scale-105 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
                 >
-                  <Sparkles className="w-4 h-4 text-[#06110C]" />
                   <span>Register Now</span>
-                  <ExternalLink className="w-4 h-4 text-[#06110C]" />
                 </a>
               )}
 

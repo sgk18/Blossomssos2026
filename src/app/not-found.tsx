@@ -6,8 +6,7 @@ import {
   Home, 
   Compass, 
   Calendar, 
-  Trophy, 
-  Sparkles, 
+  Trophy,  
   ArrowRight, 
   HelpCircle,
   Palette,
@@ -51,7 +50,6 @@ export default function NotFound() {
           </div>
 
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold bg-[#06110C] border border-[#A8CBB7]/30 text-[#A8CBB7] shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-[#A8CBB7]" />
             <span>ERROR 404 • ROUTE NOT FOUND</span>
           </div>
         </div>
@@ -186,7 +184,6 @@ export default function NotFound() {
         <div className="pt-8 max-w-4xl mx-auto">
           <div className="text-left mb-4 flex items-center justify-between border-b border-[#A8CBB7]/15 pb-2">
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#A8CBB7] flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5" />
               <span>Jump Directly into a Discipline</span>
             </span>
             <span className="text-[11px] text-[#A8CBB7]/70 font-mono">5 Pillars</span>

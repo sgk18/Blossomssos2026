@@ -1,7 +1,7 @@
 import React from 'react';
 import { SubEvent } from '@/types/content';
 import { siteConfig } from '@/data/site-config';
-import { Users, Clock, MapPin, CheckCircle2, ExternalLink } from 'lucide-react';
+import { Users, Clock, MapPin, CheckCircle2 } from 'lucide-react';
 
 interface SubEventCardProps {
   event: SubEvent;
@@ -79,10 +79,9 @@ export function SubEventCard({ event }: SubEventCardProps) {
               href={siteConfig.registrationUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="clay-btn-accent inline-flex items-center justify-center gap-1.5 w-full text-center py-2 px-3 rounded-xl text-xs font-bold transition-all shadow-sm"
+              className="clay-btn-accent inline-flex items-center justify-center w-full text-center py-2 px-3 rounded-xl text-xs font-bold transition-all shadow-sm"
             >
               <span>Register for this Event</span>
-              <ExternalLink className="w-3 h-3" />
             </a>
           </div>
         )}
