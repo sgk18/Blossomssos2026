@@ -233,6 +233,54 @@ export default function AboutPage() {
         {/* Right Column: Achievements & Quick Actions */}
         <div className="lg:col-span-4 space-y-6">
           
+          {/* Official Accolades Card (2025–2026 Legacy) */}
+          <div className="p-6 rounded-3xl bg-[#06110C]/85 border border-[#A8CBB7]/20 shadow-xl space-y-6 backdrop-blur-md">
+            <div className="flex items-center justify-between text-xs font-bold font-tech text-[#A8CBB7] uppercase tracking-wider">
+              <div className="flex items-center gap-2">
+                <Award className="w-4 h-4 text-[#A8CBB7]" />
+                <span>Official Accolades</span>
+              </div>
+              <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-[#171717] border border-[#A8CBB7]/30 text-[#A8CBB7]">
+                2025–2026
+              </span>
+            </div>
+
+            <div className="space-y-4">
+              <div className="p-4 rounded-2xl bg-[#171717] border border-[#A8CBB7]/15 flex items-center gap-4">
+                <div className="relative w-14 h-14 shrink-0">
+                  <Image src="/2nd.webp" alt="2nd Place Trophy" fill className="object-contain" />
+                </div>
+                <div>
+                  <span className="text-[10px] font-tech font-bold text-[#A8CBB7] uppercase">Second Place • 2025–2026</span>
+                  <h4 className="font-tech font-bold text-sm text-[#F2EFE8]">&lsquo;We the Best&rsquo; Trophy</h4>
+                  <p className="font-body text-xs text-[#F2EFE8]/70">Inter-Deanery Overall Excellence</p>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-[#171717] border border-[#A8CBB7]/15 flex items-center gap-4">
+                <div className="relative w-14 h-14 shrink-0">
+                  <Image src="/2nd.webp" alt="2nd Place Trophy" fill className="object-contain" />
+                </div>
+                <div>
+                  <span className="text-[10px] font-tech font-bold text-[#A8CBB7] uppercase">Second Place • 2025–2026</span>
+                  <h4 className="font-tech font-bold text-sm text-[#F2EFE8]">Inauguration Ceremony</h4>
+                  <p className="font-body text-xs text-[#F2EFE8]/70">Stage Presentation</p>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-[#171717] border border-[#A8CBB7]/15 flex items-center gap-4">
+                <div className="relative w-14 h-14 shrink-0">
+                  <Image src="/3rd.webp" alt="3rd Place Trophy" fill className="object-contain" />
+                </div>
+                <div>
+                  <span className="text-[10px] font-tech font-bold text-[#A31C1B] uppercase">Third Place • 2025–2026</span>
+                  <h4 className="font-tech font-bold text-sm text-[#F2EFE8]">Deanery Procession</h4>
+                  <p className="font-body text-xs text-[#F2EFE8]/70">March &amp; Display</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Quick Registration / Handouts CTA */}
           <div className="p-6 rounded-3xl bg-[#06110C]/85 border border-[#A8CBB7]/20 shadow-xl space-y-4 backdrop-blur-md">
             <h3 className="font-tech text-lg font-bold text-[#F2EFE8]">Join Team Onyx</h3>
