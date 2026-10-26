@@ -202,10 +202,10 @@ export default function HomePage() {
       {/* =========================================================
           3. PREVIOUS EVENTS PHOTO MARQUEE
           ========================================================= */}
-      <section id="events-hint" className="py-20 border-t border-[#A8CBB7]/15 overflow-hidden bg-[#171717]">
+      <section id="gallery" className="py-20 border-t border-[#A8CBB7]/15 overflow-hidden bg-[#171717] scroll-mt-24 sm:scroll-mt-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
           <span className="text-xs font-tech font-bold uppercase tracking-[0.2em] text-[#A8CBB7] block mb-2">
-            Moments &amp; Memories
+            Festival Gallery &bull; Moments &amp; Memories
           </span>
           <h2 className="font-angular text-3xl sm:text-4xl font-black text-[#F2EFE8] tracking-tight">
             Festival Highlights &amp; Stage Energy
@@ -284,7 +284,7 @@ export default function HomePage() {
       {/* =========================================================
           4. ABOUT BLOSSOMS & TEAM ONYX SECTION
           ========================================================= */}
-      <section id="about-blossoms" className="py-24 bg-[#06110C] border-t border-[#A8CBB7]/15">
+      <section id="team" className="py-24 bg-[#06110C] border-t border-[#A8CBB7]/15 scroll-mt-24 sm:scroll-mt-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
             <span className="text-xs font-tech font-bold uppercase tracking-[0.2em] text-[#A8CBB7] block mb-2">

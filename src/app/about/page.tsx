@@ -126,7 +126,7 @@ export default function AboutPage() {
           </section>
 
           {/* Section 3: Team Onyx Identity */}
-          <section className="space-y-6">
+          <section id="team" className="space-y-6 scroll-mt-24 sm:scroll-mt-28">
             <h2 className="font-tech text-2xl font-bold text-[#F2EFE8] flex items-center gap-3">
               <span>Representing the School of Sciences: Team Onyx</span>
             </h2>

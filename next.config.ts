@@ -11,11 +11,8 @@ const nextConfig: NextConfig = {
   distDir: process.env.NEXT_DIST_DIR || '.next',
   async redirects() {
     return [
-      {
-        source: '/winners',
-        destination: '/',
-        permanent: false,
-      },
+      { source: '/gallery', destination: '/#gallery', permanent: false },
+      { source: '/team', destination: '/#team', permanent: false },
       // 1. Legacy HTML pages mapped to modern App Router routes
       { source: '/index.html', destination: '/', permanent: true },
       { source: '/about.html', destination: '/about', permanent: true },

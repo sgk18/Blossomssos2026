@@ -101,6 +101,16 @@ export function Footer() {
                   Festival Schedule
                 </Link>
               </li>
+              <li>
+                <Link href="/#gallery" className="text-[#F2EFE8]/75 hover:text-[#A8CBB7] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] rounded">
+                  Festival Gallery
+                </Link>
+              </li>
+              <li>
+                <Link href="/#team" className="text-[#F2EFE8]/75 hover:text-[#A8CBB7] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] rounded">
+                  Team Onyx
+                </Link>
+              </li>
             </ul>
           </div>
 
