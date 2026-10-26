@@ -39,7 +39,7 @@ export default function AboutPage() {
         <div className="pt-2 flex flex-wrap items-center gap-4">
           <div className="relative h-11 w-44 px-2 py-1 rounded-xl bg-white/95 border border-[#C7D1DD]/30 shadow-md flex items-center justify-center">
             <Image
-              src="/blossoms_team.png"
+              src="/blossoms_team.webp"
               alt="Team Onyx Insignia"
               fill
               className="object-contain p-1"
@@ -78,7 +78,7 @@ export default function AboutPage() {
                 playsInline
                 controls
                 className="w-full aspect-video object-cover"
-                poster="/Assets/cult1.JPG"
+                poster="/Assets/cult1.webp"
               >
                 <source src="/blossoms-24.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
@@ -221,7 +221,7 @@ export default function AboutPage() {
             <div className="space-y-4">
               <div className="p-4 rounded-2xl bg-[#101827] border border-[#C7D1DD]/15 flex items-center gap-4">
                 <div className="relative w-14 h-14 shrink-0">
-                  <Image src="/2nd.png" alt="2nd Place Trophy" fill className="object-contain" />
+                  <Image src="/2nd.webp" alt="2nd Place Trophy" fill className="object-contain" />
                 </div>
                 <div>
                   <span className="text-[10px] font-mono font-bold text-[#D1FF42] uppercase">Second Place</span>
@@ -232,7 +232,7 @@ export default function AboutPage() {
 
               <div className="p-4 rounded-2xl bg-[#101827] border border-[#C7D1DD]/15 flex items-center gap-4">
                 <div className="relative w-14 h-14 shrink-0">
-                  <Image src="/2nd.png" alt="2nd Place Trophy" fill className="object-contain" />
+                  <Image src="/2nd.webp" alt="2nd Place Trophy" fill className="object-contain" />
                 </div>
                 <div>
                   <span className="text-[10px] font-mono font-bold text-[#D1FF42] uppercase">Second Place</span>
@@ -243,7 +243,7 @@ export default function AboutPage() {
 
               <div className="p-4 rounded-2xl bg-[#101827] border border-[#C7D1DD]/15 flex items-center gap-4">
                 <div className="relative w-14 h-14 shrink-0">
-                  <Image src="/3rd.png" alt="3rd Place Trophy" fill className="object-contain" />
+                  <Image src="/3rd.webp" alt="3rd Place Trophy" fill className="object-contain" />
                 </div>
                 <div>
                   <span className="text-[10px] font-mono font-bold text-[#E6A18C] uppercase">Third Place</span>

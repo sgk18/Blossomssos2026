@@ -30,7 +30,7 @@ export function Footer() {
             <div className="flex items-center gap-3">
               <div className="relative w-11 h-11 rounded-2xl bg-[#162032] border border-[#C7D1DD]/25 p-1.5 flex items-center justify-center shadow-md shadow-[#0251B0]/20">
                 <Image
-                  src="/blossoms_logo.png"
+                  src="/blossoms_logo.webp"
                   alt="Blossoms SOS Logo"
                   width={38}
                   height={38}
@@ -61,7 +61,7 @@ export function Footer() {
                 title="CHRIST (Deemed to be University) Official Website"
               >
                 <Image
-                  src="/Christ_logo.png"
+                  src="/Christ_logo.webp"
                   alt="CHRIST (Deemed to be University)"
                   width={112}
                   height={32}

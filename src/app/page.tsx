@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { HeroBackground } from '@/components/hero/HeroBackground';
 import { siteConfig } from '@/data/site-config';
 import { 
@@ -10,16 +11,25 @@ import {
   Calendar, 
   FileText 
 } from 'lucide-react';
+import { EventCategoriesCarouselSkeleton } from '@/components/events/EventCategoriesCarouselSkeleton';
+
+// Lazy load the 3D Circular Carousel for peak performance and interactive category ring
+const EventCategoriesCarousel = dynamic(
+  () => import('@/components/events/EventCategoriesCarousel'),
+  {
+    loading: () => <EventCategoriesCarouselSkeleton />,
+  }
+);
 
 const MARQUEE_IMAGES = [
-  { src: '/Assets/IMG_0821.JPG', alt: 'Blossoms Fest Stage Performance' },
-  { src: '/Assets/IMG_0948.JPG', alt: 'School of Sciences Cultural Ensemble' },
-  { src: '/Assets/sos.JPG', alt: 'School of Sciences Team Celebrations' },
-  { src: '/Assets/cult1.JPG', alt: 'Dance and Theatrical Performance' },
-  { src: '/Assets/cult.JPG', alt: 'Vibrant Audience & Cheer' },
-  { src: '/Assets/Core.JPG', alt: 'Blossoms Student Core Committee' },
-  { src: '/Assets/cult2.JPG', alt: 'Music & Battle of the Bands' },
-  { src: '/Assets/cult3.JPG', alt: 'Fest Procession & Accolades' },
+  { src: '/Assets/IMG_0821.webp', alt: 'Blossoms Fest Stage Performance' },
+  { src: '/Assets/IMG_0948.webp', alt: 'School of Sciences Cultural Ensemble' },
+  { src: '/Assets/sos.webp', alt: 'School of Sciences Team Celebrations' },
+  { src: '/Assets/cult1.webp', alt: 'Dance and Theatrical Performance' },
+  { src: '/Assets/cult.webp', alt: 'Vibrant Audience & Cheer' },
+  { src: '/Assets/Core.webp', alt: 'Blossoms Student Core Committee' },
+  { src: '/Assets/cult2.webp', alt: 'Music & Battle of the Bands' },
+  { src: '/Assets/cult3.webp', alt: 'Fest Procession & Accolades' },
 ];
 
 export default function HomePage() {
@@ -56,7 +66,7 @@ export default function HomePage() {
                 {/* Team Onyx Emblem Badge */}
                 <div className="relative h-10 w-36 sm:h-12 sm:w-44 px-2 py-1 rounded-xl bg-white/95 border border-[#C7D1DD]/30 shadow-md flex items-center justify-center">
                   <Image
-                    src="/blossoms_team.png"
+                    src="/blossoms_team.webp"
                     alt="Team Onyx Logo"
                     fill
                     className="object-contain p-1"
@@ -75,7 +85,7 @@ export default function HomePage() {
               {/* Slogan Banner ("Flames to Flight") */}
               <div className="relative w-full max-w-md h-24 sm:h-28 my-1 flex items-center justify-center">
                 <Image
-                  src="/blossoms_slogan.png"
+                  src="/blossoms_slogan.webp"
                   alt="From flames to flights, White Onyx Ignites"
                   fill
                   className="object-contain filter invert drop-shadow-[0_2px_12px_rgba(209,255,66,0.35)]"
@@ -149,7 +159,7 @@ export default function HomePage() {
             >
               <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#101827]">
                 <Image
-                  src="/blossoms_rulebook.png"
+                  src="/blossoms_rulebook.webp"
                   alt="Blossoms 2025 Rulebook Poster"
                   fill
                   className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
@@ -177,7 +187,7 @@ export default function HomePage() {
             >
               <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#101827]">
                 <Image
-                  src="/blossoms_knowmore.png"
+                  src="/blossoms_knowmore.webp"
                   alt="Blossoms 2025 Know More Poster"
                   fill
                   className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
@@ -353,7 +363,7 @@ export default function HomePage() {
                   playsInline
                   controls
                   className="w-full h-full object-cover"
-                  poster="/Assets/cult1.JPG"
+                  poster="/Assets/cult1.webp"
                 >
                   <source src="/blossoms-24.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
@@ -392,7 +402,7 @@ export default function HomePage() {
             <div className="p-8 rounded-3xl bg-[#162032]/80 border border-[#C7D1DD]/20 shadow-xl flex flex-col items-center text-center space-y-4 hover:border-[#D1FF42]/40 transition-all hover:-translate-y-1">
               <div className="relative w-32 h-32 flex items-center justify-center">
                 <Image
-                  src="/3rd.png"
+                  src="/3rd.webp"
                   alt="3rd Place Trophy - Procession"
                   fill
                   className="object-contain drop-shadow-lg"
@@ -416,7 +426,7 @@ export default function HomePage() {
               </div>
               <div className="relative w-32 h-32 flex items-center justify-center">
                 <Image
-                  src="/2nd.png"
+                  src="/2nd.webp"
                   alt="2nd Place Trophy - We the Best"
                   fill
                   className="object-contain drop-shadow-lg"
@@ -437,7 +447,7 @@ export default function HomePage() {
             <div className="p-8 rounded-3xl bg-[#162032]/80 border border-[#C7D1DD]/20 shadow-xl flex flex-col items-center text-center space-y-4 hover:border-[#D1FF42]/40 transition-all hover:-translate-y-1">
               <div className="relative w-32 h-32 flex items-center justify-center">
                 <Image
-                  src="/2nd.png"
+                  src="/2nd.webp"
                   alt="2nd Place Trophy - Inauguration"
                   fill
                   className="object-contain drop-shadow-lg"
@@ -476,174 +486,9 @@ export default function HomePage() {
           </p>
         </div>
 
-        {/* Visual Category Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          
-          {/* Card 1: Art */}
-          <Link
-            href="/events/art"
-            className="group rounded-3xl overflow-hidden bg-[#162032]/80 border border-[#C7D1DD]/20 hover:border-[#D1FF42]/60 shadow-xl flex flex-col transition-all duration-300 hover:-translate-y-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D1FF42]"
-          >
-            <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#101827]">
-              <Image
-                src="/art.jpg"
-                alt="Art Category Hero"
-                fill
-                sizes="(max-width: 768px) 100vw, 380px"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-[#101827]/80 backdrop-blur-md border border-[#C7D1DD]/20 text-[11px] font-mono text-[#D1FF42] font-bold">
-                9 Events
-              </div>
-            </div>
-            <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-              <div>
-                <h3 className="text-2xl font-bold text-[#FFFFFF] group-hover:text-[#D1FF42] transition-colors">
-                  Art
-                </h3>
-                <p className="text-xs sm:text-sm text-[#C7D1DD] mt-2 line-clamp-2">
-                  Visual expression across traditional canvas, digital craft, sketching, rangoli and pot painting.
-                </p>
-              </div>
-              <div className="flex items-center justify-between pt-2 border-t border-[#C7D1DD]/10 text-xs font-bold text-[#D1FF42]">
-                <span>View Art Events</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </div>
-            </div>
-          </Link>
-
-          {/* Card 2: Literary */}
-          <Link
-            href="/events/literary"
-            className="group rounded-3xl overflow-hidden bg-[#162032]/80 border border-[#C7D1DD]/20 hover:border-[#D1FF42]/60 shadow-xl flex flex-col transition-all duration-300 hover:-translate-y-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D1FF42]"
-          >
-            <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#101827]">
-              <Image
-                src="/literary.jpg"
-                alt="Literary Category Hero"
-                fill
-                sizes="(max-width: 768px) 100vw, 380px"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-[#101827]/80 backdrop-blur-md border border-[#C7D1DD]/20 text-[11px] font-mono text-[#D1FF42] font-bold">
-                8 Events
-              </div>
-            </div>
-            <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-              <div>
-                <h3 className="text-2xl font-bold text-[#FFFFFF] group-hover:text-[#D1FF42] transition-colors">
-                  Literary
-                </h3>
-                <p className="text-xs sm:text-sm text-[#C7D1DD] mt-2 line-clamp-2">
-                  Oratory, debate, creative writing, quiz, extempore, and rapid-fire verbal mastery.
-                </p>
-              </div>
-              <div className="flex items-center justify-between pt-2 border-t border-[#C7D1DD]/10 text-xs font-bold text-[#D1FF42]">
-                <span>View Literary Events</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </div>
-            </div>
-          </Link>
-
-          {/* Card 3: Music */}
-          <Link
-            href="/events/music"
-            className="group rounded-3xl overflow-hidden bg-[#162032]/80 border border-[#C7D1DD]/20 hover:border-[#D1FF42]/60 shadow-xl flex flex-col transition-all duration-300 hover:-translate-y-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D1FF42]"
-          >
-            <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#101827]">
-              <Image
-                src="/music.jpg"
-                alt="Music Category Hero"
-                fill
-                sizes="(max-width: 768px) 100vw, 380px"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-[#101827]/80 backdrop-blur-md border border-[#C7D1DD]/20 text-[11px] font-mono text-[#D1FF42] font-bold">
-                6 Events
-              </div>
-            </div>
-            <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-              <div>
-                <h3 className="text-2xl font-bold text-[#FFFFFF] group-hover:text-[#D1FF42] transition-colors">
-                  Music
-                </h3>
-                <p className="text-xs sm:text-sm text-[#C7D1DD] mt-2 line-clamp-2">
-                  Battle of the bands, Indian folk, acoustic harmonies, vocal solos, and electric instrumentation.
-                </p>
-              </div>
-              <div className="flex items-center justify-between pt-2 border-t border-[#C7D1DD]/10 text-xs font-bold text-[#D1FF42]">
-                <span>View Music Events</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </div>
-            </div>
-          </Link>
-
-          {/* Card 4: Theatre */}
-          <Link
-            href="/events/theatre"
-            className="group rounded-3xl overflow-hidden bg-[#162032]/80 border border-[#C7D1DD]/20 hover:border-[#D1FF42]/60 shadow-xl flex flex-col transition-all duration-300 hover:-translate-y-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D1FF42]"
-          >
-            <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#101827]">
-              <Image
-                src="/theater.jpg"
-                alt="Theatre Category Hero"
-                fill
-                sizes="(max-width: 768px) 100vw, 380px"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-[#101827]/80 backdrop-blur-md border border-[#C7D1DD]/20 text-[11px] font-mono text-[#D1FF42] font-bold">
-                5 Events
-              </div>
-            </div>
-            <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-              <div>
-                <h3 className="text-2xl font-bold text-[#FFFFFF] group-hover:text-[#D1FF42] transition-colors">
-                  Theatre
-                </h3>
-                <p className="text-xs sm:text-sm text-[#C7D1DD] mt-2 line-clamp-2">
-                  Street theatre (nukkad natak), proscenium drama, mime, mono acting, and cinematic short film.
-                </p>
-              </div>
-              <div className="flex items-center justify-between pt-2 border-t border-[#C7D1DD]/10 text-xs font-bold text-[#D1FF42]">
-                <span>View Theatre Events</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </div>
-            </div>
-          </Link>
-
-          {/* Card 5: Dance */}
-          <Link
-            href="/events/dance"
-            className="group rounded-3xl overflow-hidden bg-[#162032]/80 border border-[#C7D1DD]/20 hover:border-[#D1FF42]/60 shadow-xl flex flex-col transition-all duration-300 hover:-translate-y-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D1FF42] sm:col-span-2 lg:col-span-1"
-          >
-            <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#101827]">
-              <Image
-                src="/dance.jpg"
-                alt="Dance Category Hero"
-                fill
-                sizes="(max-width: 768px) 100vw, 380px"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-[#101827]/80 backdrop-blur-md border border-[#C7D1DD]/20 text-[11px] font-mono text-[#D1FF42] font-bold">
-                4 Events
-              </div>
-            </div>
-            <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-              <div>
-                <h3 className="text-2xl font-bold text-[#FFFFFF] group-hover:text-[#D1FF42] transition-colors">
-                  Dance
-                </h3>
-                <p className="text-xs sm:text-sm text-[#C7D1DD] mt-2 line-clamp-2">
-                  Classical dance group, Indian folk dance, dance duet, and high-energy themed ensemble choreographies.
-                </p>
-              </div>
-              <div className="flex items-center justify-between pt-2 border-t border-[#C7D1DD]/10 text-xs font-bold text-[#D1FF42]">
-                <span>View Dance Events</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </div>
-            </div>
-          </Link>
-
+        {/* Interactive 3D Category Carousel Showcase */}
+        <div className="w-full">
+          <EventCategoriesCarousel initialViewMode="carousel" />
         </div>
       </section>
 

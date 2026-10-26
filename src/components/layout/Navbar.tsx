@@ -66,7 +66,7 @@ export function Navbar() {
           >
             <div className="relative w-8 h-8 sm:w-9 sm:h-9 shrink-0 flex items-center justify-center rounded-full bg-[#162032] border border-[#C7D1DD]/30 overflow-hidden shadow-sm group-hover:scale-105 transition-transform">
               <Image 
-                src="/blossoms_logo.png" 
+                src="/blossoms_logo.webp" 
                 alt="Blossoms Logo" 
                 width={36} 
                 height={36} 
@@ -118,7 +118,7 @@ export function Navbar() {
               aria-label="Christ University Official Website"
             >
               <Image 
-                src="/Christ_logo.png" 
+                src="/Christ_logo.webp" 
                 alt="Christ University Logo" 
                 width={76} 
                 height={32} 
@@ -177,7 +177,7 @@ export function Navbar() {
           >
             <div className="px-2 py-1 border-b border-[#C7D1DD]/15 flex items-center justify-between pb-3">
               <div className="flex items-center gap-2">
-                <Image src="/blossoms_logo.png" alt="Blossoms" width={24} height={24} className="object-contain" />
+                <Image src="/blossoms_logo.webp" alt="Blossoms" width={24} height={24} className="object-contain" />
                 <span className="text-xs font-bold uppercase tracking-wider text-[#FFFFFF]">
                   Blossoms SOS 2025
                 </span>
@@ -226,7 +226,7 @@ export function Navbar() {
                 <p className="text-[10px] text-[#C7D1DD]/70">CHRIST (Deemed to be University)</p>
               </div>
               <div className="bg-white px-2 py-1 rounded-md">
-                <Image src="/Christ_logo.png" alt="Christ Logo" width={56} height={20} className="h-4 w-auto object-contain" />
+                <Image src="/Christ_logo.webp" alt="Christ Logo" width={56} height={20} className="h-4 w-auto object-contain" />
               </div>
             </div>
           </div>

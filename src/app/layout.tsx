@@ -27,11 +27,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/favicon.png', type: 'image/png' },
-      { url: '/blossoms_logo.png', type: 'image/png' },
+      { url: '/favicon.webp', type: 'image/png' },
+      { url: '/blossoms_logo.webp', type: 'image/png' },
     ],
     shortcut: '/favicon.ico',
-    apple: '/blossoms_logo.png',
+    apple: '/blossoms_logo.webp',
   },
   openGraph: {
     title: `${siteConfig.shortName} | ${siteConfig.institution}`,
@@ -52,7 +52,7 @@ export default function RootLayout({
     <html lang="en" className={`${sansFont.variable} ${displayFont.variable}`}>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="alternate icon" href="/favicon.png" type="image/png" />
+        <link rel="alternate icon" href="/favicon.webp" type="image/png" />
       </head>
       <body className="min-h-screen flex flex-col bg-[#101827] text-[#FFFFFF] antialiased selection:bg-[#0251B0] selection:text-[#FFFFFF]">
 
