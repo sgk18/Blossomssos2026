@@ -68,40 +68,32 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Official Festival Motto & Slogan Graphic */}
-            <div className="flex flex-col items-center gap-4 max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[#06110C]/70 border border-[#A8CBB7]/20 text-xs sm:text-sm font-tech text-[#F2EFE8]">
-                <span>Motto:</span>
-                <span className="font-bold text-[#A8CBB7] uppercase tracking-wider">&lsquo;Be the Best&rsquo;</span>
-                <span className="text-[#A8CBB7]/40">•</span>
-                <span className="text-[#F2EFE8]/80">Over 7,000 Students • 32 Cultural Arenas</span>
-              </div>
-
-              {/* Slogan Banner ("Flames to Flight") - Enlarged for visual impact */}
-              <div className="relative w-full max-w-lg sm:max-w-xl md:max-w-2xl h-32 sm:h-40 md:h-48 my-2 flex items-center justify-center">
+            {/* Official Slogan Graphic Banner */}
+            <div className="flex flex-col items-center gap-3 max-w-3xl w-full px-2 sm:px-4">
+              <div className="relative w-full max-w-sm sm:max-w-xl md:max-w-2xl h-24 sm:h-36 md:h-44 my-1 sm:my-2 flex items-center justify-center">
                 <Image
                   src="/blossoms_slogan.webp"
                   alt="From flames to flights, White Onyx Ignites"
                   fill
-                  className="object-contain filter invert drop-shadow-[0_2px_16px_rgba(168,203,183,0.45)] scale-110 sm:scale-115 transition-transform"
+                  className="object-contain filter invert drop-shadow-[0_2px_16px_rgba(168,203,183,0.45)] scale-105 sm:scale-115 transition-transform"
                   priority
                 />
               </div>
 
-              <p className="font-tech text-xs sm:text-sm md:text-base font-semibold tracking-widest text-[#A8CBB7] uppercase">
+              <p className="font-tech text-[10px] sm:text-xs md:text-sm font-semibold tracking-widest text-[#A8CBB7] uppercase text-center px-4">
                 &ldquo;From Flames to Flights, White Onyx Ignites.&rdquo;
               </p>
             </div>
 
-            {/* Action Buttons */}
-            <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+            {/* Action Buttons - Ergonomic on mobile & sleek on desktop */}
+            <div className="flex flex-col sm:flex-row w-full sm:w-auto max-w-xs sm:max-w-none items-stretch sm:items-center justify-center gap-3 pt-3 px-3 sm:px-0 mx-auto">
               {siteConfig.registrationUrl && (
                 <a
                   href={siteConfig.registrationUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   id="register-button"
-                  className="clay-btn-accent font-tech px-8 py-3.5 rounded-2xl font-bold text-sm sm:text-base flex items-center gap-2.5 shadow-xl hover:scale-105 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
+                  className="clay-btn-accent font-tech px-8 py-3.5 rounded-2xl font-bold text-sm sm:text-base flex items-center justify-center shadow-xl hover:scale-105 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] w-full sm:w-auto text-center"
                 >
                   <span>Register Now</span>
                 </a>
@@ -109,7 +101,7 @@ export default function HomePage() {
 
               <Link
                 href="/events"
-                className="clay-btn-primary font-tech px-7 py-3.5 rounded-2xl font-bold text-sm sm:text-base flex items-center gap-2 shadow-lg transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
+                className="clay-btn-primary font-tech px-7 py-3.5 rounded-2xl font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] w-full sm:w-auto text-center"
               >
                 <span>Explore Disciplines</span>
                 <ArrowRight className="w-4 h-4" />
@@ -117,7 +109,7 @@ export default function HomePage() {
 
               <Link
                 href="/schedule"
-                className="font-tech px-7 py-3.5 rounded-2xl bg-[#06110C]/85 hover:bg-[#06110C] text-[#F2EFE8] border border-[#A8CBB7]/25 font-semibold text-sm transition-all flex items-center gap-2 shadow-md backdrop-blur-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
+                className="font-tech px-7 py-3.5 rounded-2xl bg-[#06110C]/85 hover:bg-[#06110C] text-[#F2EFE8] border border-[#A8CBB7]/25 font-semibold text-sm transition-all flex items-center justify-center gap-2 shadow-md backdrop-blur-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] w-full sm:w-auto text-center"
               >
                 <Calendar className="w-4 h-4 text-[#A8CBB7]" />
                 <span>Festival Schedule</span>
@@ -267,20 +259,20 @@ export default function HomePage() {
           <p className="text-xl sm:text-2xl font-bold font-tech text-[#F2EFE8]">
             Register now for the events, slots are open!
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row w-full sm:w-auto max-w-xs sm:max-w-none items-stretch sm:items-center justify-center gap-3 px-3 sm:px-0 mx-auto">
             {siteConfig.registrationUrl && (
               <a
                 href={siteConfig.registrationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="clay-btn-accent font-tech px-6 py-3 rounded-xl font-bold text-sm flex items-center justify-center shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
+                className="clay-btn-accent font-tech px-6 py-3 rounded-xl font-bold text-sm flex items-center justify-center shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] w-full sm:w-auto text-center"
               >
                 <span>Register for Slot</span>
               </a>
             )}
             <Link
               href="/events"
-              className="clay-btn-primary font-tech px-6 py-3 rounded-xl font-bold text-sm flex items-center gap-2 shadow-md transition-all hover:scale-105"
+              className="clay-btn-primary font-tech px-6 py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 shadow-md transition-all hover:scale-105 w-full sm:w-auto text-center"
             >
               <span>See All Events</span>
               <ArrowRight className="w-4 h-4" />
@@ -308,7 +300,7 @@ export default function HomePage() {
             {/* Left Column: Descriptive Content & Team Onyx Details */}
             <div className="lg:col-span-7 space-y-8">
               <p className="font-body text-base sm:text-lg text-[#F2EFE8]/80 leading-relaxed font-normal">
-                Blossoms is the intra-deanery cultural fest at CHRIST (Deemed To Be University) Bangalore with the motto <span className="text-[#F2EFE8] font-bold">&lsquo;Be the best&rsquo;</span>. This is a unique venture where all 7,000 students of the university participate in cultural competitions. The events are divided into five categories - Art, Theatre, Stage, Music &amp; Literary. Students compete in multiple events across these categories. The winners lay their hands on the Inter-Deanery trophy for Artistic Excellence and Service.
+                Blossoms is the intra-deanery cultural fest at CHRIST (Deemed To Be University) Bangalore with the motto <span className="text-[#F2EFE8] font-bold">&lsquo;Be the best&rsquo;</span>. This is a unique venture where all 7,000 students of the university participate in cultural competitions. The events are divided into five categories - Art, Theatre, Stage, Music &amp; Literary. Students compete across these disciplines celebrating artistic excellence, unity, and academic distinction.
               </p>
 
               {/* Team Onyx Identity Card */}
@@ -374,98 +366,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* =========================================================
-          5. OUR ACHIEVEMENTS SECTION
-          ========================================================= */}
-      <section id="achievements" className="py-24 border-t border-[#A8CBB7]/15 bg-[#171717]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-            <span className="text-xs font-tech font-bold uppercase tracking-[0.2em] text-[#A8CBB7]">
-              Honors &amp; Accolades
-            </span>
-            <h2 className="font-angular text-3xl sm:text-5xl font-black text-[#F2EFE8] tracking-tight">
-              Our Achievements
-            </h2>
-            <p className="font-body text-sm text-[#F2EFE8]/75 font-normal">
-              Proud trophies earned by the School of Sciences student delegations in the university arena.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            
-            {/* Trophy 1: Procession */}
-            <div className="p-8 rounded-3xl bg-[#06110C]/85 border border-[#A8CBB7]/20 shadow-xl flex flex-col items-center text-center space-y-4 hover:border-[#A8CBB7]/40 transition-all hover:-translate-y-1">
-              <div className="relative w-32 h-32 flex items-center justify-center">
-                <Image
-                  src="/3rd.webp"
-                  alt="3rd Place Trophy - Procession"
-                  fill
-                  className="object-contain drop-shadow-lg"
-                />
-              </div>
-              <div>
-                <h3 className="font-tech text-xl font-bold text-[#F2EFE8]">Procession</h3>
-                <span className="inline-block mt-1 px-3 py-1 rounded-full text-xs font-bold font-tech bg-[#A31C1B]/20 text-[#F2EFE8] border border-[#A31C1B]/40">
-                  Third Place
-                </span>
-              </div>
-              <p className="font-body text-xs text-[#F2EFE8]/70 leading-relaxed">
-                Spectacular deanery parade demonstrating unity, discipline, and scientific heritage.
-              </p>
-            </div>
-
-            {/* Trophy 2: 'We the Best' Trophy */}
-            <div className="p-8 rounded-3xl bg-[#06110C]/95 border border-[#A8CBB7]/35 shadow-2xl flex flex-col items-center text-center space-y-4 hover:border-[#A8CBB7] transition-all hover:-translate-y-1 relative ring-1 ring-[#A8CBB7]/20">
-              <div className="absolute -top-3.5 px-3 py-0.5 rounded-full bg-[#A8CBB7] text-[#06110C] text-[10px] font-black uppercase tracking-wider font-tech">
-                Premier Deanery Honor
-              </div>
-              <div className="relative w-32 h-32 flex items-center justify-center">
-                <Image
-                  src="/2nd.webp"
-                  alt="2nd Place Trophy - We the Best"
-                  fill
-                  className="object-contain drop-shadow-lg"
-                />
-              </div>
-              <div>
-                <h3 className="font-tech text-xl font-bold text-[#F2EFE8]">&lsquo;We the Best&rsquo; Trophy</h3>
-                <span className="inline-block mt-1 px-3 py-1 rounded-full text-xs font-bold font-tech bg-white/10 text-[#F2EFE8] border border-white/20">
-                  Second Place
-                </span>
-              </div>
-              <p className="font-body text-xs text-[#F2EFE8]/70 leading-relaxed">
-                Overall competitive excellence standing across all cultural and artistic events.
-              </p>
-            </div>
-
-            {/* Trophy 3: Inauguration */}
-            <div className="p-8 rounded-3xl bg-[#06110C]/85 border border-[#A8CBB7]/20 shadow-xl flex flex-col items-center text-center space-y-4 hover:border-[#A8CBB7]/40 transition-all hover:-translate-y-1">
-              <div className="relative w-32 h-32 flex items-center justify-center">
-                <Image
-                  src="/2nd.webp"
-                  alt="2nd Place Trophy - Inauguration"
-                  fill
-                  className="object-contain drop-shadow-lg"
-                />
-              </div>
-              <div>
-                <h3 className="font-tech text-xl font-bold text-[#F2EFE8]">Inauguration</h3>
-                <span className="inline-block mt-1 px-3 py-1 rounded-full text-xs font-bold font-tech bg-white/10 text-[#F2EFE8] border border-white/20">
-                  Second Place
-                </span>
-              </div>
-              <p className="font-body text-xs text-[#F2EFE8]/70 leading-relaxed">
-                Captivating inaugural stage presentation showcasing original concept and execution.
-              </p>
-            </div>
-
-          </div>
-        </div>
-      </section>
+      
 
       {/* =========================================================
-          6. EVENT CATEGORIES (THE FIVE DISCIPLINES)
+          5. EVENT CATEGORIES (THE FIVE DISCIPLINES)
           ========================================================= */}
       <section id="events" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-labelledby="disciplines-heading">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
@@ -494,24 +398,24 @@ export default function HomePage() {
       {siteConfig.registrationUrl && (
         <section className="py-20 bg-[#06110C] border-t border-[#A8CBB7]/15">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="p-8 sm:p-12 rounded-3xl bg-[#171717]/85 border border-[#A8CBB7]/25 backdrop-blur-xl flex flex-col sm:flex-row items-center justify-between gap-6 shadow-2xl">
-              <div className="text-center sm:text-left space-y-1">
+            <div className="p-6 sm:p-12 rounded-3xl bg-[#171717]/85 border border-[#A8CBB7]/25 backdrop-blur-xl flex flex-col sm:flex-row items-center justify-between gap-6 shadow-2xl">
+              <div className="text-center sm:text-left space-y-1 w-full sm:w-auto">
                 <span className="text-xs uppercase tracking-[0.2em] text-[#A8CBB7] font-tech font-bold block">
                   Represent the School of Sciences
                 </span>
-                <h2 className="font-tech text-2xl sm:text-3xl font-extrabold text-[#F2EFE8]">
+                <h2 className="font-tech text-xl sm:text-3xl font-extrabold text-[#F2EFE8]">
                   Ready to compete in Blossoms?
                 </h2>
                 <p className="font-body text-xs sm:text-sm text-[#F2EFE8]/70">
                   Fill the official registration form to confirm your slot in prelims.
                 </p>
               </div>
-              <div className="flex items-center gap-4 shrink-0">
+              <div className="flex items-center gap-4 shrink-0 w-full sm:w-auto">
                 <a
                   href={siteConfig.registrationUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="clay-btn-accent font-tech px-8 py-4 rounded-2xl font-bold text-sm flex items-center justify-center shadow-xl hover:scale-105 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
+                  className="clay-btn-accent font-tech px-8 py-3.5 sm:py-4 rounded-2xl font-bold text-sm flex items-center justify-center shadow-xl hover:scale-105 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] w-full sm:w-auto text-center"
                 >
                   <span>Register Now</span>
                 </a>

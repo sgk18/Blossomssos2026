@@ -6,7 +6,6 @@ import {
   Home, 
   Compass, 
   Calendar, 
-  Trophy,  
   ArrowRight, 
   HelpCircle,
   Palette,
@@ -158,23 +157,22 @@ export default function NotFound() {
             </Link>
 
             <Link
-              href="/winners"
-              className="p-5 rounded-2xl bg-[#06110C]/80 hover:bg-[#06110C] border border-[#A8CBB7]/15 hover:border-[#A8CBB7]/40 transition-all flex flex-col justify-between group shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
+              href="/about"
+              className="p-5 rounded-2xl bg-[#06110C] border border-[#A8CBB7]/20 hover:border-[#A8CBB7]/50 transition-all hover:-translate-y-1 group flex flex-col justify-between"
             >
-              <div>
-                <div className="w-9 h-9 rounded-xl bg-[#171717] text-[#A8CBB7] flex items-center justify-center mb-3 border border-[#A8CBB7]/20 group-hover:scale-105 transition-transform">
-                  <Trophy className="w-4 h-4" />
-                </div>
-                <h3 className="font-bold text-sm text-[#F2EFE8] group-hover:text-[#A8CBB7] transition-colors">
-                  Results &amp; Honors
-                </h3>
-                <p className="text-xs text-[#F2EFE8]/70 mt-1 line-clamp-2">
-                  Verified student standings and podium placements across all rounds.
-                </p>
+              <div className="flex items-center justify-between mb-4">
+                <span className="w-9 h-9 rounded-xl bg-[#171717] border border-[#A8CBB7]/30 flex items-center justify-center text-[#A8CBB7] group-hover:scale-110 transition-transform">
+                  <Compass className="w-4 h-4" />
+                </span>
+                <span className="text-[10px] font-mono text-[#A8CBB7]/70 uppercase">Overview</span>
               </div>
-              <div className="mt-4 pt-3 border-t border-[#A8CBB7]/10 flex items-center justify-between text-xs font-semibold text-[#A8CBB7]">
-                <span>View Standings</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              <div className="text-left">
+                <h3 className="font-tech font-bold text-base text-[#F2EFE8] group-hover:text-[#A8CBB7] transition-colors">
+                  About Team Onyx
+                </h3>
+                <p className="font-body text-xs text-[#F2EFE8]/60 mt-1">
+                  Motto, vision &amp; heritage
+                </p>
               </div>
             </Link>
           </div>

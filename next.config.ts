@@ -11,12 +11,17 @@ const nextConfig: NextConfig = {
   distDir: process.env.NEXT_DIST_DIR || '.next',
   async redirects() {
     return [
+      {
+        source: '/winners',
+        destination: '/',
+        permanent: false,
+      },
       // 1. Legacy HTML pages mapped to modern App Router routes
       { source: '/index.html', destination: '/', permanent: true },
       { source: '/about.html', destination: '/about', permanent: true },
       { source: '/events.html', destination: '/events', permanent: true },
       { source: '/schedule.html', destination: '/schedule', permanent: true },
-      { source: '/winners.html', destination: '/winners', permanent: true },
+      { source: '/winners.html', destination: '/', permanent: true },
 
       // 2. Legacy event HTML files mapped to category routes
       { source: '/event1.html', destination: '/events/art', permanent: true },

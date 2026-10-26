@@ -8,7 +8,6 @@ import {
   Building2, 
   Award, 
   Users, 
-  Trophy, 
   Palette, 
   Flame, 
   Gem, 
@@ -66,7 +65,7 @@ export default function AboutPage() {
             </h2>
             
             <p className="font-body text-base sm:text-lg text-[#F2EFE8]/80 leading-relaxed font-normal">
-              Blossoms is the premier intra-deanery cultural and creative celebration of CHRIST (Deemed to be University) Bangalore, anchored by the foundational motto <span className="text-[#F2EFE8] font-bold">&lsquo;Be the best&rsquo;</span>. Across five core pillars—Art, Theatre, Music, Literary, and Dance—over 7,000 students participate in rigorous competitive arenas, vying for the coveted Inter-Deanery trophy for Artistic Excellence and Service.
+              Blossoms is the premier intra-deanery cultural and creative celebration of CHRIST (Deemed to be University) Bangalore, anchored by the foundational motto <span className="text-[#F2EFE8] font-bold">&lsquo;Be the best&rsquo;</span>. Across five core pillars—Art, Theatre, Music, Literary, and Dance—over 7,000 students participate in rigorous competitive arenas, celebrating artistic excellence, unity, and scientific heritage across disciplines.
             </p>
 
             {/* Video Feature */}
@@ -113,7 +112,7 @@ export default function AboutPage() {
 
               <div className="p-6 rounded-3xl bg-[#06110C]/85 border border-[#A8CBB7]/35 backdrop-blur-md shadow-lg space-y-3 ring-1 ring-[#A8CBB7]/15">
                 <div className="w-10 h-10 rounded-2xl bg-[#171717] border border-[#A8CBB7]/35 flex items-center justify-center text-[#A8CBB7]">
-                  <Trophy className="w-5 h-5" />
+                  <Award className="w-5 h-5" />
                 </div>
                 <div>
                   <span className="text-[11px] font-tech font-bold text-[#A8CBB7] uppercase tracking-wider">Phase II</span>
@@ -234,49 +233,6 @@ export default function AboutPage() {
         {/* Right Column: Achievements & Quick Actions */}
         <div className="lg:col-span-4 space-y-6">
           
-          {/* Trophies Card */}
-          <div className="p-6 rounded-3xl bg-[#06110C]/85 border border-[#A8CBB7]/20 shadow-xl space-y-6 backdrop-blur-md">
-            <div className="flex items-center gap-2 text-xs font-bold font-tech text-[#A8CBB7] uppercase tracking-wider">
-              <Award className="w-4 h-4 text-[#A8CBB7]" />
-              <span>Official Accolades</span>
-            </div>
-
-            <div className="space-y-4">
-              <div className="p-4 rounded-2xl bg-[#171717] border border-[#A8CBB7]/15 flex items-center gap-4">
-                <div className="relative w-14 h-14 shrink-0">
-                  <Image src="/2nd.webp" alt="2nd Place Trophy" fill className="object-contain" />
-                </div>
-                <div>
-                  <span className="text-[10px] font-tech font-bold text-[#A8CBB7] uppercase">Second Place</span>
-                  <h4 className="font-tech font-bold text-sm text-[#F2EFE8]">&lsquo;We the Best&rsquo; Trophy</h4>
-                  <p className="font-body text-xs text-[#F2EFE8]/70">Inter-Deanery Overall Excellence</p>
-                </div>
-              </div>
-
-              <div className="p-4 rounded-2xl bg-[#171717] border border-[#A8CBB7]/15 flex items-center gap-4">
-                <div className="relative w-14 h-14 shrink-0">
-                  <Image src="/2nd.webp" alt="2nd Place Trophy" fill className="object-contain" />
-                </div>
-                <div>
-                  <span className="text-[10px] font-tech font-bold text-[#A8CBB7] uppercase">Second Place</span>
-                  <h4 className="font-tech font-bold text-sm text-[#F2EFE8]">Inauguration Ceremony</h4>
-                  <p className="font-body text-xs text-[#F2EFE8]/70">Stage Presentation</p>
-                </div>
-              </div>
-
-              <div className="p-4 rounded-2xl bg-[#171717] border border-[#A8CBB7]/15 flex items-center gap-4">
-                <div className="relative w-14 h-14 shrink-0">
-                  <Image src="/3rd.webp" alt="3rd Place Trophy" fill className="object-contain" />
-                </div>
-                <div>
-                  <span className="text-[10px] font-tech font-bold text-[#A31C1B] uppercase">Third Place</span>
-                  <h4 className="font-tech font-bold text-sm text-[#F2EFE8]">Deanery Procession</h4>
-                  <p className="font-body text-xs text-[#F2EFE8]/70">March &amp; Display</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
           {/* Quick Registration / Handouts CTA */}
           <div className="p-6 rounded-3xl bg-[#06110C]/85 border border-[#A8CBB7]/20 shadow-xl space-y-4 backdrop-blur-md">
             <h3 className="font-tech text-lg font-bold text-[#F2EFE8]">Join Team Onyx</h3>

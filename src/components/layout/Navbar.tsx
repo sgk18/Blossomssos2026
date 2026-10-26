@@ -12,7 +12,6 @@ const NAV_LINKS = [
   { href: '/about', label: 'About' },
   { href: '/events', label: 'Events' },
   { href: '/schedule', label: 'Schedule' },
-  { href: '/winners', label: 'Winners' },
 ];
 
 export function Navbar() {

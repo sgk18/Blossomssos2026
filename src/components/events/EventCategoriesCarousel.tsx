@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
@@ -127,6 +127,25 @@ export default function EventCategoriesCarousel({
     return CATEGORY_ITEMS[normalized];
   }, [activeIndex]);
 
+  const [cardWidth, setCardWidth] = useState(250);
+
+  useEffect(() => {
+    const updateSize = () => {
+      if (typeof window !== 'undefined') {
+        if (window.innerWidth < 480) {
+          setCardWidth(180);
+        } else if (window.innerWidth < 768) {
+          setCardWidth(215);
+        } else {
+          setCardWidth(260);
+        }
+      }
+    };
+    updateSize();
+    window.addEventListener('resize', updateSize);
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+
   const handleIndexChange = useCallback((index: number) => {
     setActiveIndex(index);
   }, []);
@@ -184,7 +203,7 @@ export default function EventCategoriesCarousel({
       <div className="w-full max-w-6xl flex flex-col items-center">
         {/* 3D Circular Carousel Stage */}
         <div 
-          className="w-full h-[440px] sm:h-[500px] md:h-[540px] relative rounded-3xl overflow-hidden bg-gradient-to-b from-[#06110C]/80 via-[#171717]/90 to-[#06110C] border border-[#A8CBB7]/20 shadow-2xl backdrop-blur-md"
+          className="w-full h-[380px] sm:h-[480px] md:h-[540px] relative rounded-3xl overflow-hidden bg-gradient-to-b from-[#06110C]/80 via-[#171717]/90 to-[#06110C] border border-[#A8CBB7]/20 shadow-2xl backdrop-blur-md"
         >
           {/* Ambient Lighting Gradients */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] bg-[#A8CBB7]/10 rounded-full blur-[100px] pointer-events-none" />
@@ -203,10 +222,10 @@ export default function EventCategoriesCarousel({
             items={RING_ITEMS}
             preset="cylinder"
             intro="rise"
-            cardWidth={260}
+            cardWidth={cardWidth}
             aspectRatio={1.3}
             speed={14}
-            gap={28}
+            gap={cardWidth < 200 ? 16 : 28}
             draggable={true}
             momentum={0.65}
             snap={false}

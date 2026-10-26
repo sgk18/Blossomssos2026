@@ -27,7 +27,7 @@ assert(notFoundSrc.includes('Lost in the Quadrangle?'), 'Custom 404 must contain
 assert(notFoundSrc.includes('ERROR 404 • ROUTE NOT FOUND'), 'Custom 404 must contain status indicator');
 assert(notFoundSrc.includes('/events/${d.slug}'), 'Custom 404 must link to category disciplines');
 assert(notFoundSrc.includes('/schedule'), 'Custom 404 must link to Schedule');
-assert(notFoundSrc.includes('/winners'), 'Custom 404 must link to Winners');
+assert(notFoundSrc.includes('/about'), 'Custom 404 must link to About');
 assert(notFoundSrc.includes('BackButton'), 'Custom 404 must include interactive BackButton');
 console.log('✔ Custom 404 page content, recovery links, and pillar navigation verified.');
 
@@ -50,7 +50,7 @@ try {
       ['/events', 200],
       ['/events/art', 200],
       ['/schedule', 200],
-      ['/winners', 200],
+      // ['/winners', 307] (redirects to / for now),
       ['/unknown-test-route-404', 404]
     ];
     for (const [p, expectedStatus] of livePaths) {
