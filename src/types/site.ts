@@ -42,6 +42,8 @@ export interface SiteConfig {
   institution: string;
   faculty: string;
   tagline: string;
+  motto?: string;
+  slogan?: string;
   defaultDescription: string;
   activeEditionYear: string;
   availableEditions: string[];
