@@ -23,8 +23,6 @@ export const siteConfig: SiteConfig = {
   contactEmail: 'blossoms.sos@christuniversity.in',
   
   socialLinks: {
-    instagram: 'https://www.instagram.com/blossoms_sos/?hl=en',
-    facebook: 'https://www.facebook.com/www.christuniversity.in',
-    linkedin: 'https://www.linkedin.com/school/christ-university-bangalore/posts/?feedView=all',
+    instagram: 'https://www.instagram.com/blossoms_sos/',
   },
 };
