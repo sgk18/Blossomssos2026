@@ -107,34 +107,15 @@ export function Navbar() {
             })}
           </nav>
 
-          {/* 3. Right: Christ University Logo & Register Action */}
+          {/* 3. Right: Register Action */}
           <div className="flex items-center gap-2 sm:gap-3">
-            {/* Christ Logo Pill (Desktop & Tablet) */}
-            <a
-              href="https://www.christuniversity.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white/95 hover:bg-white px-2.5 py-1 rounded-full flex items-center gap-2 shadow-sm border border-white/40 transition-all hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
-              title="CHRIST (Deemed to be University)"
-              aria-label="Christ University Official Website"
-            >
-              <Image 
-                src="/Christ_logo.webp" 
-                alt="Christ University Logo" 
-                width={76} 
-                height={32} 
-                className="h-5 sm:h-6 w-auto object-contain"
-                priority
-              />
-            </a>
-
             {/* Quick Register CTA */}
             {siteConfig.registrationUrl && (
               <a
                 href={siteConfig.registrationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden lg:flex font-tech clay-btn-accent px-4 py-1.5 rounded-full text-[11px] font-bold items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
+                className="hidden sm:flex font-tech clay-btn-accent px-4 py-1.5 rounded-full text-[11px] font-bold items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
               >
                 <span>Register</span>
               </a>
@@ -250,9 +231,9 @@ export function Navbar() {
               <p className="font-semibold text-[#F2EFE8]">Team Onyx</p>
               <p className="text-[10px] text-[#A8CBB7]">Be the Best</p>
             </div>
-            <div className="bg-white px-2 py-1 rounded-md shadow-sm">
-              <Image src="/Christ_logo.webp" alt="Christ Logo" width={56} height={20} className="h-4 w-auto object-contain" />
-            </div>
+            <span className="font-mono text-[10px] px-2.5 py-1 rounded-full bg-[#06110C] text-[#A8CBB7] border border-[#A8CBB7]/20">
+              School of Sciences
+            </span>
           </div>
         </div>
       </aside>

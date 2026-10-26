@@ -52,20 +52,20 @@ export function Footer() {
             </p>
 
             {/* Official CHRIST Logo & Badge */}
-            <div className="pt-1 flex flex-wrap items-center gap-3">
+            <div className="pt-2 flex flex-wrap items-center gap-3">
               <a 
                 href="https://www.christuniversity.in" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center bg-white/95 hover:bg-white px-3.5 py-1.5 rounded-xl shadow-md border border-white/40 transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
+                className="inline-flex items-center bg-white hover:bg-white/95 px-3.5 py-1.5 rounded-xl shadow-md border border-white/30 transition-all hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
                 title="CHRIST (Deemed to be University) Official Website"
               >
                 <Image
-                  src="/Christ_logo.webp"
+                  src="/christ_university_official_logo.png"
                   alt="CHRIST (Deemed to be University)"
-                  width={112}
-                  height={32}
-                  className="h-6 w-auto object-contain"
+                  width={180}
+                  height={61}
+                  className="h-8 sm:h-9 w-auto object-contain"
                 />
               </a>
               <span className="font-tech text-[11px] px-3 py-1 rounded-full bg-[#06110C] text-[#A8CBB7] border border-[#A8CBB7]/25 font-semibold shadow-sm">
