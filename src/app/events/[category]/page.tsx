@@ -7,6 +7,8 @@ import { SubEventCard } from '@/components/events/SubEventCard';
 import { CategoryIcon } from '@/components/ui/CategoryIcon';
 import { ArrowLeft, Layers, ArrowRight } from 'lucide-react';
 
+import { siteConfig } from '@/data/site-config';
+
 interface CategoryPageProps {
   params: Promise<{
     category: string;
@@ -24,9 +26,28 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   const category = EVENT_CATEGORIES.find((c) => c.slug === slug);
   if (!category) return {};
 
+  const title = `${category.name} Competitions (${category.events.length} Events) | Blossoms SOS`;
+  const description = `${category.description} Explore rules, evaluation criteria, and guidelines for all ${category.events.length} official ${category.name} competitions at Blossoms School of Sciences.`;
+  const url = `${siteConfig.canonicalUrl}/events/${category.slug}`;
+
   return {
-    title: `${category.name} Competitions | Blossoms SOS 2026–27`,
-    description: category.description,
+    title,
+    description,
+    alternates: {
+      canonical: `/events/${category.slug}`,
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: siteConfig.name,
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    },
   };
 }
 
@@ -38,8 +59,37 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     notFound();
   }
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: siteConfig.canonicalUrl,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Events',
+        item: `${siteConfig.canonicalUrl}/events`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: `${category.name} Competitions`,
+        item: `${siteConfig.canonicalUrl}/events/${category.slug}`,
+      },
+    ],
+  };
+
   return (
     <div className="pt-28 pb-16 md:pt-36 md:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-[#171717] text-[#F2EFE8] selection:bg-[#A31C1B]/30 selection:text-[#F2EFE8]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Back Link */}
       <div className="mb-8">
         <Link 

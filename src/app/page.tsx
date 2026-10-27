@@ -61,6 +61,7 @@ export default function HomePage() {
                     src="/blossoms_team.webp"
                     alt="Team Onyx Logo"
                     fill
+                    sizes="(max-width: 640px) 144px, 176px"
                     className="object-contain p-1"
                     priority
                   />
@@ -68,12 +69,18 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Festival Motto Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#06110C]/80 border border-[#A8CBB7]/25 text-xs sm:text-sm font-tech text-[#F2EFE8] backdrop-blur-md shadow-md">
-              <span className="text-[#A8CBB7]">Motto:</span>
-              <span className="font-bold text-[#FFE082] uppercase tracking-wider">&lsquo;Be the Best&rsquo;</span>
-              <span className="text-[#A8CBB7]/40">•</span>
-              <span className="text-[#F2EFE8]/80">Over 7,000 Students • 32 Cultural Arenas</span>
+            {/* Festival Motto Pill Badge & Status */}
+            <div className="flex flex-col sm:flex-row items-center gap-2">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#06110C]/80 border border-[#A8CBB7]/25 text-xs sm:text-sm font-tech text-[#F2EFE8] backdrop-blur-md shadow-md">
+                <span className="text-[#A8CBB7]">Motto:</span>
+                <span className="font-bold text-[#FFE082] uppercase tracking-wider">&lsquo;Be the Best&rsquo;</span>
+                <span className="text-[#A8CBB7]/40">•</span>
+                <span className="text-[#F2EFE8]/80">Over 7,000 Students • 31 Cultural Competitions</span>
+              </div>
+              <div className="text-[11px] sm:text-xs font-tech text-[#A8CBB7] tracking-wider uppercase flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#171717]/80 border border-[#A8CBB7]/20 backdrop-blur-md">
+                <span className="w-2 h-2 rounded-full bg-[#A8CBB7] animate-pulse" />
+                <span>Prelims Schedule Tentative • Nov–Dec 2026 Window</span>
+              </div>
             </div>
 
             {/* Official Slogan Graphic Banner */}
@@ -83,6 +90,7 @@ export default function HomePage() {
                   src="/blossoms_slogan.webp"
                   alt="From flames to flights, White Onyx Ignites"
                   fill
+                  sizes="(max-width: 640px) 384px, (max-width: 768px) 576px, 672px"
                   className="object-contain drop-shadow-[0_4px_24px_rgba(245,158,11,0.65)] scale-105 sm:scale-115 transition-transform"
                   priority
                 />
@@ -148,32 +156,35 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             
             {/* Poster 1: Official Rulebook */}
-            <a
-              href="https://www.canva.com/design/DAG3QRRsCDk/aPmAeYyCw9B-Q3pigaoNBQ/edit?utm_content=DAG3QRRsCDk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative rounded-3xl overflow-hidden bg-[#171717]/85 border border-[#A8CBB7]/20 hover:border-[#A8CBB7]/50 shadow-xl transition-all duration-300 hover:-translate-y-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
-            >
-              <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#171717]">
-                <Image
-                  src="/blossoms_rulebook.webp"
-                  alt="Blossoms Rulebook Poster"
-                  fill
-                  className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="p-5 bg-[#06110C] border-t border-[#A8CBB7]/15 flex items-center justify-between">
-                <div className="text-left">
-                  <h3 className="font-tech font-bold text-sm text-[#F2EFE8] group-hover:text-[#A8CBB7] transition-colors">
-                    Official Festival Rulebook
-                  </h3>
-                  <p className="font-body text-xs text-[#F2EFE8]/70">Open Interactive Canva Guide</p>
+            {siteConfig.rulebookUrl && (
+              <a
+                href={siteConfig.rulebookUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative rounded-3xl overflow-hidden bg-[#171717]/85 border border-[#A8CBB7]/20 hover:border-[#A8CBB7]/50 shadow-xl transition-all duration-300 hover:-translate-y-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
+              >
+                <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#171717]">
+                  <Image
+                    src="/blossoms_rulebook.webp"
+                    alt="Blossoms Official Rulebook Poster"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 448px"
+                    className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
-                <div className="p-2.5 rounded-xl bg-[#171717] text-[#A8CBB7] group-hover:bg-[#A8CBB7] group-hover:text-[#06110C] transition-colors">
-                  <ExternalLink className="w-4 h-4" />
+                <div className="p-5 bg-[#06110C] border-t border-[#A8CBB7]/15 flex items-center justify-between">
+                  <div className="text-left">
+                    <h3 className="font-tech font-bold text-sm text-[#F2EFE8] group-hover:text-[#A8CBB7] transition-colors">
+                      Official Festival Rulebook
+                    </h3>
+                    <p className="font-body text-xs text-[#F2EFE8]/70">Open Interactive Canva Guide</p>
+                  </div>
+                  <div className="p-2.5 rounded-xl bg-[#171717] text-[#A8CBB7] group-hover:bg-[#A8CBB7] group-hover:text-[#06110C] transition-colors">
+                    <ExternalLink className="w-4 h-4" />
+                  </div>
                 </div>
-              </div>
-            </a>
+              </a>
+            )}
 
             {/* Poster 2: Blossoms Know More Guide */}
             <a
@@ -187,6 +198,7 @@ export default function HomePage() {
                   src="/blossoms_knowmore.webp"
                   alt="Blossoms Know More Poster"
                   fill
+                  sizes="(max-width: 768px) 100vw, 448px"
                   className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
@@ -241,24 +253,26 @@ export default function HomePage() {
                 </div>
               </div>
             ))}
-            {/* Set 2 (for seamless infinite loop) */}
-            {MARQUEE_IMAGES.map((img, idx) => (
-              <div 
-                key={`m2-${idx}`} 
-                className="relative w-72 sm:w-80 h-48 sm:h-52 shrink-0 rounded-2xl overflow-hidden border border-[#A8CBB7]/20 shadow-lg bg-[#06110C] group"
-              >
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  sizes="(max-width: 768px) 288px, 320px"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity p-3 flex items-end">
-                  <span className="text-xs text-[#F2EFE8] font-medium font-tech">{img.alt}</span>
+            {/* Set 2 (Purely decorative clones for seamless infinite loop) */}
+            <div aria-hidden="true" role="presentation" className="flex gap-6">
+              {MARQUEE_IMAGES.map((img, idx) => (
+                <div 
+                  key={`m2-${idx}`} 
+                  className="relative w-72 sm:w-80 h-48 sm:h-52 shrink-0 rounded-2xl overflow-hidden border border-[#A8CBB7]/20 shadow-lg bg-[#06110C] group"
+                >
+                  <Image
+                    src={img.src}
+                    alt=""
+                    fill
+                    sizes="(max-width: 768px) 288px, 320px"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity p-3 flex items-end">
+                    <span className="text-xs text-[#F2EFE8] font-medium font-tech">{img.alt}</span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
@@ -308,7 +322,7 @@ export default function HomePage() {
             {/* Left Column: Descriptive Content & Team Onyx Details */}
             <div className="lg:col-span-7 space-y-8">
               <p className="font-body text-base sm:text-lg text-[#F2EFE8]/80 leading-relaxed font-normal">
-                Blossoms is the intra-deanery cultural fest at CHRIST (Deemed To Be University) Bangalore with the motto <span className="text-[#F2EFE8] font-bold">&lsquo;Be the best&rsquo;</span>. This is a unique venture where all 7,000 students of the university participate in cultural competitions. The events are divided into five categories - Art, Theatre, Stage, Music &amp; Literary. Students compete across these disciplines celebrating artistic excellence, unity, and academic distinction.
+                Blossoms is the intra-deanery cultural fest at CHRIST (Deemed To Be University) Bangalore with the motto <span className="text-[#F2EFE8] font-bold">&lsquo;Be the best&rsquo;</span>. This is a unique venture where all 7,000 students of the university participate in cultural competitions. The events are divided into five categories - Art, Literary, Music, Theatre, and Dance. Students compete across these disciplines celebrating artistic excellence, unity, and academic distinction.
               </p>
 
               {/* Team Onyx Identity Card */}
@@ -406,8 +420,9 @@ export default function HomePage() {
               <div className="relative w-32 h-32 flex items-center justify-center">
                 <Image
                   src="/3rd.webp"
-                  alt="3rd Place Trophy - Procession"
+                  alt="3rd Place Trophy - Deanery Procession"
                   fill
+                  sizes="128px"
                   className="object-contain drop-shadow-lg"
                 />
               </div>
@@ -430,8 +445,9 @@ export default function HomePage() {
               <div className="relative w-32 h-32 flex items-center justify-center pt-2">
                 <Image
                   src="/2nd.webp"
-                  alt="2nd Place Trophy - We the Best"
+                  alt="2nd Place Trophy - 'We the Best' Overall Trophy"
                   fill
+                  sizes="128px"
                   className="object-contain drop-shadow-lg"
                 />
               </div>
@@ -454,8 +470,9 @@ export default function HomePage() {
               <div className="relative w-32 h-32 flex items-center justify-center">
                 <Image
                   src="/2nd.webp"
-                  alt="2nd Place Trophy - Inauguration"
+                  alt="2nd Place Trophy - Inauguration Ceremony"
                   fill
+                  sizes="128px"
                   className="object-contain drop-shadow-lg"
                 />
               </div>
@@ -488,7 +505,7 @@ export default function HomePage() {
             </h2>
           </div>
           <p className="font-body text-xs sm:text-sm text-[#F2EFE8]/75 max-w-md font-normal leading-relaxed">
-            Explore rules, formats, and schedules for all 32 official festival competitions.
+            Explore rules, formats, and schedules for all 31 official festival competitions.
           </p>
         </div>
 
