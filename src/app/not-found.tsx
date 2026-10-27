@@ -27,7 +27,7 @@ const DISCIPLINES = [
   { slug: 'literary', name: 'Literary', count: '8 Events', icon: BookOpen },
   { slug: 'music', name: 'Music', count: '5 Events', icon: Music },
   { slug: 'theatre', name: 'Theatre', count: '6 Events', icon: Drama },
-  { slug: 'dance', name: 'Dance', count: '4 Events', icon: Footprints },
+  { slug: 'dance', name: 'Dance', count: '3 Events', icon: Footprints },
 ];
 
 export default function NotFound() {

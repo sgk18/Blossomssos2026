@@ -17,13 +17,46 @@ import {
 import { siteConfig } from '@/data/site-config';
 
 export const metadata: Metadata = {
-  title: 'About Blossoms & Team Onyx',
-  description: 'The journey, identity, and achievements of Team Onyx representing the School of Sciences at Blossoms, CHRIST (Deemed to be University).',
+  title: 'About Blossoms & Team Onyx | School of Sciences',
+  description: 'The journey, identity, and achievements of Team Onyx representing the School of Sciences at Blossoms, CHRIST (Deemed to be University), Bangalore.',
+  alternates: {
+    canonical: '/about',
+  },
+  openGraph: {
+    title: 'About Blossoms & Team Onyx | School of Sciences',
+    description: 'The journey, identity, and achievements of Team Onyx representing the School of Sciences at Blossoms, CHRIST (Deemed to be University), Bangalore.',
+    url: `${siteConfig.canonicalUrl}/about`,
+    siteName: siteConfig.name,
+    type: 'website',
+  },
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: siteConfig.canonicalUrl,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'About',
+      item: `${siteConfig.canonicalUrl}/about`,
+    },
+  ],
 };
 
 export default function AboutPage() {
   return (
     <div className="pt-28 pb-16 md:pt-36 md:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-[#171717] text-[#F2EFE8] selection:bg-[#A31C1B]/30 selection:text-[#F2EFE8]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       
       {/* Header Banner */}
       <div className="max-w-4xl mb-16 space-y-4">
@@ -41,6 +74,7 @@ export default function AboutPage() {
               src="/blossoms_team.webp"
               alt="Team Onyx Insignia"
               fill
+              sizes="176px"
               className="object-contain p-1"
               priority
             />
@@ -182,11 +216,11 @@ export default function AboutPage() {
             <h2 className="font-tech text-2xl font-bold text-[#F2EFE8]">The Five Foundational Pillars</h2>
             <div className="space-y-3">
               {[
-                { name: 'Art', count: '9 Events', desc: 'Painting, Photography, Digital Poster, Rangoli, Charcoal, Collage, Cartooning, Greeting Cards, Pot Painting', slug: 'art' as const },
-                { name: 'Literary', count: '8 Events', desc: 'Debate, JAM (Just A Minute), Quiz, Creative Writing, Potpourri, Air Crash, Extempore, Dumb Charades', slug: 'literary' as const },
-                { name: 'Music', count: '6 Events', desc: 'Western Vocal Solo, Western Group, Indian Folk, Instrumental Solo, Battle of Bands Western & Indian', slug: 'music' as const },
-                { name: 'Theatre', count: '5 Events', desc: 'Street Theatre (Nukkad Natak), Mime, Proscenium Play, Mono Acting, Short Film', slug: 'theatre' as const },
-                { name: 'Dance', count: '4 Events', desc: 'Classical Dance Group, Indian Folk Group, Dance Duet, Theme Dance Ensemble', slug: 'dance' as const },
+                { name: 'Art', count: '9 Competitions', desc: 'Painting, Photography, Digital Poster Making, Rangoli Design, Mehendi Design, Pot Painting, Pencil Sketching, Greeting Card, Collage Making', slug: 'art' as const },
+                { name: 'Literary', count: '8 Competitions', desc: 'Debate, Extempore, Creative Writing, Quiz, Just A Minute (JAM), Pot Pourri, Dumb Charades, Air Crash', slug: 'literary' as const },
+                { name: 'Music', count: '5 Competitions', desc: 'Indian Folk & Film Singing (Solo), Western Singing (Solo), Acoustic Music Group (Western), Battle of the Bands (Western & Indian)', slug: 'music' as const },
+                { name: 'Theatre', count: '6 Competitions', desc: 'Mono Acting, Street Theatre (Nukkad Natak), Proscenium Stage Play, Mime, Short Film Making, Reel Making', slug: 'theatre' as const },
+                { name: 'Dance', count: '3 Competitions', desc: 'Dance Duet, Indian Dance Group (Non-Theme), Indian Classical Dance Group', slug: 'dance' as const },
               ].map((p) => (
                 <Link 
                   key={p.name} 
@@ -215,7 +249,7 @@ export default function AboutPage() {
                 href="/events"
                 className="clay-btn-accent font-tech px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm hover:scale-105 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
               >
-                <span>Explore All 32 Events</span>
+                <span>Explore All 31 Competitions</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
               <Link
@@ -248,7 +282,7 @@ export default function AboutPage() {
             <div className="space-y-4">
               <div className="p-4 rounded-2xl bg-[#171717] border border-[#A8CBB7]/15 flex items-center gap-4">
                 <div className="relative w-14 h-14 shrink-0">
-                  <Image src="/2nd.webp" alt="2nd Place Trophy" fill className="object-contain" />
+                  <Image src="/2nd.webp" alt="2nd Place Trophy - 'We the Best' Overall Trophy" fill sizes="56px" className="object-contain" />
                 </div>
                 <div>
                   <span className="text-[10px] font-tech font-bold text-[#A8CBB7] uppercase">Second Place • 2025–2026</span>
@@ -259,7 +293,7 @@ export default function AboutPage() {
 
               <div className="p-4 rounded-2xl bg-[#171717] border border-[#A8CBB7]/15 flex items-center gap-4">
                 <div className="relative w-14 h-14 shrink-0">
-                  <Image src="/2nd.webp" alt="2nd Place Trophy" fill className="object-contain" />
+                  <Image src="/2nd.webp" alt="2nd Place Trophy - Inauguration Ceremony" fill sizes="56px" className="object-contain" />
                 </div>
                 <div>
                   <span className="text-[10px] font-tech font-bold text-[#A8CBB7] uppercase">Second Place • 2025–2026</span>
@@ -270,7 +304,7 @@ export default function AboutPage() {
 
               <div className="p-4 rounded-2xl bg-[#171717] border border-[#A8CBB7]/15 flex items-center gap-4">
                 <div className="relative w-14 h-14 shrink-0">
-                  <Image src="/3rd.webp" alt="3rd Place Trophy" fill className="object-contain" />
+                  <Image src="/3rd.webp" alt="3rd Place Trophy - Deanery Procession" fill sizes="56px" className="object-contain" />
                 </div>
                 <div>
                   <span className="text-[10px] font-tech font-bold text-[#A31C1B] uppercase">Third Place • 2025–2026</span>
@@ -285,7 +319,7 @@ export default function AboutPage() {
           <div className="p-6 rounded-3xl bg-[#06110C]/85 border border-[#A8CBB7]/20 shadow-xl space-y-4 backdrop-blur-md">
             <h3 className="font-tech text-lg font-bold text-[#F2EFE8]">Join Team Onyx</h3>
             <p className="font-body text-xs text-[#F2EFE8]/70 leading-relaxed">
-              Represent the School of Sciences across 32 competitive formats. Slots are open for preliminary auditions!
+              Represent the School of Sciences across 31 competitive formats. Slots are open for preliminary auditions!
             </p>
             {siteConfig.registrationUrl && (
               <a

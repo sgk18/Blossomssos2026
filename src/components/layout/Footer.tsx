@@ -48,7 +48,7 @@ export function Footer() {
             </div>
 
             <p className="font-body text-xs sm:text-sm text-[#F2EFE8]/75 leading-relaxed font-normal max-w-sm">
-              The premier annual inter-deanery cultural celebration of the School of Sciences at CHRIST (Deemed to be University), Bangalore. Where scientific rigor converges with creative expression.
+              The premier annual intra-deanery cultural celebration of the School of Sciences at CHRIST (Deemed to be University), Bangalore, selecting Team Onyx for the university inter-deanery finals. Where scientific rigor converges with creative expression.
             </p>
 
             {/* Official CHRIST Logo & Badge */}

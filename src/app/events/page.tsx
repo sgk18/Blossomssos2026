@@ -17,7 +17,36 @@ const EventCategoriesCarousel = dynamic(
 
 export const metadata: Metadata = {
   title: 'Festival Disciplines & Arenas | Blossoms SOS 2026–27',
-  description: 'Explore the 32 competition events across Art, Literary, Music, Theatre, and Dance at Blossoms School of Sciences with interactive 3D carousel view.',
+  description: 'Explore the 31 competition events across Art, Literary, Music, Theatre, and Dance at Blossoms School of Sciences with interactive 3D carousel view.',
+  alternates: {
+    canonical: '/events',
+  },
+  openGraph: {
+    title: 'Festival Disciplines & Arenas | Blossoms SOS 2026–27',
+    description: 'Explore the 31 competition events across Art, Literary, Music, Theatre, and Dance at Blossoms School of Sciences with interactive 3D carousel view.',
+    url: `${siteConfig.canonicalUrl}/events`,
+    siteName: siteConfig.name,
+    type: 'website',
+  },
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: siteConfig.canonicalUrl,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Events',
+      item: `${siteConfig.canonicalUrl}/events`,
+    },
+  ],
 };
 
 export default function EventsPage() {
@@ -25,6 +54,10 @@ export default function EventsPage() {
 
   return (
     <div className="pt-28 pb-16 md:pt-36 md:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-[#171717] text-[#F2EFE8] selection:bg-[#A31C1B]/30 selection:text-[#F2EFE8]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Page Header */}
       <div className="max-w-3xl mb-10">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#06110C] border border-[#A8CBB7]/25 text-xs font-semibold text-[#A8CBB7] mb-4 shadow-sm">
@@ -69,7 +102,7 @@ export default function EventsPage() {
           <div>
             <h3 className="text-lg font-bold text-[#F2EFE8]">Looking for Competition Timelines?</h3>
             <p className="text-xs sm:text-sm text-[#F2EFE8]/70 mt-1 max-w-xl leading-relaxed font-normal">
-              Event venues, timings, and prelims schedules for all 32 competitions are available in the festival schedule view.
+              Event venues, timings, and prelims schedules for all 31 competitions are available in the festival schedule view.
             </p>
           </div>
         </div>

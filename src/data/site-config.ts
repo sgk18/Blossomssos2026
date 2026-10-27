@@ -14,14 +14,14 @@ export const siteConfig: SiteConfig = {
   tagline: 'Be the Best • From Flames to Flights, White Onyx Ignites.',
   motto: 'Be the Best',
   slogan: 'From Flames to Flights, White Onyx Ignites.',
-  defaultDescription: 'Blossoms School of Sciences at CHRIST (Deemed to be University), Bangalore. Motto: "Be the Best". Team Onyx: "From Flames to Flights, White Onyx Ignites." Over 7,000 students across 32 cultural competitions.',
+  defaultDescription: 'Blossoms School of Sciences at CHRIST (Deemed to be University), Bangalore. Motto: "Be the Best". Team Onyx: "From Flames to Flights, White Onyx Ignites." Over 7,000 students across 31 cultural competitions.',
   
   activeEditionYear: '2025',
   availableEditions: ['2025'],
   
-  canonicalUrl: 'https://blossomssos2026.vercel.app',
+  canonicalUrl: 'https://blossomssos.vercel.app',
   registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeFKorn7aP-rWXOkLGzED0MBoe9TDMcE8Rzf-tjaJrBP936zA/viewform?usp=sharing&ouid=114906650785065612305',
-  rulebookUrl: 'https://www.canva.com/design/DAG3QRRsCDk/aPmAeYyCw9B-Q3pigaoNBQ/edit?utm_content=DAG3QRRsCDk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton',
+  rulebookUrl: 'https://www.canva.com/design/DAG3QRRsCDk/aPmAeYyCw9B-Q3pigaoNBQ/view?utm_content=DAG3QRRsCDk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton',
   knowmorePdfUrl: '/blossoms_knowmore.pdf',
   contactEmail: 'blossoms.sos@christuniversity.in',
   

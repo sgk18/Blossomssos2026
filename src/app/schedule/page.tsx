@@ -4,15 +4,51 @@ import { ScheduleView } from './ScheduleView';
 import { SCHEDULE_METADATA_2026 } from '@/data/schedule-2026-27';
 import { Loader2 } from 'lucide-react';
 
+import { siteConfig } from '@/data/site-config';
+
 export const metadata: Metadata = {
-  title: 'BLOSSOMS 2026–27 — Prelims Event Schedule | School of Science',
+  title: 'Prelims Event Schedule | Blossoms SOS 2026–27',
   description:
-    'Explore the tentative prelims event schedule, venues, and competition timings for Blossoms 2026–27 School of Science at CHRIST (Deemed to be University), Bangalore.',
+    'Explore the tentative prelims event schedule, venues, and competition timings for Blossoms 2026–27 School of Sciences at CHRIST (Deemed to be University), Bangalore.',
+  alternates: {
+    canonical: '/schedule',
+  },
+  openGraph: {
+    title: 'Prelims Event Schedule | Blossoms SOS 2026–27',
+    description:
+      'Explore the tentative prelims event schedule, venues, and competition timings for Blossoms 2026–27 School of Sciences at CHRIST (Deemed to be University), Bangalore.',
+    url: `${siteConfig.canonicalUrl}/schedule`,
+    siteName: siteConfig.name,
+    type: 'website',
+  },
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: siteConfig.canonicalUrl,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Schedule',
+      item: `${siteConfig.canonicalUrl}/schedule`,
+    },
+  ],
 };
 
 export default function SchedulePage() {
   return (
-    <main className="min-h-screen pt-28 pb-16 md:pt-36 md:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-[#171717] text-[#F2EFE8] selection:bg-[#A31C1B]/30 selection:text-[#F2EFE8]">
+    <div className="min-h-screen pt-28 pb-16 md:pt-36 md:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-[#171717] text-[#F2EFE8] selection:bg-[#A31C1B]/30 selection:text-[#F2EFE8]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Page Header */}
       <header className="max-w-3xl mb-10 sm:mb-12">
         {/* Tentative Status Badge (Config-driven) */}
@@ -48,6 +84,6 @@ export default function SchedulePage() {
       >
         <ScheduleView />
       </Suspense>
-    </main>
+    </div>
   );
 }
