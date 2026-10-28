@@ -107,7 +107,7 @@ export function OurTeamsSection() {
             </svg>
 
             {/* Title: "Our Team" in Luxury Cormorant Garamond Serif */}
-            <h2 id="our-teams-heading" className="font-serif text-3xl sm:text-5xl md:text-6xl font-normal text-[#3D246C] tracking-tight whitespace-nowrap">
+            <h2 id="our-teams-heading" className="font-serif text-3xl sm:text-5xl md:text-6xl font-bold italic text-[#3D246C] tracking-wide whitespace-nowrap drop-shadow-sm">
               Our Team
             </h2>
 
