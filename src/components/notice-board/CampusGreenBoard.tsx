@@ -13,7 +13,6 @@ import {
   Calendar,
   Clock,
   MapPin,
-  Sparkles,
   FileText,
 } from 'lucide-react';
 import {
@@ -575,8 +574,7 @@ export function CampusGreenBoard({
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
                           <div className="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white text-[10px] font-mono">
                             <span className="bg-black/60 backdrop-blur-xs px-1.5 py-0.5 rounded border border-white/20 flex items-center gap-1 font-semibold">
-                              <Sparkles className="w-2.5 h-2.5 text-[#FFDBC3]" />
-                              <span>Official Poster</span>
+                                <span>Official Poster</span>
                             </span>
                             <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-[#5C4B99]/90 px-1.5 py-0.5 rounded text-[9px] font-tech font-bold uppercase tracking-wide">
                               Inspect Split View
@@ -660,7 +658,6 @@ export function CampusGreenBoard({
                 href="/notice-board"
                 className="clay-btn-primary bg-[#FFDBC3] hover:bg-white !text-[#3D246C] font-tech px-5 py-2.5 rounded-xl text-xs font-extrabold inline-flex items-center gap-2 shadow-lg transition-all hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white shrink-0"
               >
-                <Sparkles className="w-3.5 h-3.5 text-[#5C4B99]" />
                 <span>Open Full Notice Board</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
@@ -762,7 +759,6 @@ export function CampusGreenBoard({
                     {/* Highlight Card: Theme & Invite */}
                     <div className="mt-3.5 p-3.5 rounded-xl border-2 border-[#3D246C] bg-white shadow-xs">
                       <div className="flex items-center gap-2 text-xs font-tech font-extrabold text-[#5C4B99] uppercase tracking-wider">
-                        <Sparkles className="w-3.5 h-3.5 text-[#5C4B99]" />
                         <span>Flames to Flight — White Onyx Ignites</span>
                       </div>
                       <p className="mt-1.5 font-body text-xs sm:text-sm text-[#231942]/90 leading-relaxed">

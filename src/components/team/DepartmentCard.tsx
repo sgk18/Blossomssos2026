@@ -7,7 +7,7 @@ import {
   Truck, 
   Camera, 
   HeartHandshake, 
-  Sparkles, 
+  Palette, 
   Users, 
   ArrowRight, 
   CheckCircle2, 
@@ -20,7 +20,7 @@ const ICONS = {
   Truck,
   Camera,
   HeartHandshake,
-  Sparkles,
+  Palette,
   Users,
 };
 

@@ -440,7 +440,7 @@ export interface Department {
   accent: string;
   pastel: string;
   borderColor: string;
-  iconName: 'ShieldCheck' | 'Truck' | 'Camera' | 'HeartHandshake' | 'Sparkles' | 'Users';
+  iconName: 'ShieldCheck' | 'Truck' | 'Camera' | 'HeartHandshake' | 'Palette' | 'Users';
   image?: string;
   imageAlt: string;
   responsibilities: string[];
@@ -675,7 +675,7 @@ export const DEPARTMENTS_DATA: Department[] = [
     accent: '#4385F4',
     pastel: '#EEF4FF',
     borderColor: 'rgba(67, 133, 244, 0.25)',
-    iconName: 'Sparkles',
+    iconName: 'Palette',
     imageAlt: 'Discipline coordinators managing stage execution',
     responsibilities: [
       'Strict execution of official festival competition guidelines',

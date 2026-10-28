@@ -4,7 +4,6 @@ import React, { useState, useMemo, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import {
   CalendarClock,
-  Sparkles,
   ArrowRight,
   Pin,
 } from 'lucide-react';
@@ -161,7 +160,7 @@ export function NoticeBoardView() {
               </div>
             ) : (
               <div className="p-5 rounded-2xl bg-[#FFDBC3]/50 border border-[#3D246C]/15 text-center space-y-2">
-                <Sparkles className="w-6 h-6 text-[#5C4B99] mx-auto" />
+                <CalendarClock className="w-6 h-6 text-[#5C4B99] mx-auto" />
                 <p className="font-tech text-sm font-bold text-[#3D246C]">
                   Blossoms 2026–27 Prelims Cycle Complete
                 </p>

@@ -12,7 +12,7 @@ import {
   Truck,
   Camera,
   HeartHandshake,
-  Sparkles,
+  Palette,
   Users,
   UserCheck
 } from 'lucide-react';
@@ -24,7 +24,7 @@ const ICONS = {
   Truck,
   Camera,
   HeartHandshake,
-  Sparkles,
+  Palette,
   Users,
 };
 

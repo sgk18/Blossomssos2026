@@ -7,7 +7,6 @@ import {
   Clock,
   MapPin,
   Download,
-  Sparkles,
   AlertCircle,
   CheckCircle2,
   ExternalLink,
@@ -287,7 +286,6 @@ export function WeeklyRadarSection({
           <div className="p-5 rounded-2xl bg-[#9F91CC]/20 border border-[#3D246C]/15 flex flex-col justify-between space-y-4">
             <div className="space-y-2">
               <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#5C4B99] uppercase">
-                <Sparkles className="w-4 h-4" />
                 <span>Action 02 • Prep</span>
               </div>
               <h4 className="font-tech text-base font-extrabold text-[#3D246C]">

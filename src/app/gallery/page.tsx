@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Sparkles, Camera, Film, Users, Award } from 'lucide-react';
+import { Camera, Film, Users, Award } from 'lucide-react';
 import { GalleryCoverflow } from '@/components/gallery/GalleryCoverflow';
 import { GalleryBentoGrid } from '@/components/gallery/GalleryBentoGrid';
 
@@ -30,7 +30,6 @@ export default function GalleryPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4 sm:mb-8">
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 border border-[#3D246C]/15 text-[#5C4B99] text-xs font-bold tracking-widest uppercase shadow-xs">
-            <Sparkles className="w-3.5 h-3.5" />
             <span>School of Sciences &bull; Team Onyx Visual Archives</span>
           </div>
 

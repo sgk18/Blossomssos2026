@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, Calendar, Sparkles, Mail } from 'lucide-react';
+import { ArrowRight, Calendar, Mail } from 'lucide-react';
 import { siteConfig } from '@/data/site-config';
 
 export function TeamClosingSection() {
@@ -16,7 +16,6 @@ export function TeamClosingSection() {
           
           {/* Eyebrow Badge */}
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFDBC3]/60 border border-[#3D246C]/15 text-[11px] font-tech font-bold text-[#5C4B99]">
-            <Sparkles className="w-3 h-3 text-[#5C4B99]" />
             <span>UNITED FOR EXCELLENCE &bull; TEAM ONYX</span>
           </div>
 
