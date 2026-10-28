@@ -49,7 +49,12 @@ export function Footer() {
         reachedFooter = footerRect.top <= window.innerHeight - 20;
       }
 
-      setIsStickyVisible(pastHero && !reachedFooter);
+      // 3. Hide floating button if a modal dialog is currently open
+      const isModalOpen =
+        typeof document !== 'undefined' &&
+        (document.body.style.overflow === 'hidden' || Boolean(document.querySelector('[role="dialog"]')));
+
+      setIsStickyVisible(pastHero && !reachedFooter && !isModalOpen);
       ticking = false;
     };
 
@@ -388,7 +393,7 @@ export function Footer() {
         tabIndex={isStickyVisible ? 0 : -1}
         aria-hidden={!isStickyVisible}
         aria-label="Register Now (Floating Sticky)"
-        className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-transparent pointer-events-auto transition-all duration-300 ease-in-out cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99] rounded-full ${
+        className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-40 bg-transparent pointer-events-auto transition-all duration-300 ease-in-out cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99] rounded-full ${
           isStickyVisible
             ? 'opacity-100 translate-y-0 pointer-events-auto'
             : 'opacity-0 translate-y-4 pointer-events-none'

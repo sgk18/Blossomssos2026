@@ -15,7 +15,6 @@ import {
   FileText,
   ZoomIn,
   ZoomOut,
-  Maximize2,
   Eye,
 } from 'lucide-react';
 import {
@@ -680,7 +679,7 @@ export function CampusGreenBoard({
           role="dialog"
           aria-modal="true"
           aria-labelledby="notice-reader-title"
-          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
+          className="fixed inset-0 z-[80] flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
         >
           <div
             className="fixed inset-0 bg-[#3D246C]/65 backdrop-blur-md"
@@ -759,11 +758,11 @@ export function CampusGreenBoard({
                   </div>
 
                   {/* Interactive Toolbar below Poster */}
-                  <div className="flex items-center justify-between gap-2 pt-1">
+                  <div className="flex items-center justify-center pt-1">
                     <button
                       type="button"
                       onClick={() => setIsImageZoomed((prev) => !prev)}
-                      className="px-3 py-1.5 rounded-lg bg-[#5C4B99]/10 hover:bg-[#5C4B99]/20 text-[#3D246C] border border-[#3D246C]/15 text-xs font-tech font-bold inline-flex items-center gap-1.5 transition-colors"
+                      className="w-full sm:w-auto px-4 py-1.5 rounded-lg bg-[#5C4B99]/10 hover:bg-[#5C4B99]/20 text-[#3D246C] border border-[#3D246C]/15 text-xs font-tech font-bold inline-flex items-center justify-center gap-1.5 transition-colors"
                     >
                       {isImageZoomed ? (
                         <>
@@ -777,17 +776,6 @@ export function CampusGreenBoard({
                         </>
                       )}
                     </button>
-
-                    <a
-                      href={activeNotice.imageUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-3 py-1.5 rounded-lg bg-white hover:bg-[#FFDBC3]/30 text-[#3D246C] border border-[#3D246C]/20 text-xs font-tech font-bold inline-flex items-center gap-1.5 transition-colors"
-                      title="Open full resolution poster in new tab"
-                    >
-                      <Maximize2 className="w-3.5 h-3.5 text-[#5C4B99]" />
-                      <span>High-Res Original</span>
-                    </a>
                   </div>
                 </div>
 
@@ -879,45 +867,8 @@ export function CampusGreenBoard({
                   </div>
 
                   {/* Modal Actions */}
-                  <div className="mt-5 pt-3.5 border-t border-[#3D246C]/15 flex flex-wrap items-center justify-between gap-3">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <button
-                        type="button"
-                        onClick={() => toggleSavedNoticeId(activeNotice.id)}
-                        className={`px-3.5 py-2 rounded-xl text-xs font-tech font-bold inline-flex items-center gap-1.5 border transition-colors ${
-                          savedIds.includes(activeNotice.id)
-                            ? 'bg-[#5C4B99] text-white border-[#5C4B99]'
-                            : 'bg-white text-[#3D246C] border-[#3D246C]/20 hover:border-[#5C4B99]'
-                        }`}
-                      >
-                        <Bookmark
-                          className={`w-3.5 h-3.5 ${
-                            savedIds.includes(activeNotice.id) ? 'fill-current' : ''
-                          }`}
-                        />
-                        <span>{savedIds.includes(activeNotice.id) ? 'Saved on Board' : 'Save Circular'}</span>
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() => handleShareNotice(activeNotice)}
-                        className="px-3.5 py-2 rounded-xl bg-white hover:bg-[#FFDBC3]/40 text-[#3D246C] border border-[#3D246C]/20 text-xs font-tech font-bold inline-flex items-center gap-1.5 transition-colors"
-                      >
-                        {copiedId === activeNotice.id ? (
-                          <>
-                            <Check className="w-3.5 h-3.5 text-emerald-700" />
-                            <span>Copied for WhatsApp!</span>
-                          </>
-                        ) : (
-                          <>
-                            <Share2 className="w-3.5 h-3.5 text-[#5C4B99]" />
-                            <span>Share Circular</span>
-                          </>
-                        )}
-                      </button>
-                    </div>
-
-                    <div className="flex items-center gap-2">
+                  {(activeNotice.linkedEventId || activeNotice.actionHref) && (
+                    <div className="mt-5 pt-3.5 border-t border-[#3D246C]/15 flex items-center justify-end gap-3">
                       {activeNotice.linkedEventId && (
                         <button
                           type="button"
@@ -955,7 +906,7 @@ export function CampusGreenBoard({
                         )
                       )}
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
             ) : (
