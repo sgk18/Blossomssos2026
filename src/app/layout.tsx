@@ -4,6 +4,7 @@ import '@/styles/globals.css';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { siteConfig } from '@/data/site-config';
+import { ScrollAmbience } from '@/components/effects/ScrollAmbience';
 
 const sansFont = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -151,6 +152,9 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
+
+        {/* Ambient Aseprite 2D Cherry Blossoms & White Onyx Pigeons Scroll System */}
+        <ScrollAmbience />
 
         {/* Global Navigation Header */}
         <Navbar />
