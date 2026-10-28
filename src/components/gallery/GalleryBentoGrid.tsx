@@ -3,7 +3,6 @@
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import Image from 'next/image';
 import { 
-  Sparkles, 
   ChevronDown, 
   Maximize2, 
   X, 
@@ -106,10 +105,6 @@ export function GalleryBentoGrid() {
         
         {/* Header & Subtitle */}
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 border border-[#3D246C]/15 text-[#5C4B99] text-xs font-bold tracking-widest uppercase mb-3 shadow-xs">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Curated Bento Collection</span>
-          </div>
           <h2 id="bento-heading" className="font-angular text-3xl sm:text-5xl font-black text-[#3D246C] tracking-tight">
             The Festival Mosaic
           </h2>

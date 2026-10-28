@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
-import { ChevronLeft, ChevronRight, Sparkles, MapPin, Calendar, Maximize2 } from 'lucide-react';
+import { ChevronLeft, ChevronRight, MapPin, Calendar, Maximize2 } from 'lucide-react';
 import { COVERFLOW_SLIDES, CoverflowSlide } from '@/data/gallery-data';
 
 interface GalleryCoverflowProps {
@@ -82,10 +82,6 @@ export function GalleryCoverflow({ onSelectImage }: GalleryCoverflowProps) {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 border border-[#3D246C]/15 text-[#5C4B99] text-xs font-bold tracking-widest uppercase mb-3 shadow-xs">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Interactive Cover Flow</span>
-          </div>
           <h2 className="font-angular text-3xl sm:text-5xl font-black text-[#3D246C] tracking-tight">
             The Spotlight Carousel
           </h2>

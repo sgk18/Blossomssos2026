@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import { Sparkles, ChevronRight, Camera, Film, Users, Award } from 'lucide-react';
+import { Sparkles, Camera, Film, Users, Award } from 'lucide-react';
 import { GalleryCoverflow } from '@/components/gallery/GalleryCoverflow';
 import { GalleryFannedDeck } from '@/components/gallery/GalleryFannedDeck';
 import { GalleryBentoGrid } from '@/components/gallery/GalleryBentoGrid';
@@ -26,30 +25,8 @@ export default function GalleryPage() {
   return (
     <main className="min-h-screen bg-[#FFDBC3] text-[#3D246C] selection:bg-[#5C4B99] selection:text-white pt-24 sm:pt-28 pb-16">
       
-      {/* 1. Page Header & Hero Breadcrumb */}
+      {/* 1. Page Header */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4 sm:mb-8">
-        
-        {/* Breadcrumb Navigation */}
-        <nav aria-label="Breadcrumb" className="mb-6">
-          <ol className="flex items-center gap-2 text-xs font-semibold text-[#5C4B99]">
-            <li>
-              <Link 
-                href="/" 
-                className="hover:text-[#3D246C] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99] rounded"
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <ChevronRight className="w-3.5 h-3.5 text-[#5C4B99]/50" />
-            </li>
-            <li className="text-[#3D246C] font-bold" aria-current="page">
-              Gallery
-            </li>
-          </ol>
-        </nav>
-
-        {/* Hero Heading */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 border border-[#3D246C]/15 text-[#5C4B99] text-xs font-bold tracking-widest uppercase shadow-xs">
             <Sparkles className="w-3.5 h-3.5" />
@@ -90,30 +67,6 @@ export default function GalleryPage() {
 
       {/* 4. Section 3: Curated Bento Collage & Lightbox (Inspiration: Reference Image 3) */}
       <GalleryBentoGrid />
-
-      {/* 5. Bottom Return Banner */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16 text-center">
-        <div className="p-8 sm:p-10 rounded-3xl bg-white/95 border border-[#3D246C]/15 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="text-left">
-            <span className="text-xs font-tech font-bold uppercase tracking-wider text-[#5C4B99] block">
-              Want to see the warriors behind the stages?
-            </span>
-            <h3 className="font-angular text-xl sm:text-2xl font-black text-[#3D246C] tracking-tight mt-1">
-              Meet the Organising Committees
-            </h3>
-            <p className="text-xs sm:text-sm text-[#5C4B99] font-body mt-1">
-              Discover faculty advisors, student leadership, and working groups of Team Onyx.
-            </p>
-          </div>
-
-          <Link
-            href="/team"
-            className="shrink-0 px-6 py-3 rounded-full bg-[#5C4B99] hover:bg-[#4C3C82] text-white text-xs sm:text-sm font-bold shadow-md shadow-[#5C4B99]/25 transition-all hover:scale-[1.02] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
-          >
-            Explore Team Onyx
-          </Link>
-        </div>
-      </section>
 
     </main>
   );
