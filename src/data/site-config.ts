@@ -16,16 +16,16 @@ export const siteConfig: SiteConfig = {
   motto: 'Be the Best',
   slogan: 'From Flames to Flights, White Onyx Ignites.',
   defaultDescription: `Blossoms School of Sciences at CHRIST (Deemed to be University), Bangalore. Motto: "Be the Best". Team Onyx: "From Flames to Flights, White Onyx Ignites." Over 7,000 students across ${eventCount} cultural competitions.`,
-  
+
   activeEditionYear: '2025',
   availableEditions: ['2025'],
-  
+
   canonicalUrl: 'https://blossomssos.vercel.app',
   registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSc50XPwp4jbLpfkuxmIwJanuHqMNGcxVL3S3OLVWIHKFjbkcA/viewform?usp=sharing&ouid=116834052241795042670',
-  rulebookUrl: 'https://www.canva.com/design/DAG3QRRsCDk/aPmAeYyCw9B-Q3pigaoNBQ/view?utm_content=DAG3QRRsCDk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton',
+  rulebookUrl: 'https://drive.google.com/file/d/1oFqj_1q7e9oIzqm01wk6hpBo53DZb9b0/view?usp=sharing',
   knowmorePdfUrl: '/blossoms_knowmore.pdf',
   contactEmail: 'blossoms.sos@christuniversity.in',
-  
+
   socialLinks: {
     instagram: 'https://www.instagram.com/blossoms_sos/',
   },

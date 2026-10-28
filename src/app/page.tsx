@@ -196,7 +196,7 @@ export default function HomePage() {
               Know More About Blossoms Here!
             </h2>
             <p className="font-body text-sm text-[#3D246C]/80 font-normal">
-              Access the official interactive Canva rulebook and the downloadable School of Sciences handbook.
+              Access the official Blossoms rulebook and the downloadable School of Sciences handbook.
             </p>
           </div>
 
@@ -213,7 +213,7 @@ export default function HomePage() {
                 <div className="relative aspect-[3/4] w-full overflow-hidden bg-white/50">
                   <Image
                     src="/blossoms_rulebook.webp"
-                    alt="Blossoms Official Rulebook Poster"
+                    alt="Blossoms Rulebook 2026-27 Poster"
                     fill
                     sizes="(max-width: 768px) 100vw, 448px"
                     className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
@@ -222,9 +222,9 @@ export default function HomePage() {
                 <div className="p-5 bg-white/95 border-t border-[#3D246C]/10 flex items-center justify-between">
                   <div className="text-left">
                     <h3 className="font-tech font-bold text-sm text-[#3D246C] group-hover:text-[#5C4B99] transition-colors">
-                      Official Festival Rulebook
+                      Blossoms Rulebook 2026-27
                     </h3>
-                    <p className="font-body text-xs text-[#3D246C]/70">Open Interactive Canva Guide</p>
+                    <p className="font-body text-xs text-[#3D246C]/70">Open Google Drive Guidelines</p>
                   </div>
                   <div className="p-2.5 rounded-xl bg-[#FFDBC3] text-[#3D246C] group-hover:bg-[#5C4B99] group-hover:text-white transition-colors">
                     <ExternalLink className="w-4 h-4" />

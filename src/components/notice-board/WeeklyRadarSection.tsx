@@ -291,10 +291,10 @@ export function WeeklyRadarSection({
                 <span>Action 02 • Prep</span>
               </div>
               <h4 className="font-tech text-base font-extrabold text-[#3D246C]">
-                Check Official Rulebook &amp; Rubrics
+                Check Blossoms Rulebook 2026-27 &amp; Rubrics
               </h4>
               <p className="font-body text-xs text-[#3D246C]/80 leading-relaxed">
-                Verify time limits, accompaniment guidelines, and judgment criteria in the official Canva guide before rehearsals.
+                Verify time limits, accompaniment guidelines, and judgment criteria in the official Google Drive rulebook before rehearsals.
               </p>
             </div>
             {siteConfig.rulebookUrl && (
@@ -304,7 +304,7 @@ export function WeeklyRadarSection({
                 rel="noopener noreferrer"
                 className="px-4 py-2.5 rounded-xl bg-white hover:bg-[#FFDBC3]/60 text-[#3D246C] border border-[#3D246C]/20 font-tech text-xs font-bold inline-flex items-center justify-center gap-1.5 transition-colors"
               >
-                <span>Open Canva Rulebook</span>
+                <span>Open Blossoms Rulebook</span>
                 <ExternalLink className="w-3.5 h-3.5 text-[#5C4B99]" />
               </a>
             )}

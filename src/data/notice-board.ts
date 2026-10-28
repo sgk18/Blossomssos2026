@@ -55,7 +55,7 @@ export const FESTIVAL_WEEKS_2026: FestivalWeek[] = [
     endDate: '2026-11-08',
     displayRange: '26 Oct – 8 Nov 2026',
     weeklyHighlight:
-      'Prelims registration slots are live! Review the official Canva Rulebook and handbook ahead of the 12 Nov Inauguration at Block 1 Quadrangle.',
+      'Prelims registration slots are live! Review the Blossoms Rulebook 2026-27 and handbook ahead of the 12 Nov Inauguration at Block 1 Quadrangle.',
   },
   {
     id: 'week-1',
@@ -131,7 +131,7 @@ export const NOTICE_BOARD_ITEMS: NoticeItem[] = [
       'Slots are open across all 5 cultural disciplines (Art, Literary, Music, Theatre & Dance) representing Team Onyx.',
     details: [
       'Students from all School of Sciences programmes may register via the official Google Form portal.',
-      'Verify team sizes, accompaniment rules, and evaluation rubrics inside the Official Canva Rulebook and Know More PDF before submitting.',
+      'Verify team sizes, accompaniment rules, and evaluation rubrics inside the Blossoms Rulebook 2026-27 and Know More PDF before submitting.',
       'All dates in the 2026–27 Prelims Schedule currently carry TENTATIVE status pending final deanery sign-off.',
     ],
     postedLabel: 'Pre-Fest Circular • Core Committee',
