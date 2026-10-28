@@ -44,13 +44,19 @@ export function CoreCommitteeSpotlight() {
             {/* Header with Avatar & Title */}
             <div className="flex items-start gap-3.5">
               <div className="relative w-12 h-12 rounded-xl overflow-hidden shrink-0 border border-[#3D246C]/15 bg-[#FFDBC3]/30">
-                <Image
-                  src={lead.image}
-                  alt={lead.roleTitle}
-                  fill
-                  sizes="48px"
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                />
+                {lead.image ? (
+                  <Image
+                    src={lead.image}
+                    alt={lead.roleTitle}
+                    fill
+                    sizes="48px"
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-[#5C4B99] text-white font-tech font-bold text-sm">
+                    <ShieldCheck className="w-5 h-5 text-white/90" />
+                  </div>
+                )}
               </div>
 
               <div className="overflow-hidden">

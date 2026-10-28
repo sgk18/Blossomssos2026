@@ -345,7 +345,7 @@ export interface CoreLeadershipRole {
   accent: string;
   pastel: string;
   borderColor: string;
-  image: string;
+  image?: string;
 }
 
 export const CORE_LEADERSHIP: CoreLeadershipRole[] = [
@@ -441,7 +441,7 @@ export interface Department {
   pastel: string;
   borderColor: string;
   iconName: 'ShieldCheck' | 'Truck' | 'Camera' | 'HeartHandshake' | 'Sparkles' | 'Users';
-  image: string;
+  image?: string;
   imageAlt: string;
   responsibilities: string[];
   operationalScope: string;

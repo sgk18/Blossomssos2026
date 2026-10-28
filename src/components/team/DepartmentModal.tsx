@@ -113,13 +113,22 @@ export function DepartmentModal({ department, onClose }: DepartmentModalProps) {
           
           {/* Representative Image Banner */}
           <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden border border-[#3D246C]/15 bg-[#FFDBC3]/30">
-            <Image
-              src={department.image}
-              alt={department.imageAlt}
-              fill
-              sizes="(max-width: 768px) 100vw, 768px"
-              className="object-cover"
-            />
+            {department.image ? (
+              <Image
+                src={department.image}
+                alt={department.imageAlt}
+                fill
+                sizes="(max-width: 768px) 100vw, 768px"
+                className="object-cover"
+              />
+            ) : (
+              <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#3D246C] via-[#5C4B99] to-[#3D246C] text-[#FFDBC3] p-6 text-center">
+                <IconComponent className="w-12 h-12 text-[#FFDBC3]/90 mb-2" />
+                <span className="font-tech text-sm font-bold tracking-wider uppercase text-white">
+                  {department.name}
+                </span>
+              </div>
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-[#3D246C]/75 via-transparent to-transparent" />
             <div className="absolute bottom-3 left-4 right-4">
               <p className="text-white text-xs sm:text-sm font-tech font-bold tracking-wide drop-shadow-sm">
