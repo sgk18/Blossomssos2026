@@ -9,7 +9,8 @@ import {
   ArrowRight, 
   ExternalLink,  
   Calendar, 
-  FileText 
+  FileText,
+  BookOpen 
 } from 'lucide-react';
 import { EventCategoriesCarouselSkeleton } from '@/components/events/EventCategoriesCarouselSkeleton';
 import { WavyDivider } from '@/components/ui/WavyDivider';
@@ -186,83 +187,90 @@ export default function HomePage() {
           2. POSTERS / OFFICIAL HANDOUTS SECTION
           ========================================================= */}
       <section id="posters-section" className="py-20 bg-[#9F91CC]/15">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           
-          <div className="space-y-3 max-w-2xl mx-auto">
+          <div className="space-y-3 max-w-2xl mx-auto text-center">
             <span className="text-xs font-tech font-bold uppercase tracking-[0.2em] text-[#5C4B99]">
               Official Handouts &amp; Guidelines
             </span>
             <h2 className="font-angular text-3xl sm:text-4xl font-black text-[#3D246C] tracking-tight">
-              Know More About Blossoms Here!
+              Blossoms 2026–27 Rulebook
             </h2>
             <p className="font-body text-sm text-[#3D246C]/80 font-normal">
-              Access the official Blossoms rulebook and the downloadable School of Sciences handbook.
+              Review official competition formats, judging rubrics, time limits, and venue guidelines across all 31 events.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            
-            {/* Poster 1: Official Rulebook */}
-            {siteConfig.rulebookUrl && (
+          {siteConfig.rulebookUrl && (
+            <div className="max-w-4xl mx-auto">
               <a
                 href={siteConfig.rulebookUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative rounded-3xl overflow-hidden bg-white/85 border border-[#3D246C]/15 hover:border-[#5C4B99]/40 shadow-xl transition-all duration-300 hover:-translate-y-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
+                className="group relative rounded-3xl overflow-hidden bg-white/90 border border-[#3D246C]/15 hover:border-[#5C4B99]/45 shadow-2xl transition-all duration-300 hover:-translate-y-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99] block"
               >
-                <div className="relative aspect-[3/4] w-full overflow-hidden bg-white/50">
-                  <Image
-                    src="/blossoms_rulebook.webp"
-                    alt="Blossoms Rulebook 2026-27 Poster"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 448px"
-                    className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-5 bg-white/95 border-t border-[#3D246C]/10 flex items-center justify-between">
-                  <div className="text-left">
-                    <h3 className="font-tech font-bold text-sm text-[#3D246C] group-hover:text-[#5C4B99] transition-colors">
-                      Blossoms Rulebook 2026-27
-                    </h3>
-                    <p className="font-body text-xs text-[#3D246C]/70">Open Google Drive Guidelines</p>
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center p-6 sm:p-8">
+                  {/* Left: Rulebook Cover Poster Preview */}
+                  <div className="md:col-span-5 flex justify-center">
+                    <div className="relative aspect-[3/4] w-full max-w-[280px] sm:max-w-[320px] rounded-2xl overflow-hidden bg-white border border-[#3D246C]/12 shadow-md">
+                      <Image
+                        src="/blossoms_rulebook.webp"
+                        alt="Blossoms Rulebook 2026-27 Cover"
+                        fill
+                        sizes="(max-width: 768px) 100vw, 320px"
+                        className="object-contain p-2 group-hover:scale-105 transition-transform duration-300"
+                        priority
+                      />
+                    </div>
                   </div>
-                  <div className="p-2.5 rounded-xl bg-[#FFDBC3] text-[#3D246C] group-hover:bg-[#5C4B99] group-hover:text-white transition-colors">
-                    <ExternalLink className="w-4 h-4" />
+
+                  {/* Right: Informational Editorial & Action */}
+                  <div className="md:col-span-7 text-left space-y-4">
+                    <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#5C4B99]/10 text-[#5C4B99] text-xs font-mono font-bold uppercase tracking-wider">
+                      <BookOpen className="w-3.5 h-3.5 text-[#5C4B99]" />
+                      <span>Official Guide &bull; School of Sciences</span>
+                    </div>
+
+                    <h3 className="font-angular text-2xl sm:text-3xl font-black text-[#3D246C] tracking-tight leading-snug">
+                      Official Blossoms 2026–27 Rules Booklet
+                    </h3>
+
+                    <p className="font-body text-sm text-[#3D246C]/80 leading-relaxed">
+                      The authoritative guideline for students, departmental coordinators, and participants. Contains exhaustive rules for all five cultural pillars—Art, Literary, Music, Theatre, and Dance.
+                    </p>
+
+                    {/* Feature Highlights Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1 text-xs font-tech text-[#3D246C]/85">
+                      <div className="flex items-center gap-2 p-2 rounded-lg bg-[#FFDBC3]/35 border border-[#3D246C]/10">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#5C4B99]" />
+                        <span>31 Event Criteria &amp; Formats</span>
+                      </div>
+                      <div className="flex items-center gap-2 p-2 rounded-lg bg-[#FFDBC3]/35 border border-[#3D246C]/10">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#5C4B99]" />
+                        <span>Team Onyx Official Slogan</span>
+                      </div>
+                      <div className="flex items-center gap-2 p-2 rounded-lg bg-[#FFDBC3]/35 border border-[#3D246C]/10">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#5C4B99]" />
+                        <span>Timing &amp; Props Guidelines</span>
+                      </div>
+                      <div className="flex items-center gap-2 p-2 rounded-lg bg-[#FFDBC3]/35 border border-[#3D246C]/10">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#5C4B99]" />
+                        <span>Hosted on Google Drive</span>
+                      </div>
+                    </div>
+
+                    <div className="pt-2 flex items-center gap-3">
+                      <span className="clay-btn-primary bg-[#5C4B99] group-hover:bg-[#4C3C82] text-white font-tech px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold inline-flex items-center gap-2 shadow-md transition-colors">
+                        <span>Open Rulebook (Google Drive)</span>
+                        <ExternalLink className="w-4 h-4" />
+                      </span>
+                    </div>
                   </div>
                 </div>
               </a>
-            )}
+            </div>
+          )}
 
-            {/* Poster 2: Blossoms Know More Guide */}
-            <a
-              href="/blossoms_knowmore.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative rounded-3xl overflow-hidden bg-white/85 border border-[#3D246C]/15 hover:border-[#5C4B99]/40 shadow-xl transition-all duration-300 hover:-translate-y-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
-            >
-              <div className="relative aspect-[3/4] w-full overflow-hidden bg-white/50">
-                <Image
-                  src="/blossoms_knowmore.webp"
-                  alt="Blossoms Know More Poster"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 448px"
-                  className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="p-5 bg-white/95 border-t border-[#3D246C]/10 flex items-center justify-between">
-                <div className="text-left">
-                  <h3 className="font-tech font-bold text-sm text-[#3D246C] group-hover:text-[#5C4B99] transition-colors">
-                    Blossoms &lsquo;Know More&rsquo; Handout
-                  </h3>
-                  <p className="font-body text-xs text-[#3D246C]/70">Download Official PDF Document</p>
-                </div>
-                <div className="p-2.5 rounded-xl bg-[#FFDBC3] text-[#3D246C] group-hover:bg-[#5C4B99] group-hover:text-white transition-colors">
-                  <FileText className="w-4 h-4" />
-                </div>
-              </div>
-            </a>
-
-          </div>
         </div>
       </section>
 

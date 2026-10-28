@@ -11,7 +11,8 @@ import {
   Palette, 
   Flame, 
   Gem, 
-  ArrowRight, 
+  ArrowRight,
+  ExternalLink, 
   Calendar
 } from 'lucide-react';
 import { siteConfig } from '@/data/site-config';
@@ -331,14 +332,17 @@ export default function AboutPage() {
                 <span>Register for Events</span>
               </a>
             )}
-            <a
-              href="/blossoms_knowmore.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full py-2.5 rounded-xl bg-white hover:bg-[#FFDBC3]/40 text-[#3D246C] border border-[#3D246C]/20 text-xs font-tech font-semibold flex items-center justify-center gap-2 shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
-            >
-              <span>Download &lsquo;Know More&rsquo; PDF</span>
-            </a>
+            {siteConfig.rulebookUrl && (
+              <a
+                href={siteConfig.rulebookUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-2.5 rounded-xl bg-white hover:bg-[#FFDBC3]/40 text-[#3D246C] border border-[#3D246C]/20 text-xs font-tech font-semibold flex items-center justify-center gap-2 shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
+              >
+                <span>View Blossoms Rulebook 2026–27</span>
+                <ExternalLink className="w-3.5 h-3.5 text-[#5C4B99]" />
+              </a>
+            )}
           </div>
 
           {/* Institution Notice */}

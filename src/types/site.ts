@@ -50,7 +50,7 @@ export interface SiteConfig {
   canonicalUrl: string;
   registrationUrl?: string;
   rulebookUrl?: string;
-  knowmorePdfUrl?: string;
+
   contactEmail?: string;
   socialLinks: {
     instagram?: string;
