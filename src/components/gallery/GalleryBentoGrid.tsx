@@ -4,7 +4,6 @@ import Image from 'next/image';
 
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { 
-  Camera,
   ChevronDown, 
   Maximize2, 
   X, 
