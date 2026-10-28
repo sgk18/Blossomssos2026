@@ -11,9 +11,11 @@ import {
   Check,
   FileText,
   ShieldAlert,
+  ExternalLink,
 } from 'lucide-react';
 import { ScheduleEvent } from '@/types/schedule';
 import { SCHEDULE_CATEGORY_CONFIG } from '@/data/schedule-2026-27';
+import { siteConfig } from '@/data/site-config';
 
 interface EventDetailModalProps {
   event: ScheduleEvent | null;
@@ -252,20 +254,32 @@ export function EventDetailModal({ event, isOpen, onClose }: EventDetailModalPro
           <button
             type="button"
             onClick={handleShare}
-            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold bg-[#5C4B99] hover:bg-[#3D246C] text-white active:scale-[0.98] transition-all shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3D246C]"
+            className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-white hover:bg-[#FFDBC3]/40 text-[#3D246C] border border-[#3D246C]/20 active:scale-[0.98] transition-all shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
           >
             {copied ? (
               <>
-                <Check className="w-4 h-4 text-[#FFDBC3]" />
-                <span className="text-[#FFDBC3] font-bold">Details Copied!</span>
+                <Check className="w-4 h-4 text-emerald-700" />
+                <span className="text-emerald-700 font-bold">Details Copied!</span>
               </>
             ) : (
               <>
-                <Share2 className="w-4 h-4" />
+                <Share2 className="w-4 h-4 text-[#5C4B99]" />
                 <span>Share Event</span>
               </>
             )}
           </button>
+
+          {siteConfig.registrationUrl && (
+            <a
+              href={siteConfig.registrationUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="clay-btn-primary bg-[#5C4B99] hover:bg-[#4C3C82] text-white px-5 py-2.5 rounded-xl text-xs font-bold inline-flex items-center justify-center gap-2 shadow-md transition-all active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3D246C]"
+            >
+              <span>Register Now</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          )}
         </div>
       </div>
     </div>

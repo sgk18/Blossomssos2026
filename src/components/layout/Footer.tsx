@@ -52,7 +52,8 @@ export function Footer() {
       // 3. Hide floating button if a modal dialog is currently open
       const isModalOpen =
         typeof document !== 'undefined' &&
-        (document.body.style.overflow === 'hidden' || Boolean(document.querySelector('[role="dialog"]')));
+        (document.body.style.overflow === 'hidden' ||
+         Boolean(document.querySelector('[role="dialog"]:not(#mobile-navigation-menu)')));
 
       setIsStickyVisible(pastHero && !reachedFooter && !isModalOpen);
       ticking = false;
