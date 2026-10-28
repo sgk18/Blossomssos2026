@@ -2,24 +2,25 @@ import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { 
-  Home, 
-  Compass, 
-  Calendar, 
-  ArrowRight, 
+import {
+  Home,
+  Compass,
+  Calendar,
+  ArrowRight,
   HelpCircle,
   Palette,
   BookOpen,
   Music,
   Drama,
-  Footprints
+  Footprints,
+  Pin,
 } from 'lucide-react';
 import { BackButton } from '@/components/ui/BackButton';
 import { siteConfig } from '@/data/site-config';
 
 export const metadata: Metadata = {
   title: '404 - Page Not Found | Blossoms SOS 2026–27',
-  description: 'The requested festival page could not be found. Explore Blossoms disciplines, schedule, and competition results.',
+  description: 'The requested festival page could not be found. Explore Blossoms disciplines, schedule, notice board, and competition results.',
 };
 
 const DISCIPLINES = [
@@ -34,7 +35,6 @@ export default function NotFound() {
   return (
     <div className="pt-32 pb-20 md:pt-40 md:pb-28 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 bg-[#FFDBC3] text-[#3D246C] selection:bg-[#5C4B99] selection:text-white">
       <div className="text-center space-y-6">
-        
         {/* Blossoms Crest & 404 Status Pill */}
         <div className="flex flex-col items-center justify-center gap-3">
           <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-white/95 border border-[#3D246C]/20 p-3 shadow-xl flex items-center justify-center animate-in zoom-in duration-300">
@@ -72,6 +72,13 @@ export default function NotFound() {
           >
             <Home className="w-4 h-4 text-[#5C4B99]" />
             <span>Festival Homepage</span>
+          </Link>
+          <Link
+            href="/notice-board"
+            className="px-5 py-2.5 rounded-xl bg-white hover:bg-[#FFDBC3]/50 text-[#3D246C] border border-[#3D246C]/20 text-xs font-bold flex items-center gap-2 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
+          >
+            <Pin className="w-4 h-4 text-[#5C4B99]" />
+            <span>Notice Board</span>
           </Link>
           <Link
             href="/events"
@@ -115,22 +122,22 @@ export default function NotFound() {
             </Link>
 
             <Link
-              href="/events"
+              href="/notice-board"
               className="p-5 rounded-2xl bg-white/85 hover:bg-white border border-[#3D246C]/15 hover:border-[#5C4B99] transition-all flex flex-col justify-between group shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
             >
               <div>
                 <div className="w-9 h-9 rounded-xl bg-[#FFDBC3]/60 text-[#5C4B99] flex items-center justify-center mb-3 border border-[#3D246C]/15 group-hover:scale-105 transition-transform">
-                  <Compass className="w-4 h-4" />
+                  <Pin className="w-4 h-4" />
                 </div>
                 <h3 className="font-bold text-sm text-[#3D246C] group-hover:text-[#5C4B99] transition-colors">
-                  All Disciplines
+                  Notice Board
                 </h3>
                 <p className="text-xs text-[#3D246C]/75 mt-1 line-clamp-2">
-                  Interactive 3D carousel showcase of 32 official competitions and rubrics.
+                  Pinned weekly circulars, theme reveals, deadlines, and live weekly radar.
                 </p>
               </div>
               <div className="mt-4 pt-3 border-t border-[#3D246C]/10 flex items-center justify-between text-xs font-semibold text-[#5C4B99]">
-                <span>View Disciplines</span>
+                <span>View Updates</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </div>
             </Link>
@@ -236,7 +243,6 @@ export default function NotFound() {
             </div>
           </div>
         </div>
-
       </div>
     </div>
   );

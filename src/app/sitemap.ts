@@ -32,6 +32,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'daily',
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/notice-board`,
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/gallery`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/team`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
   ];
 
   // Dynamic category discipline routes

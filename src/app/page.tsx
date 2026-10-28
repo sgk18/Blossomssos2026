@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { EventCategoriesCarouselSkeleton } from '@/components/events/EventCategoriesCarouselSkeleton';
 import { WavyDivider } from '@/components/ui/WavyDivider';
+import { CampusGreenBoard } from '@/components/notice-board/CampusGreenBoard';
 
 // Lazy load the 3D Circular Carousel for peak performance and interactive category ring
 const EventCategoriesCarousel = dynamic(
@@ -135,6 +136,47 @@ export default function HomePage() {
             </div>
           </div>
         </HeroBackground>
+      </section>
+
+      {/* Subtle Wavy Stitch Transition from Hero to Mini Campus Notice Board */}
+      <WavyDivider topColor="#FFDBC3" bottomFill="#FFDBC3" />
+
+      {/* =========================================================
+          1.5 MINI CAMPUS GREEN NOTICE BOARD (WEEKLY UPDATES PREVIEW)
+          ========================================================= */}
+      <section
+        id="notice-board-preview"
+        aria-labelledby="mini-notice-board-heading"
+        className="py-16 sm:py-20 bg-[#FFDBC3] scroll-mt-24"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div className="space-y-2 max-w-2xl">
+              <span className="text-xs font-tech font-bold uppercase tracking-[0.2em] text-[#5C4B99] block">
+                School of Sciences Corridor • Weekly Updates
+              </span>
+              <h2
+                id="mini-notice-board-heading"
+                className="font-angular text-3xl sm:text-4xl font-black text-[#3D246C] tracking-tight"
+              >
+                Campus Notice Board
+              </h2>
+              <p className="font-body text-sm text-[#3D246C]/80">
+                Check pinned circulars, theme reveals, deadlines, and what&apos;s happening this week across Blossoms SOS.
+              </p>
+            </div>
+
+            <Link
+              href="/notice-board"
+              className="clay-btn-primary bg-[#5C4B99] hover:bg-[#4C3C82] text-white font-tech px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold inline-flex items-center gap-2 shadow-md self-start md:self-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3D246C]"
+            >
+              <span>Interactive Weekly Radar</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <CampusGreenBoard mode="mini" />
+        </div>
       </section>
 
       {/* Decorative Wavy Border Line (matching reference wavy divider) */}

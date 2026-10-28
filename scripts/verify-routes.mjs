@@ -11,6 +11,7 @@ const requiredAppRoutes = [
   'src/app/events/page.tsx',
   'src/app/events/[category]/page.tsx',
   'src/app/schedule/page.tsx',
+  'src/app/notice-board/page.tsx',
   'src/app/team/page.tsx',
   'src/app/gallery/page.tsx',
   'src/app/winners/page.tsx',
@@ -29,6 +30,7 @@ assert(notFoundSrc.includes('Lost in the Quadrangle?'), 'Custom 404 must contain
 assert(notFoundSrc.includes('ERROR 404 • ROUTE NOT FOUND'), 'Custom 404 must contain status indicator');
 assert(notFoundSrc.includes('/events/${d.slug}'), 'Custom 404 must link to category disciplines');
 assert(notFoundSrc.includes('/schedule'), 'Custom 404 must link to Schedule');
+assert(notFoundSrc.includes('/notice-board'), 'Custom 404 must link to Notice Board');
 assert(notFoundSrc.includes('/about'), 'Custom 404 must link to About');
 assert(notFoundSrc.includes('BackButton'), 'Custom 404 must include interactive BackButton');
 console.log('✔ Custom 404 page content, recovery links, and pillar navigation verified.');
@@ -52,10 +54,10 @@ try {
       ['/events', 200],
       ['/events/art', 200],
       ['/schedule', 200],
+      ['/notice-board', 200],
       ['/team', 200],
       ['/gallery', 200],
-      // ['/winners', 307] (redirects to / for now),
-      ['/unknown-test-route-404', 404]
+      ['/unknown-test-route-404', 404],
     ];
     for (const [p, expectedStatus] of livePaths) {
       const res = await fetch(`http://localhost:3000${p}`);

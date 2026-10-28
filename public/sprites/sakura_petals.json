@@ -73,7 +73,7 @@
    },
    {
     "filename": "sakura_petals 8.ase",
-    "frame": { "x": 0, "y": 20, "w": 20, "h": 20 },
+    "frame": { "x": 160, "y": 0, "w": 20, "h": 20 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 20 },
@@ -82,7 +82,7 @@
    },
    {
     "filename": "sakura_petals 9.ase",
-    "frame": { "x": 20, "y": 20, "w": 20, "h": 20 },
+    "frame": { "x": 180, "y": 0, "w": 20, "h": 20 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 20 },
@@ -91,7 +91,7 @@
    },
    {
     "filename": "sakura_petals 10.ase",
-    "frame": { "x": 40, "y": 20, "w": 20, "h": 20 },
+    "frame": { "x": 200, "y": 0, "w": 20, "h": 20 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 20 },
@@ -100,7 +100,7 @@
    },
    {
     "filename": "sakura_petals 11.ase",
-    "frame": { "x": 60, "y": 20, "w": 20, "h": 20 },
+    "frame": { "x": 220, "y": 0, "w": 20, "h": 20 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 20 },
@@ -109,7 +109,7 @@
    },
    {
     "filename": "sakura_petals 12.ase",
-    "frame": { "x": 80, "y": 20, "w": 20, "h": 20 },
+    "frame": { "x": 240, "y": 0, "w": 20, "h": 20 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 20 },
@@ -118,7 +118,7 @@
    },
    {
     "filename": "sakura_petals 13.ase",
-    "frame": { "x": 100, "y": 20, "w": 20, "h": 20 },
+    "frame": { "x": 260, "y": 0, "w": 20, "h": 20 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 20 },
@@ -127,7 +127,7 @@
    },
    {
     "filename": "sakura_petals 14.ase",
-    "frame": { "x": 120, "y": 20, "w": 20, "h": 20 },
+    "frame": { "x": 280, "y": 0, "w": 20, "h": 20 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 20 },
@@ -136,7 +136,7 @@
    },
    {
     "filename": "sakura_petals 15.ase",
-    "frame": { "x": 140, "y": 20, "w": 20, "h": 20 },
+    "frame": { "x": 300, "y": 0, "w": 20, "h": 20 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 20 },
@@ -145,7 +145,7 @@
    },
    {
     "filename": "sakura_petals 16.ase",
-    "frame": { "x": 0, "y": 40, "w": 20, "h": 20 },
+    "frame": { "x": 320, "y": 0, "w": 20, "h": 20 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 20 },
@@ -154,7 +154,7 @@
    },
    {
     "filename": "sakura_petals 17.ase",
-    "frame": { "x": 20, "y": 40, "w": 20, "h": 20 },
+    "frame": { "x": 340, "y": 0, "w": 20, "h": 20 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 20 },
@@ -163,7 +163,7 @@
    },
    {
     "filename": "sakura_petals 18.ase",
-    "frame": { "x": 40, "y": 40, "w": 20, "h": 20 },
+    "frame": { "x": 360, "y": 0, "w": 20, "h": 20 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 20 },
@@ -172,7 +172,7 @@
    },
    {
     "filename": "sakura_petals 19.ase",
-    "frame": { "x": 60, "y": 40, "w": 20, "h": 20 },
+    "frame": { "x": 380, "y": 0, "w": 20, "h": 20 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 20 },
@@ -181,7 +181,7 @@
    },
    {
     "filename": "sakura_petals 20.ase",
-    "frame": { "x": 80, "y": 40, "w": 20, "h": 20 },
+    "frame": { "x": 400, "y": 0, "w": 20, "h": 20 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 20 },
@@ -190,7 +190,7 @@
    },
    {
     "filename": "sakura_petals 21.ase",
-    "frame": { "x": 100, "y": 40, "w": 20, "h": 20 },
+    "frame": { "x": 420, "y": 0, "w": 20, "h": 20 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 20 },
@@ -199,7 +199,7 @@
    },
    {
     "filename": "sakura_petals 22.ase",
-    "frame": { "x": 120, "y": 40, "w": 20, "h": 20 },
+    "frame": { "x": 440, "y": 0, "w": 20, "h": 20 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 20 },
@@ -208,7 +208,7 @@
    },
    {
     "filename": "sakura_petals 23.ase",
-    "frame": { "x": 140, "y": 40, "w": 20, "h": 20 },
+    "frame": { "x": 460, "y": 0, "w": 20, "h": 20 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 20 },
@@ -217,7 +217,7 @@
    },
    {
     "filename": "sakura_petals 24.ase",
-    "frame": { "x": 0, "y": 60, "w": 20, "h": 20 },
+    "frame": { "x": 480, "y": 0, "w": 20, "h": 20 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 20 },
@@ -226,7 +226,7 @@
    },
    {
     "filename": "sakura_petals 25.ase",
-    "frame": { "x": 20, "y": 60, "w": 20, "h": 20 },
+    "frame": { "x": 500, "y": 0, "w": 20, "h": 20 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 20 },
@@ -235,7 +235,7 @@
    },
    {
     "filename": "sakura_petals 26.ase",
-    "frame": { "x": 40, "y": 60, "w": 20, "h": 20 },
+    "frame": { "x": 520, "y": 0, "w": 20, "h": 20 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 20 },
@@ -244,7 +244,7 @@
    },
    {
     "filename": "sakura_petals 27.ase",
-    "frame": { "x": 60, "y": 60, "w": 20, "h": 20 },
+    "frame": { "x": 540, "y": 0, "w": 20, "h": 20 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 20 },
@@ -253,7 +253,7 @@
    },
    {
     "filename": "sakura_petals 28.ase",
-    "frame": { "x": 80, "y": 60, "w": 20, "h": 20 },
+    "frame": { "x": 560, "y": 0, "w": 20, "h": 20 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 20 },
@@ -262,7 +262,7 @@
    },
    {
     "filename": "sakura_petals 29.ase",
-    "frame": { "x": 100, "y": 60, "w": 20, "h": 20 },
+    "frame": { "x": 580, "y": 0, "w": 20, "h": 20 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 20 },
@@ -271,7 +271,7 @@
    },
    {
     "filename": "sakura_petals 30.ase",
-    "frame": { "x": 120, "y": 60, "w": 20, "h": 20 },
+    "frame": { "x": 600, "y": 0, "w": 20, "h": 20 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 20 },
@@ -280,7 +280,7 @@
    },
    {
     "filename": "sakura_petals 31.ase",
-    "frame": { "x": 140, "y": 60, "w": 20, "h": 20 },
+    "frame": { "x": 620, "y": 0, "w": 20, "h": 20 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 20 },
@@ -293,13 +293,7 @@
   "version": "1.x-56757b5fc-dirty-dev",
   "image": "sakura_petals.png",
   "format": "RGBA8888",
-  "size": { "w": 160, "h": 80 },
-  "scale": "1",
-  "frameTags": [
-   { "name": "pastel_blush_petal", "from": 0, "to": 7, "direction": "forward", "color": "#000000ff" },
-   { "name": "pastel_lilac_petal", "from": 8, "to": 15, "direction": "forward", "color": "#000000ff" },
-   { "name": "pastel_peach_petal", "from": 16, "to": 23, "direction": "forward", "color": "#000000ff" },
-   { "name": "pastel_pearl_petal", "from": 24, "to": 31, "direction": "forward", "color": "#000000ff" }
-  ]
+  "size": { "w": 640, "h": 20 },
+  "scale": "1"
  }
 }

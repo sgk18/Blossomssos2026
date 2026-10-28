@@ -209,18 +209,18 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/gallery"
+                    href="/notice-board"
                     className="text-gray-500 hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 rounded"
                   >
-                    Festival Gallery
+                    Notice Board
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="/team"
-                    className="text-gray-500 hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 rounded font-semibold text-[#5C4B99]"
+                    href="/gallery"
+                    className="text-gray-500 hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 rounded"
                   >
-                    Organising Team
+                    Festival Gallery
                   </Link>
                 </li>
               </ul>
@@ -335,7 +335,7 @@ export function Footer() {
             </div>
 
             <div className="flex items-center gap-6">
-              <div className="font-tech flex items-center gap-5 text-xs text-gray-500">
+              <div className="font-tech flex flex-wrap items-center justify-center gap-5 text-xs text-gray-500">
                 <Link
                   href="/about"
                   className="hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 rounded"
@@ -355,16 +355,16 @@ export function Footer() {
                   Schedule
                 </Link>
                 <Link
+                  href="/notice-board"
+                  className="hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 rounded"
+                >
+                  Notice Board
+                </Link>
+                <Link
                   href="/gallery"
                   className="hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 rounded"
                 >
                   Gallery
-                </Link>
-                <Link
-                  href="/team"
-                  className="hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 rounded font-bold text-[#5C4B99]"
-                >
-                  Team
                 </Link>
               </div>
 
@@ -388,10 +388,11 @@ export function Footer() {
         tabIndex={isStickyVisible ? 0 : -1}
         aria-hidden={!isStickyVisible}
         aria-label="Register Now (Floating Sticky)"
-        className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-transparent pointer-events-auto transition-all duration-300 ease-in-out cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99] rounded-full ${isStickyVisible
+        className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-transparent pointer-events-auto transition-all duration-300 ease-in-out cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99] rounded-full ${
+          isStickyVisible
             ? 'opacity-100 translate-y-0 pointer-events-auto'
             : 'opacity-0 translate-y-4 pointer-events-none'
-          }`}
+        }`}
       >
         <span className="flex items-center justify-center bg-[#5C4B99] hover:bg-[#4C3C82] text-white rounded-full h-12 md:h-14 px-8 md:px-10 text-sm md:text-base font-medium tracking-wide shadow-2xl transition-transform duration-200 ease-in-out hover:scale-[1.02] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.18),_0_2px_4px_0_rgba(0,0,0,0.16)]">
           Register Now
@@ -400,4 +401,3 @@ export function Footer() {
     </>
   );
 }
-
