@@ -22,7 +22,6 @@ export const BLOSSOMS_TEAM_MEMBERS: BlossomTeamMember[] = [
     category: 'faculty',
     departmentKey: 'faculty',
     departmentName: 'Deanery of Sciences',
-    image: '/Assets/Core.webp',
     initials: 'SK',
   },
   {
@@ -34,7 +33,6 @@ export const BLOSSOMS_TEAM_MEMBERS: BlossomTeamMember[] = [
     category: 'faculty',
     departmentKey: 'faculty',
     departmentName: 'Computer Science',
-    image: '/Assets/cult.webp',
     initials: 'RS',
   },
   {
@@ -46,7 +44,6 @@ export const BLOSSOMS_TEAM_MEMBERS: BlossomTeamMember[] = [
     category: 'faculty',
     departmentKey: 'faculty',
     departmentName: 'Physical Sciences',
-    image: '/Assets/cult1.webp',
     initials: 'PM',
   },
   {
@@ -58,7 +55,6 @@ export const BLOSSOMS_TEAM_MEMBERS: BlossomTeamMember[] = [
     category: 'faculty',
     departmentKey: 'faculty',
     departmentName: 'Mathematics & Statistics',
-    image: '/Assets/cult3.webp',
     initials: 'AK',
   },
 
@@ -72,7 +68,6 @@ export const BLOSSOMS_TEAM_MEMBERS: BlossomTeamMember[] = [
     category: 'student',
     departmentKey: 'core',
     departmentName: 'Core Committee',
-    image: '/Assets/cult.webp',
     initials: 'RJ',
   },
   {
@@ -84,7 +79,6 @@ export const BLOSSOMS_TEAM_MEMBERS: BlossomTeamMember[] = [
     category: 'student',
     departmentKey: 'core',
     departmentName: 'Core Committee',
-    image: '/Assets/IMG_0821.webp',
     initials: 'AS',
   },
   {
@@ -96,7 +90,6 @@ export const BLOSSOMS_TEAM_MEMBERS: BlossomTeamMember[] = [
     category: 'student',
     departmentKey: 'core',
     departmentName: 'Core Committee',
-    image: '/Assets/cult3.webp',
     initials: 'KM',
   },
   {
@@ -108,7 +101,6 @@ export const BLOSSOMS_TEAM_MEMBERS: BlossomTeamMember[] = [
     category: 'student',
     departmentKey: 'core',
     departmentName: 'Core Committee',
-    image: '/Assets/sos.webp',
     initials: 'SR',
   },
 
@@ -122,7 +114,6 @@ export const BLOSSOMS_TEAM_MEMBERS: BlossomTeamMember[] = [
     category: 'student',
     departmentKey: 'logistics',
     departmentName: 'Logistics Team',
-    image: '/Assets/cult3.webp',
     initials: 'AV',
   },
   {
@@ -134,7 +125,6 @@ export const BLOSSOMS_TEAM_MEMBERS: BlossomTeamMember[] = [
     category: 'student',
     departmentKey: 'logistics',
     departmentName: 'Logistics Team',
-    image: '/Assets/Core.webp',
     initials: 'HN',
   },
   {
@@ -146,7 +136,6 @@ export const BLOSSOMS_TEAM_MEMBERS: BlossomTeamMember[] = [
     category: 'student',
     departmentKey: 'logistics',
     departmentName: 'Logistics Team',
-    image: '/Assets/cult1.webp',
     initials: 'TJ',
   },
   {
@@ -158,7 +147,6 @@ export const BLOSSOMS_TEAM_MEMBERS: BlossomTeamMember[] = [
     category: 'student',
     departmentKey: 'logistics',
     departmentName: 'Logistics Team',
-    image: '/Assets/cult2.webp',
     initials: 'NR',
   },
 
@@ -172,7 +160,6 @@ export const BLOSSOMS_TEAM_MEMBERS: BlossomTeamMember[] = [
     category: 'student',
     departmentKey: 'hospitality',
     departmentName: 'Hospitality Team',
-    image: '/Assets/cult.webp',
     initials: 'RS',
   },
   {
@@ -184,7 +171,6 @@ export const BLOSSOMS_TEAM_MEMBERS: BlossomTeamMember[] = [
     category: 'student',
     departmentKey: 'hospitality',
     departmentName: 'Hospitality Team',
-    image: '/Assets/IMG_0948.webp',
     initials: 'VM',
   },
   {
@@ -196,7 +182,6 @@ export const BLOSSOMS_TEAM_MEMBERS: BlossomTeamMember[] = [
     category: 'student',
     departmentKey: 'hospitality',
     departmentName: 'Hospitality Team',
-    image: '/Assets/IMG_0821.webp',
     initials: 'MK',
   },
   {
@@ -208,7 +193,6 @@ export const BLOSSOMS_TEAM_MEMBERS: BlossomTeamMember[] = [
     category: 'student',
     departmentKey: 'hospitality',
     departmentName: 'Hospitality Team',
-    image: '/Assets/cult3.webp',
     initials: 'AD',
   },
 
@@ -222,7 +206,6 @@ export const BLOSSOMS_TEAM_MEMBERS: BlossomTeamMember[] = [
     category: 'student',
     departmentKey: 'media',
     departmentName: 'Media Team',
-    image: '/Assets/IMG_0821.webp',
     initials: 'SN',
   },
   {
@@ -234,7 +217,6 @@ export const BLOSSOMS_TEAM_MEMBERS: BlossomTeamMember[] = [
     category: 'student',
     departmentKey: 'media',
     departmentName: 'Media Team',
-    image: '/Assets/cult.webp',
     initials: 'DP',
   },
   {
@@ -246,7 +228,6 @@ export const BLOSSOMS_TEAM_MEMBERS: BlossomTeamMember[] = [
     category: 'student',
     departmentKey: 'media',
     departmentName: 'Media Team',
-    image: '/Assets/cult1.webp',
     initials: 'KR',
   },
   {
@@ -258,7 +239,6 @@ export const BLOSSOMS_TEAM_MEMBERS: BlossomTeamMember[] = [
     category: 'student',
     departmentKey: 'media',
     departmentName: 'Media Team',
-    image: '/Assets/Core.webp',
     initials: 'PH',
   },
 
@@ -272,7 +252,6 @@ export const BLOSSOMS_TEAM_MEMBERS: BlossomTeamMember[] = [
     category: 'student',
     departmentKey: 'discipline',
     departmentName: 'Discipline Team',
-    image: '/Assets/cult1.webp',
     initials: 'FK',
   },
   {
@@ -284,7 +263,6 @@ export const BLOSSOMS_TEAM_MEMBERS: BlossomTeamMember[] = [
     category: 'student',
     departmentKey: 'discipline',
     departmentName: 'Discipline Team',
-    image: '/Assets/cult2.webp',
     initials: 'NR',
   },
   {
@@ -296,7 +274,6 @@ export const BLOSSOMS_TEAM_MEMBERS: BlossomTeamMember[] = [
     category: 'student',
     departmentKey: 'discipline',
     departmentName: 'Discipline Team',
-    image: '/Assets/Core.webp',
     initials: 'RD',
   },
   {
@@ -308,7 +285,6 @@ export const BLOSSOMS_TEAM_MEMBERS: BlossomTeamMember[] = [
     category: 'student',
     departmentKey: 'discipline',
     departmentName: 'Discipline Team',
-    image: '/Assets/sos.webp',
     initials: 'SI',
   },
 
@@ -322,7 +298,6 @@ export const BLOSSOMS_TEAM_MEMBERS: BlossomTeamMember[] = [
     category: 'student',
     departmentKey: 'pr',
     departmentName: 'Registration Team',
-    image: '/Assets/sos.webp',
     initials: 'MG',
   },
   {
@@ -334,7 +309,6 @@ export const BLOSSOMS_TEAM_MEMBERS: BlossomTeamMember[] = [
     category: 'student',
     departmentKey: 'pr',
     departmentName: 'Registration Team',
-    image: '/Assets/cult.webp',
     initials: 'AP',
   },
   {
@@ -346,7 +320,6 @@ export const BLOSSOMS_TEAM_MEMBERS: BlossomTeamMember[] = [
     category: 'student',
     departmentKey: 'pr',
     departmentName: 'Registration Team',
-    image: '/Assets/IMG_0821.webp',
     initials: 'GM',
   },
   {
@@ -358,7 +331,6 @@ export const BLOSSOMS_TEAM_MEMBERS: BlossomTeamMember[] = [
     category: 'student',
     departmentKey: 'pr',
     departmentName: 'Registration Team',
-    image: '/Assets/Core.webp',
     initials: 'BS',
   },
 ];
@@ -387,7 +359,6 @@ export const CORE_LEADERSHIP: CoreLeadershipRole[] = [
     accent: '#5C4B99',
     pastel: '#F0EBFF',
     borderColor: 'rgba(92, 75, 153, 0.25)',
-    image: '/Assets/Core.webp',
   },
   {
     id: 'student-president',
@@ -399,7 +370,6 @@ export const CORE_LEADERSHIP: CoreLeadershipRole[] = [
     accent: '#7452F5',
     pastel: '#F6F3FF',
     borderColor: 'rgba(116, 82, 245, 0.25)',
-    image: '/Assets/cult.webp',
   },
   {
     id: 'general-secretary',
@@ -411,7 +381,6 @@ export const CORE_LEADERSHIP: CoreLeadershipRole[] = [
     accent: '#ED4D9B',
     pastel: '#FFF0F6',
     borderColor: 'rgba(237, 77, 155, 0.25)',
-    image: '/Assets/cult1.webp',
   },
   {
     id: 'operations-vp',
@@ -423,7 +392,6 @@ export const CORE_LEADERSHIP: CoreLeadershipRole[] = [
     accent: '#7041D8',
     pastel: '#F6F3FF',
     borderColor: 'rgba(112, 65, 216, 0.25)',
-    image: '/Assets/cult3.webp',
   },
   {
     id: 'creative-lead',
@@ -435,7 +403,6 @@ export const CORE_LEADERSHIP: CoreLeadershipRole[] = [
     accent: '#19B8CC',
     pastel: '#E0F9FC',
     borderColor: 'rgba(25, 184, 204, 0.25)',
-    image: '/Assets/IMG_0821.webp',
   },
   {
     id: 'pillars-coordinator',
@@ -447,7 +414,6 @@ export const CORE_LEADERSHIP: CoreLeadershipRole[] = [
     accent: '#4385F4',
     pastel: '#EEF4FF',
     borderColor: 'rgba(67, 133, 244, 0.25)',
-    image: '/Assets/sos.webp',
   },
 ];
 
@@ -498,7 +464,6 @@ export const DEPARTMENTS_DATA: Department[] = [
     pastel: '#F0EBFF',
     borderColor: 'rgba(116, 82, 245, 0.25)',
     iconName: 'ShieldCheck',
-    image: '/Assets/Core.webp',
     imageAlt: 'Blossoms School of Sciences Student Core Committee',
     responsibilities: [
       'Deanery and university-wide cultural council liaison',
@@ -552,7 +517,6 @@ export const DEPARTMENTS_DATA: Department[] = [
     pastel: '#F6F3FF',
     borderColor: 'rgba(112, 65, 216, 0.25)',
     iconName: 'Truck',
-    image: '/Assets/cult3.webp',
     imageAlt: 'Logistics and on-ground event management at Blossoms',
     responsibilities: [
       'Classroom and auditorium setup across Block 2 and Block 4',
@@ -606,7 +570,6 @@ export const DEPARTMENTS_DATA: Department[] = [
     pastel: '#FFF0F6',
     borderColor: 'rgba(237, 77, 155, 0.25)',
     iconName: 'Camera',
-    image: '/Assets/IMG_0821.webp',
     imageAlt: 'Stage media and photography team capturing Blossoms live events',
     responsibilities: [
       'High-resolution photographic coverage of all 31 competitions',
@@ -660,7 +623,6 @@ export const DEPARTMENTS_DATA: Department[] = [
     pastel: '#E0F9FC',
     borderColor: 'rgba(25, 184, 204, 0.25)',
     iconName: 'HeartHandshake',
-    image: '/Assets/cult.webp',
     imageAlt: 'Hospitality team welcoming festival attendees and participants',
     responsibilities: [
       'Reception, escorting, and assistance for professional event judges',
@@ -714,7 +676,6 @@ export const DEPARTMENTS_DATA: Department[] = [
     pastel: '#EEF4FF',
     borderColor: 'rgba(67, 133, 244, 0.25)',
     iconName: 'Sparkles',
-    image: '/Assets/cult1.webp',
     imageAlt: 'Discipline coordinators managing stage execution',
     responsibilities: [
       'Strict execution of official festival competition guidelines',
@@ -768,7 +729,6 @@ export const DEPARTMENTS_DATA: Department[] = [
     pastel: '#E8F7F0',
     borderColor: 'rgba(58, 201, 154, 0.25)',
     iconName: 'Users',
-    image: '/Assets/sos.webp',
     imageAlt: 'School of Sciences student community celebrating Blossoms',
     responsibilities: [
       'Management of official online registration forms and slot allocations',
