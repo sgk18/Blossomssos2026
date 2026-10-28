@@ -53,7 +53,7 @@ export default function SchedulePage() {
       <header className="max-w-3xl mb-10 sm:mb-12">
         {/* Tentative Status Badge (Config-driven) */}
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/80 border border-[#3D246C]/20 text-xs font-bold text-[#3D246C] mb-4 shadow-sm">
-          <span className="w-2 h-2 rounded-full bg-[#5C4B99] animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#5C4B99]" />
           <span className="font-mono uppercase tracking-wider">{SCHEDULE_METADATA_2026.statusLabel}</span>
         </div>
 

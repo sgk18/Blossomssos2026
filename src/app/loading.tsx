@@ -7,7 +7,7 @@ export default function Loading() {
         <div className="absolute inset-0 rounded-full border-2 border-[#3D246C]/20" />
         <div className="absolute inset-0 rounded-full border-2 border-t-[#5C4B99] border-r-[#9F91CC] animate-spin" />
         <div className="absolute inset-3 rounded-full bg-white/85 flex items-center justify-center shadow-sm">
-          <span className="w-2 h-2 rounded-full bg-[#5C4B99] animate-ping" />
+          <span className="w-2 h-2 rounded-full bg-[#5C4B99]" />
         </div>
       </div>
       <div className="text-center space-y-2 max-w-xs">

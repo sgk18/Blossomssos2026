@@ -179,6 +179,88 @@
   border-bottom: 1px solid rgba(61, 36, 108, 0.14);
 }
 
+/* Liquid Glass Pill Navigation with Purple Tint */
+.liquid-glass-nav,
+.pill-nav-frosted {
+  background: linear-gradient(
+    135deg,
+    rgba(61, 36, 108, 0.45) 0%,
+    rgba(92, 75, 153, 0.35) 45%,
+    rgba(126, 99, 196, 0.30) 75%,
+    rgba(45, 25, 82, 0.48) 100%
+  );
+  backdrop-filter: blur(14px) saturate(175%) contrast(105%);
+  -webkit-backdrop-filter: blur(14px) saturate(175%) contrast(105%);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  box-shadow: 
+    0 14px 34px -8px rgba(61, 36, 108, 0.30),
+    0 0 22px -2px rgba(159, 145, 204, 0.25),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -1px 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+@supports not (backdrop-filter: blur(14px)) {
+  .liquid-glass-nav,
+  .pill-nav-frosted {
+    background: rgba(61, 36, 108, 0.88);
+  }
+}
+
+/* Liquid Glass Floating Register CTA (Fluid Liquid Glass Matching Pill Nav & Website Vibe) */
+.liquid-glass-register-btn {
+  background: linear-gradient(
+    135deg,
+    rgba(61, 36, 108, 0.45) 0%,
+    rgba(92, 75, 153, 0.38) 45%,
+    rgba(126, 99, 196, 0.32) 75%,
+    rgba(45, 25, 82, 0.48) 100%
+  );
+  backdrop-filter: blur(14px) saturate(180%) contrast(105%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%) contrast(105%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 
+    0 14px 34px -8px rgba(61, 36, 108, 0.30),
+    0 0 22px -2px rgba(159, 145, 204, 0.25),
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.65),
+    inset 0 -1px 1px 0 rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.liquid-glass-register-btn:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(92, 75, 153, 0.58) 0%,
+    rgba(126, 99, 196, 0.52) 50%,
+    rgba(61, 36, 108, 0.62) 100%
+  );
+  border-color: rgba(255, 255, 255, 0.60);
+  box-shadow: 
+    0 16px 36px -6px rgba(61, 36, 108, 0.45),
+    0 0 28px 2px rgba(159, 145, 204, 0.40),
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -1px 1px 0 rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.liquid-glass-register-btn:active {
+  transform: translateY(1px) scale(0.98);
+  background: linear-gradient(
+    135deg,
+    rgba(61, 36, 108, 0.70) 0%,
+    rgba(45, 25, 82, 0.75) 100%
+  );
+  box-shadow: 
+    0 8px 20px -4px rgba(61, 36, 108, 0.35),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.40);
+}
+
+@supports not (backdrop-filter: blur(14px)) {
+  .liquid-glass-register-btn {
+    background: rgba(61, 36, 108, 0.90);
+  }
+}
+
 /* Claymorphism Subtle Tactile Controls */
 .clay-btn-primary {
   background: var(--color-primary);

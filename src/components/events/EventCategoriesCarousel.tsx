@@ -301,7 +301,7 @@ export default function EventCategoriesCarousel({
             {/* Prompt Hint */}
             <div className="absolute top-4 inset-x-0 flex justify-center pointer-events-none z-10">
               <span className="px-3 py-1 rounded-full bg-white/90 border border-[#3D246C]/20 text-[11px] text-[#3D246C]/80 font-mono backdrop-blur-md flex items-center gap-1.5 shadow-sm">
-                <span className="w-2 h-2 rounded-full bg-[#5C4B99] animate-pulse" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#5C4B99]" />
                 <span>Drag to spin • Click card to open</span>
               </span>
             </div>

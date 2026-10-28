@@ -117,7 +117,7 @@ export function EventDetailModal({ event, isOpen, onClose }: EventDetailModalPro
             </span>
 
             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-bold font-mono uppercase bg-[#5C4B99]/15 text-[#3D246C] border border-[#5C4B99]/30">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#5C4B99] animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#5C4B99]" />
               Tentative Schedule
             </span>
           </div>

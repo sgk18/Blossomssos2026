@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function CategoryLoading() {
   return (
-    <div className="pt-28 pb-16 md:pt-36 md:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-[#FFDBC3] text-[#3D246C] animate-pulse">
+    <div className="pt-28 pb-16 md:pt-36 md:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-[#FFDBC3] text-[#3D246C]">
       {/* Back button skeleton */}
       <div className="h-4 w-36 bg-white/60 rounded mb-8 border border-[#3D246C]/10" />
 

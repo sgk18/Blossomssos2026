@@ -80,7 +80,7 @@ export default function HomePage() {
                 <span className="text-[#3D246C]/85">Over 7,000 Students • {eventCount} Cultural Competitions</span>
               </div>
               <div className="text-[11px] sm:text-xs font-tech text-[#3D246C] tracking-wider uppercase flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#9F91CC]/30 border border-[#3D246C]/20 backdrop-blur-md">
-                <span className="w-2 h-2 rounded-full bg-[#5C4B99] animate-pulse" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#5C4B99]" />
                 <span>Prelims Schedule Tentative • Nov–Dec 2026 Window</span>
               </div>
             </div>
