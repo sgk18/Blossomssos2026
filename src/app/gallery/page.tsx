@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Festival Gallery | Blossoms SOS 2026',
     description: 'Relive the passion and stage magic of Team Onyx at CHRIST University.',
-    images: ['/Assets/IMG_0821.webp'],
+    images: ['/drive-gallery-2/P1050280.jpg'],
   },
 };
 
