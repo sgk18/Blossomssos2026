@@ -1,12 +1,11 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import Image from 'next/image';
-import { 
-  Users, 
-  GraduationCap, 
-  Mail, 
-  X, 
+import {
+  Users,
+  GraduationCap,
+  Mail,
+  X,
   Building2,
 } from 'lucide-react';
 import { BlossomTeamMember, BLOSSOMS_TEAM_MEMBERS } from '@/data/team-departments';
@@ -42,7 +41,7 @@ export function OurTeamsSection() {
   return (
     <div className="relative w-full rounded-3xl bg-[#FFDBC3] text-[#3D246C] py-12 px-4 sm:px-6 lg:px-10 overflow-hidden shadow-sm border border-[#3D246C]/15"
       style={{ backgroundColor: '#FFDBC3' }}>
-      
+
       {/* ── Subtle Ambient Refractions (Homepage Palette: Lavender #9F91CC & Royal Purple #5C4B99) ── */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#9F91CC]/15 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#5C4B99]/10 rounded-full blur-3xl pointer-events-none" />
@@ -51,7 +50,7 @@ export function OurTeamsSection() {
 
         {/* ── Two-Section Top Switcher (Faculty Advisors vs Core & Student Team) ── */}
         <div className="flex items-center justify-center">
-          <div 
+          <div
             className="inline-flex p-1.5 rounded-2xl bg-[#FFDBC3]/50 border border-[#3D246C]/15 shadow-xs gap-2"
             role="tablist"
             aria-label="Team Sections"
@@ -64,11 +63,10 @@ export function OurTeamsSection() {
                 setActiveSection('faculty');
                 setSelectedSubTeam('all');
               }}
-              className={`font-tech text-xs sm:text-sm font-semibold px-6 py-2.5 rounded-xl transition-all duration-200 flex items-center gap-2 ${
-                activeSection === 'faculty'
+              className={`font-tech text-xs sm:text-sm font-semibold px-6 py-2.5 rounded-xl transition-all duration-200 flex items-center gap-2 ${activeSection === 'faculty'
                   ? 'bg-[#5C4B99] text-white shadow-md shadow-[#5C4B99]/25 font-bold'
                   : 'bg-transparent text-[#5C4B99] hover:text-[#3D246C] hover:bg-white/80'
-              }`}
+                }`}
             >
               <GraduationCap className="w-4 h-4" />
               <span>Faculty Advisors</span>
@@ -79,11 +77,10 @@ export function OurTeamsSection() {
               role="tab"
               aria-selected={activeSection === 'student'}
               onClick={() => setActiveSection('student')}
-              className={`font-tech text-xs sm:text-sm font-semibold px-6 py-2.5 rounded-xl transition-all duration-200 flex items-center gap-2 ${
-                activeSection === 'student'
+              className={`font-tech text-xs sm:text-sm font-semibold px-6 py-2.5 rounded-xl transition-all duration-200 flex items-center gap-2 ${activeSection === 'student'
                   ? 'bg-[#5C4B99] text-white shadow-md shadow-[#5C4B99]/25 font-bold'
                   : 'bg-transparent text-[#5C4B99] hover:text-[#3D246C] hover:bg-white/80'
-              }`}
+                }`}
             >
               <Users className="w-4 h-4" />
               <span>Core Team &amp; Working Groups</span>
@@ -93,14 +90,14 @@ export function OurTeamsSection() {
 
         {/* ── Symmetrical Diamond Ornamental Header (Exact Vector Flourish in Brand Palette) ── */}
         <div className="text-center space-y-3 max-w-2xl mx-auto">
-          
+
           {/* Symmetrical Spearhead Diamond Flourish Row */}
           <div className="flex items-center justify-center gap-3 sm:gap-6 text-[#5C4B99]">
             {/* Left Wing Flourish */}
-            <svg 
-              className="w-14 sm:w-24 h-4.5 text-[#5C4B99]" 
-              viewBox="0 0 100 16" 
-              fill="currentColor" 
+            <svg
+              className="w-14 sm:w-24 h-4.5 text-[#5C4B99]"
+              viewBox="0 0 100 16"
+              fill="currentColor"
               aria-hidden="true"
             >
               <line x1="0" y1="8" x2="62" y2="8" stroke="currentColor" strokeWidth="1.2" opacity="0.6" />
@@ -110,15 +107,15 @@ export function OurTeamsSection() {
             </svg>
 
             {/* Title: "Our Team" in Luxury Cormorant Garamond Serif */}
-            <h2 id="our-teams-heading" className="font-serif text-3xl sm:text-5xl md:text-6xl font-normal text-[#3D246C] tracking-tight whitespace-nowrap">
+            <h2 id="our-teams-heading" className="font-serif text-3xl sm:text-5xl md:text-6xl font-bold italic text-[#3D246C] tracking-wide whitespace-nowrap drop-shadow-sm">
               Our Team
             </h2>
 
             {/* Right Wing Flourish */}
-            <svg 
-              className="w-14 sm:w-24 h-4.5 text-[#5C4B99] rotate-180" 
-              viewBox="0 0 100 16" 
-              fill="currentColor" 
+            <svg
+              className="w-14 sm:w-24 h-4.5 text-[#5C4B99] rotate-180"
+              viewBox="0 0 100 16"
+              fill="currentColor"
               aria-hidden="true"
             >
               <line x1="0" y1="8" x2="62" y2="8" stroke="currentColor" strokeWidth="1.2" opacity="0.6" />
@@ -150,11 +147,10 @@ export function OurTeamsSection() {
                   key={sub.id}
                   type="button"
                   onClick={() => setSelectedSubTeam(sub.id)}
-                  className={`font-tech text-xs px-4 py-1.5 rounded-full border transition-all duration-150 ${
-                    isActive
+                  className={`font-tech text-xs px-4 py-1.5 rounded-full border transition-all duration-150 ${isActive
                       ? 'bg-[#5C4B99] text-white border-[#5C4B99] font-bold shadow-xs'
                       : 'bg-white/90 text-[#3D246C] border-[#3D246C]/15 hover:bg-[#FFDBC3]/40 hover:border-[#5C4B99]/40 hover:text-[#5C4B99] font-medium'
-                  }`}
+                    }`}
                 >
                   {sub.label}
                 </button>
@@ -196,22 +192,11 @@ export function OurTeamsSection() {
                 - Protrudes over the card pediment shoulder
               */}
               <div className="relative z-10 w-28 sm:w-32 h-36 sm:h-40 rounded-t-[40px] rounded-b-md overflow-hidden bg-[#FFDBC3]/30 border-2 border-white shadow-md ring-1 ring-[#5C4B99]/20 group-hover:scale-105 group-hover:ring-[#5C4B99]/45 transition-all duration-300">
-                {member.image ? (
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    sizes="(max-width: 640px) 128px, 144px"
-                    className="object-cover"
-                  />
-                ) : (
-                  /* Fallback Monogram matching MN1, MN2 */
-                  <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-[#9F91CC]/25 to-white">
-                    <span className="font-serif text-3xl font-bold text-[#5C4B99] select-none">
-                      {member.initials || `MN${index + 1}`}
-                    </span>
-                  </div>
-                )}
+                <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-[#9F91CC]/25 to-white">
+                  <span className="font-serif text-3xl font-bold text-[#5C4B99] select-none">
+                    {member.initials || `MN${index + 1}`}
+                  </span>
+                </div>
               </div>
 
               {/* 
@@ -222,7 +207,7 @@ export function OurTeamsSection() {
                 - Class code in letterspaced uppercase font-tech
               */}
               <div className="w-full -mt-8 pt-12 pb-6 px-4 rounded-3xl bg-white border border-[#3D246C]/15 shadow-2xs hover:shadow-xl group-hover:border-[#5C4B99]/40 transition-all duration-300 space-y-1.5 flex flex-col justify-center">
-                
+
                 {/* Member Name */}
                 <h3 className="font-serif text-lg sm:text-xl font-normal text-[#3D246C] leading-snug group-hover:text-[#5C4B99] transition-colors">
                   {member.name}
@@ -244,15 +229,15 @@ export function OurTeamsSection() {
 
         {/* ── Interactive Member Profile Details Modal (Homepage Theme) ── */}
         {activeMember && (
-          <div 
+          <div
             className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#3D246C]/60 backdrop-blur-sm animate-in fade-in duration-200"
             role="dialog"
             aria-modal="true"
           >
-            <div 
-              className="fixed inset-0" 
-              onClick={() => setActiveMember(null)} 
-              aria-hidden="true" 
+            <div
+              className="fixed inset-0"
+              onClick={() => setActiveMember(null)}
+              aria-hidden="true"
             />
 
             <div className="relative w-full max-w-md bg-white border border-[#3D246C]/15 rounded-3xl shadow-2xl p-6 sm:p-8 space-y-6 z-10 text-center animate-in fade-in duration-150">
@@ -269,19 +254,9 @@ export function OurTeamsSection() {
               {/* Arched Portrait in Modal */}
               <div className="flex flex-col items-center space-y-3">
                 <div className="relative w-28 h-36 rounded-t-[36px] rounded-b-md overflow-hidden bg-[#FFDBC3]/30 border-2 border-white shadow-md ring-1 ring-[#5C4B99]/25">
-                  {activeMember.image ? (
-                    <Image
-                      src={activeMember.image}
-                      alt={activeMember.name}
-                      fill
-                      sizes="112px"
-                      className="object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center font-serif font-bold text-2xl text-[#5C4B99]">
-                      {activeMember.initials}
-                    </div>
-                  )}
+                  <div className="w-full h-full flex items-center justify-center font-serif font-bold text-3xl text-[#5C4B99] bg-gradient-to-b from-[#9F91CC]/25 to-white">
+                    {activeMember.initials}
+                  </div>
                 </div>
 
                 <div className="space-y-1">

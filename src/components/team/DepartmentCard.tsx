@@ -44,13 +44,22 @@ export function DepartmentCard({ department, onOpenDetails }: DepartmentCardProp
 
       {/* Representative Team Image Banner */}
       <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#FFDBC3]/30">
-        <Image
-          src={department.image}
-          alt={department.imageAlt}
-          fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-          className="object-cover group-hover:scale-104 transition-transform duration-300"
-        />
+        {department.image ? (
+          <Image
+            src={department.image}
+            alt={department.imageAlt}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+            className="object-cover group-hover:scale-104 transition-transform duration-300"
+          />
+        ) : (
+          <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#3D246C] via-[#5C4B99] to-[#3D246C] text-[#FFDBC3] p-4">
+            <IconComponent className="w-8 h-8 text-[#FFDBC3]/90 mb-1" />
+            <span className="font-tech text-[11px] font-bold tracking-wider uppercase text-white/90">
+              {department.shortName}
+            </span>
+          </div>
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-[#3D246C]/85 via-transparent to-transparent" />
         
         {/* Category Pill over image */}

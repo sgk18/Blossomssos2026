@@ -14,7 +14,7 @@ const NAV_LINKS: Array<{ href: string; label: string; hasLiveDot?: boolean }> = 
   { href: '/schedule', label: 'Schedule' },
   { href: '/notice-board', label: 'Notice Board', hasLiveDot: true },
   { href: '/gallery', label: 'Gallery' },
-  { href: '/team', label: 'Team' },
+  // { href: '/team', label: 'Team' }, // Deactivated for now
 ];
 
 export function Navbar() {
