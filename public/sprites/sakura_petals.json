@@ -296,10 +296,10 @@
   "size": { "w": 160, "h": 80 },
   "scale": "1",
   "frameTags": [
-   { "name": "sakura_classic_petal", "from": 0, "to": 7, "direction": "forward", "color": "#000000ff" },
-   { "name": "sakura_vivid_petal", "from": 8, "to": 15, "direction": "forward", "color": "#000000ff" },
-   { "name": "sakura_lavender_petal", "from": 16, "to": 23, "direction": "forward", "color": "#000000ff" },
-   { "name": "sakura_coral_petal", "from": 24, "to": 31, "direction": "forward", "color": "#000000ff" }
+   { "name": "pastel_blush_petal", "from": 0, "to": 7, "direction": "forward", "color": "#000000ff" },
+   { "name": "pastel_lilac_petal", "from": 8, "to": 15, "direction": "forward", "color": "#000000ff" },
+   { "name": "pastel_peach_petal", "from": 16, "to": 23, "direction": "forward", "color": "#000000ff" },
+   { "name": "pastel_pearl_petal", "from": 24, "to": 31, "direction": "forward", "color": "#000000ff" }
   ]
  }
 }
