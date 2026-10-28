@@ -835,7 +835,7 @@ export function CampusGreenBoard({
                         className="clay-btn-primary bg-[#5C4B99] hover:bg-[#4C3C82] text-white px-4 py-2 rounded-xl text-xs font-tech font-bold inline-flex items-center gap-1.5"
                       >
                         <Calendar className="w-3.5 h-3.5" />
-                        <span>Event Details &amp; .ics</span>
+                        <span>Event Details</span>
                       </button>
                     )}
 

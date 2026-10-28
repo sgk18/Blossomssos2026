@@ -7,7 +7,6 @@ import {
   Clock,
   MapPin,
   Tag,
-  Download,
   Share2,
   Check,
   FileText,
@@ -15,7 +14,6 @@ import {
 } from 'lucide-react';
 import { ScheduleEvent } from '@/types/schedule';
 import { SCHEDULE_CATEGORY_CONFIG } from '@/data/schedule-2026-27';
-import { downloadEventIcs } from '@/utils/calendarExport';
 
 interface EventDetailModalProps {
   event: ScheduleEvent | null;
@@ -254,28 +252,19 @@ export function EventDetailModal({ event, isOpen, onClose }: EventDetailModalPro
           <button
             type="button"
             onClick={handleShare}
-            className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold bg-white hover:bg-[#FFDBC3]/50 text-[#3D246C] border border-[#3D246C]/25 hover:border-[#5C4B99] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
+            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold bg-[#5C4B99] hover:bg-[#3D246C] text-white active:scale-[0.98] transition-all shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3D246C]"
           >
             {copied ? (
               <>
-                <Check className="w-4 h-4 text-[#5C4B99]" />
-                <span className="text-[#5C4B99] font-bold">Details Copied!</span>
+                <Check className="w-4 h-4 text-[#FFDBC3]" />
+                <span className="text-[#FFDBC3] font-bold">Details Copied!</span>
               </>
             ) : (
               <>
-                <Share2 className="w-4 h-4 text-[#5C4B99]" />
+                <Share2 className="w-4 h-4" />
                 <span>Share Event</span>
               </>
             )}
-          </button>
-
-          <button
-            type="button"
-            onClick={() => downloadEventIcs(event)}
-            className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-[#5C4B99] hover:bg-[#3D246C] text-white active:scale-[0.98] transition-all shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3D246C]"
-          >
-            <Download className="w-4 h-4" />
-            <span>Add to Calendar (.ics)</span>
           </button>
         </div>
       </div>

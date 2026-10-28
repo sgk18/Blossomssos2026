@@ -147,7 +147,7 @@ export function NoticeBoardView() {
                     onClick={() => setModalEvent(nextMilestone.event)}
                     className="font-bold text-[#FFDBC3] hover:text-white inline-flex items-center gap-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFDBC3] rounded"
                   >
-                    <span>Inspect Milestone &amp; Add .ics</span>
+                    <span>Inspect Milestone</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                   <Link
