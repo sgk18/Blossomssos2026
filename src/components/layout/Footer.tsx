@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { siteConfig } from '@/data/site-config';
+import { countsByCategory } from '@/data/events';
 import { MapPin, Mail, Compass, Building, ArrowUp } from 'lucide-react';
 
 export function Footer() {
@@ -123,31 +124,31 @@ export function Footer() {
               <li>
                 <Link href="/events/art" className="text-[#F2EFE8]/75 hover:text-[#A8CBB7] transition-colors flex items-center justify-between group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] rounded">
                   <span>Art Competitions</span>
-                  <span className="text-[10px] text-[#A8CBB7]/70 group-hover:text-[#A8CBB7]">9 Events</span>
+                  <span className="text-[10px] text-[#A8CBB7]/70 group-hover:text-[#A8CBB7]">{countsByCategory.art} Events</span>
                 </Link>
               </li>
               <li>
                 <Link href="/events/literary" className="text-[#F2EFE8]/75 hover:text-[#A8CBB7] transition-colors flex items-center justify-between group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] rounded">
                   <span>Literary Events</span>
-                  <span className="text-[10px] text-[#A8CBB7]/70 group-hover:text-[#A8CBB7]">8 Events</span>
+                  <span className="text-[10px] text-[#A8CBB7]/70 group-hover:text-[#A8CBB7]">{countsByCategory.literary} Events</span>
                 </Link>
               </li>
               <li>
                 <Link href="/events/music" className="text-[#F2EFE8]/75 hover:text-[#A8CBB7] transition-colors flex items-center justify-between group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] rounded">
                   <span>Music &amp; Bands</span>
-                  <span className="text-[10px] text-[#A8CBB7]/70 group-hover:text-[#A8CBB7]">5 Events</span>
+                  <span className="text-[10px] text-[#A8CBB7]/70 group-hover:text-[#A8CBB7]">{countsByCategory.music} Events</span>
                 </Link>
               </li>
               <li>
                 <Link href="/events/theatre" className="text-[#F2EFE8]/75 hover:text-[#A8CBB7] transition-colors flex items-center justify-between group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] rounded">
                   <span>Theatre &amp; Stagecraft</span>
-                  <span className="text-[10px] text-[#A8CBB7]/70 group-hover:text-[#A8CBB7]">6 Events</span>
+                  <span className="text-[10px] text-[#A8CBB7]/70 group-hover:text-[#A8CBB7]">{countsByCategory.theatre} Events</span>
                 </Link>
               </li>
               <li>
                 <Link href="/events/dance" className="text-[#F2EFE8]/75 hover:text-[#A8CBB7] transition-colors flex items-center justify-between group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] rounded">
                   <span>Dance &amp; Choreography</span>
-                  <span className="text-[10px] text-[#A8CBB7]/70 group-hover:text-[#A8CBB7]">3 Events</span>
+                  <span className="text-[10px] text-[#A8CBB7]/70 group-hover:text-[#A8CBB7]">{countsByCategory.dance} Events</span>
                 </Link>
               </li>
             </ul>

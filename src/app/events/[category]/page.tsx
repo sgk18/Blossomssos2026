@@ -7,6 +7,7 @@ import { SubEventCard } from '@/components/events/SubEventCard';
 import { CategoryIcon } from '@/components/ui/CategoryIcon';
 import { ArrowLeft, Layers, ArrowRight } from 'lucide-react';
 
+import { countsByCategory, type EventCategory } from '@/data/events';
 import { siteConfig } from '@/data/site-config';
 
 interface CategoryPageProps {
@@ -133,7 +134,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             <div className="pt-2 flex items-center gap-4 text-xs text-[#F2EFE8]/70">
               <div className="flex items-center gap-1.5 font-semibold">
                 <Layers className="w-4 h-4 text-[#A8CBB7]" />
-                <span className="text-[#F2EFE8]">{category.events.length} Official Competitions</span>
+                <span className="text-[#F2EFE8]">{countsByCategory[category.slug as EventCategory] ?? category.events.length} Official Competitions</span>
               </div>
               <span>•</span>
               <span>Deanery Preliminary Rounds</span>

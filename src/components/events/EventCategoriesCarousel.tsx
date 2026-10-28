@@ -12,6 +12,7 @@ import {
   LayoutGrid, 
   Eye
 } from 'lucide-react';
+import { eventCount, countsByCategory } from '@/data/events';
 import type { CircularCarouselItem } from '@/components/ui/CircularCarousel/CircularCarousel';
 
 // Dynamically import CircularCarousel with ssr: false inside this Client Component
@@ -46,66 +47,66 @@ export const CATEGORY_ITEMS: CategoryCarouselItem[] = [
   {
     slug: 'art',
     title: 'Art',
-    subtitle: '9 Competitions • Visual & Digital Arts',
+    subtitle: `${countsByCategory.art} Competitions • Visual & Digital Arts`,
     tagline: 'Colors, Form & Creative Vision',
     description: 'Visual arts competitions ranging from fine brushwork, photography, and digital graphics to traditional floor and body arts.',
     src: '/art.webp',
-    alt: 'Art Category - 9 competitions including photography, painting, digital poster, and rangoli',
+    alt: `Art Category - ${countsByCategory.art} competitions including photography, painting, digital poster, and rangoli`,
     themeColor: '#06110C',
     accentColor: '#A8CBB7',
-    eventCount: 9,
+    eventCount: countsByCategory.art,
     featuredEvents: ['Photography', 'Painting', 'Digital Poster', 'Rangoli', 'Mehendi']
   },
   {
     slug: 'literary',
     title: 'Literary',
-    subtitle: '8 Competitions • Thought & Written Word',
+    subtitle: `${countsByCategory.literary} Competitions • Thought & Written Word`,
     tagline: 'Thought, Discourse & Written Word',
     description: 'Intellectual and expressive competitions including formal debate, impromptu speaking, rapid-fire trivia, and written composition.',
     src: '/literary.webp',
-    alt: 'Literary Category - 8 competitions including debate, quiz, extempore, and jam',
+    alt: `Literary Category - ${countsByCategory.literary} competitions including debate, quiz, extempore, and jam`,
     themeColor: '#171717',
     accentColor: '#F2EFE8',
-    eventCount: 8,
+    eventCount: countsByCategory.literary,
     featuredEvents: ['Debate', 'Quiz', 'Extempore', 'Creative Writing', 'JAM']
   },
   {
     slug: 'music',
     title: 'Music',
-    subtitle: '5 Competitions • Melody & Sonic Energy',
+    subtitle: `${countsByCategory.music} Competitions • Melody & Sonic Energy`,
     tagline: 'Melody, Rhythm & Sonic Energy',
     description: 'Solo and ensemble musical contests spanning traditional Indian folk vocalizations, Western acoustic sets, and full band battles.',
     src: '/music.webp',
-    alt: 'Music Category - 5 competitions including folk singing, acoustic, and battle of the bands',
+    alt: `Music Category - ${countsByCategory.music} competitions including folk singing, acoustic, and battle of the bands`,
     themeColor: '#A31C1B',
     accentColor: '#F2EFE8',
-    eventCount: 5,
+    eventCount: countsByCategory.music,
     featuredEvents: ['Battle of Bands (Western)', 'Indian Folk Singing', 'Acoustic Solo', 'Battle of Bands (Indian)']
   },
   {
     slug: 'theatre',
     title: 'Theatre',
-    subtitle: '6 Competitions • Drama & Cinematic Craft',
+    subtitle: `${countsByCategory.theatre} Competitions • Drama & Cinematic Craft`,
     tagline: 'Drama, Expression & Cinematic Craft',
     description: 'Stage and screen performance disciplines including solo character portrayals, impactful street plays, proscenium drama, and short films.',
     src: '/theater.webp',
-    alt: 'Theatre Category - 6 competitions including street play, proscenium, mime, and short film',
+    alt: `Theatre Category - ${countsByCategory.theatre} competitions including street play, proscenium, mime, and short film`,
     themeColor: '#06110C',
     accentColor: '#A8CBB7',
-    eventCount: 6,
+    eventCount: countsByCategory.theatre,
     featuredEvents: ['Street Theatre', 'Proscenium', 'Mono Acting', 'Short Film', 'Mime']
   },
   {
     slug: 'dance',
     title: 'Dance',
-    subtitle: '3 Competitions • Rhythm & Choreography',
+    subtitle: `${countsByCategory.dance} Competitions • Rhythm & Choreography`,
     tagline: 'Rhythm, Movement & Choreography',
     description: 'Expressive movement competitions celebrating classical Indian mudras, contemporary duets, and high-energy ensemble formations.',
     src: '/dance.webp',
-    alt: 'Dance Category - 3 competitions including classical, duet, and group non-themed',
+    alt: `Dance Category - ${countsByCategory.dance} competitions including classical, duet, and group non-themed`,
     themeColor: '#A8CBB7',
     accentColor: '#06110C',
-    eventCount: 3,
+    eventCount: countsByCategory.dance,
     featuredEvents: ['Dance Duet', 'Indian Group (Non-themed)', 'Classical Group']
   }
 ];
@@ -214,7 +215,7 @@ export default function EventCategoriesCarousel({
       {showHeading && (
         <div className="max-w-3xl text-center mb-8">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#06110C] border border-[#A8CBB7]/20 text-xs font-semibold text-[#A8CBB7] mb-3 shadow-sm">
-            <span>Curated Disciplines • 31 Competitions</span>
+            <span>Curated Disciplines • {eventCount} Competitions</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[#F2EFE8] tracking-tight">
             Event Categories

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { HeroBackground } from '@/components/hero/HeroBackground';
 import { siteConfig } from '@/data/site-config';
+import { eventCount } from '@/data/events';
 import { 
   ArrowRight, 
   ExternalLink,  
@@ -75,7 +76,7 @@ export default function HomePage() {
                 <span className="text-[#A8CBB7]">Motto:</span>
                 <span className="font-bold text-[#FFE082] uppercase tracking-wider">&lsquo;Be the Best&rsquo;</span>
                 <span className="text-[#A8CBB7]/40">•</span>
-                <span className="text-[#F2EFE8]/80">Over 7,000 Students • 31 Cultural Competitions</span>
+                <span className="text-[#F2EFE8]/80">Over 7,000 Students • {eventCount} Cultural Competitions</span>
               </div>
               <div className="text-[11px] sm:text-xs font-tech text-[#A8CBB7] tracking-wider uppercase flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#171717]/80 border border-[#A8CBB7]/20 backdrop-blur-md">
                 <span className="w-2 h-2 rounded-full bg-[#A8CBB7] animate-pulse" />

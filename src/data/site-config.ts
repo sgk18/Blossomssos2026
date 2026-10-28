@@ -1,4 +1,5 @@
 import { SiteConfig } from '@/types/site';
+import { eventCount } from '@/data/events';
 
 /**
  * Blossoms SOS Global Site Configuration
@@ -14,7 +15,7 @@ export const siteConfig: SiteConfig = {
   tagline: 'Be the Best • From Flames to Flights, White Onyx Ignites.',
   motto: 'Be the Best',
   slogan: 'From Flames to Flights, White Onyx Ignites.',
-  defaultDescription: 'Blossoms School of Sciences at CHRIST (Deemed to be University), Bangalore. Motto: "Be the Best". Team Onyx: "From Flames to Flights, White Onyx Ignites." Over 7,000 students across 31 cultural competitions.',
+  defaultDescription: `Blossoms School of Sciences at CHRIST (Deemed to be University), Bangalore. Motto: "Be the Best". Team Onyx: "From Flames to Flights, White Onyx Ignites." Over 7,000 students across ${eventCount} cultural competitions.`,
   
   activeEditionYear: '2025',
   availableEditions: ['2025'],

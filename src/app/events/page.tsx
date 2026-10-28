@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { siteConfig } from '@/data/site-config';
+import { eventCount } from '@/data/events';
 import { Info, ArrowRight } from 'lucide-react';
-import { EVENT_CATEGORIES } from '@/content/events';
 import { EventCategoriesCarouselSkeleton } from '@/components/events/EventCategoriesCarouselSkeleton';
 
 // Lazy load the 3D CircularCarousel for optimal initial page performance
@@ -17,13 +17,13 @@ const EventCategoriesCarousel = dynamic(
 
 export const metadata: Metadata = {
   title: 'Festival Disciplines & Arenas | Blossoms SOS 2026–27',
-  description: 'Explore the 31 competition events across Art, Literary, Music, Theatre, and Dance at Blossoms School of Sciences with interactive 3D carousel view.',
+  description: `Explore the ${eventCount} competition events across Art, Literary, Music, Theatre, and Dance at Blossoms School of Sciences with interactive 3D carousel view.`,
   alternates: {
     canonical: '/events',
   },
   openGraph: {
     title: 'Festival Disciplines & Arenas | Blossoms SOS 2026–27',
-    description: 'Explore the 31 competition events across Art, Literary, Music, Theatre, and Dance at Blossoms School of Sciences with interactive 3D carousel view.',
+    description: `Explore the ${eventCount} competition events across Art, Literary, Music, Theatre, and Dance at Blossoms School of Sciences with interactive 3D carousel view.`,
     url: `${siteConfig.canonicalUrl}/events`,
     siteName: siteConfig.name,
     type: 'website',
@@ -50,7 +50,7 @@ const breadcrumbJsonLd = {
 };
 
 export default function EventsPage() {
-  const totalEvents = EVENT_CATEGORIES.reduce((acc, cat) => acc + cat.events.length, 0);
+  const totalEvents = eventCount;
 
   return (
     <div className="pt-28 pb-16 md:pt-36 md:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-[#171717] text-[#F2EFE8] selection:bg-[#A31C1B]/30 selection:text-[#F2EFE8]">
