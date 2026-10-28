@@ -93,7 +93,7 @@ export default function HomePage() {
                   alt="From flames to flights, White Onyx Ignites"
                   fill
                   sizes="(max-width: 640px) 384px, (max-width: 768px) 576px, 672px"
-                  className="object-contain drop-shadow-[0_4px_24px_rgba(92,75,153,0.35)] scale-105 sm:scale-115 transition-transform"
+                  className="object-contain drop-shadow-[0_2px_14px_rgba(61,36,108,0.22)] scale-105 sm:scale-115 transition-transform"
                   priority
                 />
               </div>

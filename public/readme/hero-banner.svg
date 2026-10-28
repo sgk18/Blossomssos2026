@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 440" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFDBC3"/>
+      <stop offset="45%" stop-color="#FCE5D6"/>
+      <stop offset="85%" stop-color="#F2D5C0"/>
+      <stop offset="100%" stop-color="#E9C4AE"/>
+    </linearGradient>
+
+    <!-- Deep Purple Text Gradient -->
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2A1452"/>
+      <stop offset="50%" stop-color="#3D246C"/>
+      <stop offset="100%" stop-color="#5C4B99"/>
+    </linearGradient>
+
+    <!-- Fiber Wave Gradients -->
+    <linearGradient id="fiberGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9F91CC" stop-opacity="0"/>
+      <stop offset="25%" stop-color="#9F91CC" stop-opacity="0.35"/>
+      <stop offset="55%" stop-color="#5C4B99" stop-opacity="0.45"/>
+      <stop offset="85%" stop-color="#3D246C" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#3D246C" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="fiberGrad2" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3D246C" stop-opacity="0"/>
+      <stop offset="30%" stop-color="#5C4B99" stop-opacity="0.30"/>
+      <stop offset="70%" stop-color="#9F91CC" stop-opacity="0.40"/>
+      <stop offset="100%" stop-color="#FFDBC3" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Card/Badge Glass Fill -->
+    <linearGradient id="glassFill" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.60"/>
+    </linearGradient>
+
+    <!-- Badge Shadow -->
+    <filter id="badgeShadow" x="-10%" y="-20%" width="120%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#3D246C" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <style>
+    .font-title { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; font-weight: 900; }
+    .font-sub { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; font-weight: 700; }
+    .font-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+  </style>
+
+  <!-- Canvas Background -->
+  <rect width="1200" height="440" rx="16" fill="url(#bgGrad)"/>
+  <rect width="1200" height="440" rx="16" fill="none" stroke="#3D246C" stroke-width="1.5" stroke-opacity="0.18"/>
+
+  <!-- Ethereal Ghost Fiber Waves (Inspired by WebGL GhostFibers) -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M-50,220 C180,110 320,340 580,210 C840,80 980,310 1250,180" stroke="url(#fiberGrad1)" stroke-width="28" opacity="0.6"/>
+    <path d="M-50,240 C170,140 330,360 590,230 C850,100 970,330 1250,200" stroke="url(#fiberGrad2)" stroke-width="18" opacity="0.7"/>
+    <path d="M-50,200 C200,90 310,320 570,190 C830,60 990,290 1250,160" stroke="#7A66B0" stroke-width="6" stroke-opacity="0.25"/>
+    <path d="M-50,260 C160,160 340,380 600,250 C860,120 960,350 1250,220" stroke="#9F91CC" stroke-width="4" stroke-opacity="0.30"/>
+    <path d="M-50,180 C220,70 300,300 560,170 C820,40 1000,270 1250,140" stroke="#5C4B99" stroke-width="2" stroke-opacity="0.35"/>
+  </g>
+
+  <!-- Ambient Micro Sparkles -->
+  <circle cx="280" cy="110" r="3" fill="#5C4B99" opacity="0.4"/>
+  <circle cx="340" cy="340" r="2.5" fill="#3D246C" opacity="0.35"/>
+  <circle cx="880" cy="120" r="3" fill="#9F91CC" opacity="0.5"/>
+  <circle cx="940" cy="320" r="2" fill="#5C4B99" opacity="0.4"/>
+  <circle cx="160" cy="270" r="2" fill="#3D246C" opacity="0.3"/>
+  <circle cx="1060" cy="220" r="3" fill="#7A66B0" opacity="0.45"/>
+
+  <!-- University & Department Super-header -->
+  <g transform="translate(600, 70)" text-anchor="middle">
+    <rect x="-240" y="-18" width="480" height="34" rx="17" fill="url(#glassFill)" stroke="#3D246C" stroke-width="1" stroke-opacity="0.16" filter="url(#badgeShadow)"/>
+    <text y="4" class="font-sub font-mono" font-size="11" fill="#3D246C" letter-spacing="2" text-anchor="middle">
+      CHRIST (DEEMED TO BE UNIVERSITY), BANGALORE
+    </text>
+  </g>
+
+  <!-- Main Brand Title -->
+  <text x="600" y="165" class="font-title" font-size="76" fill="url(#titleGrad)" letter-spacing="4" text-anchor="middle">
+    BLOSSOMS SOS
+  </text>
+
+  <!-- Department & Edition Banner -->
+  <g transform="translate(600, 212)" text-anchor="middle">
+    <text y="0" class="font-title" font-size="24" fill="#3D246C" letter-spacing="1">
+      SCHOOL OF SCIENCES • 2026 FESTIVAL
+    </text>
+  </g>
+
+  <!-- Slogan & Motto Script Banner -->
+  <g transform="translate(600, 258)" text-anchor="middle">
+    <rect x="-310" y="-17" width="620" height="34" rx="17" fill="#FFFFFF" fill-opacity="0.92" stroke="#5C4B99" stroke-width="1" stroke-opacity="0.22" filter="url(#badgeShadow)"/>
+    <text y="5" class="font-sub font-mono" font-size="12" fill="#3D246C" text-anchor="middle" letter-spacing="0.5">
+      <tspan fill="#5C4B99" font-weight="900">MOTTO:</tspan> “BE THE BEST”  •  <tspan fill="#5C4B99" font-weight="900">TEAM ONYX:</tspan> “FROM FLAMES TO FLIGHTS, WHITE ONYX IGNITES”
+    </text>
+  </g>
+
+  <!-- Key Statistics Pills -->
+  <g transform="translate(600, 312)" text-anchor="middle">
+    <!-- Stat 1: Students -->
+    <g transform="translate(-230, 0)">
+      <rect x="-85" y="-14" width="170" height="28" rx="14" fill="#5C4B99" filter="url(#badgeShadow)"/>
+      <text y="4" class="font-sub font-mono" font-size="11" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.5">7,000+ STUDENTS</text>
+    </g>
+    <!-- Stat 2: Competitions -->
+    <g transform="translate(0, 0)">
+      <rect x="-95" y="-14" width="190" height="28" rx="14" fill="#3D246C" filter="url(#badgeShadow)"/>
+      <text y="4" class="font-sub font-mono" font-size="11" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.5">31 COMPETITIONS</text>
+    </g>
+    <!-- Stat 3: Disciplines -->
+    <g transform="translate(230, 0)">
+      <rect x="-85" y="-14" width="170" height="28" rx="14" fill="#5C4B99" filter="url(#badgeShadow)"/>
+      <text y="4" class="font-sub font-mono" font-size="11" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.5">5 DISCIPLINES</text>
+    </g>
+  </g>
+
+  <!-- Bottom Technology Stack Badges -->
+  <g transform="translate(600, 385)" text-anchor="middle">
+    <!-- Tech 1 -->
+    <g transform="translate(-300, 0)">
+      <rect x="-55" y="-13" width="110" height="26" rx="13" fill="#FFFFFF" fill-opacity="0.8" stroke="#3D246C" stroke-width="1" stroke-opacity="0.15"/>
+      <text y="4" class="font-sub font-mono" font-size="10.5" fill="#3D246C">NEXT.JS 15</text>
+    </g>
+    <!-- Tech 2 -->
+    <g transform="translate(-180, 0)">
+      <rect x="-50" y="-13" width="100" height="26" rx="13" fill="#FFFFFF" fill-opacity="0.8" stroke="#3D246C" stroke-width="1" stroke-opacity="0.15"/>
+      <text y="4" class="font-sub font-mono" font-size="10.5" fill="#3D246C">REACT 19</text>
+    </g>
+    <!-- Tech 3 -->
+    <g transform="translate(-60, 0)">
+      <rect x="-55" y="-13" width="110" height="26" rx="13" fill="#FFFFFF" fill-opacity="0.8" stroke="#3D246C" stroke-width="1" stroke-opacity="0.15"/>
+      <text y="4" class="font-sub font-mono" font-size="10.5" fill="#3D246C">TYPESCRIPT</text>
+    </g>
+    <!-- Tech 4 -->
+    <g transform="translate(65, 0)">
+      <rect x="-58" y="-13" width="116" height="26" rx="13" fill="#FFFFFF" fill-opacity="0.8" stroke="#3D246C" stroke-width="1" stroke-opacity="0.15"/>
+      <text y="4" class="font-sub font-mono" font-size="10.5" fill="#3D246C">TAILWIND V4</text>
+    </g>
+    <!-- Tech 5 -->
+    <g transform="translate(195, 0)">
+      <rect x="-60" y="-13" width="120" height="26" rx="13" fill="#FFFFFF" fill-opacity="0.8" stroke="#3D246C" stroke-width="1" stroke-opacity="0.15"/>
+      <text y="4" class="font-sub font-mono" font-size="10.5" fill="#3D246C">WEBGL FIBERS</text>
+    </g>
+    <!-- Tech 6 -->
+    <g transform="translate(325, 0)">
+      <rect x="-55" y="-13" width="110" height="26" rx="13" fill="#FFFFFF" fill-opacity="0.8" stroke="#3D246C" stroke-width="1" stroke-opacity="0.15"/>
+      <text y="4" class="font-sub font-mono" font-size="10.5" fill="#3D246C">WCAG 2.2 AA</text>
+    </g>
+  </g>
+</svg>

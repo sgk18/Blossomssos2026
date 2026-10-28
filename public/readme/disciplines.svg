@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 230" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="discBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFDBC3"/>
+      <stop offset="50%" stop-color="#FAF0E8"/>
+      <stop offset="100%" stop-color="#F2D3BE"/>
+    </linearGradient>
+
+    <!-- Card Fill -->
+    <linearGradient id="discCardFill" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F9F6FC"/>
+    </linearGradient>
+
+    <!-- Card Shadow -->
+    <filter id="cardShadow" x="-10%" y="-15%" width="120%" height="135%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#3D246C" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <style>
+    .font-heavy { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; font-weight: 800; }
+    .font-med { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; font-weight: 600; }
+    .font-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+  </style>
+
+  <!-- Container Box -->
+  <rect width="1100" height="230" rx="16" fill="url(#discBgGrad)"/>
+  <rect width="1100" height="230" rx="16" fill="none" stroke="#3D246C" stroke-width="1.5" stroke-opacity="0.18"/>
+
+  <!-- Top Title -->
+  <g transform="translate(32, 26)">
+    <text x="0" y="14" fill="#3D246C" class="font-heavy" font-size="16" letter-spacing="0.4">5 OFFICIAL CULTURAL DISCIPLINES</text>
+    <text x="320" y="14" fill="#5C4B99" class="font-mono" font-size="11.5" font-weight="600">31 Competitions • ~7,000 Christ University Students</text>
+  </g>
+
+  <!-- ==================== CARD 1: ART & MEDIA ==================== -->
+  <g transform="translate(32, 54)" filter="url(#cardShadow)">
+    <rect width="194" height="152" rx="12" fill="url(#discCardFill)" stroke="#9F91CC" stroke-width="1.2"/>
+    <rect x="0" y="0" width="194" height="6" rx="3" fill="#5C4B99"/>
+    
+    <!-- Icon Circle -->
+    <circle cx="36" cy="38" r="18" fill="#F0ECFB"/>
+    <!-- Art Icon: Palette & Brush -->
+    <path d="M 28 42 C 26 36 29 28 36 28 C 43 28 46 34 44 40 C 43 43 40 44 38 42 C 37 41 36 41 35 43 C 34 45 31 46 28 42 Z" fill="none" stroke="#5C4B99" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="33" cy="33" r="1.4" fill="#9F91CC"/>
+    <circle cx="38" cy="33" r="1.4" fill="#5C4B99"/>
+    <circle cx="41" cy="37" r="1.4" fill="#3D246C"/>
+    
+    <!-- Header -->
+    <text x="64" y="36" fill="#3D246C" class="font-heavy" font-size="13.5">ART &amp; MEDIA</text>
+    <rect x="64" y="42" width="60" height="16" rx="4" fill="#FFDBC3"/>
+    <text x="94" y="54" fill="#3D246C" class="font-mono" font-size="9" font-weight="700" text-anchor="middle">9 EVENTS</text>
+    
+    <!-- Sub-items -->
+    <text x="14" y="84" fill="#5C4B99" class="font-med" font-size="11">• Painting &amp; Rangoli</text>
+    <text x="14" y="100" fill="#5C4B99" class="font-med" font-size="11">• Short Film &amp; Photo</text>
+    <text x="14" y="116" fill="#5C4B99" class="font-med" font-size="11">• Digital Poster, Mehendi</text>
+    <text x="14" y="134" fill="#887AA8" class="font-mono" font-size="9.5">Discipline Code: ART</text>
+  </g>
+
+  <!-- ==================== CARD 2: LITERARY ==================== -->
+  <g transform="translate(244, 54)" filter="url(#cardShadow)">
+    <rect width="194" height="152" rx="12" fill="url(#discCardFill)" stroke="#9F91CC" stroke-width="1.2"/>
+    <rect x="0" y="0" width="194" height="6" rx="3" fill="#3D246C"/>
+    
+    <!-- Icon Circle -->
+    <circle cx="36" cy="38" r="18" fill="#F0ECFB"/>
+    <!-- Literary Icon: Open Book & Quill -->
+    <path d="M 27 34 C 30 33 34 33 36 36 C 38 33 42 33 45 34 L 45 44 C 42 43 38 43 36 46 C 34 43 30 43 27 44 Z" fill="none" stroke="#3D246C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="36" y1="36" x2="36" y2="46" stroke="#3D246C" stroke-width="1.5"/>
+
+    <!-- Header -->
+    <text x="64" y="36" fill="#3D246C" class="font-heavy" font-size="13.5">LITERARY</text>
+    <rect x="64" y="42" width="60" height="16" rx="4" fill="#FFDBC3"/>
+    <text x="94" y="54" fill="#3D246C" class="font-mono" font-size="9" font-weight="700" text-anchor="middle">5 EVENTS</text>
+    
+    <!-- Sub-items -->
+    <text x="14" y="84" fill="#5C4B99" class="font-med" font-size="11">• Debate &amp; Extempore</text>
+    <text x="14" y="100" fill="#5C4B99" class="font-med" font-size="11">• Creative Writing</text>
+    <text x="14" y="116" fill="#5C4B99" class="font-med" font-size="11">• General Quiz &amp; JAM</text>
+    <text x="14" y="134" fill="#887AA8" class="font-mono" font-size="9.5">Discipline Code: LIT</text>
+  </g>
+
+  <!-- ==================== CARD 3: DANCE ==================== -->
+  <g transform="translate(456, 54)" filter="url(#cardShadow)">
+    <rect width="194" height="152" rx="12" fill="url(#discCardFill)" stroke="#9F91CC" stroke-width="1.2"/>
+    <rect x="0" y="0" width="194" height="6" rx="3" fill="#5C4B99"/>
+    
+    <!-- Icon Circle -->
+    <circle cx="36" cy="38" r="18" fill="#F0ECFB"/>
+    <!-- Dance Icon: Dynamic Rhythm -->
+    <circle cx="36" cy="29" r="2.5" fill="#5C4B99"/>
+    <path d="M 33 34 L 36 36 L 41 33 M 36 36 L 35 42 L 30 46 M 35 42 L 39 46" fill="none" stroke="#5C4B99" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Header -->
+    <text x="64" y="36" fill="#3D246C" class="font-heavy" font-size="13.5">DANCE</text>
+    <rect x="64" y="42" width="60" height="16" rx="4" fill="#FFDBC3"/>
+    <text x="94" y="54" fill="#3D246C" class="font-mono" font-size="9" font-weight="700" text-anchor="middle">4 EVENTS</text>
+    
+    <!-- Sub-items -->
+    <text x="14" y="84" fill="#5C4B99" class="font-med" font-size="11">• Indian Classical Group</text>
+    <text x="14" y="100" fill="#5C4B99" class="font-med" font-size="11">• Non-Themed Group</text>
+    <text x="14" y="116" fill="#5C4B99" class="font-med" font-size="11">• Duet &amp; Themed Forms</text>
+    <text x="14" y="134" fill="#887AA8" class="font-mono" font-size="9.5">Discipline Code: DNC</text>
+  </g>
+
+  <!-- ==================== CARD 4: MUSIC ==================== -->
+  <g transform="translate(668, 54)" filter="url(#cardShadow)">
+    <rect width="194" height="152" rx="12" fill="url(#discCardFill)" stroke="#9F91CC" stroke-width="1.2"/>
+    <rect x="0" y="0" width="194" height="6" rx="3" fill="#3D246C"/>
+    
+    <!-- Icon Circle -->
+    <circle cx="36" cy="38" r="18" fill="#F0ECFB"/>
+    <!-- Music Icon: Notes & Soundwave -->
+    <ellipse cx="30" cy="42" rx="2.5" ry="2" fill="#3D246C"/>
+    <ellipse cx="40" cy="39" rx="2.5" ry="2" fill="#3D246C"/>
+    <path d="M 32.5 42 L 32.5 30 L 42.5 27 L 42.5 39" fill="none" stroke="#3D246C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="32.5" y1="34" x2="42.5" y2="31" stroke="#3D246C" stroke-width="1.8"/>
+
+    <!-- Header -->
+    <text x="64" y="36" fill="#3D246C" class="font-heavy" font-size="13.5">MUSIC</text>
+    <rect x="64" y="42" width="60" height="16" rx="4" fill="#FFDBC3"/>
+    <text x="94" y="54" fill="#3D246C" class="font-mono" font-size="9" font-weight="700" text-anchor="middle">5 EVENTS</text>
+    
+    <!-- Sub-items -->
+    <text x="14" y="84" fill="#5C4B99" class="font-med" font-size="11">• Indian &amp; West Bands</text>
+    <text x="14" y="100" fill="#5C4B99" class="font-med" font-size="11">• Acoustic Music Solo</text>
+    <text x="14" y="116" fill="#5C4B99" class="font-med" font-size="11">• Indian Folk &amp; Solo Sing</text>
+    <text x="14" y="134" fill="#887AA8" class="font-mono" font-size="9.5">Discipline Code: MUS</text>
+  </g>
+
+  <!-- ==================== CARD 5: THEATRE ==================== -->
+  <g transform="translate(880, 54)" filter="url(#cardShadow)">
+    <rect width="188" height="152" rx="12" fill="url(#discCardFill)" stroke="#9F91CC" stroke-width="1.2"/>
+    <rect x="0" y="0" width="188" height="6" rx="3" fill="#5C4B99"/>
+    
+    <!-- Icon Circle -->
+    <circle cx="34" cy="38" r="18" fill="#F0ECFB"/>
+    <!-- Theatre Icon: Drama Masks -->
+    <path d="M 24 33 C 24 28 32 28 36 28 C 40 28 44 30 44 35 C 44 42 36 45 34 45 C 32 45 24 42 24 33 Z" fill="none" stroke="#5C4B99" stroke-width="1.8"/>
+    <circle cx="30" cy="33" r="1.2" fill="#5C4B99"/>
+    <circle cx="36" cy="33" r="1.2" fill="#5C4B99"/>
+    <path d="M 30 38 Q 33 41 36 38" fill="none" stroke="#5C4B99" stroke-width="1.4" stroke-linecap="round"/>
+
+    <!-- Header -->
+    <text x="60" y="36" fill="#3D246C" class="font-heavy" font-size="13.5">THEATRE</text>
+    <rect x="60" y="42" width="60" height="16" rx="4" fill="#FFDBC3"/>
+    <text x="90" y="54" fill="#3D246C" class="font-mono" font-size="9" font-weight="700" text-anchor="middle">8 EVENTS</text>
+    
+    <!-- Sub-items -->
+    <text x="12" y="84" fill="#5C4B99" class="font-med" font-size="11">• Proscenium &amp; Street</text>
+    <text x="12" y="100" fill="#5C4B99" class="font-med" font-size="11">• Mime &amp; Mono Acting</text>
+    <text x="12" y="116" fill="#5C4B99" class="font-med" font-size="11">• Potpourri &amp; Charades</text>
+    <text x="12" y="134" fill="#887AA8" class="font-mono" font-size="9.5">Discipline Code: THT</text>
+  </g>
+</svg>

@@ -1,0 +1,205 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="archBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFDBC3"/>
+      <stop offset="50%" stop-color="#FDF0E7"/>
+      <stop offset="100%" stop-color="#F5DDD0"/>
+    </linearGradient>
+
+    <!-- Header Gradient -->
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3D246C"/>
+      <stop offset="100%" stop-color="#5C4B99"/>
+    </linearGradient>
+
+    <!-- Card Fill -->
+    <linearGradient id="cardFill" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.80"/>
+    </linearGradient>
+
+    <!-- Server Card Fill -->
+    <linearGradient id="serverCardFill" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F8F6FD" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#EDE8F7" stop-opacity="0.85"/>
+    </linearGradient>
+
+    <!-- Sub-module Box Fill -->
+    <linearGradient id="subBoxFill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F6F3FB"/>
+    </linearGradient>
+
+    <!-- Card Shadow -->
+    <filter id="boxShadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#3D246C" flood-opacity="0.10"/>
+    </filter>
+
+    <!-- Marker Arrow -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#5C4B99"/>
+    </marker>
+    <marker id="arrowRedact" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#3D246C"/>
+    </marker>
+  </defs>
+
+  <style>
+    .font-heavy { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; font-weight: 800; }
+    .font-med { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; font-weight: 600; }
+    .font-reg { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; font-weight: 400; font-size: 11.5px; }
+    .font-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; }
+  </style>
+
+  <!-- Container Box -->
+  <rect width="1200" height="520" rx="16" fill="url(#archBgGrad)"/>
+  <rect width="1200" height="520" rx="16" fill="none" stroke="#3D246C" stroke-width="1.5" stroke-opacity="0.18"/>
+
+  <!-- Diagram Title Header -->
+  <g transform="translate(48, 44)">
+    <rect x="0" y="-4" width="8" height="28" rx="4" fill="#5C4B99"/>
+    <text x="20" y="18" fill="#3D246C" class="font-heavy" font-size="20" letter-spacing="-0.3">SYSTEM ARCHITECTURE &amp; DATA ISOLATION PIPELINE</text>
+    <text x="590" y="18" fill="#5C4B99" class="font-mono" font-weight="600" opacity="0.9">Next.js 15 App Router • React 19 RSC Seam • WebGL Engine</text>
+  </g>
+
+  <!-- ==================== COLUMN 1: CLIENT RUNTIME (BROWSER) ==================== -->
+  <g transform="translate(48, 88)" filter="url(#boxShadow)">
+    <rect width="340" height="390" rx="14" fill="url(#cardFill)" stroke="#9F91CC" stroke-width="1.2"/>
+    
+    <!-- Header -->
+    <rect width="340" height="42" rx="14" fill="#5C4B99"/>
+    <rect y="28" width="340" height="14" fill="#5C4B99"/>
+    <circle cx="24" cy="21" r="5" fill="#FFDBC3"/>
+    <text x="38" y="26" fill="#FFFFFF" class="font-heavy" font-size="13" letter-spacing="0.5">CLIENT LAYER • INTERACTIVE UI</text>
+
+    <!-- Submodule 1: Hero WebGL Canvas -->
+    <g transform="translate(18, 58)">
+      <rect width="304" height="96" rx="8" fill="url(#subBoxFill)" stroke="#3D246C" stroke-width="1" stroke-opacity="0.15"/>
+      <text x="14" y="22" fill="#3D246C" class="font-heavy" font-size="12">HeroBackground &amp; GhostFibers</text>
+      <text x="14" y="40" fill="#5C4B99" class="font-mono">Three.js / WebGL Shader Canvas</text>
+      <text x="14" y="58" fill="#4A3B69" class="font-reg">• Premultiplied alpha light shading (#FFDBC3)</text>
+      <text x="14" y="74" fill="#4A3B69" class="font-reg">• Throttled scroll listener &amp; auto-pause</text>
+      <text x="14" y="88" fill="#4A3B69" class="font-reg">• 55px sink &amp; bottom gradient fade</text>
+    </g>
+
+    <!-- Submodule 2: Circular Carousel -->
+    <g transform="translate(18, 166)">
+      <rect width="304" height="94" rx="8" fill="url(#subBoxFill)" stroke="#3D246C" stroke-width="1" stroke-opacity="0.15"/>
+      <text x="14" y="22" fill="#3D246C" class="font-heavy" font-size="12">3D Circular Carousel Explorer</text>
+      <text x="14" y="40" fill="#5C4B99" class="font-mono">Framer Motion / CSS Transforms</text>
+      <text x="14" y="58" fill="#4A3B69" class="font-reg">• Interactive 3D rotary event showcase</text>
+      <text x="14" y="74" fill="#4A3B69" class="font-reg">• Pointer drag + keyboard nav support</text>
+      <text x="14" y="88" fill="#4A3B69" class="font-reg">• Zero layout shift (stable boundary)</text>
+    </g>
+
+    <!-- Submodule 3: Schedule View -->
+    <g transform="translate(18, 272)">
+      <rect width="304" height="96" rx="8" fill="url(#subBoxFill)" stroke="#3D246C" stroke-width="1" stroke-opacity="0.15"/>
+      <text x="14" y="22" fill="#3D246C" class="font-heavy" font-size="12">ScheduleTimelineView &amp; Filter</text>
+      <text x="14" y="40" fill="#5C4B99" class="font-mono">Real-Time State / Filter Engine</text>
+      <text x="14" y="58" fill="#4A3B69" class="font-reg">• Multi-day timeline &amp; calendar toggles</text>
+      <text x="14" y="74" fill="#4A3B69" class="font-reg">• Discipline pill filtering (5 categories)</text>
+      <text x="14" y="88" fill="#4A3B69" class="font-reg">• Accessible modal event dialogs</text>
+    </g>
+  </g>
+
+  <!-- ==================== CONNECTOR 1 -> 2 ==================== -->
+  <g transform="translate(396, 260)">
+    <line x1="0" y1="0" x2="30" y2="0" stroke="#5C4B99" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+    <text x="15" y="-10" fill="#3D246C" class="font-mono" text-anchor="middle" font-size="9.5">Fetch / Hydrate</text>
+  </g>
+
+  <!-- ==================== COLUMN 2: NEXT.JS SERVER & RSC ==================== -->
+  <g transform="translate(432, 88)" filter="url(#boxShadow)">
+    <rect width="340" height="390" rx="14" fill="url(#serverCardFill)" stroke="#5C4B99" stroke-width="1.4"/>
+
+    <!-- Header -->
+    <rect width="340" height="42" rx="14" fill="#3D246C"/>
+    <rect y="28" width="340" height="14" fill="#3D246C"/>
+    <circle cx="24" cy="21" r="5" fill="#9F91CC"/>
+    <text x="38" y="26" fill="#FFFFFF" class="font-heavy" font-size="13" letter-spacing="0.5">SERVER RUNTIME • RSC &amp; API</text>
+
+    <!-- Submodule 1: Next.js App Router Page -->
+    <g transform="translate(18, 58)">
+      <rect width="304" height="96" rx="8" fill="#FFFFFF" stroke="#3D246C" stroke-width="1" stroke-opacity="0.15"/>
+      <text x="14" y="22" fill="#3D246C" class="font-heavy" font-size="12">App Router &amp; Server Components</text>
+      <text x="14" y="40" fill="#5C4B99" class="font-mono">src/app/page.tsx (RSC Tree)</text>
+      <text x="14" y="58" fill="#4A3B69" class="font-reg">• Zero-bundle server rendering for core HTML</text>
+      <text x="14" y="74" fill="#4A3B69" class="font-reg">• Fast Initial Paint &amp; LCP optimization</text>
+      <text x="14" y="88" fill="#4A3B69" class="font-reg">• Semantic OpenGraph &amp; Christ Univ metadata</text>
+    </g>
+
+    <!-- Submodule 2: PII Redaction Layer -->
+    <g transform="translate(18, 166)">
+      <rect width="304" height="94" rx="8" fill="#FFF8F4" stroke="#D96E43" stroke-width="1.2"/>
+      <text x="14" y="22" fill="#993816" class="font-heavy" font-size="12">PII Sanitization &amp; Scrubbing Seam</text>
+      <text x="14" y="40" fill="#B3441B" class="font-mono">Route Scrubber Boundary</text>
+      <text x="14" y="58" fill="#6B2912" class="font-reg">• Regex strips student register numbers</text>
+      <text x="14" y="74" fill="#6B2912" class="font-reg">• Purges phone numbers &amp; internal notes</text>
+      <text x="14" y="88" fill="#6B2912" class="font-reg">• Strict zero-leak guarantee to client</text>
+    </g>
+
+    <!-- Submodule 3: Route Handlers & ISR Caching -->
+    <g transform="translate(18, 272)">
+      <rect width="304" height="96" rx="8" fill="#FFFFFF" stroke="#3D246C" stroke-width="1" stroke-opacity="0.15"/>
+      <text x="14" y="22" fill="#3D246C" class="font-heavy" font-size="12">Route Handlers &amp; Cache Engine</text>
+      <text x="14" y="40" fill="#5C4B99" class="font-mono">/api/schedule • /api/scores</text>
+      <text x="14" y="58" fill="#4A3B69" class="font-reg">• Stale-While-Revalidate caching pattern</text>
+      <text x="14" y="74" fill="#4A3B69" class="font-reg">• Automatic fallback to static backup files</text>
+      <text x="14" y="88" fill="#4A3B69" class="font-reg">• Resilient to upstream sheet downtime</text>
+    </g>
+  </g>
+
+  <!-- ==================== CONNECTOR 2 -> 3 ==================== -->
+  <g transform="translate(780, 260)">
+    <line x1="0" y1="0" x2="30" y2="0" stroke="#3D246C" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrowRedact)"/>
+    <text x="15" y="-10" fill="#3D246C" class="font-mono" text-anchor="middle" font-size="9.5">Sync / Load</text>
+  </g>
+
+  <!-- ==================== COLUMN 3: DATA & DESIGN TOKENS ==================== -->
+  <g transform="translate(816, 88)" filter="url(#boxShadow)">
+    <rect width="336" height="390" rx="14" fill="url(#cardFill)" stroke="#9F91CC" stroke-width="1.2"/>
+
+    <!-- Header -->
+    <rect width="336" height="42" rx="14" fill="#5C4B99"/>
+    <rect y="28" width="336" height="14" fill="#5C4B99"/>
+    <circle cx="24" cy="21" r="5" fill="#FFDBC3"/>
+    <text x="38" y="26" fill="#FFFFFF" class="font-heavy" font-size="13" letter-spacing="0.5">DATA SOURCES &amp; DESIGN SYSTEM</text>
+
+    <!-- Submodule 1: Google Sheets Source -->
+    <g transform="translate(18, 58)">
+      <rect width="300" height="96" rx="8" fill="url(#subBoxFill)" stroke="#3D246C" stroke-width="1" stroke-opacity="0.15"/>
+      <text x="14" y="22" fill="#3D246C" class="font-heavy" font-size="12">Live External Data Sources</text>
+      <text x="14" y="40" fill="#5C4B99" class="font-mono">Google Sheets CSV Feeds</text>
+      <text x="14" y="58" fill="#4A3B69" class="font-reg">• 31 cultural competitions, venues &amp; timings</text>
+      <text x="14" y="74" fill="#4A3B69" class="font-reg">• Real-time score updates &amp; standings</text>
+      <text x="14" y="88" fill="#4A3B69" class="font-reg">• Non-blocking async background poll</text>
+    </g>
+
+    <!-- Submodule 2: Local Static Fallbacks -->
+    <g transform="translate(18, 166)">
+      <rect width="300" height="94" rx="8" fill="url(#subBoxFill)" stroke="#3D246C" stroke-width="1" stroke-opacity="0.15"/>
+      <text x="14" y="22" fill="#3D246C" class="font-heavy" font-size="12">Domain Baseline &amp; Fallbacks</text>
+      <text x="14" y="40" fill="#5C4B99" class="font-mono">src/data/site-config.ts</text>
+      <text x="14" y="58" fill="#4A3B69" class="font-reg">• Team Onyx official identity &amp; slogans</text>
+      <text x="14" y="74" fill="#4A3B69" class="font-reg">• 5 cultural discipline taxonomies</text>
+      <text x="14" y="88" fill="#4A3B69" class="font-reg">• Strict Historical Isolation rules</text>
+    </g>
+
+    <!-- Submodule 3: Clean UI Palette Token Core -->
+    <g transform="translate(18, 272)">
+      <rect width="300" height="96" rx="8" fill="url(#subBoxFill)" stroke="#3D246C" stroke-width="1" stroke-opacity="0.15"/>
+      <text x="14" y="22" fill="#3D246C" class="font-heavy" font-size="12">Clean-UI-Palette Design Tokens</text>
+      <text x="14" y="40" fill="#5C4B99" class="font-mono">Tailwind CSS v4 • globals.css</text>
+      <text x="14" y="58" fill="#4A3B69" class="font-reg">• Peach (#FFDBC3) • Lavender (#9F91CC)</text>
+      <text x="14" y="74" fill="#4A3B69" class="font-reg">• Royal (#5C4B99) • Deep Purple (#3D246C)</text>
+      <text x="14" y="88" fill="#4A3B69" class="font-reg">• Zero-Wipeout UX &amp; WCAG 2.2 AA certified</text>
+    </g>
+  </g>
+
+  <!-- Bottom Architecture Invariant Badge -->
+  <g transform="translate(48, 488)">
+    <text x="0" y="16" fill="#3D246C" class="font-mono" font-size="11.5" opacity="0.85">🛡️ Architectural Invariant: Historical 2024–2025 archive datasets remain read-only; 2026 live telemetry routes through server scrubbing.</text>
+  </g>
+</svg>

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { siteConfig } from '@/data/site-config';
 
 const NAV_LINKS = [
@@ -20,22 +20,7 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const [prevPathname, setPrevPathname] = useState(pathname);
-  const [showRegister, setShowRegister] = useState(false);
 
-  // Scroll listener: reveal Register button after scrolling past hero section
-  useEffect(() => {
-    const handleScroll = () => {
-      const heroElement = document.getElementById('hero-heading')?.closest('section');
-      const threshold = heroElement 
-        ? heroElement.offsetTop + heroElement.offsetHeight - 180 
-        : 350;
-      setShowRegister(window.scrollY > threshold);
-    };
-
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [pathname]);
 
   // Close mobile menu when pathname changes
   if (pathname !== prevPathname) {
@@ -156,42 +141,7 @@ export function Navbar() {
             </div>
           </div>
 
-          {/* Floating Register CTA on Right Side (Parallel to Pill Nav, reveals after scrolling past hero section) */}
-          {siteConfig.registrationUrl && (
-            <div 
-              className={`absolute right-0 inset-y-0 pointer-events-auto hidden sm:flex items-center transition-all duration-300 ease-out ${
-                showRegister 
-                  ? 'opacity-100 translate-y-0 scale-100' 
-                  : 'opacity-0 -translate-y-3 scale-95 pointer-events-none'
-              }`}
-            >
-              <a
-                href={siteConfig.registrationUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative group overflow-hidden h-11 sm:h-12 px-5 sm:px-6 rounded-full liquid-glass-register-btn inline-flex items-center justify-center gap-2 text-xs sm:text-sm font-bold font-tech tracking-wider text-white shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFDBC3]"
-                aria-label="Register for Events"
-              >
-                {/* Surface Liquid Sheen */}
-                <div 
-                  className="absolute inset-0 bg-gradient-to-b from-white/25 via-white/[0.05] to-transparent pointer-events-none rounded-full" 
-                  aria-hidden="true" 
-                />
-                {/* Specular Rim Light */}
-                <div 
-                  className="absolute inset-x-4 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none rounded-full" 
-                  aria-hidden="true" 
-                />
-                <span className="relative z-10 font-bold uppercase tracking-wider text-[#F9F5EB] group-hover:text-white transition-colors">
-                  Register
-                </span>
-                <ArrowUpRight 
-                  className="relative z-10 w-4 h-4 text-[#FFDBC3] group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" 
-                  aria-hidden="true" 
-                />
-              </a>
-            </div>
-          )}
+
 
         </div>
       </header>
