@@ -98,6 +98,24 @@ export function GalleryCoverflow({ onSelectImage }: GalleryCoverflowProps) {
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
+          {/* Left Arrow Navigation Button (Beside Images) */}
+          <button
+            onClick={handlePrev}
+            className="absolute left-1 sm:left-4 md:left-6 lg:left-10 top-1/2 -translate-y-1/2 z-40 p-2.5 sm:p-3.5 rounded-full bg-white/90 hover:bg-white text-[#3D246C] hover:text-[#5C4B99] border border-[#3D246C]/15 hover:border-[#5C4B99]/40 shadow-lg backdrop-blur-md transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
+            aria-label="Previous Highlight"
+          >
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+          </button>
+
+          {/* Right Arrow Navigation Button (Beside Images) */}
+          <button
+            onClick={handleNext}
+            className="absolute right-1 sm:right-4 md:right-6 lg:right-10 top-1/2 -translate-y-1/2 z-40 p-2.5 sm:p-3.5 rounded-full bg-white/90 hover:bg-white text-[#3D246C] hover:text-[#5C4B99] border border-[#3D246C]/15 hover:border-[#5C4B99]/40 shadow-lg backdrop-blur-md transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
+            aria-label="Next Highlight"
+          >
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+          </button>
+
           {COVERFLOW_SLIDES.map((slide, idx) => {
             const offset = idx - activeIndex;
             const absOffset = Math.abs(offset);
@@ -149,13 +167,6 @@ export function GalleryCoverflow({ onSelectImage }: GalleryCoverflowProps) {
                   {/* Subtle vignette gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#3D246C]/90 via-[#3D246C]/25 to-transparent pointer-events-none" />
 
-                  {/* Card Badge */}
-                  <div className="absolute top-3.5 left-3.5 sm:top-4 sm:left-4 z-10">
-                    <span className="inline-block px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold tracking-wider uppercase bg-white/95 backdrop-blur-md text-[#5C4B99] border border-white/60 shadow-xs">
-                      {slide.pillar}
-                    </span>
-                  </div>
-
                   {/* Quick Expand Icon if selected */}
                   {isActive && onSelectImage && (
                     <button
@@ -185,49 +196,29 @@ export function GalleryCoverflow({ onSelectImage }: GalleryCoverflowProps) {
           })}
         </div>
 
-        {/* 3. Navigation Controls & Active Caption */}
+        {/* 3. Active Caption & Slide Indicators */}
         <div className="max-w-2xl mx-auto mt-6 sm:mt-10 flex flex-col items-center text-center">
-          <div className="flex items-center justify-center gap-4 sm:gap-6 w-full mb-4">
-            {/* Left Button */}
-            <button
-              onClick={handlePrev}
-              className="p-3 sm:p-3.5 rounded-full bg-white/90 hover:bg-white text-[#3D246C] hover:text-[#5C4B99] border border-[#3D246C]/15 hover:border-[#5C4B99]/30 shadow-md transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
-              aria-label="Previous Highlight"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-
-            {/* Active Details Card */}
-            <div className="flex-1 px-3 sm:px-6">
-              <h3 className="font-angular text-xl sm:text-2xl font-black text-[#3D246C] tracking-tight">
-                {currentSlide.title}
-              </h3>
-              
-              <div className="flex items-center justify-center flex-wrap gap-x-3 gap-y-1 text-xs text-[#5C4B99] font-semibold mt-1">
-                <span className="flex items-center gap-1">
-                  <Calendar className="w-3.5 h-3.5" />
-                  {currentSlide.date}
-                </span>
-                <span className="text-[#3D246C]/30">•</span>
-                <span className="flex items-center gap-1 text-[#3D246C]/80">
-                  <MapPin className="w-3.5 h-3.5 text-[#5C4B99]" />
-                  {currentSlide.venue}
-                </span>
-              </div>
-
-              <p className="text-xs sm:text-sm text-[#5C4B99] font-body mt-2 leading-relaxed max-w-lg mx-auto line-clamp-2 sm:line-clamp-none font-medium">
-                {currentSlide.description}
-              </p>
+          {/* Active Details Card */}
+          <div className="w-full px-3 sm:px-6 mb-3">
+            <h3 className="font-angular text-xl sm:text-2xl font-black text-[#3D246C] tracking-tight">
+              {currentSlide.title}
+            </h3>
+            
+            <div className="flex items-center justify-center flex-wrap gap-x-3 gap-y-1 text-xs text-[#5C4B99] font-semibold mt-1">
+              <span className="flex items-center gap-1">
+                <Calendar className="w-3.5 h-3.5" />
+                {currentSlide.date}
+              </span>
+              <span className="text-[#3D246C]/30">•</span>
+              <span className="flex items-center gap-1 text-[#3D246C]/80">
+                <MapPin className="w-3.5 h-3.5 text-[#5C4B99]" />
+                {currentSlide.venue}
+              </span>
             </div>
 
-            {/* Right Button */}
-            <button
-              onClick={handleNext}
-              className="p-3 sm:p-3.5 rounded-full bg-white/90 hover:bg-white text-[#3D246C] hover:text-[#5C4B99] border border-[#3D246C]/15 hover:border-[#5C4B99]/30 shadow-md transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
-              aria-label="Next Highlight"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
+            <p className="text-xs sm:text-sm text-[#5C4B99] font-body mt-2 leading-relaxed max-w-lg mx-auto line-clamp-2 sm:line-clamp-none font-medium">
+              {currentSlide.description}
+            </p>
           </div>
 
           {/* Carousel Slide Indicators */}
