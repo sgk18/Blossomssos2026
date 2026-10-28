@@ -197,11 +197,11 @@ export function ScrollAmbience() {
         // Spawn a whimsical kaleidoscope of 2-3 fluttering 2D Aseprite butterflies
         const spawnButterflies = (count = 2) => {
           const now = performance.now();
-          if (now - lastButterflySpawnMs < 1900) return;
+          if (now - lastButterflySpawnMs < 1300) return;
           lastButterflySpawnMs = now;
 
           const dir: 1 | -1 = Math.random() < 0.68 ? 1 : -1;
-          const startX = dir === 1 ? -90 : width + 90;
+          const startX = dir === 1 ? -36 : width + 36;
           const startY = height * (0.48 + Math.random() * 0.40);
           const baseSpeed = isMobile ? 2.6 : 3.2;
 
@@ -260,7 +260,7 @@ export function ScrollAmbience() {
             if (Math.random() < 0.35) {
               shedBranchPetals(1);
             }
-            if (scrollAccumulator > 340) {
+            if (scrollAccumulator > 220) {
               scrollAccumulator = 0;
               // Echoes the 2-3 butterflies taking flight on the "Flames to Flight" banner!
               spawnButterflies(Math.random() > 0.35 ? 3 : 2);
@@ -295,7 +295,7 @@ export function ScrollAmbience() {
           if (!isDisposed) {
             spawnButterflies(3);
           }
-        }, 1100);
+        }, 350);
 
         cleanupListeners = () => {
           clearInterval(idleInterval);
@@ -535,7 +535,7 @@ export function ScrollAmbience() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-20 select-none overflow-hidden"
+      className="fixed inset-0 pointer-events-none z-30 select-none overflow-hidden"
       aria-hidden="true"
     />
   );

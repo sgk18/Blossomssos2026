@@ -43,6 +43,17 @@ assert(nextConfigText.includes('/event1.html'), 'Redirect for event1.html requir
 assert(nextConfigText.includes('/events/theater'), 'Redirect for theater spelling alias required');
 console.log('✔ Configured redirects and URL routing aliases verified.');
 
+// 3.5 Verify ScrollAmbience Mount, Z-Layering & 2D Sprite Assets
+const layoutSrc = fs.readFileSync(path.resolve(process.cwd(), 'src/app/layout.tsx'), 'utf8');
+const ambienceSrc = fs.readFileSync(path.resolve(process.cwd(), 'src/components/effects/ScrollAmbience.tsx'), 'utf8');
+assert(layoutSrc.includes('<ScrollAmbience />'), 'RootLayout must mount <ScrollAmbience />');
+assert(ambienceSrc.includes('z-30'), 'ScrollAmbience canvas must use z-30 above z-20 sections');
+for (const sprite of ['sakura_blossoms.png', 'sakura_petals.png', 'sakura_branch.png', 'butterflies.png']) {
+  const spritePath = path.resolve(process.cwd(), 'public/sprites', sprite);
+  assert(fs.existsSync(spritePath) && fs.statSync(spritePath).size > 500, `Missing or empty sprite sheet: ${sprite}`);
+}
+console.log('✔ ScrollAmbience mount, z-30 layering, and 2D sprite sheets verified.');
+
 // 4. If a live server is running on port 3000, test live responses
 try {
   const liveRes = await fetch('http://localhost:3000/', { signal: AbortSignal.timeout(1000) });
@@ -57,6 +68,10 @@ try {
       ['/notice-board', 200],
       ['/team', 200],
       ['/gallery', 200],
+      ['/sprites/sakura_blossoms.png', 200],
+      ['/sprites/sakura_petals.png', 200],
+      ['/sprites/sakura_branch.png', 200],
+      ['/sprites/butterflies.png', 200],
       ['/unknown-test-route-404', 404],
     ];
     for (const [p, expectedStatus] of livePaths) {
