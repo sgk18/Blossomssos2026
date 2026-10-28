@@ -51,7 +51,23 @@ export function ScheduleCalendarView({
   onSelectDate,
 }: ScheduleCalendarViewProps) {
   // Active month tab: 0 for November, 1 for December
-  const [activeMonthIndex, setActiveMonthIndex] = useState<number>(0);
+  const [activeMonthIndex, setActiveMonthIndex] = useState<number>(() => {
+    if (selectedDate && selectedDate.startsWith('2026-12')) {
+      return 1;
+    }
+    return 0;
+  });
+  const [prevSelectedDate, setPrevSelectedDate] = useState<string | null>(selectedDate);
+
+  // Sync active month when selectedDate prop changes (React recommended pattern without useEffect)
+  if (selectedDate !== prevSelectedDate) {
+    setPrevSelectedDate(selectedDate);
+    if (selectedDate && selectedDate.startsWith('2026-12')) {
+      setActiveMonthIndex(1);
+    } else if (selectedDate && selectedDate.startsWith('2026-11')) {
+      setActiveMonthIndex(0);
+    }
+  }
 
   // Map events by date ISO "YYYY-MM-DD"
   const eventsByDate = useMemo(() => {
@@ -220,7 +236,7 @@ export function ScheduleCalendarView({
                 onClick={() => onSelectDate(null)}
                 className="text-xs text-[#5C4B99] hover:underline font-mono font-semibold"
               >
-                Show all dates
+                Clear date selection
               </button>
             )}
           </div>

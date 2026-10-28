@@ -55,7 +55,9 @@ export function ScheduleView() {
     window.history.replaceState(null, '', newUrl);
   }, [selectedCategory, searchQuery, selectedDate, viewMode, pathname]);
 
-  // Combined filtering: Search + Category + Date
+  // Combined filtering: Search + Category (+ Date in Timeline view)
+  // In Calendar view, selectedDate controls inspection in the right information panel,
+  // leaving all month dates populated on the calendar grid.
   const filteredEvents = useMemo(() => {
     const normalizedQuery = searchQuery.trim().toLowerCase();
 
@@ -65,8 +67,8 @@ export function ScheduleView() {
         return false;
       }
 
-      // 2. Specific Date check
-      if (selectedDate && event.date !== selectedDate) {
+      // 2. Specific Date check (only in timeline view)
+      if (viewMode === 'timeline' && selectedDate && event.date !== selectedDate) {
         return false;
       }
 
@@ -87,7 +89,7 @@ export function ScheduleView() {
 
       return true;
     });
-  }, [selectedCategory, selectedDate, searchQuery]);
+  }, [selectedCategory, selectedDate, searchQuery, viewMode]);
 
   // Group events by date for timeline
   const groupedTimelineEvents = useMemo(() => {
@@ -101,7 +103,10 @@ export function ScheduleView() {
     setSelectedDate(null);
   };
 
-  const hasActiveFilters = selectedCategory !== 'all' || searchQuery.trim() !== '' || selectedDate !== null;
+  const hasActiveFilters =
+    selectedCategory !== 'all' ||
+    searchQuery.trim() !== '' ||
+    (viewMode === 'timeline' && selectedDate !== null);
 
   // Category counts
   const categoryCounts = useMemo(() => {
@@ -138,7 +143,10 @@ export function ScheduleView() {
           <div className="flex items-center gap-1.5 p-1 rounded-xl bg-[#FFDBC3]/50 border border-[#3D246C]/15 self-start sm:self-auto">
             <button
               type="button"
-              onClick={() => setViewMode('timeline')}
+              onClick={() => {
+                setViewMode('timeline');
+                setSelectedDate(null);
+              }}
               aria-pressed={viewMode === 'timeline'}
               className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                 viewMode === 'timeline'
@@ -253,7 +261,7 @@ export function ScheduleView() {
                   </button>
                 </span>
               )}
-              {selectedDate && (
+              {viewMode === 'timeline' && selectedDate && (
                 <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-white border border-[#3D246C]/20 text-[#3D246C] text-xs font-medium">
                   Date: {selectedDate}
                   <button
