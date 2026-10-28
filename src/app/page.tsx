@@ -12,6 +12,7 @@ import {
   FileText 
 } from 'lucide-react';
 import { EventCategoriesCarouselSkeleton } from '@/components/events/EventCategoriesCarouselSkeleton';
+import { WavyDivider } from '@/components/ui/WavyDivider';
 
 // Lazy load the 3D Circular Carousel for peak performance and interactive category ring
 const EventCategoriesCarousel = dynamic(
@@ -136,10 +137,13 @@ export default function HomePage() {
         </HeroBackground>
       </section>
 
+      {/* Decorative Wavy Border Line (matching reference wavy divider) */}
+      <WavyDivider />
+
       {/* =========================================================
           2. POSTERS / OFFICIAL HANDOUTS SECTION
           ========================================================= */}
-      <section id="posters-section" className="py-20 bg-[#9F91CC]/15 border-t border-[#3D246C]/15">
+      <section id="posters-section" className="py-20 bg-[#9F91CC]/15">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
           
           <div className="space-y-3 max-w-2xl mx-auto">
@@ -220,10 +224,13 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Decorative Wavy Border Line transitioning from Posters to Gallery */}
+      <WavyDivider topColor="rgba(159, 145, 204, 0.15)" bottomFill="#FFDBC3" />
+
       {/* =========================================================
           3. PREVIOUS EVENTS PHOTO MARQUEE
           ========================================================= */}
-      <section id="gallery" className="py-20 border-t border-[#3D246C]/15 overflow-hidden bg-[#FFDBC3] scroll-mt-24 sm:scroll-mt-28">
+      <section id="gallery" className="py-20 overflow-hidden bg-[#FFDBC3] scroll-mt-24 sm:scroll-mt-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
           <span className="text-xs font-tech font-bold uppercase tracking-[0.2em] text-[#5C4B99] block mb-2">
             Festival Gallery &bull; Moments &amp; Memories
@@ -304,10 +311,13 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Decorative Wavy Border Line transitioning from Gallery to About / Team Onyx */}
+      <WavyDivider topColor="#FFDBC3" bottomFill="rgba(159, 145, 204, 0.20)" />
+
       {/* =========================================================
           4. ABOUT BLOSSOMS & TEAM ONYX SECTION
           ========================================================= */}
-      <section id="team" className="py-24 bg-[#9F91CC]/20 border-t border-[#3D246C]/15 scroll-mt-24 sm:scroll-mt-28">
+      <section id="team" className="py-24 bg-[#9F91CC]/20 scroll-mt-24 sm:scroll-mt-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
             <span className="text-xs font-tech font-bold uppercase tracking-[0.2em] text-[#5C4B99] block mb-2">
@@ -389,6 +399,9 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Decorative Wavy Border Line transitioning from About / Team Onyx to Event Categories */}
+      <WavyDivider topColor="rgba(159, 145, 204, 0.20)" bottomFill="#FFDBC3" />
+
       {/* =========================================================
           6. EVENT CATEGORIES (THE FIVE DISCIPLINES)
           ========================================================= */}
@@ -417,7 +430,11 @@ export default function HomePage() {
           7. REGISTRATION BOTTOM BANNER
           ========================================================= */}
       {siteConfig.registrationUrl && (
-        <section className="py-20 bg-[#9F91CC]/15 border-t border-[#3D246C]/15">
+        <>
+          {/* Decorative Wavy Border Line transitioning from Event Categories to Registration */}
+          <WavyDivider topColor="#FFDBC3" bottomFill="rgba(159, 145, 204, 0.15)" />
+
+          <section className="py-20 bg-[#9F91CC]/15">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="p-6 sm:p-12 rounded-3xl bg-white/90 border border-[#3D246C]/20 backdrop-blur-xl flex flex-col sm:flex-row items-center justify-between gap-6 shadow-2xl">
               <div className="text-center sm:text-left space-y-1 w-full sm:w-auto">
@@ -444,6 +461,7 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+        </>
       )}
 
     </div>
