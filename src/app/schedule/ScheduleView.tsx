@@ -184,7 +184,7 @@ export function ScheduleView() {
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by event, venue, or note (e.g. Debate, Block 2, Quiz)..."
               aria-label="Search schedule events"
-              className="w-full pl-9 pr-9 py-2 rounded-xl bg-white border border-[#3D246C]/20 text-xs text-[#3D246C] placeholder-[#3D246C]/40 focus:outline-none focus:ring-2 focus:ring-[#5C4B99] transition-all"
+              className="w-full pl-9 pr-9 py-2 rounded-xl bg-white border border-[#3D246C]/20 text-base sm:text-xs text-[#3D246C] placeholder-[#3D246C]/40 focus:outline-none focus:ring-2 focus:ring-[#5C4B99] transition-all"
             />
             {searchQuery && (
               <button

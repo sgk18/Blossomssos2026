@@ -101,7 +101,7 @@ export function EventDetailModal({ event, isOpen, onClose }: EventDetailModalPro
       />
 
       {/* Modal Dialog Card */}
-      <div className="relative w-full max-w-xl rounded-2xl bg-white/95 border border-[#3D246C]/20 shadow-2xl p-5 sm:p-7 z-10 my-auto text-[#3D246C] animate-in fade-in zoom-in-95 duration-200">
+      <div className="relative w-full max-w-xl rounded-2xl bg-white/95 border border-[#3D246C]/20 shadow-2xl p-5 sm:p-7 z-10 my-auto text-[#3D246C] animate-in fade-in duration-150">
         {/* Header with Category Badge and Close Button */}
         <div className="flex items-start justify-between gap-4 pb-4 border-b border-[#3D246C]/15">
           <div className="flex flex-wrap items-center gap-2">

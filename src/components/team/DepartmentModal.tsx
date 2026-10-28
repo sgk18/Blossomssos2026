@@ -70,7 +70,7 @@ export function DepartmentModal({ department, onClose }: DepartmentModalProps) {
       />
 
       {/* Modal Dialog Card */}
-      <div className="relative w-full max-w-3xl bg-white rounded-3xl border border-[#3D246C]/15 shadow-2xl overflow-hidden z-10 my-8 animate-in fade-in zoom-in-95 duration-200">
+      <div className="relative w-full max-w-3xl bg-white rounded-3xl border border-[#3D246C]/15 shadow-2xl overflow-hidden z-10 my-8 animate-in fade-in duration-150">
         
         {/* Visual Accent Top Bar */}
         <div 

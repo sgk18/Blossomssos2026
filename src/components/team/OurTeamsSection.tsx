@@ -255,7 +255,7 @@ export function OurTeamsSection() {
               aria-hidden="true" 
             />
 
-            <div className="relative w-full max-w-md bg-white border border-[#3D246C]/15 rounded-3xl shadow-2xl p-6 sm:p-8 space-y-6 z-10 text-center animate-in zoom-in-95 duration-200">
+            <div className="relative w-full max-w-md bg-white border border-[#3D246C]/15 rounded-3xl shadow-2xl p-6 sm:p-8 space-y-6 z-10 text-center animate-in fade-in duration-150">
               {/* Close Button */}
               <button
                 type="button"

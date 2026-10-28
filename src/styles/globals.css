@@ -115,6 +115,7 @@
 
   html {
     background-color: #FFDBC3;
+    scrollbar-gutter: stable;
   }
 
   body {
