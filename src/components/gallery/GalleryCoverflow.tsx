@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
-import { ChevronLeft, ChevronRight, Sparkles, MapPin, Calendar, Maximize2 } from 'lucide-react';
+import { ChevronLeft, ChevronRight, MapPin, Calendar, Maximize2 } from 'lucide-react';
 import { COVERFLOW_SLIDES, CoverflowSlide } from '@/data/gallery-data';
 
 interface GalleryCoverflowProps {
@@ -66,15 +66,15 @@ export function GalleryCoverflow({ onSelectImage }: GalleryCoverflowProps) {
       className="relative w-full py-10 sm:py-16 overflow-hidden select-none"
       ref={containerRef}
     >
-      {/* 1. Giant Background Editorial Watermark (Inspired by "OBSCURA" in Reference Image 2) */}
+      {/* 1. Giant Background Editorial Watermark (Themed to Deep Purple #3D246C) */}
       <div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[65%] w-full pointer-events-none z-0 flex flex-col items-center justify-center opacity-[0.06] sm:opacity-[0.08]"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[65%] w-full pointer-events-none z-0 flex flex-col items-center justify-center opacity-[0.06] sm:opacity-[0.07]"
         aria-hidden="true"
       >
-        <span className="font-angular text-[18vw] font-black tracking-tighter text-[#1B1B26] leading-none whitespace-nowrap text-center">
+        <span className="font-angular text-[18vw] font-black tracking-tighter text-[#3D246C] leading-none whitespace-nowrap text-center">
           BLOSSOMS
         </span>
-        <span className="font-sans text-[2vw] tracking-[0.45em] uppercase font-bold text-[#7452F5] -mt-2">
+        <span className="font-sans text-[2vw] tracking-[0.45em] uppercase font-bold text-[#5C4B99] -mt-2">
           CENTRAL CAMPUS STAGE ARCHIVE
         </span>
       </div>
@@ -82,14 +82,10 @@ export function GalleryCoverflow({ onSelectImage }: GalleryCoverflowProps) {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F0EBFF] border border-[#7452F5]/20 text-[#7452F5] text-xs font-bold tracking-widest uppercase mb-3">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Interactive Cover Flow</span>
-          </div>
-          <h2 className="font-angular text-3xl sm:text-5xl font-black text-[#1B1B26] tracking-tight">
+          <h2 className="font-angular text-3xl sm:text-5xl font-black text-[#3D246C] tracking-tight">
             The Spotlight Carousel
           </h2>
-          <p className="mt-2 text-sm sm:text-base text-[#686478] font-body">
+          <p className="mt-2 text-sm sm:text-base text-[#5C4B99] font-body font-medium">
             Swipe or use arrow keys to navigate highlighted festival performances and central stage captures.
           </p>
         </div>
@@ -127,7 +123,7 @@ export function GalleryCoverflow({ onSelectImage }: GalleryCoverflowProps) {
                 }}
                 className={`absolute w-[240px] sm:w-[300px] md:w-[350px] aspect-[4/5] rounded-3xl overflow-hidden cursor-pointer transition-all duration-500 ease-out will-change-transform shadow-xl ${
                   isActive 
-                    ? 'ring-4 ring-[#7452F5]/30 shadow-2xl shadow-[#7452F5]/15 cursor-default' 
+                    ? 'ring-4 ring-[#5C4B99]/40 shadow-2xl shadow-[#5C4B99]/20 cursor-default' 
                     : 'hover:opacity-90 hover:brightness-105'
                 }`}
                 role="button"
@@ -139,7 +135,7 @@ export function GalleryCoverflow({ onSelectImage }: GalleryCoverflowProps) {
                   }
                 }}
               >
-                <div className="relative w-full h-full bg-[#1B1B26]">
+                <div className="relative w-full h-full bg-[#3D246C]">
                   <Image
                     src={slide.image}
                     alt={slide.alt}
@@ -149,11 +145,11 @@ export function GalleryCoverflow({ onSelectImage }: GalleryCoverflowProps) {
                     priority={absOffset <= 1}
                   />
                   {/* Subtle vignette gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1B1B26]/90 via-[#1B1B26]/20 to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#3D246C]/90 via-[#3D246C]/25 to-transparent pointer-events-none" />
 
                   {/* Card Badge */}
                   <div className="absolute top-3.5 left-3.5 sm:top-4 sm:left-4 z-10">
-                    <span className="inline-block px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold tracking-wider uppercase bg-white/90 backdrop-blur-md text-[#7452F5] border border-white/50 shadow-xs">
+                    <span className="inline-block px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold tracking-wider uppercase bg-white/95 backdrop-blur-md text-[#5C4B99] border border-white/60 shadow-xs">
                       {slide.pillar}
                     </span>
                   </div>
@@ -165,7 +161,7 @@ export function GalleryCoverflow({ onSelectImage }: GalleryCoverflowProps) {
                         e.stopPropagation();
                         onSelectImage(slide);
                       }}
-                      className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 z-10 p-2 rounded-full bg-white/90 hover:bg-white text-[#1B1B26] hover:text-[#7452F5] transition-all shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7452F5]"
+                      className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 z-10 p-2 rounded-full bg-white/95 hover:bg-white text-[#3D246C] hover:text-[#5C4B99] transition-all shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
                       title="View Full Resolution"
                       aria-label="View Full Resolution"
                     >
@@ -187,13 +183,13 @@ export function GalleryCoverflow({ onSelectImage }: GalleryCoverflowProps) {
           })}
         </div>
 
-        {/* 3. Navigation Controls & Active Caption (Inspired by Image 2 caption & arrows) */}
+        {/* 3. Navigation Controls & Active Caption */}
         <div className="max-w-2xl mx-auto mt-6 sm:mt-10 flex flex-col items-center text-center">
           <div className="flex items-center justify-center gap-4 sm:gap-6 w-full mb-4">
             {/* Left Button */}
             <button
               onClick={handlePrev}
-              className="p-3 sm:p-3.5 rounded-full bg-white hover:bg-[#F0EBFF] text-[#1B1B26] hover:text-[#7452F5] border border-[#EAE6F2] hover:border-[#7452F5]/30 shadow-md transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7452F5]"
+              className="p-3 sm:p-3.5 rounded-full bg-white/90 hover:bg-white text-[#3D246C] hover:text-[#5C4B99] border border-[#3D246C]/15 hover:border-[#5C4B99]/30 shadow-md transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
               aria-label="Previous Highlight"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -201,23 +197,23 @@ export function GalleryCoverflow({ onSelectImage }: GalleryCoverflowProps) {
 
             {/* Active Details Card */}
             <div className="flex-1 px-3 sm:px-6">
-              <h3 className="font-angular text-xl sm:text-2xl font-black text-[#1B1B26] tracking-tight">
+              <h3 className="font-angular text-xl sm:text-2xl font-black text-[#3D246C] tracking-tight">
                 {currentSlide.title}
               </h3>
               
-              <div className="flex items-center justify-center flex-wrap gap-x-3 gap-y-1 text-xs text-[#7452F5] font-semibold mt-1">
+              <div className="flex items-center justify-center flex-wrap gap-x-3 gap-y-1 text-xs text-[#5C4B99] font-semibold mt-1">
                 <span className="flex items-center gap-1">
                   <Calendar className="w-3.5 h-3.5" />
                   {currentSlide.date}
                 </span>
-                <span className="text-[#686478]/40">•</span>
-                <span className="flex items-center gap-1 text-[#686478]">
-                  <MapPin className="w-3.5 h-3.5 text-[#7452F5]" />
+                <span className="text-[#3D246C]/30">•</span>
+                <span className="flex items-center gap-1 text-[#3D246C]/80">
+                  <MapPin className="w-3.5 h-3.5 text-[#5C4B99]" />
                   {currentSlide.venue}
                 </span>
               </div>
 
-              <p className="text-xs sm:text-sm text-[#686478] font-body mt-2 leading-relaxed max-w-lg mx-auto line-clamp-2 sm:line-clamp-none">
+              <p className="text-xs sm:text-sm text-[#5C4B99] font-body mt-2 leading-relaxed max-w-lg mx-auto line-clamp-2 sm:line-clamp-none font-medium">
                 {currentSlide.description}
               </p>
             </div>
@@ -225,7 +221,7 @@ export function GalleryCoverflow({ onSelectImage }: GalleryCoverflowProps) {
             {/* Right Button */}
             <button
               onClick={handleNext}
-              className="p-3 sm:p-3.5 rounded-full bg-white hover:bg-[#F0EBFF] text-[#1B1B26] hover:text-[#7452F5] border border-[#EAE6F2] hover:border-[#7452F5]/30 shadow-md transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7452F5]"
+              className="p-3 sm:p-3.5 rounded-full bg-white/90 hover:bg-white text-[#3D246C] hover:text-[#5C4B99] border border-[#3D246C]/15 hover:border-[#5C4B99]/30 shadow-md transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
               aria-label="Next Highlight"
             >
               <ChevronRight className="w-5 h-5" />
@@ -238,10 +234,10 @@ export function GalleryCoverflow({ onSelectImage }: GalleryCoverflowProps) {
               <button
                 key={idx}
                 onClick={() => setActiveIndex(idx)}
-                className={`h-2 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7452F5] ${
+                className={`h-2 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99] ${
                   idx === activeIndex 
-                    ? 'w-7 bg-[#7452F5]' 
-                    : 'w-2 bg-[#EAE6F2] hover:bg-[#7452F5]/40'
+                    ? 'w-7 bg-[#5C4B99]' 
+                    : 'w-2 bg-[#3D246C]/20 hover:bg-[#5C4B99]/40'
                 }`}
                 aria-label={`Go to slide ${idx + 1}`}
                 aria-current={idx === activeIndex ? 'true' : undefined}
@@ -253,4 +249,3 @@ export function GalleryCoverflow({ onSelectImage }: GalleryCoverflowProps) {
     </section>
   );
 }
-
