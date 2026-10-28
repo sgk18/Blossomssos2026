@@ -1,7 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import { ArrowLeft, Mail } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { siteConfig } from '@/data/site-config';
 import { OurTeamsSection } from '@/components/team/OurTeamsSection';
 
@@ -40,21 +39,6 @@ export default function TeamPage() {
       <div className="min-h-screen pt-24 pb-20 md:pt-28 md:pb-24 bg-[#FFDBC3] text-[#3D246C] selection:bg-[#5C4B99] selection:text-white"
         style={{ backgroundColor: '#FFDBC3' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-
-          {/* ── Breadcrumb Navigation ── */}
-          <div className="flex items-center justify-between border-b border-[#3D246C]/15 pb-3 text-xs font-tech">
-            <Link
-              href="/"
-              className="inline-flex items-center gap-1.5 font-semibold text-[#5C4B99] hover:text-[#3D246C] transition-colors"
-            >
-              <ArrowLeft className="w-3.5 h-3.5" />
-              <span>Back to Home</span>
-            </Link>
-
-            <span className="text-[11px] text-[#5C4B99]/80 hidden sm:inline">
-              CHRIST (Deemed to be University) · School of Sciences &bull; Team Onyx
-            </span>
-          </div>
 
           {/* ── Main "Our Team" Section (Palette: Peach #FFDBC3, Lavender #9F91CC, Royal Purple #5C4B99, Deep Purple #3D246C) ── */}
           <main>
