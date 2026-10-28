@@ -13,7 +13,7 @@ interface SpectralDrapeBoundaryProps {
  * 
  * Clean isolation boundary for the React Bits Pro Spectral Drape component.
  * Free of wipeout elements, blocking overlays, and CPU thrashing.
- * Color Tokens: Deep Forest Green (#06110C), Charcoal (#171717), Sage Mint (#A8CBB7), Crimson Red (#A31C1B).
+ * Color Tokens: Peach (#FFDBC3), Soft Lavender (#9F91CC), Royal Purple (#5C4B99), Deep Purple (#3D246C).
  */
 export function SpectralDrapeBoundary({
   className = '',
@@ -37,7 +37,7 @@ export function SpectralDrapeBoundary({
   if (!hasMounted) {
     return (
       <div 
-        className={`absolute inset-0 pointer-events-none bg-[#171717] ${className}`} 
+        className={`absolute inset-0 pointer-events-none bg-[#FFDBC3] ${className}`} 
         aria-hidden="true" 
       />
     );
@@ -47,7 +47,7 @@ export function SpectralDrapeBoundary({
   if (prefersReducedMotion) {
     return (
       <div 
-        className={`absolute inset-0 pointer-events-none bg-[#171717] ${className}`} 
+        className={`absolute inset-0 pointer-events-none bg-[#FFDBC3] ${className}`} 
         aria-hidden="true" 
       />
     );
@@ -63,15 +63,15 @@ export function SpectralDrapeBoundary({
       >
         {/* Subtle, restrained ambient backdrop with zero GPU thrashing */}
         <div 
-          className="absolute -top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full opacity-20 blur-[120px]"
+          className="absolute -top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full opacity-25 blur-[120px]"
           style={{
-            background: 'radial-gradient(circle, #06110C 0%, #171717 70%)',
+            background: 'radial-gradient(circle, #9F91CC 0%, transparent 70%)',
           }}
         />
         <div 
-          className="absolute -bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full opacity-15 blur-[100px]"
+          className="absolute -bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full opacity-20 blur-[100px]"
           style={{
-            background: 'radial-gradient(circle, #A8CBB7 0%, transparent 65%)',
+            background: 'radial-gradient(circle, #5C4B99 0%, transparent 65%)',
           }}
         />
       </div>

@@ -52,7 +52,7 @@ const breadcrumbJsonLd = {
 
 export default function AboutPage() {
   return (
-    <div className="pt-28 pb-16 md:pt-36 md:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-[#171717] text-[#F2EFE8] selection:bg-[#A31C1B]/30 selection:text-[#F2EFE8]">
+    <div className="pt-28 pb-16 md:pt-36 md:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-[#FFDBC3] text-[#3D246C] selection:bg-[#5C4B99] selection:text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
@@ -60,16 +60,16 @@ export default function AboutPage() {
       
       {/* Header Banner */}
       <div className="max-w-4xl mb-16 space-y-4">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#06110C] border border-[#A8CBB7]/25 text-xs font-semibold text-[#A8CBB7] shadow-sm font-tech">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/85 border border-[#3D246C]/15 text-xs font-semibold text-[#3D246C] shadow-sm font-tech">
           <span>School of Sciences • Team Onyx</span>
         </div>
         
-        <h1 className="font-angular text-4xl sm:text-6xl font-black text-[#F2EFE8] tracking-tight leading-tight">
+        <h1 className="font-angular text-4xl sm:text-6xl font-black text-[#3D246C] tracking-tight leading-tight">
           About Blossoms &amp; The School of Sciences Legacy
         </h1>
 
         <div className="pt-2 flex flex-wrap items-center gap-4">
-          <div className="relative h-11 w-44 px-2 py-1 rounded-xl bg-white/95 border border-[#A8CBB7]/30 shadow-md flex items-center justify-center">
+          <div className="relative h-11 w-44 px-2 py-1 rounded-xl bg-white/95 border border-[#3D246C]/20 shadow-md flex items-center justify-center">
             <Image
               src="/blossoms_team.webp"
               alt="Team Onyx Insignia"
@@ -79,7 +79,7 @@ export default function AboutPage() {
               priority
             />
           </div>
-          <span className="text-xs font-tech px-3 py-1 rounded-full bg-[#06110C] text-[#A8CBB7] border border-[#A8CBB7]/30 font-semibold">
+          <span className="text-xs font-tech px-3 py-1 rounded-full bg-white/85 text-[#3D246C] border border-[#3D246C]/20 font-semibold shadow-sm">
             &ldquo;From flames to flights, White Onyx Ignites&rdquo;
           </span>
         </div>
@@ -93,17 +93,17 @@ export default function AboutPage() {
           
           {/* Section 1: The Blossoms Mandate & Video */}
           <section className="space-y-6">
-            <h2 className="font-tech text-2xl font-bold text-[#F2EFE8] flex items-center gap-3">
-              <Compass className="w-6 h-6 text-[#A8CBB7]" />
+            <h2 className="font-tech text-2xl font-bold text-[#3D246C] flex items-center gap-3">
+              <Compass className="w-6 h-6 text-[#5C4B99]" />
               <span>What is Blossoms?</span>
             </h2>
             
-            <p className="font-body text-base sm:text-lg text-[#F2EFE8]/80 leading-relaxed font-normal">
-              Blossoms is the premier intra-deanery cultural and creative celebration of CHRIST (Deemed to be University) Bangalore, anchored by the foundational motto <span className="text-[#F2EFE8] font-bold">&lsquo;Be the best&rsquo;</span>. Across five core pillars—Art, Theatre, Music, Literary, and Dance—over 7,000 students participate in rigorous competitive arenas, celebrating artistic excellence, unity, and scientific heritage across disciplines.
+            <p className="font-body text-base sm:text-lg text-[#3D246C]/85 leading-relaxed font-normal">
+              Blossoms is the premier intra-deanery cultural and creative celebration of CHRIST (Deemed to be University) Bangalore, anchored by the foundational motto <span className="text-[#3D246C] font-bold">&lsquo;Be the best&rsquo;</span>. Across five core pillars—Art, Theatre, Music, Literary, and Dance—over 7,000 students participate in rigorous competitive arenas, celebrating artistic excellence, unity, and scientific heritage across disciplines.
             </p>
 
             {/* Video Feature */}
-            <div className="rounded-3xl overflow-hidden border border-[#A8CBB7]/25 shadow-2xl bg-[#06110C]">
+            <div className="rounded-3xl overflow-hidden border border-[#3D246C]/15 shadow-xl bg-white/90">
               <video
                 autoPlay
                 muted
@@ -116,43 +116,43 @@ export default function AboutPage() {
                 <source src="/blossoms-24.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-              <div className="p-4 bg-[#171717] border-t border-[#A8CBB7]/15 flex items-center justify-between text-xs font-tech text-[#F2EFE8]/75">
-                <span className="font-semibold text-[#F2EFE8]">Blossoms Official Video Highlights</span>
-                <span className="font-tech text-[#A8CBB7]">7,000+ Participants</span>
+              <div className="p-4 bg-white/95 border-t border-[#3D246C]/15 flex items-center justify-between text-xs font-tech text-[#3D246C]/80">
+                <span className="font-semibold text-[#3D246C]">Blossoms Official Video Highlights</span>
+                <span className="font-tech text-[#5C4B99] font-bold">7,000+ Participants</span>
               </div>
             </div>
           </section>
 
           {/* Section 2: The Journey Through Blossoms */}
           <section className="space-y-6">
-            <h2 className="font-tech text-2xl font-bold text-[#F2EFE8] flex items-center gap-3">
-              <Building2 className="w-6 h-6 text-[#A8CBB7]" />
+            <h2 className="font-tech text-2xl font-bold text-[#3D246C] flex items-center gap-3">
+              <Building2 className="w-6 h-6 text-[#5C4B99]" />
               <span>The Journey Through Blossoms</span>
             </h2>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="p-6 rounded-3xl bg-[#06110C]/85 border border-[#A8CBB7]/20 backdrop-blur-md shadow-lg space-y-3">
-                <div className="w-10 h-10 rounded-2xl bg-[#171717] border border-[#A8CBB7]/25 flex items-center justify-center text-[#A8CBB7]">
+              <div className="p-6 rounded-3xl bg-white/85 border border-[#3D246C]/15 backdrop-blur-md shadow-lg space-y-3">
+                <div className="w-10 h-10 rounded-2xl bg-[#FFDBC3]/60 border border-[#3D246C]/20 flex items-center justify-center text-[#5C4B99]">
                   <Users className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-[11px] font-tech font-bold text-[#A8CBB7] uppercase tracking-wider">Phase I</span>
-                  <h3 className="font-tech text-lg font-bold text-[#F2EFE8]">Intra-Deanery Prelims</h3>
+                  <span className="text-[11px] font-tech font-bold text-[#5C4B99] uppercase tracking-wider">Phase I</span>
+                  <h3 className="font-tech text-lg font-bold text-[#3D246C]">Intra-Deanery Prelims</h3>
                 </div>
-                <p className="font-body text-xs sm:text-sm text-[#F2EFE8]/70 leading-relaxed">
+                <p className="font-body text-xs sm:text-sm text-[#3D246C]/80 leading-relaxed">
                   The initial round sees vibrant competition within individual deaneries, identifying the brightest talents and strongest contenders across departments.
                 </p>
               </div>
 
-              <div className="p-6 rounded-3xl bg-[#06110C]/85 border border-[#A8CBB7]/35 backdrop-blur-md shadow-lg space-y-3 ring-1 ring-[#A8CBB7]/15">
-                <div className="w-10 h-10 rounded-2xl bg-[#171717] border border-[#A8CBB7]/35 flex items-center justify-center text-[#A8CBB7]">
+              <div className="p-6 rounded-3xl bg-white/85 border border-[#3D246C]/20 backdrop-blur-md shadow-lg space-y-3">
+                <div className="w-10 h-10 rounded-2xl bg-[#FFDBC3]/60 border border-[#3D246C]/20 flex items-center justify-center text-[#5C4B99]">
                   <Award className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-[11px] font-tech font-bold text-[#A8CBB7] uppercase tracking-wider">Phase II</span>
-                  <h3 className="font-tech text-lg font-bold text-[#F2EFE8]">Inter-Deanery Finals</h3>
+                  <span className="text-[11px] font-tech font-bold text-[#5C4B99] uppercase tracking-wider">Phase II</span>
+                  <h3 className="font-tech text-lg font-bold text-[#3D246C]">Inter-Deanery Finals</h3>
                 </div>
-                <p className="font-body text-xs sm:text-sm text-[#F2EFE8]/70 leading-relaxed">
+                <p className="font-body text-xs sm:text-sm text-[#3D246C]/80 leading-relaxed">
                   The champions from each deanery advance to the university-wide stage, competing at an inter-deanery level for the prestigious Blossoms overall championship.
                 </p>
               </div>
@@ -161,47 +161,47 @@ export default function AboutPage() {
 
           {/* Section 3: Team Onyx Identity */}
           <section id="team" className="space-y-6 scroll-mt-24 sm:scroll-mt-28">
-            <h2 className="font-tech text-2xl font-bold text-[#F2EFE8] flex items-center gap-3">
+            <h2 className="font-tech text-2xl font-bold text-[#3D246C] flex items-center gap-3">
               <span>Representing the School of Sciences: Team Onyx</span>
             </h2>
 
-            <p className="font-body text-sm sm:text-base text-[#F2EFE8]/80 leading-relaxed">
+            <p className="font-body text-sm sm:text-base text-[#3D246C]/85 leading-relaxed">
               As part of the vibrant tapestry of Blossoms, the School of Sciences proudly fields its own dedicated delegation. We are Team Onyx, embodying the spirit of analytical precision, resilience, and boundless artistic expression inherent to the sciences.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-              <div className="p-5 rounded-2xl bg-[#06110C]/80 border border-[#A8CBB7]/15 space-y-2">
-                <div className="w-8 h-8 rounded-lg bg-[#171717] border border-[#A8CBB7]/20 flex items-center justify-center text-white">
-                  <Palette className="w-4 h-4 text-[#A8CBB7]" />
+              <div className="p-5 rounded-2xl bg-white/85 border border-[#3D246C]/15 space-y-2">
+                <div className="w-8 h-8 rounded-lg bg-[#FFDBC3]/60 border border-[#3D246C]/20 flex items-center justify-center text-[#5C4B99]">
+                  <Palette className="w-4 h-4 text-[#5C4B99]" />
                 </div>
-                <h4 className="font-tech font-bold text-sm text-[#F2EFE8]">Team Color: White</h4>
-                <p className="font-body text-xs text-[#F2EFE8]/70 leading-relaxed">
+                <h4 className="font-tech font-bold text-sm text-[#3D246C]">Team Color: White</h4>
+                <p className="font-body text-xs text-[#3D246C]/80 leading-relaxed">
                   Symbolizing clarity, brilliance, and the unity that empowers our entire student body.
                 </p>
               </div>
 
-              <div className="p-5 rounded-2xl bg-[#06110C]/80 border border-[#A8CBB7]/15 space-y-2">
-                <div className="w-8 h-8 rounded-lg bg-[#171717] border border-[#A8CBB7]/20 flex items-center justify-center text-white">
-                  <Gem className="w-4 h-4 text-[#A8CBB7]" />
+              <div className="p-5 rounded-2xl bg-white/85 border border-[#3D246C]/15 space-y-2">
+                <div className="w-8 h-8 rounded-lg bg-[#FFDBC3]/60 border border-[#3D246C]/20 flex items-center justify-center text-[#5C4B99]">
+                  <Gem className="w-4 h-4 text-[#5C4B99]" />
                 </div>
-                <h4 className="font-tech font-bold text-sm text-[#F2EFE8]">Team Name: Onyx</h4>
-                <p className="font-body text-xs text-[#F2EFE8]/70 leading-relaxed">
+                <h4 className="font-tech font-bold text-sm text-[#3D246C]">Team Name: Onyx</h4>
+                <p className="font-body text-xs text-[#3D246C]/80 leading-relaxed">
                   Representing strength, resilience, and the polished excellence we bring to every challenge.
                 </p>
               </div>
 
-              <div className="p-5 rounded-2xl bg-[#06110C]/80 border border-[#A8CBB7]/15 space-y-2">
-                <div className="w-8 h-8 rounded-lg bg-[#171717] border border-[#A8CBB7]/20 flex items-center justify-center text-white">
-                  <Flame className="w-4 h-4 text-[#A8CBB7]" />
+              <div className="p-5 rounded-2xl bg-white/85 border border-[#3D246C]/15 space-y-2">
+                <div className="w-8 h-8 rounded-lg bg-[#FFDBC3]/60 border border-[#3D246C]/20 flex items-center justify-center text-[#5C4B99]">
+                  <Flame className="w-4 h-4 text-[#5C4B99]" />
                 </div>
-                <h4 className="font-tech font-bold text-sm text-[#F2EFE8]">Team Slogan</h4>
-                <p className="font-body text-xs text-[#F2EFE8]/70 leading-relaxed">
+                <h4 className="font-tech font-bold text-sm text-[#3D246C]">Team Slogan</h4>
+                <p className="font-body text-xs text-[#3D246C]/80 leading-relaxed">
                   &ldquo;From flames to flights, White Onyx Ignites.&rdquo; Transforming passion into soaring stagecraft.
                 </p>
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#06110C]/60 border border-[#A8CBB7]/15 text-xs sm:text-sm text-[#F2EFE8]/75 leading-relaxed space-y-3 font-body">
+            <div className="p-6 rounded-2xl bg-[#9F91CC]/20 border border-[#5C4B99]/20 text-xs sm:text-sm text-[#3D246C] leading-relaxed space-y-3 font-body">
               <p>
                 At Blossoms SOS, Team Onyx aims not just to participate, but to lead. We encourage all our students to embrace this opportunity—to audition actively across all events and help us maintain a commanding presence in the inter-deanery finals.
               </p>
@@ -213,7 +213,7 @@ export default function AboutPage() {
 
           {/* Section 4: The Five Disciplines Summary */}
           <section className="space-y-6">
-            <h2 className="font-tech text-2xl font-bold text-[#F2EFE8]">The Five Foundational Pillars</h2>
+            <h2 className="font-tech text-2xl font-bold text-[#3D246C]">The Five Foundational Pillars</h2>
             <div className="space-y-3">
               {[
                 { name: 'Art', count: '9 Competitions', desc: 'Painting, Photography, Digital Poster Making, Rangoli Design, Mehendi Design, Pot Painting, Pencil Sketching, Greeting Card, Collage Making', slug: 'art' as const },
@@ -225,20 +225,20 @@ export default function AboutPage() {
                 <Link 
                   key={p.name} 
                   href={`/events/${p.slug}`}
-                  className="p-4 rounded-xl bg-[#06110C]/80 border border-[#A8CBB7]/15 backdrop-blur-sm flex items-start gap-4 hover:border-[#A8CBB7]/40 hover:bg-[#06110C] transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
+                  className="p-4 rounded-xl bg-white/85 border border-[#3D246C]/15 backdrop-blur-sm flex items-start gap-4 hover:border-[#5C4B99] hover:bg-white transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99] shadow-sm"
                 >
-                  <div className="p-2.5 rounded-lg bg-[#171717] text-[#A8CBB7] shrink-0 border border-[#A8CBB7]/20">
+                  <div className="p-2.5 rounded-lg bg-[#FFDBC3]/60 text-[#5C4B99] shrink-0 border border-[#3D246C]/15">
                     <CategoryIcon category={p.slug} size={22} />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-1">
-                      <h3 className="font-tech font-bold text-sm text-[#F2EFE8] group-hover:text-[#A8CBB7] transition-colors flex items-center gap-1.5">
+                      <h3 className="font-tech font-bold text-sm text-[#3D246C] group-hover:text-[#5C4B99] transition-colors flex items-center gap-1.5">
                         <span>{p.name}</span>
-                        <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[#A8CBB7]" />
+                        <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[#5C4B99]" />
                       </h3>
-                      <span className="text-xs font-tech text-[#A8CBB7] font-semibold">{p.count}</span>
+                      <span className="text-xs font-tech text-[#5C4B99] font-bold">{p.count}</span>
                     </div>
-                    <p className="font-body text-xs text-[#F2EFE8]/70 font-normal leading-relaxed">{p.desc}</p>
+                    <p className="font-body text-xs text-[#3D246C]/80 font-normal leading-relaxed">{p.desc}</p>
                   </div>
                 </Link>
               ))}
@@ -247,16 +247,16 @@ export default function AboutPage() {
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <Link
                 href="/events"
-                className="clay-btn-accent font-tech px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm hover:scale-105 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
+                className="clay-btn-primary font-tech px-4 py-2 rounded-xl text-xs font-bold text-white flex items-center gap-1.5 shadow-sm hover:scale-105 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3D246C]"
               >
                 <span>Explore All 31 Competitions</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
               <Link
                 href="/schedule"
-                className="px-4 py-2 rounded-xl bg-[#06110C] hover:bg-[#06110C]/80 text-[#F2EFE8] border border-[#A8CBB7]/25 text-xs font-tech font-semibold flex items-center gap-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
+                className="px-4 py-2 rounded-xl bg-white hover:bg-[#FFDBC3]/50 text-[#3D246C] border border-[#3D246C]/20 text-xs font-tech font-semibold flex items-center gap-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
               >
-                <Calendar className="w-3.5 h-3.5 text-[#A8CBB7]" />
+                <Calendar className="w-3.5 h-3.5 text-[#5C4B99]" />
                 <span>View Festival Schedule</span>
               </Link>
             </div>
@@ -268,57 +268,57 @@ export default function AboutPage() {
         <div className="lg:col-span-4 space-y-6">
           
           {/* Official Accolades Card (2025–2026 Legacy) */}
-          <div className="p-6 rounded-3xl bg-[#06110C]/85 border border-[#A8CBB7]/20 shadow-xl space-y-6 backdrop-blur-md">
-            <div className="flex items-center justify-between text-xs font-bold font-tech text-[#A8CBB7] uppercase tracking-wider">
+          <div className="p-6 rounded-3xl bg-white/85 border border-[#3D246C]/15 shadow-xl space-y-6 backdrop-blur-md">
+            <div className="flex items-center justify-between text-xs font-bold font-tech text-[#3D246C] uppercase tracking-wider">
               <div className="flex items-center gap-2">
-                <Award className="w-4 h-4 text-[#A8CBB7]" />
+                <Award className="w-4 h-4 text-[#5C4B99]" />
                 <span>Official Accolades</span>
               </div>
-              <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-[#171717] border border-[#A8CBB7]/30 text-[#A8CBB7]">
+              <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-[#FFDBC3]/60 border border-[#3D246C]/20 text-[#3D246C] font-bold">
                 2025–2026
               </span>
             </div>
 
             <div className="space-y-4">
-              <div className="p-4 rounded-2xl bg-[#171717] border border-[#A8CBB7]/15 flex items-center gap-4">
+              <div className="p-4 rounded-2xl bg-[#FFDBC3]/35 border border-[#3D246C]/15 flex items-center gap-4">
                 <div className="relative w-14 h-14 shrink-0">
                   <Image src="/2nd.webp" alt="2nd Place Trophy - 'We the Best' Overall Trophy" fill sizes="56px" className="object-contain" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-tech font-bold text-[#A8CBB7] uppercase">Second Place • 2025–2026</span>
-                  <h4 className="font-tech font-bold text-sm text-[#F2EFE8]">&lsquo;We the Best&rsquo; Trophy</h4>
-                  <p className="font-body text-xs text-[#F2EFE8]/70">Inter-Deanery Overall Excellence</p>
+                  <span className="text-[10px] font-tech font-bold text-[#5C4B99] uppercase">Second Place • 2025–2026</span>
+                  <h4 className="font-tech font-bold text-sm text-[#3D246C]">&lsquo;We the Best&rsquo; Trophy</h4>
+                  <p className="font-body text-xs text-[#3D246C]/75">Inter-Deanery Overall Excellence</p>
                 </div>
               </div>
 
-              <div className="p-4 rounded-2xl bg-[#171717] border border-[#A8CBB7]/15 flex items-center gap-4">
+              <div className="p-4 rounded-2xl bg-[#FFDBC3]/35 border border-[#3D246C]/15 flex items-center gap-4">
                 <div className="relative w-14 h-14 shrink-0">
                   <Image src="/2nd.webp" alt="2nd Place Trophy - Inauguration Ceremony" fill sizes="56px" className="object-contain" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-tech font-bold text-[#A8CBB7] uppercase">Second Place • 2025–2026</span>
-                  <h4 className="font-tech font-bold text-sm text-[#F2EFE8]">Inauguration Ceremony</h4>
-                  <p className="font-body text-xs text-[#F2EFE8]/70">Stage Presentation</p>
+                  <span className="text-[10px] font-tech font-bold text-[#5C4B99] uppercase">Second Place • 2025–2026</span>
+                  <h4 className="font-tech font-bold text-sm text-[#3D246C]">Inauguration Ceremony</h4>
+                  <p className="font-body text-xs text-[#3D246C]/75">Stage Presentation</p>
                 </div>
               </div>
 
-              <div className="p-4 rounded-2xl bg-[#171717] border border-[#A8CBB7]/15 flex items-center gap-4">
+              <div className="p-4 rounded-2xl bg-[#FFDBC3]/35 border border-[#3D246C]/15 flex items-center gap-4">
                 <div className="relative w-14 h-14 shrink-0">
                   <Image src="/3rd.webp" alt="3rd Place Trophy - Deanery Procession" fill sizes="56px" className="object-contain" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-tech font-bold text-[#A31C1B] uppercase">Third Place • 2025–2026</span>
-                  <h4 className="font-tech font-bold text-sm text-[#F2EFE8]">Deanery Procession</h4>
-                  <p className="font-body text-xs text-[#F2EFE8]/70">March &amp; Display</p>
+                  <span className="text-[10px] font-tech font-bold text-[#5C4B99] uppercase">Third Place • 2025–2026</span>
+                  <h4 className="font-tech font-bold text-sm text-[#3D246C]">Deanery Procession</h4>
+                  <p className="font-body text-xs text-[#3D246C]/75">March &amp; Display</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Quick Registration / Handouts CTA */}
-          <div className="p-6 rounded-3xl bg-[#06110C]/85 border border-[#A8CBB7]/20 shadow-xl space-y-4 backdrop-blur-md">
-            <h3 className="font-tech text-lg font-bold text-[#F2EFE8]">Join Team Onyx</h3>
-            <p className="font-body text-xs text-[#F2EFE8]/70 leading-relaxed">
+          <div className="p-6 rounded-3xl bg-white/85 border border-[#3D246C]/15 shadow-xl space-y-4 backdrop-blur-md">
+            <h3 className="font-tech text-lg font-bold text-[#3D246C]">Join Team Onyx</h3>
+            <p className="font-body text-xs text-[#3D246C]/80 leading-relaxed">
               Represent the School of Sciences across 31 competitive formats. Slots are open for preliminary auditions!
             </p>
             {siteConfig.registrationUrl && (
@@ -326,7 +326,7 @@ export default function AboutPage() {
                 href={siteConfig.registrationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full clay-btn-accent font-tech py-3 rounded-xl text-xs font-bold flex items-center justify-center shadow-md hover:scale-105 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
+                className="w-full clay-btn-primary font-tech py-3 rounded-xl text-xs font-bold text-white flex items-center justify-center shadow-md hover:scale-105 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3D246C]"
               >
                 <span>Register for Events</span>
               </a>
@@ -335,15 +335,15 @@ export default function AboutPage() {
               href="/blossoms_knowmore.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-2.5 rounded-xl bg-[#171717] hover:bg-[#171717]/80 text-[#F2EFE8] border border-[#A8CBB7]/25 text-xs font-tech font-semibold flex items-center justify-center gap-2 shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
+              className="w-full py-2.5 rounded-xl bg-white hover:bg-[#FFDBC3]/40 text-[#3D246C] border border-[#3D246C]/20 text-xs font-tech font-semibold flex items-center justify-center gap-2 shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
             >
               <span>Download &lsquo;Know More&rsquo; PDF</span>
             </a>
           </div>
 
           {/* Institution Notice */}
-          <div className="p-5 rounded-2xl bg-[#06110C]/60 border border-[#A8CBB7]/10 text-xs text-[#F2EFE8]/70 space-y-2 font-body">
-            <p className="font-tech font-semibold text-[#F2EFE8]">CHRIST (Deemed to be University)</p>
+          <div className="p-5 rounded-2xl bg-white/60 border border-[#3D246C]/10 text-xs text-[#3D246C]/80 space-y-2 font-body">
+            <p className="font-tech font-semibold text-[#3D246C]">CHRIST (Deemed to be University)</p>
             <p className="text-[11px]">Bangalore Central Campus • Hosur Road, Bengaluru 560029</p>
           </div>
 

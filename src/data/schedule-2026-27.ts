@@ -16,37 +16,37 @@ export const SCHEDULE_CATEGORY_CONFIG: Record<
 > = {
   art: {
     label: 'Art',
-    accentColor: '#A8CBB7',
+    accentColor: '#9F91CC',
     description: 'Visual arts, poster design, sketching, and traditional media',
   },
   literary: {
     label: 'Literary',
-    accentColor: '#D1FF42',
+    accentColor: '#5C4B99',
     description: 'Debate, creative writing, extempore, JAM, and word games',
   },
   music: {
     label: 'Music',
-    accentColor: '#C7D1DD',
+    accentColor: '#3D246C',
     description: 'Western and Indian solo vocals and group acoustics',
   },
   theatre: {
     label: 'Theatre',
-    accentColor: '#A31C1B',
+    accentColor: '#5C4B99',
     description: 'Stage plays, street theatre, mime, mono acting, and film craft',
   },
   dance: {
     label: 'Dance',
-    accentColor: '#F2EFE8',
+    accentColor: '#9F91CC',
     description: 'Classical, contemporary duet, and non-theme group dance',
   },
   ceremony: {
     label: 'Festival & Ceremonies',
-    accentColor: '#EAB308',
+    accentColor: '#5C4B99',
     description: 'Inaugural and valedictory university ceremonies',
   },
   other: {
     label: 'Other',
-    accentColor: '#94A3B8',
+    accentColor: '#9F91CC',
     description: 'Uncategorized festival events',
   },
 };

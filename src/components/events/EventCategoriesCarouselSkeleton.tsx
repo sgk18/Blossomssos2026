@@ -31,30 +31,30 @@ export function EventCategoriesCarouselSkeleton() {
         {/* Pills skeleton */}
         <div className="w-full max-w-5xl flex flex-wrap items-center justify-center gap-2 mb-6 px-2">
           {CORE_CATEGORIES.map((cat) => (
-            <div key={cat.slug} className="h-8 px-4 bg-[#06110C] rounded-xl border border-[#A8CBB7]/10 flex items-center justify-center text-xs text-[#A8CBB7]/40 font-mono">
+            <div key={cat.slug} className="h-8 px-4 bg-white/80 rounded-xl border border-[#3D246C]/10 flex items-center justify-center text-xs text-[#3D246C]/40 font-mono">
               {cat.name}
             </div>
           ))}
         </div>
 
         {/* 3D Stage skeleton */}
-        <div className="w-full h-[380px] sm:h-[480px] md:h-[540px] rounded-3xl bg-[#06110C]/60 border border-[#A8CBB7]/15 flex items-center justify-center relative overflow-hidden">
-          <div className="w-64 h-48 rounded-2xl bg-[#06110C] border border-[#A8CBB7]/20 flex flex-col items-center justify-center p-4">
-            <div className="w-12 h-12 rounded-xl bg-[#171717] mb-3" />
-            <div className="h-4 w-28 bg-[#171717] rounded mb-2" />
-            <div className="h-3 w-40 bg-[#171717] rounded" />
+        <div className="w-full h-[380px] sm:h-[480px] md:h-[540px] rounded-3xl bg-[#9F91CC]/20 border border-[#3D246C]/15 flex items-center justify-center relative overflow-hidden">
+          <div className="w-64 h-48 rounded-2xl bg-white/80 border border-[#3D246C]/20 flex flex-col items-center justify-center p-4">
+            <div className="w-12 h-12 rounded-xl bg-[#FFDBC3]/70 mb-3" />
+            <div className="h-4 w-28 bg-[#FFDBC3]/70 rounded mb-2" />
+            <div className="h-3 w-40 bg-[#FFDBC3]/70 rounded" />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
         </div>
 
         {/* Detail card skeleton */}
-        <div className="w-full max-w-4xl mt-6 p-6 sm:p-8 rounded-3xl bg-[#06110C]/70 border border-[#A8CBB7]/15 flex flex-col md:flex-row justify-between gap-6">
+        <div className="w-full max-w-4xl mt-6 p-6 sm:p-8 rounded-3xl bg-white/80 border border-[#3D246C]/15 flex flex-col md:flex-row justify-between gap-6">
           <div className="space-y-3 flex-1">
-            <div className="h-6 w-48 bg-[#171717] rounded" />
-            <div className="h-4 w-full bg-[#171717] rounded" />
-            <div className="h-4 w-3/4 bg-[#171717] rounded" />
+            <div className="h-6 w-48 bg-[#FFDBC3]/70 rounded" />
+            <div className="h-4 w-full bg-[#FFDBC3]/70 rounded" />
+            <div className="h-4 w-3/4 bg-[#FFDBC3]/70 rounded" />
           </div>
-          <div className="h-10 w-44 bg-[#171717] rounded-xl" />
+          <div className="h-10 w-44 bg-[#5C4B99]/40 rounded-xl" />
         </div>
       </div>
     </div>

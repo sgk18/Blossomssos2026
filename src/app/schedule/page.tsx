@@ -44,7 +44,7 @@ const breadcrumbJsonLd = {
 
 export default function SchedulePage() {
   return (
-    <div className="min-h-screen pt-28 pb-16 md:pt-36 md:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-[#171717] text-[#F2EFE8] selection:bg-[#A31C1B]/30 selection:text-[#F2EFE8]">
+    <div className="min-h-screen pt-28 pb-16 md:pt-36 md:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-[#FFDBC3] text-[#3D246C] selection:bg-[#5C4B99] selection:text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
@@ -52,23 +52,23 @@ export default function SchedulePage() {
       {/* Page Header */}
       <header className="max-w-3xl mb-10 sm:mb-12">
         {/* Tentative Status Badge (Config-driven) */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#06110C] border border-[#A8CBB7]/30 text-xs font-bold text-[#A8CBB7] mb-4 shadow-sm">
-          <span className="w-2 h-2 rounded-full bg-[#A31C1B] animate-pulse" />
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/80 border border-[#3D246C]/20 text-xs font-bold text-[#3D246C] mb-4 shadow-sm">
+          <span className="w-2 h-2 rounded-full bg-[#5C4B99] animate-pulse" />
           <span className="font-mono uppercase tracking-wider">{SCHEDULE_METADATA_2026.statusLabel}</span>
         </div>
 
         {/* Angular / Bold Heading */}
         <div className="space-y-1">
-          <div className="text-xs sm:text-sm font-mono tracking-widest uppercase text-[#A8CBB7] font-semibold">
+          <div className="text-xs sm:text-sm font-mono tracking-widest uppercase text-[#5C4B99] font-semibold">
             BLOSSOMS {SCHEDULE_METADATA_2026.edition}
           </div>
-          <h1 className="text-3xl sm:text-5xl font-black text-[#F2EFE8] tracking-tight leading-tight">
+          <h1 className="text-3xl sm:text-5xl font-black text-[#3D246C] tracking-tight leading-tight">
             Prelims Event Schedule.
           </h1>
         </div>
 
         {/* Supporting Subtitle */}
-        <p className="mt-4 text-sm sm:text-base text-[#F2EFE8]/75 leading-relaxed font-normal">
+        <p className="mt-4 text-sm sm:text-base text-[#3D246C]/80 leading-relaxed font-normal">
           Explore the events, find your venue, and plan your Blossoms experience.
         </p>
       </header>
@@ -76,9 +76,9 @@ export default function SchedulePage() {
       {/* Main Schedule Interactive View Wrapped in Suspense */}
       <Suspense
         fallback={
-          <div className="p-16 text-center rounded-2xl bg-[#06110C]/80 border border-[#A8CBB7]/20 flex flex-col items-center justify-center gap-3">
-            <Loader2 className="w-8 h-8 text-[#A8CBB7] animate-spin" />
-            <p className="text-xs text-[#F2EFE8]/60 font-mono">Loading Prelims Schedule...</p>
+          <div className="p-16 text-center rounded-2xl bg-white/80 border border-[#3D246C]/15 flex flex-col items-center justify-center gap-3">
+            <Loader2 className="w-8 h-8 text-[#5C4B99] animate-spin" />
+            <p className="text-xs text-[#3D246C]/70 font-mono">Loading Prelims Schedule...</p>
           </div>
         }
       >

@@ -7,7 +7,7 @@ export const EVENT_CATEGORIES: EventCategory[] = [
     tagline: "Visual expression across traditional canvas, digital craft & cultural motifs",
     description:
       "The Art category highlights visual creativity—drawing, painting, design, and craft—inviting participants to translate ideas into compelling visuals. It celebrates originality, composition, color, and technique across traditional and digital mediums.",
-    accentColor: "#A31C1B", // Crimson Red
+    accentColor: "#5C4B99", // Royal Purple
     pixelMotif: "palette",
     events: [
       {
@@ -166,7 +166,7 @@ export const EVENT_CATEGORIES: EventCategory[] = [
     tagline: "The crucible of language, logic, spontaneous wit & reasoned persuasion",
     description:
       "The Literary category showcases the art of ideas—where language, logic, and imagination meet. It spans speech, writing, and interactive formats that value clarity, creativity, and presence of mind.",
-    accentColor: "#A8CBB7", // Sage Mint
+    accentColor: "#9F91CC", // Soft Lavender
     pixelMotif: "scroll",
     events: [
       {
@@ -305,7 +305,7 @@ export const EVENT_CATEGORIES: EventCategory[] = [
     tagline: "Acoustic harmonies, electric riffs, folk vocals & ensemble resonance",
     description:
       "The Music category spans soulful solos to high-energy ensembles, celebrating melody, rhythm, harmony, and stage presence. It brings together diverse styles and performance cultures with a shared focus on musical expression.",
-    accentColor: "#A31C1B", // Crimson Red
+    accentColor: "#3D246C", // Deep Purple
     pixelMotif: "synth",
     events: [
       {
@@ -391,7 +391,7 @@ export const EVENT_CATEGORIES: EventCategory[] = [
     tagline: "Dramatic storytelling, stagecraft, public street performance & cinematic vision",
     description:
       "The Theatre category presents storytelling on stage—crafted through performance, voice, movement, and direction. It values concept clarity, ensemble coordination, and emotional connection with the audience.",
-    accentColor: "#A8CBB7", // Sage Mint
+    accentColor: "#5C4B99", // Royal Purple
     pixelMotif: "masks",
     events: [
       {
@@ -491,7 +491,7 @@ export const EVENT_CATEGORIES: EventCategory[] = [
     tagline: "Classical mudras, high-sync non-thematic grooves & emotive partner duets",
     description:
       "The Dance category channels rhythm and expression into choreography—spanning classical, folk, and contemporary styles. It values stage presence, synchronization, grace, and creative interpretation.",
-    accentColor: "#A8CBB7", // Sage Mint
+    accentColor: "#9F91CC", // Soft Lavender
     pixelMotif: "dancer",
     events: [
       {
