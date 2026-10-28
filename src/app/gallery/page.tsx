@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Sparkles, Camera, Film, Users, Award } from 'lucide-react';
 import { GalleryCoverflow } from '@/components/gallery/GalleryCoverflow';
-import { GalleryFannedDeck } from '@/components/gallery/GalleryFannedDeck';
+import { GalleryFlexCarouselSection } from '@/components/gallery/GalleryFlexCarouselSection';
 import { GalleryBentoGrid } from '@/components/gallery/GalleryBentoGrid';
 
 export const metadata: Metadata = {
@@ -64,8 +64,8 @@ export default function GalleryPage() {
       {/* 2. Section 1: Interactive 3D Cover Flow Carousel */}
       <GalleryCoverflow />
 
-      {/* 3. Section 2: Fanned 3D Deck & Social Highlights */}
-      <GalleryFannedDeck />
+      {/* 3. Section 2: ReactBits Interactive Flex Carousel (Photos Only) */}
+      <GalleryFlexCarouselSection />
 
       {/* 4. Section 3: Curated Bento Collage & Lightbox */}
       <GalleryBentoGrid />

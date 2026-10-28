@@ -40,6 +40,14 @@ export interface TrendingSocialCard {
   driveId?: string;
 }
 
+export interface FlexCarouselItem {
+  src: string;
+  alt: string;
+  title: string;
+  subtitle?: string;
+  category?: string;
+}
+
 // 1. Interactive 3D Cover Flow Highlights from Christmas Event (Birds Park)
 export const COVERFLOW_SLIDES: CoverflowSlide[] = [
   {
@@ -135,7 +143,138 @@ export const COVERFLOW_SLIDES: CoverflowSlide[] = [
   },
 ];
 
-// 2. Fanned Perspective Deck: What's Trending from Birds Park Event
+// 2. ReactBits Flex Carousel: 18 High-Resolution Photographs from Christmas Event (Birds Park)
+// Photos ONLY (no videos included as requested)
+export const FLEX_CAROUSEL_PHOTOS: FlexCarouselItem[] = [
+  {
+    src: '/drive-gallery-2/P1050280.jpg',
+    alt: 'Birds Park Gathering & Celebrations',
+    title: 'Birds Park Gathering',
+    subtitle: 'Event & Community Spirit',
+    category: 'Crowd & Spirit',
+  },
+  {
+    src: '/drive-gallery-2/P1050400.jpg',
+    alt: 'Festive Lights & Seasonal Radiance',
+    title: 'Festive Lights & Radiance',
+    subtitle: 'Creative & Visual Arts',
+    category: 'Art & Creative',
+  },
+  {
+    src: '/drive-gallery-2/P1050401.jpg',
+    alt: 'Ensemble Moments & Joyful Expressions',
+    title: 'Ensemble Moments',
+    subtitle: 'Campus Unity & Expressions',
+    category: 'Crowd & Spirit',
+  },
+  {
+    src: '/drive-gallery-2/P1050403.jpg',
+    alt: 'Grace in Motion: Festive Choreography',
+    title: 'Grace in Motion',
+    subtitle: 'Festive Choreography',
+    category: 'Dance & Stage',
+  },
+  {
+    src: '/drive-gallery-2/P1050404.jpg',
+    alt: 'Winter Carols & Acoustic Strings',
+    title: 'Winter Carols',
+    subtitle: 'Acoustic Strings & Vocals',
+    category: 'Music & Bands',
+  },
+  {
+    src: '/drive-gallery-2/P1050405.jpg',
+    alt: 'Community Spirit & Shared Warmth',
+    title: 'Community Spirit',
+    subtitle: 'Shared Warmth & Memories',
+    category: 'Crowd & Spirit',
+  },
+  {
+    src: '/drive-gallery-2/P1050406.jpg',
+    alt: 'Ornamental Wonders & Radiant Colors',
+    title: 'Ornamental Wonders',
+    subtitle: 'Radiant Colors & Decor',
+    category: 'Art & Creative',
+  },
+  {
+    src: '/drive-gallery-2/P1050407.jpg',
+    alt: 'Dramatic Sketches & Live Acting',
+    title: 'Dramatic Sketches',
+    subtitle: 'Live Acting & Theatre',
+    category: 'Theatre & Mime',
+  },
+  {
+    src: '/drive-gallery-2/P1050408.jpg',
+    alt: 'Festival Harmony in Synchrony',
+    title: 'Festival Harmony',
+    subtitle: 'Choral Rhythms in Synchrony',
+    category: 'Music & Bands',
+  },
+  {
+    src: '/drive-gallery-2/P1050409.jpg',
+    alt: 'Vocal Ensemble Harmony',
+    title: 'Vocal Ensemble',
+    subtitle: 'Acoustic Arena Harmony',
+    category: 'Music & Bands',
+  },
+  {
+    src: '/drive-gallery-2/P1050411.jpg',
+    alt: 'Cheerful Faces & Youthful Energy',
+    title: 'Cheerful Faces',
+    subtitle: 'Youthful Energy & Smiles',
+    category: 'Crowd & Spirit',
+  },
+  {
+    src: '/drive-gallery-2/P1050423.jpg',
+    alt: 'Handcrafted Traditions & Accents',
+    title: 'Handcrafted Traditions',
+    subtitle: 'Artistic Festive Accents',
+    category: 'Art & Creative',
+  },
+  {
+    src: '/drive-gallery-2/P1050424.jpg',
+    alt: 'Characters of Christmas Pageant',
+    title: 'Christmas Pageant',
+    subtitle: 'Costumes & Characters',
+    category: 'Theatre & Mime',
+  },
+  {
+    src: '/drive-gallery-2/P1050425.jpg',
+    alt: 'Dynamic Formations Under Twilight',
+    title: 'Twilight Formations',
+    subtitle: 'Dynamic Stage Movement',
+    category: 'Dance & Stage',
+  },
+  {
+    src: '/drive-gallery-2/P1050426.jpg',
+    alt: 'Festive Beats & Percussion Rhythms',
+    title: 'Festive Beats',
+    subtitle: 'Percussion & Rhythm',
+    category: 'Music & Bands',
+  },
+  {
+    src: '/drive-gallery-2/P1050427.jpg',
+    alt: 'Campus Unity & Deanery Cheers',
+    title: 'Campus Unity',
+    subtitle: 'Deanery Spirit & Cheers',
+    category: 'Crowd & Spirit',
+  },
+  {
+    src: '/drive-gallery-2/P1050470.jpg',
+    alt: 'Evening Lantern Glow & Ambience',
+    title: 'Lantern Glow',
+    subtitle: 'Twilight Festival Ambience',
+    category: 'Art & Creative',
+  },
+  {
+    src: '/drive-gallery-2/P1050471.jpg',
+    alt: 'Curtain Call & Standing Ovation',
+    title: 'Curtain Call',
+    subtitle: 'Standing Ovation & Finale',
+    category: 'Theatre & Mime',
+  },
+];
+
+// 3. Fanned Perspective Deck: What's Trending from Birds Park Event
 export const TRENDING_SOCIAL_CARDS: TrendingSocialCard[] = [
   {
     id: 'tr-1',

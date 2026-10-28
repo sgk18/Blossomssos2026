@@ -13,8 +13,7 @@ import {
   Share2, 
   Check,
   Play,
-  ExternalLink,
-  FolderOpen
+  ExternalLink
 } from 'lucide-react';
 import { BENTO_GALLERY_ITEMS, GalleryItem } from '@/data/gallery-data';
 
@@ -152,40 +151,27 @@ export function GalleryBentoGrid() {
         </div>
 
         {/* Category Filter Pills (Matches homepage palette) */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
-          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
-            {FILTER_CATEGORIES.map((cat) => {
-              const isSelected = selectedCategory === cat.id;
-              return (
-                <button
-                  key={cat.id}
-                  onClick={() => {
-                    setSelectedCategory(cat.id);
-                    setVisibleCount(12);
-                  }}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99] ${
-                    isSelected
-                      ? 'bg-[#5C4B99] text-white shadow-md shadow-[#5C4B99]/25'
-                      : 'bg-white/90 hover:bg-white text-[#3D246C] hover:text-[#5C4B99] border border-[#3D246C]/15'
-                  }`}
-                  aria-pressed={isSelected}
-                >
-                  {cat.label}
-                </button>
-              );
-            })}
-          </div>
-
-          <a
-            href="https://drive.google.com/drive/u/0/folders/1Q3HmdeFR8Evkl3wZ4urISt0esZHYkCEZ"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white hover:bg-[#FFDBC3]/40 text-[#3D246C] hover:text-[#5C4B99] border border-[#3D246C]/15 text-xs font-bold shadow-xs transition-colors shrink-0"
-          >
-            <FolderOpen className="w-3.5 h-3.5 text-[#5C4B99]" />
-            <span>Open in Google Drive</span>
-            <ExternalLink className="w-3 h-3 opacity-70" />
-          </a>
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 mb-10">
+          {FILTER_CATEGORIES.map((cat) => {
+            const isSelected = selectedCategory === cat.id;
+            return (
+              <button
+                key={cat.id}
+                onClick={() => {
+                  setSelectedCategory(cat.id);
+                  setVisibleCount(12);
+                }}
+                className={`px-4 py-2 rounded-full text-xs font-bold tracking-wide transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99] ${
+                  isSelected
+                    ? 'bg-[#5C4B99] text-white shadow-md shadow-[#5C4B99]/25'
+                    : 'bg-white/90 hover:bg-white text-[#3D246C] hover:text-[#5C4B99] border border-[#3D246C]/15'
+                }`}
+                aria-pressed={isSelected}
+              >
+                {cat.label}
+              </button>
+            );
+          })}
         </div>
 
         {/* Bento Grid Container */}
