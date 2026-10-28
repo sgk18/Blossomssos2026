@@ -45,14 +45,17 @@ export function ScheduleView() {
     const params = new URLSearchParams();
     if (selectedCategory !== 'all') params.set('category', selectedCategory);
     if (searchQuery.trim()) params.set('search', searchQuery.trim());
-    if (selectedDate) params.set('date', selectedDate);
+    // In calendar view, date selection is an in-tab inspection, so only persist in timeline view or if explicitly in URL
+    if (viewMode === 'timeline' && selectedDate) params.set('date', selectedDate);
     if (viewMode !== 'timeline') params.set('view', viewMode);
 
     const queryString = params.toString();
-    const newUrl = queryString ? `${pathname}?${queryString}` : pathname;
+    const newSearch = queryString ? `?${queryString}` : '';
     
-    // Replace state without full navigation reload
-    window.history.replaceState(null, '', newUrl);
+    // Replace state only if search string actually changed to prevent router scroll jump
+    if (typeof window !== 'undefined' && window.location.search !== newSearch) {
+      window.history.replaceState(null, '', newSearch ? `${pathname}${newSearch}` : pathname);
+    }
   }, [selectedCategory, searchQuery, selectedDate, viewMode, pathname]);
 
   // Combined filtering: Search + Category (+ Date in Timeline view)
