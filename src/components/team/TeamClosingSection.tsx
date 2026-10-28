@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, Calendar, Sparkles, ExternalLink, Mail } from 'lucide-react';
+import { ArrowRight, Calendar, Sparkles, Mail } from 'lucide-react';
 import { siteConfig } from '@/data/site-config';
 
 export function TeamClosingSection() {

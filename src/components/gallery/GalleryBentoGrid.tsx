@@ -3,7 +3,6 @@
 import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
 import { 
-  Filter, 
   Sparkles, 
   ChevronDown, 
   Maximize2, 
@@ -45,23 +44,27 @@ export function GalleryBentoGrid() {
     setActiveModalItem(item);
   };
 
-  const handleCloseModal = () => {
+  const handleCloseModal = React.useCallback(() => {
     setActiveModalItem(null);
-  };
+  }, []);
 
-  const handleModalNext = () => {
-    if (!activeModalItem) return;
-    const currentIndex = filteredItems.findIndex((it) => it.id === activeModalItem.id);
-    const nextIndex = (currentIndex + 1) % filteredItems.length;
-    setActiveModalItem(filteredItems[nextIndex]);
-  };
+  const handleModalNext = React.useCallback(() => {
+    setActiveModalItem((current) => {
+      if (!current) return null;
+      const currentIndex = filteredItems.findIndex((it) => it.id === current.id);
+      const nextIndex = (currentIndex + 1) % filteredItems.length;
+      return filteredItems[nextIndex];
+    });
+  }, [filteredItems]);
 
-  const handleModalPrev = () => {
-    if (!activeModalItem) return;
-    const currentIndex = filteredItems.findIndex((it) => it.id === activeModalItem.id);
-    const prevIndex = (currentIndex - 1 + filteredItems.length) % filteredItems.length;
-    setActiveModalItem(filteredItems[prevIndex]);
-  };
+  const handleModalPrev = React.useCallback(() => {
+    setActiveModalItem((current) => {
+      if (!current) return null;
+      const currentIndex = filteredItems.findIndex((it) => it.id === current.id);
+      const prevIndex = (currentIndex - 1 + filteredItems.length) % filteredItems.length;
+      return filteredItems[prevIndex];
+    });
+  }, [filteredItems]);
 
   // Keyboard navigation inside modal
   React.useEffect(() => {
@@ -77,7 +80,7 @@ export function GalleryBentoGrid() {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [activeModalItem, filteredItems]);
+  }, [activeModalItem, handleCloseModal, handleModalNext, handleModalPrev]);
 
   const handleShare = (item: GalleryItem) => {
     if (navigator.clipboard) {

@@ -5,11 +5,9 @@ import Image from 'next/image';
 import { 
   Users, 
   GraduationCap, 
-  Sparkles, 
   Mail, 
   X, 
   Building2,
-  CheckCircle2
 } from 'lucide-react';
 import { BlossomTeamMember, BLOSSOMS_TEAM_MEMBERS } from '@/data/team-departments';
 import { siteConfig } from '@/data/site-config';

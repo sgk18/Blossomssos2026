@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { ShieldCheck, Award, Users, Sparkles, Building2, ChevronRight } from 'lucide-react';
+import { ShieldCheck, ChevronRight } from 'lucide-react';
 import { CORE_LEADERSHIP } from '@/data/team-departments';
 
 export function CoreCommitteeSpotlight() {

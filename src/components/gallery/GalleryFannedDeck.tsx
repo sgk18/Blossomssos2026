@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Compass, Sparkles, ExternalLink, Flame } from 'lucide-react';
+import { Compass, ExternalLink, Flame } from 'lucide-react';
 import { TRENDING_SOCIAL_CARDS } from '@/data/gallery-data';
 
 interface GalleryFannedDeckProps {
