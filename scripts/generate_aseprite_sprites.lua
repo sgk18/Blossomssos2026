@@ -1,10 +1,10 @@
 -- ============================================================================
--- Blossoms SOS 2026 — Aseprite 2D Pastel Sakura & Butterfly Sprite Generator
+-- Blossoms SOS 2026 — Aseprite 2D Sprite Generator (Pastel Blossoms & Butterflies)
 -- Generates authentic pixel-art .ase files & sprite sheets using Aseprite CLI:
---   1. sakura_blossoms.ase (32x32, 4 pastel variants x 8 frames)
---   2. sakura_petals.ase   (20x20, 4 pastel variants x 8 3D-tumble frames)
---   3. sakura_branch.ase   (144x104, 6-frame breeze-swaying pastel cherry bough)
---   4. butterflies.ase     (48x48, 4 pastel/Onyx variants x 8 flutter/glide frames)
+--   1. sakura_blossoms.ase (32x32, 4 soft pastel sakura variants x 8 frames)
+--   2. sakura_petals.ase   (20x20, 4 bright-pink & white blended variants x 8 frames)
+--   3. sakura_branch.ase   (144x104, 6-frame pastel cherry blossom garden bough)
+--   4. butterflies.ase     (48x48, 3 butterfly variants x 8 silky wing-flutter frames)
 -- ============================================================================
 
 local OUT_ASE = "public/sprites/aseprite/"
@@ -83,17 +83,19 @@ local function fillCircle(img, cx, cy, r, col)
   end
 end
 
-local function applyOutline(img, outlineCol)
+-- Soft translucent outline pass so sprites blend naturally into #FFDBC3 peach & lavender BG
+local function applyOutline(img, outlineCol, alphaThreshold)
+  local thresh = alphaThreshold or 150
   local w, h = img.width, img.height
   local toOutline = {}
   for y = 0, h - 1 do
     for x = 0, w - 1 do
       if app.pixelColor.rgbaA(img:getPixel(x, y)) == 0 then
         local touches = false
-        if x > 0 and app.pixelColor.rgbaA(img:getPixel(x - 1, y)) > 160 then touches = true end
-        if x < w - 1 and app.pixelColor.rgbaA(img:getPixel(x + 1, y)) > 160 then touches = true end
-        if y > 0 and app.pixelColor.rgbaA(img:getPixel(x, y - 1)) > 160 then touches = true end
-        if y < h - 1 and app.pixelColor.rgbaA(img:getPixel(x, y + 1)) > 160 then touches = true end
+        if x > 0 and app.pixelColor.rgbaA(img:getPixel(x - 1, y)) > thresh then touches = true end
+        if x < w - 1 and app.pixelColor.rgbaA(img:getPixel(x + 1, y)) > thresh then touches = true end
+        if y > 0 and app.pixelColor.rgbaA(img:getPixel(x, y - 1)) > thresh then touches = true end
+        if y < h - 1 and app.pixelColor.rgbaA(img:getPixel(x, y + 1)) > thresh then touches = true end
         if touches then
           table.insert(toOutline, { x, y })
         end
@@ -106,58 +108,55 @@ local function applyOutline(img, outlineCol)
 end
 
 -- ============================================================================
--- DREAMY PASTEL SAKURA PALETTES
+-- 1. PASTEL CHERRY BLOSSOM FLOWERS (32x32, 4 soft pastel palettes x 8 frames)
 -- ============================================================================
-local SAKURA_PALETTES = {
-  { -- 1. Pastel Baby Blush Sakura
+local PASTEL_FLOWER_PALETTES = {
+  { -- 1. Soft Pastel Blush Sakura
     name    = "pastel_blush",
-    tip     = rgba(255, 250, 252),
-    light   = rgba(255, 232, 241),
-    mid     = rgba(255, 206, 224),
-    deep    = rgba(244, 172, 198),
-    star    = rgba(226, 138, 170),
-    outline = rgba(186, 118, 146, 185),
-    stamen  = rgba(255, 242, 178),
-    anther  = rgba(242, 204, 118),
+    tip     = rgba(255, 250, 252, 245),
+    light   = rgba(255, 224, 236, 245),
+    mid     = rgba(255, 194, 216, 245),
+    deep    = rgba(244, 156, 188, 245),
+    star    = rgba(226, 118, 160, 250),
+    outline = rgba(214, 134, 166, 145),
+    stamen  = rgba(255, 236, 162, 255),
+    anther  = rgba(242, 186, 96, 255),
   },
-  { -- 2. Pastel Lilac-Wisteria Sakura
+  { -- 2. Soft Pastel Lilac-Lavender Sakura
     name    = "pastel_lilac",
-    tip     = rgba(252, 250, 255),
-    light   = rgba(238, 228, 255),
-    mid     = rgba(218, 202, 248),
-    deep    = rgba(190, 168, 236),
-    star    = rgba(162, 136, 218),
-    outline = rgba(132, 110, 180, 185),
-    stamen  = rgba(255, 244, 186),
-    anther  = rgba(240, 206, 124),
+    tip     = rgba(252, 249, 255, 245),
+    light   = rgba(235, 224, 255, 245),
+    mid     = rgba(210, 192, 250, 245),
+    deep    = rgba(182, 158, 236, 245),
+    star    = rgba(148, 118, 214, 250),
+    outline = rgba(152, 128, 208, 145),
+    stamen  = rgba(255, 238, 168, 255),
+    anther  = rgba(238, 184, 98, 255),
   },
-  { -- 3. Pastel Rose-Peach Blossom
-    name    = "pastel_peach",
-    tip     = rgba(255, 251, 248),
-    light   = rgba(255, 234, 226),
-    mid     = rgba(255, 208, 196),
-    deep    = rgba(244, 178, 164),
-    star    = rgba(224, 146, 134),
-    outline = rgba(184, 122, 114, 185),
-    stamen  = rgba(255, 245, 188),
-    anther  = rgba(238, 200, 116),
+  { -- 3. Pastel Peach-Rose Blossom (harmonizes directly with #FFDBC3)
+    name    = "pastel_peach_rose",
+    tip     = rgba(255, 251, 248, 245),
+    light   = rgba(255, 226, 216, 245),
+    mid     = rgba(255, 196, 188, 245),
+    deep    = rgba(242, 158, 154, 245),
+    star    = rgba(222, 122, 126, 250),
+    outline = rgba(212, 132, 134, 140),
+    stamen  = rgba(255, 238, 166, 255),
+    anther  = rgba(240, 180, 92, 255),
   },
-  { -- 4. Pastel Pearl-Mint White Onyx Sakura
+  { -- 4. Pastel Pearl-White & Whisper Pink Blossom
     name    = "pastel_pearl",
-    tip     = rgba(255, 255, 255),
-    light   = rgba(246, 244, 253),
-    mid     = rgba(232, 226, 246),
-    deep    = rgba(214, 202, 236),
-    star    = rgba(222, 176, 202),
-    outline = rgba(152, 138, 182, 175),
-    stamen  = rgba(255, 243, 182),
-    anther  = rgba(236, 202, 120),
-  }
+    tip     = rgba(255, 255, 255, 248),
+    light   = rgba(255, 242, 248, 245),
+    mid     = rgba(250, 218, 232, 245),
+    deep    = rgba(236, 184, 208, 245),
+    star    = rgba(214, 142, 178, 250),
+    outline = rgba(202, 146, 176, 135),
+    stamen  = rgba(255, 236, 158, 255),
+    anther  = rgba(238, 182, 96, 255),
+  },
 }
 
--- ============================================================================
--- 1. PASTEL SAKURA BLOSSOMS (32x32, 4 pastel variants x 8 frames = 32 frames)
--- ============================================================================
 local function drawSakuraFlower(img, cx, cy, radius, rotAngle, tiltX, pal, shimmerPhase)
   local maxR = math.ceil(radius + 3)
   for py = math.floor(cy - maxR), math.ceil(cy + maxR) do
@@ -185,13 +184,13 @@ local function drawSakuraFlower(img, cx, cy, radius, rotAngle, tiltX, pal, shimm
           local td = t + dither + lightBias
 
           local col
-          if td < 0.23 then
+          if td < 0.24 then
             col = pal.star
-          elseif td < 0.42 then
+          elseif td < 0.44 then
             col = pal.deep
-          elseif td < 0.68 then
+          elseif td < 0.70 then
             col = pal.mid
-          elseif td < 0.87 then
+          elseif td < 0.88 then
             col = pal.light
           else
             col = pal.tip
@@ -204,13 +203,13 @@ local function drawSakuraFlower(img, cx, cy, radius, rotAngle, tiltX, pal, shimm
     end
   end
 
-  applyOutline(img, pal.outline)
+  applyOutline(img, pal.outline, 160)
 
   fillCircle(img, cx, cy, 1.5, pal.star)
   local numStamens = 5
   for s = 0, numStamens - 1 do
     local sa = rotAngle + (s * math.pi * 2 / numStamens) + (math.pi / 5)
-    local slen = radius * 0.36 + ((s % 2 == 0) and 0.8 or 0.0)
+    local slen = radius * 0.35 + ((s % 2 == 0) and 0.7 or 0.0)
     local sx = cx + math.cos(sa) * slen * tiltX
     local sy = cy + math.sin(sa) * slen
     local mx = cx + math.cos(sa) * (slen * 0.55) * tiltX
@@ -223,12 +222,12 @@ local function drawSakuraFlower(img, cx, cy, radius, rotAngle, tiltX, pal, shimm
 end
 
 do
-  local totalFrames = #SAKURA_PALETTES * 8
+  local totalFrames = #PASTEL_FLOWER_PALETTES * 8
   local spr = Sprite(32, 32, ColorMode.RGB)
   for f = 2, totalFrames do spr:newEmptyFrame() end
 
   local frameIdx = 1
-  for _, pal in ipairs(SAKURA_PALETTES) do
+  for _, pal in ipairs(PASTEL_FLOWER_PALETTES) do
     local startF = frameIdx
     for step = 0, 7 do
       spr.frames[frameIdx].duration = 0.12
@@ -248,19 +247,56 @@ do
 end
 
 -- ============================================================================
--- 2. PASTEL FALLING SAKURA PETALS (20x20, 4 variants x 8 3D-tumble frames)
+-- 2. BRIGHT PINK & WHITE BLENDED PETALS (20x20, 4 variants x 8 tumble frames)
+--    Soft translucent edge feathering (no dark outlines!) so bright pink &
+--    crisp white petals blend seamlessly with the warm #FFDBC3 background.
 -- ============================================================================
+local PETAL_PALETTES = {
+  { -- 1. Bright Sakura Pink & Crisp White Tip
+    name    = "bright_pink_white",
+    tip     = rgba(255, 255, 255, 248),
+    light   = rgba(255, 206, 230, 242),
+    mid     = rgba(255, 108, 176, 238),
+    deep    = rgba(244, 62, 146, 235),
+    outline = rgba(252, 142, 192, 125),
+  },
+  { -- 2. Pure Luminous White with Bright Pink Base Blush
+    name    = "white_pink_blush",
+    tip     = rgba(255, 255, 255, 250),
+    light   = rgba(255, 246, 251, 245),
+    mid     = rgba(255, 198, 224, 240),
+    deep     = rgba(255, 104, 174, 235),
+    outline = rgba(255, 188, 216, 120),
+  },
+  { -- 3. Radiant Flamingo-Sakura Bright Pink
+    name    = "radiant_bright_pink",
+    tip     = rgba(255, 244, 250, 246),
+    light   = rgba(255, 148, 198, 242),
+    mid     = rgba(255, 82, 162, 238),
+    deep    = rgba(236, 42, 132, 235),
+    outline = rgba(248, 118, 178, 125),
+  },
+  { -- 4. Snow White Onyx Petal with Soft Rose Whisper
+    name    = "snow_white_petal",
+    tip     = rgba(255, 255, 255, 252),
+    light   = rgba(255, 250, 253, 246),
+    mid     = rgba(255, 226, 238, 240),
+    deep    = rgba(255, 152, 198, 232),
+    outline = rgba(245, 192, 212, 115),
+  },
+}
+
 local function drawTumblingPetal(img, cx, cy, step, pal)
   local phase = (step / 8.0) * math.pi * 2
   local cosP = math.cos(phase)
   local sinP = math.sin(phase)
-  local widthScale = math.max(0.22, math.abs(cosP))
+  local widthScale = math.max(0.24, math.abs(cosP))
   local curl = sinP * 2.2
   local rot = math.sin(phase) * 0.28 - 0.35
 
   local cosR, sinR = math.cos(rot), math.sin(rot)
-  local len = 7.2
-  local maxW = 5.2
+  local len = 7.4
+  local maxW = 5.3
 
   for py = 1, img.height - 2 do
     for px = 1, img.width - 2 do
@@ -288,16 +324,16 @@ local function drawTumblingPetal(img, cx, cy, step, pal)
           local grad = (v + 1.0) * 0.5 + dither
           local col
           if widthScale < 0.36 then
-            col = (grad < 0.55) and pal.tip or pal.light
+            col = (grad < 0.58) and pal.tip or pal.light
           elseif cosP >= 0 then
             if grad < 0.32 then col = pal.tip
-            elseif grad < 0.68 then col = pal.light
-            elseif grad < 0.88 then col = pal.mid
+            elseif grad < 0.62 then col = pal.light
+            elseif grad < 0.85 then col = pal.mid
             else col = pal.deep end
           else
-            if grad < 0.28 then col = pal.light
-            elseif grad < 0.68 then col = pal.mid
-            else col = pal.deep end
+            if grad < 0.28 then col = pal.tip
+            elseif grad < 0.60 then col = pal.light
+            else col = pal.mid end
           end
           putPx(img, px, py, col)
         end
@@ -305,16 +341,17 @@ local function drawTumblingPetal(img, cx, cy, step, pal)
     end
   end
 
-  applyOutline(img, pal.outline)
+  -- Soft feathered translucent edge so petals melt naturally into the peach/lavender bg
+  applyOutline(img, pal.outline, 160)
 end
 
 do
-  local totalFrames = #SAKURA_PALETTES * 8
+  local totalFrames = #PETAL_PALETTES * 8
   local spr = Sprite(20, 20, ColorMode.RGB)
   for f = 2, totalFrames do spr:newEmptyFrame() end
 
   local frameIdx = 1
-  for _, pal in ipairs(SAKURA_PALETTES) do
+  for _, pal in ipairs(PETAL_PALETTES) do
     local startF = frameIdx
     for step = 0, 7 do
       spr.frames[frameIdx].duration = 0.10
@@ -324,7 +361,7 @@ do
       frameIdx = frameIdx + 1
     end
     local tag = spr:newTag(startF, frameIdx - 1)
-    tag.name = pal.name .. "_petal"
+    tag.name = pal.name
   end
 
   spr:saveAs(OUT_ASE .. "sakura_petals.ase")
@@ -334,19 +371,17 @@ end
 -- ============================================================================
 -- 3. PASTEL CHERRY BLOSSOM BOUGH (144x104, 6-frame breeze sway)
 -- ============================================================================
-local function drawTinyBud(img, cx, cy, pal)
-  fillCircle(img, cx, cy, 2.6, pal.deep)
-  fillCircle(img, cx - 0.6, cy - 0.6, 1.8, pal.light)
-  putPx(img, cx - 1, cy - 1, pal.tip)
-  putPx(img, cx + 1, cy + 2, rgba(112, 168, 126))
-  putPx(img, cx, cy + 2, rgba(88, 140, 102))
+local function drawTinyBud(img, cx, cy)
+  fillCircle(img, cx, cy, 2.5, rgba(255, 118, 178, 240))
+  fillCircle(img, cx - 0.6, cy - 0.6, 1.7, rgba(255, 224, 238, 245))
+  putPx(img, cx - 1, cy - 1, rgba(255, 255, 255, 250))
+  putPx(img, cx + 1, cy + 2, rgba(112, 178, 128, 220))
 end
 
-local function drawPixelLeaf(img, cx, cy, angle, len)
-  -- Soft pastel sage-mint leaves
-  local cDark  = rgba(92, 148, 110)
-  local cMid   = rgba(132, 192, 148)
-  local cLight = rgba(182, 228, 192)
+local function drawPastelLeaf(img, cx, cy, angle, len)
+  local cDark  = rgba(96, 158, 114, 215)
+  local cMid   = rgba(134, 196, 148, 225)
+  local cLight = rgba(182, 228, 190, 230)
   local cosA, sinA = math.cos(angle), math.sin(angle)
   for py = math.floor(cy - len - 2), math.ceil(cy + len + 2) do
     for px = math.floor(cx - len - 2), math.ceil(cx + len + 2) do
@@ -373,16 +408,15 @@ do
   local spr = Sprite(144, 104, ColorMode.RGB)
   for f = 2, 6 do spr:newEmptyFrame() end
 
-  -- Soft muted rosewood-plum bark to match pastel blossoms
-  local barkOutline = rgba(76, 52, 68, 225)
-  local barkDark    = rgba(102, 72, 90)
-  local barkMid     = rgba(132, 98, 116)
-  local barkLight   = rgba(164, 130, 148)
+  -- Soft warm muted plum-wood tones so the branch feels airy and pastel
+  local barkOutline = rgba(92, 56, 74, 200)
+  local barkDark    = rgba(118, 76, 96, 225)
+  local barkMid     = rgba(148, 102, 122, 230)
+  local barkLight   = rgba(182, 138, 156, 235)
 
-  local palBlush = SAKURA_PALETTES[1]
-  local palLilac = SAKURA_PALETTES[2]
-  local palPeach = SAKURA_PALETTES[3]
-  local palPearl = SAKURA_PALETTES[4]
+  local palBlush = PASTEL_FLOWER_PALETTES[1]
+  local palLilac = PASTEL_FLOWER_PALETTES[2]
+  local palPearl = PASTEL_FLOWER_PALETTES[4]
 
   for step = 0, 5 do
     spr.frames[step + 1].duration = 0.18
@@ -391,23 +425,23 @@ do
     local sway = math.sin((step / 6.0) * math.pi * 2) * 2.2
     local swayY = math.cos((step / 6.0) * math.pi * 2) * 1.4
 
-    -- Soft pastel sakura cloud puffs behind twigs
+    -- Soft pastel sakura cloud clusters in background
     local bgClusters = {
       { 26, 22, 11 }, { 52, 28, 12 }, { 78, 34 + swayY * 0.5, 11 },
       { 104 + sway * 0.6, 42 + swayY * 0.7, 10 }, { 36, 52, 10 },
       { 68 + sway * 0.4, 58 + swayY * 0.5, 9 }
     }
     for _, cl in ipairs(bgClusters) do
-      fillCircle(img, cl[1], cl[2], cl[3], rgba(246, 198, 218, 200))
-      fillCircle(img, cl[1] - 2, cl[2] - 2, cl[3] * 0.75, rgba(255, 232, 242, 225))
+      fillCircle(img, cl[1], cl[2], cl[3], rgba(255, 206, 226, 175))
+      fillCircle(img, cl[1] - 2, cl[2] - 2, cl[3] * 0.75, rgba(255, 238, 246, 195))
     end
 
-    drawPixelLeaf(img, 18, 34, 1.15, 11)
-    drawPixelLeaf(img, 46, 14, 0.35, 12)
-    drawPixelLeaf(img, 64, 44 + swayY * 0.4, 1.35, 11)
-    drawPixelLeaf(img, 92 + sway * 0.5, 24 + swayY * 0.5, 0.25, 11)
-    drawPixelLeaf(img, 116 + sway * 0.8, 48 + swayY * 0.8, 0.85, 10)
-    drawPixelLeaf(img, 32, 66 + swayY * 0.4, 1.65, 10)
+    drawPastelLeaf(img, 18, 34, 1.15, 11)
+    drawPastelLeaf(img, 46, 14, 0.35, 12)
+    drawPastelLeaf(img, 64, 44 + swayY * 0.4, 1.35, 11)
+    drawPastelLeaf(img, 92 + sway * 0.5, 24 + swayY * 0.5, 0.25, 11)
+    drawPastelLeaf(img, 116 + sway * 0.8, 48 + swayY * 0.8, 0.85, 10)
+    drawPastelLeaf(img, 32, 66 + swayY * 0.4, 1.65, 10)
 
     local trunkPts = {
       { 0, 8, 5.2 },
@@ -419,34 +453,32 @@ do
     }
     for i = 1, #trunkPts - 1 do
       local a, b = trunkPts[i], trunkPts[i + 1]
-      drawLine(img, a[1], a[2], b[1], b[2], barkOutline, a[3] + 0.9)
+      drawLine(img, a[1], a[2], b[1], b[2], barkOutline, a[3] + 0.8)
       drawLine(img, a[1], a[2], b[1], b[2], barkDark, a[3])
       drawLine(img, a[1], a[2] - 1, b[1], b[2] - 1, barkMid, math.max(0.8, a[3] - 1.2))
-      drawLine(img, a[1], a[2] - 2, b[1], b[2] - 2, barkLight, math.max(0, a[3] - 2.3))
+      drawLine(img, a[1], a[2] - 2, b[1], b[2] - 2, barkLight, math.max(0, a[3] - 2.4))
     end
 
     drawLine(img, 24, 16, 36, 46, barkDark, 2.0)
     drawLine(img, 36, 46, 44 + sway * 0.4, 72 + swayY * 0.6, barkDark, 1.2)
-    drawLine(img, 24, 15, 36, 45, barkMid, 1.0)
-
-    drawLine(img, 58, 28, 72 + sway * 0.3, 56 + swayY * 0.5, barkDark, 1.7)
+    drawLine(img, 58, 28, 72 + sway * 0.3, 56 + swayY * 0.5, barkDark, 1.6)
     drawLine(img, 72 + sway * 0.3, 56 + swayY * 0.5, 86 + sway * 0.6, 76 + swayY * 0.8, barkDark, 1.0)
     drawLine(img, 68, 30, 96 + sway * 0.5, 20 + swayY * 0.4, barkDark, 1.3)
 
     local blossoms = {
-      {  8, 11, 9.2, 0.7, palLilac },
+      {  8, 11, 9.2, 0.7, palPearl },
       { 18, 22, 9.8, 0.2, palBlush },
       { 36, 15, 8.8, 0.9, palPearl },
       { 28, 35, 8.5, 0.5, palBlush },
       { 54, 29, 10.4, 0.4, palBlush },
       { 65, 20, 8.6, 1.1, palLilac },
-      { 37, 50, 9.2, 1.1, palPeach },
+      { 37, 50, 9.2, 1.1, palPearl },
       { 44 + sway * 0.4, 72 + swayY * 0.6, 8.4, 0.6, palBlush },
-      { 77 + sway * 0.3, 35 + swayY * 0.4, 9.8, 0.1, palLilac },
-      { 72 + sway * 0.3, 58 + swayY * 0.5, 8.8, 0.8, palBlush },
-      { 96 + sway * 0.5, 20 + swayY * 0.4, 8.4, 0.5, palPearl },
-      { 104 + sway * 0.6, 42 + swayY * 0.7, 9.6, 1.0, palBlush },
-      { 115 + sway * 0.75, 34 + swayY * 0.8, 7.8, 0.2, palPeach },
+      { 77 + sway * 0.3, 35 + swayY * 0.4, 9.8, 0.1, palPearl },
+      { 72 + sway * 0.3, 58 + swayY * 0.5, 8.8, 0.8, palLilac },
+      { 96 + sway * 0.5, 20 + swayY * 0.4, 8.4, 0.5, palBlush },
+      { 104 + sway * 0.6, 42 + swayY * 0.7, 9.6, 1.0, palPearl },
+      { 115 + sway * 0.75, 34 + swayY * 0.8, 7.8, 0.2, palBlush },
       { 124 + sway * 0.9, 48 + swayY * 0.9, 8.0, 0.3, palLilac },
       { 86 + sway * 0.6, 76 + swayY * 0.8, 7.8, 0.7, palBlush },
     }
@@ -465,10 +497,10 @@ do
       end
     end
 
-    drawTinyBud(img, 133 + sway, 51 + swayY, palLilac)
-    drawTinyBud(img, 106 + sway * 0.5, 17 + swayY * 0.4, palBlush)
-    drawTinyBud(img, 48 + sway * 0.4, 83 + swayY * 0.7, palBlush)
-    drawTinyBud(img, 93 + sway * 0.7, 84 + swayY * 0.9, palPeach)
+    drawTinyBud(img, 133 + sway, 51 + swayY)
+    drawTinyBud(img, 106 + sway * 0.5, 17 + swayY * 0.4)
+    drawTinyBud(img, 48 + sway * 0.4, 83 + swayY * 0.7)
+    drawTinyBud(img, 93 + sway * 0.7, 84 + swayY * 0.9)
 
     spr:newCel(spr.layers[1], spr.frames[step + 1], img)
   end
@@ -481,153 +513,99 @@ do
 end
 
 -- ============================================================================
--- 4. PASTEL & WHITE ONYX BUTTERFLIES (48x48, 4 variants x 8 frames = 32 frames)
---    Inspired by the "Flames to Flight / White Onyx Ignites" butterflies!
+-- 4. 2D ANIMATED BUTTERFLIES (48x48, 3 variants x 8 silky flutter frames)
+--    Inspired by the "Flames to Flight — White Onyx Ignites" butterflies!
 -- ============================================================================
 local BUTTERFLY_PALETTES = {
-  { -- 1. White Onyx & Pastel Lavender Swallowtail
-    name    = "onyx_lavender",
-    inner   = rgba(255, 255, 255),
-    mid     = rgba(235, 226, 255),
-    outer   = rgba(196, 178, 242),
-    rim     = rgba(114, 92, 178),
-    outline = rgba(76, 56, 134, 225),
-    spot    = rgba(255, 255, 255),
-    body    = rgba(72, 52, 122),
+  { -- 1. White Onyx Pearl & Pastel Lavender Morpho
+    name    = "white_onyx_butterfly",
+    inner   = rgba(255, 255, 255, 250),
+    mid     = rgba(242, 236, 255, 248),
+    outer   = rgba(196, 180, 242, 245),
+    rim     = rgba(118, 96, 186, 235),
+    spot    = rgba(255, 255, 255, 255),
+    body    = rgba(84, 62, 138, 245),
+    outline = rgba(98, 76, 158, 175),
   },
-  { -- 2. Pastel Sakura Blush Butterfly
-    name    = "pastel_rose",
-    inner   = rgba(255, 248, 251),
-    mid     = rgba(255, 214, 230),
-    outer   = rgba(246, 172, 202),
-    rim     = rgba(196, 114, 148),
-    outline = rgba(142, 74, 104, 220),
-    spot    = rgba(255, 250, 252),
-    body    = rgba(118, 62, 88),
+  { -- 2. Bright Pink & Crisp White Sakura Swallowtail
+    name    = "pink_white_butterfly",
+    inner   = rgba(255, 255, 255, 252),
+    mid     = rgba(255, 182, 216, 248),
+    outer   = rgba(255, 92, 166, 245),
+    rim     = rgba(226, 52, 132, 235),
+    spot    = rgba(255, 255, 255, 255),
+    body    = rgba(138, 52, 96, 245),
+    outline = rgba(214, 78, 142, 165),
   },
-  { -- 3. Pastel Sky-Periwinkle Morpho
-    name    = "pastel_sky",
-    inner   = rgba(248, 252, 255),
-    mid     = rgba(212, 230, 255),
-    outer   = rgba(174, 204, 250),
-    rim     = rgba(122, 146, 214),
-    outline = rgba(84, 102, 168, 220),
-    spot    = rgba(255, 255, 255),
-    body    = rgba(76, 88, 142),
+  { -- 3. Pastel Lilac & Amethyst Slogan Butterfly
+    name    = "pastel_amethyst_butterfly",
+    inner   = rgba(248, 242, 255, 250),
+    mid     = rgba(212, 194, 252, 248),
+    outer   = rgba(156, 128, 232, 245),
+    rim     = rgba(92, 68, 168, 238),
+    spot    = rgba(255, 245, 252, 255),
+    body    = rgba(68, 44, 122, 248),
+    outline = rgba(92, 68, 162, 175),
   },
-  { -- 4. Pastel Peach-Buttercream Swallowtail
-    name    = "pastel_apricot",
-    inner   = rgba(255, 253, 244),
-    mid     = rgba(255, 232, 196),
-    outer   = rgba(252, 196, 162),
-    rim     = rgba(206, 132, 116),
-    outline = rgba(154, 88, 82, 220),
-    spot    = rgba(255, 252, 242),
-    body    = rgba(126, 72, 68),
-  }
 }
 
--- Draw one butterfly wing pair (forewing + swallowtail hindwing) on a 48x48 sub-image
--- `wingLift`: vertical Y scale/projection (-0.85 down-cup to +1.0 high dorsal clap)
--- `wingSpan`: horizontal X reach (0.35 closed upright to 1.0 wide open)
-local function drawButterflyWingSet(pal, wingSpan, wingLift, isFarWing)
-  local wImg = Image(48, 48, ColorMode.RGB)
-  -- Thorax anchor at (25, 26), body tilted at -32 degrees (head toward top-right)
-  local ax, ay = 25.0, 26.0
+-- Draw one butterfly wing pair (forewing + scalloped hindwing) with signed projection `proj`
+-- `proj < 0` projects above the butterfly's back; `proj > 0` projects downward/outward!
+local function drawButterflyHalf(img, cx, cy, bodyAngle, proj, pal, isFarWing)
+  local cosB, sinB = math.cos(bodyAngle), math.sin(bodyAngle)
+  local dirSign = (proj >= 0) and 1 or -1
+  local spanScale = math.max(0.28, math.abs(proj))
 
-  -- Wing local basis vectors:
-  -- uVec points outward-up-left from body spine; vVec points forward along body spine
-  local flapAngle = -1.95 + (1.0 - wingLift) * 0.95 + (isFarWing and 0.24 or 0.0)
-  local ux = math.cos(flapAngle) * (isFarWing and wingSpan * 0.82 or wingSpan)
-  local uy = math.sin(flapAngle)
-  -- Forward axis along body (toward head at top-right)
-  local vx, vy = 0.78, -0.62
+  for py = 1, img.height - 2 do
+    for px = 1, img.width - 2 do
+      local dx = px - cx
+      local dy = py - cy
+      local u = dx * cosB + dy * sinB
+      local vRaw = -dx * sinB + dy * cosB
+      local v = (vRaw * dirSign) / spanScale
 
-  local det = ux * vy - uy * vx
-  if math.abs(det) < 0.08 then
-    return wImg
-  end
+      if v >= 0.4 and v <= 17.5 then
+        -- 1. Forewing: sweeps forward & out in a graceful Monarch/Morpho tear-arc
+        local fwU = u - (1.8 + v * 0.34)
+        local fwW = 6.2 * math.sin(math.min(1.0, v / 15.8) * math.pi * 0.86)
+        local inForewing = (v <= 15.8) and (math.abs(fwU) <= fwW)
 
-  for py = 2, 45 do
-    for px = 2, 45 do
-      local dx = px - ax
-      local dy = py - ay
-      -- Solve dx = u * ux + v * vx, dy = u * uy + v * vy
-      local u = (dx * vy - dy * vx) / det -- outward distance from body (0..18)
-      local v = (ux * dy - uy * dx) / det -- along-body (-14 tail .. +14 head)
-
-      if u >= 0.0 and u <= 19.5 then
-        local inForewing = false
-        local inHindwing = false
-        local normDist = 0.0
-
-        -- 1. Sweeping Forewing lobe (reaches outward & forward toward head/apex)
-        local fwCenterV = 2.5 + u * 0.36
-        local fwHalfV = 6.8 * math.sin(math.min(1.0, u / 17.5) * math.pi * 0.86) + 1.4
-        if u <= 17.5 and math.abs(v - fwCenterV) <= fwHalfV then
-          inForewing = true
-          normDist = math.max(u / 17.5, math.abs(v - fwCenterV) / (fwHalfV + 0.5))
-        end
-
-        -- 2. Rounded Hindwing lobe + delicate swallowtail projection
-        local hwCenterV = -4.2 - u * 0.22
-        local hwHalfV = 5.4 * math.sin(math.min(1.0, u / 13.5) * math.pi * 0.88) + 1.2
-        if u <= 13.5 and math.abs(v - hwCenterV) <= hwHalfV then
-          inHindwing = true
-          local hd = u / 13.5
-          if not inForewing or hd < normDist then
-            normDist = hd
-          end
-        end
-
-        -- Petite swallowtail tip at outer hindwing corner
-        if u >= 11.0 and u <= 15.8 and math.abs(v - (-7.2 - (u - 11.0) * 0.35)) <= 1.25 then
-          inHindwing = true
-          normDist = 0.92
-        end
+        -- 2. Hindwing: rounded scalloped petal-like lower wing sweeping back
+        local hwU = u - (-3.2 - v * 0.16)
+        local hwBase = 5.4 * math.sin(math.min(1.0, v / 12.2) * math.pi * 0.88)
+        -- Delicate scallop wave along outer hindwing margin
+        local scallop = math.sin(hwU * 1.4) * 0.45
+        local inHindwing = (v <= 12.2) and (math.abs(hwU) <= hwBase + scallop)
 
         if inForewing or inHindwing then
+          local spanNorm = inForewing and (v / 15.8) or (v / 12.2)
+          local edgeDist = inForewing
+            and (fwW - math.abs(fwU))
+            or ((hwBase + scallop) - math.abs(hwU))
+
           local dither = ((px + py) % 2 == 0) and 0.04 or -0.04
-          local d = normDist + dither
+          local t = spanNorm + dither
 
           local col
-          if isFarWing then
-            col = (d < 0.62) and pal.mid or pal.outer
+          -- Crisp ornamental wing-rim border + luminous submarginal pearl spots!
+          if edgeDist < 1.05 and spanNorm > 0.45 then
+            col = pal.rim
+          elseif inForewing and spanNorm > 0.72 and spanNorm < 0.86 and math.abs(fwU - 1.2) < 1.35 then
+            col = pal.spot
+          elseif inForewing and spanNorm > 0.62 and spanNorm < 0.75 and math.abs(fwU + 1.4) < 1.1 then
+            col = pal.spot
+          elseif t < 0.36 then
+            col = pal.inner
+          elseif t < 0.70 then
+            col = isFarWing and pal.mid or pal.mid
+          elseif t < 0.90 then
+            col = pal.outer
           else
-            if d < 0.36 then
-              col = pal.inner
-            elseif d < 0.68 then
-              col = pal.mid
-            elseif d < 0.86 then
-              col = pal.outer
-            else
-              col = pal.rim
-            end
-
-            -- Delicate pearl marginal dots near forewing tip!
-            if inForewing and u > 12.2 and u < 15.2 then
-              if math.abs(v - (fwCenterV + 2.2)) < 1.0 or math.abs(v - (fwCenterV - 1.6)) < 0.95 then
-                col = pal.spot
-              end
-            end
+            col = pal.rim
           end
 
-          putPx(wImg, px, py, col)
+          putPx(img, px, py, col)
         end
-      end
-    end
-  end
-
-  applyOutline(wImg, pal.outline)
-  return wImg
-end
-
-local function compositeImg(dst, src)
-  for y = 0, src.height - 1 do
-    for x = 0, src.width - 1 do
-      local c = src:getPixel(x, y)
-      if app.pixelColor.rgbaA(c) > 0 then
-        putPx(dst, x, y, c)
       end
     end
   end
@@ -638,60 +616,64 @@ do
   local spr = Sprite(48, 48, ColorMode.RGB)
   for f = 2, totalFrames do spr:newEmptyFrame() end
 
-  -- 8-frame butterfly wing-flutter + brief glide cycle:
-  -- { wingSpan, wingLift, bobY }
-  local FLUTTER_POSES = {
-    { 0.95,  0.72,  0 }, -- 0: Wide graceful open V
-    { 0.68,  0.92,  1 }, -- 1: Folding upward
-    { 0.42,  1.05,  1 }, -- 2: Upright dorsal clap (wings together overhead!)
-    { 0.76,  0.80,  0 }, -- 3: Snapping open
-    { 1.00,  0.42, -1 }, -- 4: Full glorious spread
-    { 0.88, -0.35, -2 }, -- 5: Sweeping low downstroke (body lifts!)
-    { 0.94,  0.55, -1 }, -- 6: Soaring open glide 1
-    { 0.98,  0.64,  0 }, -- 7: Soaring open glide 2
+  -- 8-frame silky butterfly flutter cycle:
+  -- { projUpper (always < 0, above back), projNear (+ open down-right -> - clapped up-left!), bodyBobY }
+  local FLUTTER = {
+    { -0.96,  0.88,  0.0 }, -- 1. Full open sunning/glide
+    { -0.90,  0.46, -0.5 }, -- 2. Upstroke sweep start
+    { -0.84, -0.52, -1.0 }, -- 3. Near wing sweeping upward above back
+    { -0.88, -0.82, -1.4 }, -- 4. Tall graceful overhead wing clap!
+    { -0.84, -0.46, -0.7 }, -- 5. Power opening sweep from overhead
+    { -0.90,  0.48,  0.4 }, -- 6. Downstroke lift surge
+    { -0.95,  0.85,  0.8 }, -- 7. Outstretched glide 1
+    { -0.93,  0.80,  0.4 }, -- 8. Gentle glide ripple
   }
+
+  local bodyAngle = -0.48 -- Facing gracefully up-right
+  local cosB, sinB = math.cos(bodyAngle), math.sin(bodyAngle)
 
   local frameIdx = 1
   for _, pal in ipairs(BUTTERFLY_PALETTES) do
     local startF = frameIdx
     for step = 1, 8 do
-      local pose = FLUTTER_POSES[step]
-      spr.frames[frameIdx].duration = (step >= 7) and 0.14 or 0.08
+      local fl = FLUTTER[step]
+      spr.frames[frameIdx].duration = (step >= 7) and 0.13 or 0.085
       local img = Image(48, 48, ColorMode.RGB)
-      local bob = pose[3]
 
-      -- 1. Far Wing Pair (behind body)
-      local farWing = drawButterflyWingSet(pal, pose[1], pose[2], true)
-      for y = 0, 47 do
-        for x = 0, 47 do
-          local c = farWing:getPixel(x, y)
-          if app.pixelColor.rgbaA(c) > 0 then
-            putPx(img, x + 2, y + bob - 1, c)
+      local cx = 24
+      local cy = 27 + fl[3]
+
+      -- 1. Far/Upper Wing Pair
+      drawButterflyHalf(img, cx, cy, bodyAngle, fl[1], pal, true)
+
+      -- 2. Slender Butterfly Thorax, Abdomen & Head
+      drawLine(
+        img,
+        cx - cosB * 6.5, cy - sinB * 6.5,
+        cx + cosB * 6.0, cy + sinB * 6.0,
+        pal.body, 1.15
+      )
+      local headX, headY = cx + cosB * 6.5, cy + sinB * 6.5
+      drawLine(img, headX, headY, headX + 4, headY - 6, pal.body, 0)
+      drawLine(img, headX, headY, headX + 7, headY - 2, pal.body, 0)
+      putPx(img, headX + 4, headY - 6, pal.rim)
+      putPx(img, headX + 7, headY - 2, pal.rim)
+
+      -- 3. Near/Foreground Wing Pair (claps overhead when fl[2] < 0, opens wide when fl[2] > 0!)
+      local nearWing = Image(48, 48, ColorMode.RGB)
+      drawButterflyHalf(nearWing, cx, cy, bodyAngle, fl[2], pal, false)
+      applyOutline(nearWing, pal.outline, 160)
+      for wy = 0, 47 do
+        for wx = 0, 47 do
+          local wc = nearWing:getPixel(wx, wy)
+          if app.pixelColor.rgbaA(wc) > 0 then
+            putPx(img, wx, wy, wc)
           end
         end
       end
 
-      -- 2. Slender Segmented Butterfly Body (Thorax, Abdomen, Head & Curled Antennae)
-      drawLine(img, 19, 31 + bob, 31, 21 + bob, pal.body, 1.3)
-      fillCircle(img, 32, 20 + bob, 1.8, pal.body)
-      -- Tiny white eye sparkle
-      putPx(img, 33, 19 + bob, pal.spot)
-      -- Two delicate curled antennae reaching forward
-      drawLine(img, 33, 19 + bob, 37, 13 + bob, pal.outline, 0)
-      drawLine(img, 33, 20 + bob, 39, 17 + bob, pal.outline, 0)
-      putPx(img, 38, 13 + bob, pal.body)
-      putPx(img, 40, 17 + bob, pal.body)
-
-      -- 3. Foreground Near Wing Pair
-      local nearWing = drawButterflyWingSet(pal, pose[1], pose[2], false)
-      for y = 0, 47 do
-        for x = 0, 47 do
-          local c = nearWing:getPixel(x, y)
-          if app.pixelColor.rgbaA(c) > 0 then
-            putPx(img, x, y + bob, c)
-          end
-        end
-      end
+      -- Soft outer silhouette outline so butterfly reads crisply while staying pastel
+      applyOutline(img, pal.outline, 160)
 
       spr:newCel(spr.layers[1], spr.frames[frameIdx], img)
       frameIdx = frameIdx + 1
@@ -704,4 +686,4 @@ do
   spr:close()
 end
 
-print("All Pastel Sakura & Butterfly Aseprite sprites generated!")
+print("Generated pastel sakura blossoms, bright pink/white petals, pastel branch, and butterflies!")

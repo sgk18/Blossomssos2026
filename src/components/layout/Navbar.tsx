@@ -7,11 +7,12 @@ import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { siteConfig } from '@/data/site-config';
 
-const NAV_LINKS = [
+const NAV_LINKS: Array<{ href: string; label: string; hasLiveDot?: boolean }> = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
   { href: '/events', label: 'Events' },
   { href: '/schedule', label: 'Schedule' },
+  { href: '/notice-board', label: 'Notice Board', hasLiveDot: true },
   { href: '/gallery', label: 'Gallery' },
   { href: '/team', label: 'Team' },
 ];
@@ -60,7 +61,7 @@ export function Navbar() {
         <div className="relative max-w-7xl mx-auto flex items-center justify-center">
           
           {/* Centered Liquid Glass Pill Nav */}
-          <div className="relative pointer-events-auto w-full max-w-md md:w-auto md:max-w-2xl lg:max-w-3xl inline-flex items-center justify-between md:justify-start gap-3 sm:gap-6 px-3 sm:px-4 h-11 sm:h-12 rounded-full liquid-glass-nav overflow-hidden transition-all duration-300">
+          <div className="relative pointer-events-auto w-full max-w-md md:w-auto md:max-w-4xl lg:max-w-5xl inline-flex items-center justify-between md:justify-start gap-2.5 sm:gap-5 px-3 sm:px-4 h-11 sm:h-12 rounded-full liquid-glass-nav overflow-hidden transition-all duration-300">
             
             {/* Continuous Fluid Surface Gloss (Smooth Liquid Glass Sheen) */}
             <div 
@@ -112,7 +113,7 @@ export function Navbar() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`font-tech px-2.5 lg:px-3 py-1 rounded-full text-xs font-semibold transition-all duration-150 flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFDBC3] ${
+                    className={`font-tech px-2 lg:px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-150 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFDBC3] ${
                       isActive
                         ? 'text-white font-bold bg-white/20 shadow-sm border border-white/25'
                         : 'text-[#F9F5EB]/80 hover:text-white hover:bg-white/10'
@@ -120,6 +121,16 @@ export function Navbar() {
                     aria-current={isActive ? 'page' : undefined}
                   >
                     <span>{link.label}</span>
+                    {link.hasLiveDot && (
+                      <span
+                        aria-hidden="true"
+                        className={`w-1.5 h-1.5 rounded-full shrink-0 ${
+                          isActive
+                            ? 'bg-[#FFDBC3] shadow-[0_0_6px_#FFDBC3]'
+                            : 'bg-[#FFDBC3]/90'
+                        }`}
+                      />
+                    )}
                   </Link>
                 );
               })}
@@ -211,7 +222,14 @@ export function Navbar() {
                 }`}
                 aria-current={isActive ? 'page' : undefined}
               >
-                <span>{link.label}</span>
+                <span className="flex items-center gap-2">
+                  <span>{link.label}</span>
+                  {link.hasLiveDot && !isActive && (
+                    <span className="px-1.5 py-0.5 rounded-full bg-[#FFDBC3]/20 text-[#FFDBC3] font-mono text-[9px] font-bold uppercase tracking-wider">
+                      Live
+                    </span>
+                  )}
+                </span>
                 {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#3D246C]" />}
               </Link>
             );

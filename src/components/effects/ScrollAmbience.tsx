@@ -6,7 +6,7 @@ type SakuraKind = 'blossom' | 'petal';
 
 interface SakuraSpriteParticle {
   kind: SakuraKind;
-  variant: number; // 0: classic pink, 1: vivid rose, 2: onyx lavender, 3: sunset coral
+  variant: number; // 0..3 palette row in Aseprite sheet
   x: number;
   y: number;
   vx: number;
@@ -20,23 +20,26 @@ interface SakuraSpriteParticle {
   swayAmp: number;
   frame: number;
   frameTimer: number;
-  frameInterval: number; // ms per Aseprite frame
+  frameInterval: number;
   opacity: number;
 }
 
-interface PigeonSprite {
+interface ButterflySprite {
+  variant: number; // 0: White Onyx Morpho, 1: Bright Pink & White Sakura, 2: Pastel Amethyst
   x: number;
   y: number;
   vx: number;
   vy: number;
-  dir: 1 | -1; // 1: flying right, -1: flying left
+  dir: 1 | -1; // 1: fluttering right, -1: fluttering left
   scale: number;
+  wavePhase: number;
+  waveSpeed: number;
+  waveAmp: number;
   tiltAngle: number;
-  frame: number; // 0..5 = "flap" tag, 6..7 = "glide" tag
+  frame: number; // 0..7 in Aseprite `butterflies.png`
   frameTimer: number;
-  mode: 'flap' | 'glide';
-  modeTimer: number;
-  modeDuration: number;
+  flutterSpeedMs: number;
+  glidePauseMs: number;
   opacity: number;
   fadeState: 'in' | 'active' | 'out';
   elapsedMs: number;
@@ -44,23 +47,37 @@ interface PigeonSprite {
   petalDropTimer: number;
 }
 
-// Weighted color selection favoring authentic cherry blossom pinks with festive accents
-function pickSakuraVariant(): number {
+function pickFlowerVariant(): number {
   const r = Math.random();
-  if (r < 0.44) return 0; // Classic Somei-Yoshino Sakura Pink
-  if (r < 0.74) return 1; // Vivid Yaezakura Rose-Magenta
-  if (r < 0.89) return 2; // Team Onyx Wisteria-Lavender
-  return 3;               // Sunset Coral Sakura
+  if (r < 0.36) return 0; // Pastel Blush Sakura
+  if (r < 0.62) return 1; // Pastel Lilac-Lavender
+  if (r < 0.82) return 2; // Pastel Peach-Rose
+  return 3;               // Pastel Pearl-White
+}
+
+function pickPetalVariant(): number {
+  const r = Math.random();
+  if (r < 0.34) return 0; // Bright Pink & Crisp White Tip
+  if (r < 0.62) return 1; // Pure White with Bright Pink Blush
+  if (r < 0.84) return 2; // Radiant Bright Sakura Pink
+  return 3;               // Snow White Onyx Petal
+}
+
+function pickButterflyVariant(): number {
+  const r = Math.random();
+  if (r < 0.38) return 0; // White Onyx Pearl & Lavender
+  if (r < 0.72) return 1; // Bright Pink & White Sakura Butterfly
+  return 2;               // Pastel Lilac & Amethyst Slogan Butterfly
 }
 
 /**
- * ScrollAmbience — Aseprite 2D Cherry Blossom & White Onyx Pigeon Sprite Engine
+ * ScrollAmbience — Aseprite 2D Pastel Cherry Blossoms, Bright Pink/White Petals & Butterflies
  *
- * Renders authentic pixel-art 2D sprite sheets generated via Aseprite CLI:
- * - `/sprites/sakura_blossoms.png` (32x32, 4 variants x 8 frames)
- * - `/sprites/sakura_petals.png`   (20x20, 4 variants x 8 3D-tumble frames)
- * - `/sprites/sakura_branch.png`   (144x104, 6-frame breeze-swaying cherry boughs)
- * - `/sprites/white_pigeon.png`    (64x64, 8-frame `flap` + `glide` white dove)
+ * Renders authentic 2D pixel-art sprite sheets authored & exported via Aseprite CLI:
+ * - `/sprites/sakura_blossoms.png` (32x32, 4 soft pastel flower variants x 8 frames)
+ * - `/sprites/sakura_petals.png`   (20x20, 4 bright-pink & white blended variants x 8 frames)
+ * - `/sprites/sakura_branch.png`   (144x104, 6-frame pastel cherry blossom garden boughs)
+ * - `/sprites/butterflies.png`     (48x48, 3 butterfly variants x 8 silky wing-flutter frames)
  */
 export function ScrollAmbience() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -82,7 +99,6 @@ export function ScrollAmbience() {
     let dpr = 1;
     let isDisposed = false;
 
-    // Load Aseprite-exported 2D sprite sheets
     const loadSprite = (src: string): Promise<HTMLImageElement> =>
       new Promise((resolve, reject) => {
         const img = new Image();
@@ -113,9 +129,9 @@ export function ScrollAmbience() {
       loadSprite('/sprites/sakura_blossoms.png'),
       loadSprite('/sprites/sakura_petals.png'),
       loadSprite('/sprites/sakura_branch.png'),
-      loadSprite('/sprites/white_pigeon.png'),
+      loadSprite('/sprites/butterflies.png'),
     ])
-      .then(([blossomSheet, petalSheet, branchSheet, pigeonSheet]) => {
+      .then(([blossomSheet, petalSheet, branchSheet, butterflySheet]) => {
         if (isDisposed) return;
 
         const isMobile = width < 768;
@@ -123,18 +139,17 @@ export function ScrollAmbience() {
         const maxParticles = isMobile ? 34 : 64;
 
         const particles: SakuraSpriteParticle[] = [];
-        const pigeons: PigeonSprite[] = [];
+        const butterflies: ButterflySprite[] = [];
 
         let lastScrollY = window.scrollY;
         let scrollImpulse = 0;
         let scrollAccumulator = 0;
-        let lastPigeonSpawnMs = 0;
+        let lastButterflySpawnMs = 0;
 
         let mouseX = -1000;
         let mouseY = -1000;
         let mouseActive = false;
 
-        // Branch animation state (6 frames in `sakura_branch.png`)
         let branchFrame = 0;
         let branchTimer = 0;
 
@@ -144,34 +159,34 @@ export function ScrollAmbience() {
           forceKind?: SakuraKind
         ): SakuraSpriteParticle => {
           const kind: SakuraKind =
-            forceKind ?? (Math.random() < 0.34 ? 'blossom' : 'petal');
+            forceKind ?? (Math.random() < 0.30 ? 'blossom' : 'petal');
           const isBlossom = kind === 'blossom';
           const baseVy = isBlossom
-            ? 0.55 + Math.random() * 0.55
-            : 0.75 + Math.random() * 0.85;
+            ? 0.50 + Math.random() * 0.50
+            : 0.70 + Math.random() * 0.80;
 
           return {
             kind,
-            variant: pickSakuraVariant(),
+            variant: isBlossom ? pickFlowerVariant() : pickPetalVariant(),
             x: customX !== undefined ? customX : Math.random() * width,
             y: customY !== undefined ? customY : Math.random() * height,
-            vx: 0.25 + (Math.random() - 0.35) * 0.65,
+            vx: 0.22 + (Math.random() - 0.35) * 0.60,
             vy: baseVy,
             baseVy,
             scale: isBlossom
-              ? (isMobile ? 0.95 : 1.15) + Math.random() * 0.45
-              : (isMobile ? 1.1 : 1.35) + Math.random() * 0.55,
+              ? (isMobile ? 0.90 : 1.08) + Math.random() * 0.42
+              : (isMobile ? 1.10 : 1.32) + Math.random() * 0.52,
             angle: Math.random() * Math.PI * 2,
-            rotSpeed: (Math.random() - 0.5) * (isBlossom ? 0.012 : 0.018),
+            rotSpeed: (Math.random() - 0.5) * (isBlossom ? 0.011 : 0.017),
             swayPhase: Math.random() * Math.PI * 2,
-            swaySpeed: 0.016 + Math.random() * 0.022,
-            swayAmp: 0.65 + Math.random() * 1.25,
+            swaySpeed: 0.015 + Math.random() * 0.020,
+            swayAmp: 0.65 + Math.random() * 1.20,
             frame: Math.floor(Math.random() * 8),
             frameTimer: Math.random() * 100,
-            frameInterval: isBlossom ? 120 : 95,
+            frameInterval: isBlossom ? 125 : 95,
             opacity: isBlossom
-              ? 0.82 + Math.random() * 0.16
-              : 0.78 + Math.random() * 0.2,
+              ? 0.72 + Math.random() * 0.18
+              : 0.76 + Math.random() * 0.18,
           };
         };
 
@@ -179,57 +194,56 @@ export function ScrollAmbience() {
           particles.push(createSakuraParticle());
         }
 
-        // Spawn 2D Aseprite White Onyx Pigeons in flight
-        const spawnPigeonFlock = (count = 1) => {
+        // Spawn a whimsical kaleidoscope of 2-3 fluttering 2D Aseprite butterflies
+        const spawnButterflies = (count = 2) => {
           const now = performance.now();
-          if (now - lastPigeonSpawnMs < 2200) return;
-          lastPigeonSpawnMs = now;
+          if (now - lastButterflySpawnMs < 1900) return;
+          lastButterflySpawnMs = now;
 
-          const dir: 1 | -1 = Math.random() < 0.72 ? 1 : -1;
-          const startX = dir === 1 ? -150 : width + 150;
-          const startY = height * (0.48 + Math.random() * 0.38);
-          const baseSpeed = isMobile ? 3.5 : 4.4;
+          const dir: 1 | -1 = Math.random() < 0.68 ? 1 : -1;
+          const startX = dir === 1 ? -90 : width + 90;
+          const startY = height * (0.48 + Math.random() * 0.40);
+          const baseSpeed = isMobile ? 2.6 : 3.2;
 
           for (let i = 0; i < count; i++) {
-            const speed = baseSpeed + (Math.random() - 0.5) * 0.6;
-            const climbDeg = 20 + Math.random() * 10; // Ascending flight angle
+            const speed = baseSpeed + (Math.random() - 0.5) * 0.65;
+            const climbDeg = 18 + Math.random() * 14;
             const climbRad = (climbDeg * Math.PI) / 180;
+            const bScale = (isMobile ? 1.30 : 1.60) + Math.random() * 0.42;
 
-            // Proper big 2D sprite size: 64px * 2.25..2.85 = ~144px..182px on desktop!
-            const spriteScale =
-              (isMobile ? 1.85 : 2.35) + Math.random() * 0.45;
-
-            pigeons.push({
-              x: startX - dir * i * 88,
-              y: startY + i * 52 + (Math.random() - 0.5) * 24,
+            butterflies.push({
+              variant: pickButterflyVariant(),
+              x: startX - dir * i * 62 + (Math.random() - 0.5) * 24,
+              y: startY + i * 42 + (Math.random() - 0.5) * 28,
               vx: dir * Math.cos(climbRad) * speed,
               vy: -Math.sin(climbRad) * speed,
               dir,
-              scale: spriteScale,
-              tiltAngle: -climbRad * 0.55,
-              frame: Math.floor(Math.random() * 6),
-              frameTimer: 0,
-              mode: 'flap',
-              modeTimer: 0,
-              modeDuration: 950 + Math.random() * 550,
+              scale: bScale,
+              wavePhase: Math.random() * Math.PI * 2,
+              waveSpeed: 0.045 + Math.random() * 0.025,
+              waveAmp: 1.15 + Math.random() * 0.85,
+              tiltAngle: (Math.random() - 0.5) * 0.16,
+              frame: Math.floor(Math.random() * 8),
+              frameTimer: Math.random() * 60,
+              flutterSpeedMs: 74 + Math.random() * 20,
+              glidePauseMs: 0,
               opacity: 0,
               fadeState: 'in',
               elapsedMs: 0,
-              maxLifeMs: 9000,
-              petalDropTimer: 0,
+              maxLifeMs: 11000,
+              petalDropTimer: Math.random() * 250,
             });
           }
         };
 
-        // Shed fresh cherry blossom petals from the overhanging boughs on scroll
         const shedBranchPetals = (amount: number) => {
           for (let i = 0; i < amount; i++) {
             if (particles.length >= maxParticles) break;
             const fromLeft = Math.random() < 0.5;
             const bx = fromLeft
-              ? 30 + Math.random() * 180
-              : width - (30 + Math.random() * 180);
-            const by = 24 + Math.random() * 110;
+              ? 28 + Math.random() * 175
+              : width - (28 + Math.random() * 175);
+            const by = 22 + Math.random() * 105;
             particles.push(createSakuraParticle(bx, by, 'petal'));
           }
         };
@@ -246,9 +260,10 @@ export function ScrollAmbience() {
             if (Math.random() < 0.35) {
               shedBranchPetals(1);
             }
-            if (scrollAccumulator > 380) {
+            if (scrollAccumulator > 340) {
               scrollAccumulator = 0;
-              spawnPigeonFlock(Math.random() > 0.45 ? 2 : 1);
+              // Echoes the 2-3 butterflies taking flight on the "Flames to Flight" banner!
+              spawnButterflies(Math.random() > 0.35 ? 3 : 2);
               shedBranchPetals(isMobile ? 2 : 4);
             }
           } else if (delta < -3) {
@@ -271,16 +286,16 @@ export function ScrollAmbience() {
         window.addEventListener('mouseleave', handleMouseLeave, { passive: true });
 
         const idleInterval = setInterval(() => {
-          if (!document.hidden && pigeons.length === 0) {
-            spawnPigeonFlock(1);
+          if (!document.hidden && butterflies.length < 2) {
+            spawnButterflies(2);
           }
-        }, 13000);
+        }, 10500);
 
         const greetTimeout = setTimeout(() => {
           if (!isDisposed) {
-            spawnPigeonFlock(2);
+            spawnButterflies(3);
           }
-        }, 1400);
+        }, 1100);
 
         cleanupListeners = () => {
           clearInterval(idleInterval);
@@ -290,11 +305,10 @@ export function ScrollAmbience() {
           window.removeEventListener('mouseleave', handleMouseLeave);
         };
 
-        // Draw overhanging cherry blossom boughs in upper left & right corners
         const drawSakuraBranches = (dtMs: number) => {
           branchTimer += dtMs;
           const effectiveBranchInterval =
-            Math.abs(scrollImpulse) > 1 ? 110 : 180;
+            Math.abs(scrollImpulse) > 1 ? 115 : 185;
           if (branchTimer >= effectiveBranchInterval) {
             branchTimer = 0;
             branchFrame = (branchFrame + 1) % 6;
@@ -303,24 +317,22 @@ export function ScrollAmbience() {
           const srcW = 144;
           const srcH = 104;
           const sx = branchFrame * srcW;
-          const branchScale = isMobile ? 1.15 : 1.85;
+          const branchScale = isMobile ? 1.12 : 1.80;
           const dstW = Math.round(srcW * branchScale);
           const dstH = Math.round(srcH * branchScale);
           const windTilt = scrollImpulse * 0.008;
 
-          // 1. Top-Left Overhanging Sakura Bough
           if (!isMobile) {
             ctx.save();
-            ctx.globalAlpha = 0.92;
+            ctx.globalAlpha = 0.86;
             ctx.translate(-6, -4);
             ctx.rotate(windTilt);
             ctx.drawImage(branchSheet, sx, 0, srcW, srcH, 0, 0, dstW, dstH);
             ctx.restore();
           }
 
-          // 2. Top-Right Overhanging Sakura Bough (mirrored horizontally)
           ctx.save();
-          ctx.globalAlpha = isMobile ? 0.82 : 0.92;
+          ctx.globalAlpha = isMobile ? 0.78 : 0.86;
           ctx.translate(width + 6, -4);
           ctx.scale(-1, 1);
           ctx.rotate(windTilt);
@@ -347,14 +359,13 @@ export function ScrollAmbience() {
           scrollImpulse *= 0.93;
           if (Math.abs(scrollImpulse) < 0.01) scrollImpulse = 0;
 
-          // 1. Render Overhanging 2D Cherry Blossom Boughs
+          // 1. Overhanging Pastel Cherry Blossom Boughs
           drawSakuraBranches(dtMs);
 
-          // 2. Update & Render 2D Sakura Blossoms & Falling Petals
+          // 2. Pastel Sakura Blossoms & Bright Pink/White Blended Petals
           for (let i = particles.length - 1; i >= 0; i--) {
             const p = particles[i];
 
-            // Advance Aseprite sprite frame (faster tumble during scroll gusts!)
             const speedBoost = 1 + Math.abs(scrollImpulse) * 0.35;
             p.frameTimer += dtMs * speedBoost;
             if (p.frameTimer >= p.frameInterval) {
@@ -370,7 +381,6 @@ export function ScrollAmbience() {
             p.x += p.vx + sway + scrollImpulse * 0.22;
             p.angle += p.rotSpeed * speedBoost;
 
-            // Gentle mouse breeze interaction
             if (mouseActive) {
               const dx = p.x - mouseX;
               const dy = p.y - mouseY;
@@ -383,7 +393,6 @@ export function ScrollAmbience() {
               }
             }
 
-            // Trim burst-spawned extras once offscreen; recycle baseline pool
             const offBottom = p.y > height + 48;
             const offTop = p.y < -60;
             if (offBottom || offTop) {
@@ -420,88 +429,82 @@ export function ScrollAmbience() {
             ctx.restore();
           }
 
-          // 3. Update & Render Big 2D Aseprite White Onyx Pigeons
-          for (let i = pigeons.length - 1; i >= 0; i--) {
-            const d = pigeons[i];
-            d.elapsedMs += dtMs;
-            d.modeTimer += dtMs;
+          // 3. Fluttering 2D Aseprite Butterflies
+          for (let i = butterflies.length - 1; i >= 0; i--) {
+            const b = butterflies[i];
+            b.elapsedMs += dtMs;
 
-            // Alternate naturally between active wingbeats ("flap": 0..5) and soaring ("glide": 6..7)
-            if (d.modeTimer >= d.modeDuration) {
-              d.modeTimer = 0;
-              if (d.mode === 'flap') {
-                d.mode = 'glide';
-                d.modeDuration = 600 + Math.random() * 450;
-                d.frame = 6;
-              } else {
-                d.mode = 'flap';
-                d.modeDuration = 950 + Math.random() * 550;
-                d.frame = 0;
+            // Occasional brief open-wing sunning glide between flutter bursts
+            if (b.glidePauseMs > 0) {
+              b.glidePauseMs -= dtMs;
+              b.frame = 0;
+            } else {
+              b.frameTimer += dtMs;
+              if (b.frameTimer >= b.flutterSpeedMs) {
+                b.frameTimer %= b.flutterSpeedMs;
+                b.frame = (b.frame + 1) % 8;
+                if (b.frame === 0 && Math.random() < 0.22) {
+                  b.glidePauseMs = 180 + Math.random() * 240;
+                }
               }
             }
 
-            const frameDur = d.mode === 'flap' ? 88 : 160;
-            d.frameTimer += dtMs;
-            if (d.frameTimer >= frameDur) {
-              d.frameTimer %= frameDur;
-              if (d.mode === 'flap') {
-                d.frame = (d.frame + 1) % 6;
-              } else {
-                d.frame = d.frame === 6 ? 7 : 6;
-              }
-            }
-
+            // Organic dancing butterfly flight curve (gentle bobbing + weaving)
             const stepScale = dtMs / 16.667;
-            d.x += d.vx * stepScale;
-            d.y += d.vy * stepScale;
+            b.wavePhase += b.waveSpeed * stepScale;
+            const bobY = Math.sin(b.wavePhase) * b.waveAmp;
+            const weaveX = Math.cos(b.wavePhase * 0.65) * 0.45;
 
-            // Gently shake loose a tumbling sakura petal along the flight wake
-            d.petalDropTimer += dtMs;
-            if (d.petalDropTimer >= 420 && particles.length < maxParticles) {
-              d.petalDropTimer = 0;
+            b.x += (b.vx + weaveX) * stepScale;
+            b.y += (b.vy + bobY - scrollImpulse * 0.18) * stepScale;
+
+            // Subtle bright pink/white petal trail stirred by butterfly wings
+            b.petalDropTimer += dtMs;
+            if (b.petalDropTimer >= 650 && particles.length < maxParticles) {
+              b.petalDropTimer = 0;
               particles.push(
                 createSakuraParticle(
-                  d.x - d.dir * 26,
-                  d.y + 8,
+                  b.x - b.dir * 16,
+                  b.y + 8,
                   'petal'
                 )
               );
             }
 
-            if (d.fadeState === 'in') {
-              d.opacity = Math.min(d.opacity + 0.045 * stepScale, 0.98);
-              if (d.opacity >= 0.98) d.fadeState = 'active';
+            if (b.fadeState === 'in') {
+              b.opacity = Math.min(b.opacity + 0.045 * stepScale, 0.94);
+              if (b.opacity >= 0.94) b.fadeState = 'active';
             } else if (
-              d.elapsedMs > d.maxLifeMs ||
-              d.x > width + 220 ||
-              d.x < -220 ||
-              d.y < -180
+              b.elapsedMs > b.maxLifeMs ||
+              b.x > width + 160 ||
+              b.x < -160 ||
+              b.y < -150
             ) {
-              d.fadeState = 'out';
-              d.opacity = Math.max(d.opacity - 0.035 * stepScale, 0);
-              if (d.opacity <= 0) {
-                pigeons.splice(i, 1);
+              b.fadeState = 'out';
+              b.opacity = Math.max(b.opacity - 0.035 * stepScale, 0);
+              if (b.opacity <= 0) {
+                butterflies.splice(i, 1);
                 continue;
               }
             }
 
-            const cell = 64;
-            const drawSize = Math.round(cell * d.scale);
+            const cell = 48;
+            const drawSize = Math.round(cell * b.scale);
+            const dynamicTilt = b.tiltAngle + Math.sin(b.wavePhase) * 0.08;
 
             ctx.save();
-            ctx.globalAlpha = d.opacity;
-            ctx.translate(Math.round(d.x), Math.round(d.y));
-            if (d.dir === -1) {
+            ctx.globalAlpha = b.opacity;
+            ctx.translate(Math.round(b.x), Math.round(b.y));
+            if (b.dir === -1) {
               ctx.scale(-1, 1);
             }
-            ctx.rotate(d.tiltAngle);
-            // Soft lavender ambient drop-shadow for crisp contrast over peach & white sections
-            ctx.shadowColor = 'rgba(61, 36, 108, 0.22)';
-            ctx.shadowBlur = 8;
+            ctx.rotate(dynamicTilt);
+            ctx.shadowColor = 'rgba(92, 75, 153, 0.16)';
+            ctx.shadowBlur = 5;
             ctx.drawImage(
-              pigeonSheet,
-              d.frame * cell,
-              0,
+              butterflySheet,
+              b.frame * cell,
+              b.variant * cell,
               cell,
               cell,
               -Math.round(drawSize / 2),
