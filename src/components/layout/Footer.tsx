@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { siteConfig } from '@/data/site-config';
 import { countsByCategory } from '@/data/events';
-import { MapPin, Mail, Compass, Building } from 'lucide-react';
+import { MapPin, Mail, Compass, Building, ArrowUp } from 'lucide-react';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -16,6 +16,10 @@ export function Footer() {
     if (siteConfig.registrationUrl) {
       window.open(siteConfig.registrationUrl, '_blank', 'noopener,noreferrer');
     }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   useEffect(() => {
@@ -205,7 +209,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/#gallery"
+                    href="/gallery"
                     className="text-gray-500 hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 rounded"
                   >
                     Festival Gallery
@@ -213,10 +217,10 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/#team"
-                    className="text-gray-500 hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 rounded"
+                    href="/team"
+                    className="text-gray-500 hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 rounded font-semibold text-[#5C4B99]"
                   >
-                    Team Onyx
+                    Organising Team
                   </Link>
                 </li>
               </ul>
@@ -324,31 +328,54 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Bottom Utility Bar: Horizontal Divider, Copyright & Navigation Links */}
+          {/* Bottom Utility Bar: Horizontal Divider, Copyright, Links & Scroll to top */}
           <div className="mt-14 pt-8 border-t border-neutral-200/80 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-gray-400">
             <div className="font-body text-center sm:text-left">
               <p>© {currentYear} School of Sciences, CHRIST (Deemed to be University). All rights reserved.</p>
             </div>
 
-            <div className="font-tech flex items-center gap-5 text-xs text-gray-500">
-              <Link
-                href="/about"
-                className="hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 rounded"
+            <div className="flex items-center gap-6">
+              <div className="font-tech flex items-center gap-5 text-xs text-gray-500">
+                <Link
+                  href="/about"
+                  className="hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 rounded"
+                >
+                  About
+                </Link>
+                <Link
+                  href="/events"
+                  className="hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 rounded"
+                >
+                  Disciplines
+                </Link>
+                <Link
+                  href="/schedule"
+                  className="hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 rounded"
+                >
+                  Schedule
+                </Link>
+                <Link
+                  href="/gallery"
+                  className="hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 rounded"
+                >
+                  Gallery
+                </Link>
+                <Link
+                  href="/team"
+                  className="hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 rounded font-bold text-[#5C4B99]"
+                >
+                  Team
+                </Link>
+              </div>
+
+              <button
+                type="button"
+                onClick={scrollToTop}
+                className="p-2 rounded-xl bg-white hover:bg-neutral-100 border border-neutral-200 text-[#5C4B99] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99] shadow-sm"
+                aria-label="Scroll back to top"
               >
-                About
-              </Link>
-              <Link
-                href="/events"
-                className="hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 rounded"
-              >
-                Disciplines
-              </Link>
-              <Link
-                href="/schedule"
-                className="hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 rounded"
-              >
-                Schedule
-              </Link>
+                <ArrowUp className="w-4 h-4" />
+              </button>
             </div>
           </div>
         </div>
