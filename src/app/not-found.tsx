@@ -39,7 +39,7 @@ export default function NotFound() {
         <div className="flex flex-col items-center justify-center gap-3">
           <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-white/95 border border-[#3D246C]/20 p-3 shadow-xl flex items-center justify-center animate-in zoom-in duration-300">
             <Image
-              src="/blossoms_logo.webp"
+              src="/blossoms_logo_2026.webp"
               alt="Blossoms Logo"
               width={56}
               height={56}

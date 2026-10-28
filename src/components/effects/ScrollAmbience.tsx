@@ -76,7 +76,6 @@ function pickButterflyVariant(): number {
  * Renders authentic 2D pixel-art sprite sheets authored & exported via Aseprite CLI:
  * - `/sprites/sakura_blossoms.png` (32x32, 4 soft pastel flower variants x 8 frames)
  * - `/sprites/sakura_petals.png`   (20x20, 4 bright-pink & white blended variants x 8 frames)
- * - `/sprites/sakura_branch.png`   (144x104, 6-frame pastel cherry blossom garden boughs)
  * - `/sprites/butterflies.png`     (48x48, 3 butterfly variants x 8 silky wing-flutter frames)
  */
 export function ScrollAmbience() {
@@ -128,10 +127,9 @@ export function ScrollAmbience() {
     Promise.all([
       loadSprite('/sprites/sakura_blossoms.png'),
       loadSprite('/sprites/sakura_petals.png'),
-      loadSprite('/sprites/sakura_branch.png'),
       loadSprite('/sprites/butterflies.png'),
     ])
-      .then(([blossomSheet, petalSheet, branchSheet, butterflySheet]) => {
+      .then(([blossomSheet, petalSheet, butterflySheet]) => {
         if (isDisposed) return;
 
         const isMobile = width < 768;
@@ -149,9 +147,6 @@ export function ScrollAmbience() {
         let mouseX = -1000;
         let mouseY = -1000;
         let mouseActive = false;
-
-        let branchFrame = 0;
-        let branchTimer = 0;
 
         const createSakuraParticle = (
           customX?: number,
@@ -236,15 +231,12 @@ export function ScrollAmbience() {
           }
         };
 
-        const shedBranchPetals = (amount: number) => {
+        const shedScrollPetals = (amount: number) => {
           for (let i = 0; i < amount; i++) {
             if (particles.length >= maxParticles) break;
-            const fromLeft = Math.random() < 0.5;
-            const bx = fromLeft
-              ? 28 + Math.random() * 175
-              : width - (28 + Math.random() * 175);
-            const by = 22 + Math.random() * 105;
-            particles.push(createSakuraParticle(bx, by, 'petal'));
+            const px = Math.random() * width;
+            const py = -16 + Math.random() * 64;
+            particles.push(createSakuraParticle(px, py, 'petal'));
           }
         };
 
@@ -258,13 +250,13 @@ export function ScrollAmbience() {
           if (delta > 3) {
             scrollAccumulator += delta;
             if (Math.random() < 0.35) {
-              shedBranchPetals(1);
+              shedScrollPetals(1);
             }
             if (scrollAccumulator > 220) {
               scrollAccumulator = 0;
               // Echoes the 2-3 butterflies taking flight on the "Flames to Flight" banner!
               spawnButterflies(Math.random() > 0.35 ? 3 : 2);
-              shedBranchPetals(isMobile ? 2 : 4);
+              shedScrollPetals(isMobile ? 2 : 4);
             }
           } else if (delta < -3) {
             scrollAccumulator = Math.max(0, scrollAccumulator + delta * 0.5);
@@ -305,41 +297,6 @@ export function ScrollAmbience() {
           window.removeEventListener('mouseleave', handleMouseLeave);
         };
 
-        const drawSakuraBranches = (dtMs: number) => {
-          branchTimer += dtMs;
-          const effectiveBranchInterval =
-            Math.abs(scrollImpulse) > 1 ? 115 : 185;
-          if (branchTimer >= effectiveBranchInterval) {
-            branchTimer = 0;
-            branchFrame = (branchFrame + 1) % 6;
-          }
-
-          const srcW = 144;
-          const srcH = 104;
-          const sx = branchFrame * srcW;
-          const branchScale = isMobile ? 1.12 : 1.80;
-          const dstW = Math.round(srcW * branchScale);
-          const dstH = Math.round(srcH * branchScale);
-          const windTilt = scrollImpulse * 0.008;
-
-          if (!isMobile) {
-            ctx.save();
-            ctx.globalAlpha = 0.86;
-            ctx.translate(-6, -4);
-            ctx.rotate(windTilt);
-            ctx.drawImage(branchSheet, sx, 0, srcW, srcH, 0, 0, dstW, dstH);
-            ctx.restore();
-          }
-
-          ctx.save();
-          ctx.globalAlpha = isMobile ? 0.78 : 0.86;
-          ctx.translate(width + 6, -4);
-          ctx.scale(-1, 1);
-          ctx.rotate(windTilt);
-          ctx.drawImage(branchSheet, sx, 0, srcW, srcH, 0, 0, dstW, dstH);
-          ctx.restore();
-        };
-
         let lastTime = performance.now();
 
         const render = (now: number) => {
@@ -359,10 +316,7 @@ export function ScrollAmbience() {
           scrollImpulse *= 0.93;
           if (Math.abs(scrollImpulse) < 0.01) scrollImpulse = 0;
 
-          // 1. Overhanging Pastel Cherry Blossom Boughs
-          drawSakuraBranches(dtMs);
-
-          // 2. Pastel Sakura Blossoms & Bright Pink/White Blended Petals
+          // 1. Pastel Sakura Blossoms & Bright Pink/White Blended Petals
           for (let i = particles.length - 1; i >= 0; i--) {
             const p = particles[i];
 
@@ -429,7 +383,7 @@ export function ScrollAmbience() {
             ctx.restore();
           }
 
-          // 3. Fluttering 2D Aseprite Butterflies
+          // 2. Fluttering 2D Aseprite Butterflies
           for (let i = butterflies.length - 1; i >= 0; i--) {
             const b = butterflies[i];
             b.elapsedMs += dtMs;

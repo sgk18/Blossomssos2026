@@ -51,14 +51,14 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/blossoms_logo.webp', type: 'image/webp' },
-      { url: '/blossoms_logo.png', type: 'image/png' },
+      { url: '/blossoms_logo_2026.webp', type: 'image/webp' },
+      { url: '/blossoms_logo_2026.png', type: 'image/png' },
       { url: '/favicon.ico', sizes: 'any' },
     ],
-    shortcut: '/blossoms_logo.webp',
+    shortcut: '/blossoms_logo_2026.webp',
     apple: [
-      { url: '/blossoms_logo.webp', type: 'image/webp' },
-      { url: '/blossoms_logo.png', type: 'image/png' },
+      { url: '/blossoms_logo_2026.webp', type: 'image/webp' },
+      { url: '/blossoms_logo_2026.png', type: 'image/png' },
     ],
   },
   openGraph: {
@@ -137,9 +137,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sansFont.variable} ${orbitronFont.variable} ${spaceFont.variable} ${cormorantFont.variable}`}>
       <head>
-        <link rel="icon" href="/blossoms_logo.webp" type="image/webp" />
-        <link rel="alternate icon" href="/blossoms_logo.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/blossoms_logo.webp" />
+        <link rel="icon" href="/blossoms_logo_2026.webp" type="image/webp" />
+        <link rel="alternate icon" href="/blossoms_logo_2026.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/blossoms_logo_2026.webp" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrganization) }}
@@ -159,7 +159,7 @@ export default function RootLayout({
           Skip to main content
         </a>
 
-        {/* Ambient Aseprite 2D Cherry Blossoms & White Onyx Pigeons Scroll System */}
+        {/* Ambient Aseprite 2D Pastel Cherry Blossoms, Petals & Butterflies Scroll System */}
         <ScrollAmbience />
 
         {/* Global Navigation Header */}

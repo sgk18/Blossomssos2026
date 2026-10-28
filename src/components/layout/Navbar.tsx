@@ -56,67 +56,62 @@ export function Navbar() {
 
   return (
     <>
-      {/* Floating Glass Navigation Header (Top Pill Nav) */}
-      <header className="fixed top-3 sm:top-4 inset-x-0 z-40 px-3 sm:px-6 pointer-events-none">
-        <div className="relative max-w-7xl mx-auto flex items-center justify-center">
-          
-          {/* Centered Liquid Glass Pill Nav */}
-          <div className="relative pointer-events-auto w-full max-w-md md:w-auto md:max-w-4xl lg:max-w-5xl inline-flex items-center justify-between md:justify-start gap-2.5 sm:gap-5 px-3 sm:px-4 h-11 sm:h-12 rounded-full liquid-glass-nav overflow-hidden transition-all duration-300">
-            
-            {/* Continuous Fluid Surface Gloss (Smooth Liquid Glass Sheen) */}
-            <div 
-              className="absolute inset-0 bg-gradient-to-b from-white/18 via-white/[0.04] to-transparent pointer-events-none rounded-full" 
-              aria-hidden="true" 
-            />
-
-            {/* Specular Liquid Rim Edge Light */}
-            <div 
-              className="absolute inset-x-6 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/70 to-transparent pointer-events-none rounded-full" 
-              aria-hidden="true" 
-            />
-
-            {/* 1. Left: Blossoms Brand Mark */}
-            <Link 
-              href="/" 
-              className="relative z-10 flex items-center gap-2 pl-1 pr-2 py-1 rounded-full hover:bg-white/10 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFDBC3] transition-all"
-              aria-label="Blossoms SOS Homepage"
+      {/* Floating Top Header: Left Blossoms Crest • Center Glass Pill Nav • Right CHRIST Logo */}
+      <header className="fixed top-2.5 sm:top-3.5 inset-x-0 z-40 px-3 sm:px-6 lg:px-10 pointer-events-none">
+        <div className="relative w-full max-w-[1440px] mx-auto flex items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr] gap-2 sm:gap-4">
+          {/* 1. Far Left: Enlarged Blossoms 2026–27 Official Circular Crest */}
+          <div className="pointer-events-auto flex items-center justify-self-start shrink-0">
+            <Link
+              href="/"
+              className="group relative flex items-center gap-2.5 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99] transition-transform duration-200 hover:scale-105"
+              aria-label="Blossoms SOS 2026–27 Homepage"
+              title="Blossoms SOS 2026–27 — School of Sciences"
             >
-              <div className="relative w-7 h-7 sm:w-8 sm:h-8 shrink-0 flex items-center justify-center rounded-full bg-white/95 border border-white/80 shadow-sm group-hover:scale-105 transition-all">
-                <Image 
-                  src="/blossoms_logo.webp" 
-                  alt="Blossoms Logo" 
-                  width={30} 
-                  height={30} 
-                  className="object-contain p-0.5"
+              <div className="relative w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 xl:w-[104px] xl:h-[104px] rounded-full bg-white p-0.5 border-2 border-white/95 shadow-[0_6px_22px_rgba(61,36,108,0.22)] flex items-center justify-center overflow-hidden">
+                <Image
+                  src="/blossoms_logo_2026.webp"
+                  alt="Blossoms SOS 2026–27 Logo"
+                  width={112}
+                  height={112}
+                  sizes="(max-width: 640px) 64px, (max-width: 1024px) 80px, 104px"
+                  className="w-full h-full object-contain"
                   priority
                 />
               </div>
-              <div className="flex flex-col text-left">
-                <span className="font-angular font-black text-xs tracking-wider text-[#F9F5EB] leading-tight drop-shadow-sm">
-                  BLOSSOMS
-                </span>
-                <span className="font-tech text-[8px] sm:text-[9px] text-[#FFDBC3] tracking-widest uppercase leading-none font-bold">
-                  SOS
-                </span>
-              </div>
             </Link>
+          </div>
 
-            {/* 2. Center: Desktop Navigation Links (Uniform & Seamless) */}
-            <nav 
-              className="relative z-10 hidden md:flex items-center gap-0.5 lg:gap-1 font-tech" 
+          {/* 2. Center: Pure Liquid Glass Pill Navigation (Desktop) */}
+          <div className="hidden md:inline-flex pointer-events-auto justify-self-center md:self-start md:mt-2 lg:mt-3 relative items-center px-3 lg:px-4 h-11 lg:h-12 rounded-full liquid-glass-nav overflow-hidden transition-all duration-300">
+            {/* Continuous Fluid Surface Gloss (Smooth Liquid Glass Sheen) */}
+            <div
+              className="absolute inset-0 bg-gradient-to-b from-white/18 via-white/[0.04] to-transparent pointer-events-none rounded-full"
+              aria-hidden="true"
+            />
+
+            {/* Specular Liquid Rim Edge Light */}
+            <div
+              className="absolute inset-x-6 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/70 to-transparent pointer-events-none rounded-full"
+              aria-hidden="true"
+            />
+
+            <nav
+              className="relative z-10 flex items-center gap-0.5 lg:gap-1.5 font-tech"
               aria-label="Main Navigation"
             >
               {NAV_LINKS.map((link) => {
-                const isActive = pathname === link.href || (link.href !== '/' && !link.href.startsWith('/#') && pathname.startsWith(link.href));
-                
+                const isActive =
+                  pathname === link.href ||
+                  (link.href !== '/' && !link.href.startsWith('/#') && pathname.startsWith(link.href));
+
                 return (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`font-tech px-2 lg:px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-150 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFDBC3] ${
+                    className={`font-tech px-2.5 lg:px-3.5 py-1.5 rounded-full text-xs lg:text-[13px] font-semibold whitespace-nowrap transition-all duration-150 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFDBC3] ${
                       isActive
                         ? 'text-white font-bold bg-white/20 shadow-sm border border-white/25'
-                        : 'text-[#F9F5EB]/80 hover:text-white hover:bg-white/10'
+                        : 'text-[#F9F5EB]/85 hover:text-white hover:bg-white/10'
                     }`}
                     aria-current={isActive ? 'page' : undefined}
                   >
@@ -135,28 +130,52 @@ export function Navbar() {
                 );
               })}
             </nav>
+          </div>
 
-            {/* 3. Right: Mobile Menu Toggle Button */}
-            <div className="flex md:hidden items-center pr-0.5">
+          {/* 3. Far Right: Enlarged Official CHRIST University Badge + Mobile Menu Toggle */}
+          <div className="pointer-events-auto flex items-center justify-self-end gap-2 sm:gap-2.5 shrink-0">
+            <a
+              href="https://www.christuniversity.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center py-1 bg-transparent transition-transform duration-200 hover:scale-[1.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99] rounded-xl"
+              aria-label="CHRIST (Deemed to be University), Bangalore"
+              title="CHRIST (Deemed to be University), Bangalore"
+            >
+              <Image
+                src="/christ_university_official_logo.webp"
+                alt="CHRIST (Deemed to be University)"
+                width={260}
+                height={88}
+                sizes="(max-width: 640px) 136px, (max-width: 1024px) 180px, 240px"
+                className="h-11 sm:h-14 lg:h-[72px] xl:h-[80px] w-auto object-contain drop-shadow-[0_2px_10px_rgba(255,255,255,0.65)]"
+                priority
+              />
+            </a>
+
+            <div className="flex md:hidden items-center">
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-1.5 rounded-full text-[#F9F5EB] bg-white/15 hover:bg-white/25 border border-white/30 shadow-sm backdrop-blur-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFDBC3] transition-all flex items-center justify-center"
+                className="w-10 h-10 sm:w-11 sm:h-11 rounded-full liquid-glass-nav text-[#F9F5EB] flex items-center justify-center shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFDBC3] transition-transform active:scale-95"
                 aria-expanded={mobileMenuOpen}
                 aria-controls="mobile-navigation-menu"
                 aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
               >
-                {mobileMenuOpen ? <X className="w-4 h-4 text-[#F9F5EB]" /> : <Menu className="w-4 h-4 text-[#F9F5EB]" />}
+                {mobileMenuOpen ? (
+                  <X className="w-5 h-5 text-[#F9F5EB]" />
+                ) : (
+                  <Menu className="w-5 h-5 text-[#F9F5EB]" />
+                )}
               </button>
             </div>
           </div>
-
         </div>
       </header>
 
       {/* Mobile Off-Canvas Sliding Drawer (Left to Right) */}
       {/* 1. Dimmed Backdrop Overlay */}
-      <div 
+      <div
         className={`md:hidden fixed inset-0 bg-[#3D246C]/60 backdrop-blur-sm z-50 transition-opacity duration-300 ${
           mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
@@ -174,22 +193,28 @@ export function Navbar() {
         aria-modal="true"
         aria-label="Mobile Navigation Menu"
       >
-        {/* Drawer Header with Brand & Close Button */}
+        {/* Drawer Header with Updated 2026–27 Brand & Close Button */}
         <div className="p-4 sm:p-5 border-b border-white/15 flex items-center justify-between bg-[#2B1750]/60 backdrop-blur-md">
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             onClick={() => setMobileMenuOpen(false)}
             className="flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFDBC3] rounded-lg group"
           >
-            <div className="w-8 h-8 rounded-full bg-white/95 border border-white/70 p-0.5 flex items-center justify-center overflow-hidden shadow-sm group-hover:scale-105 transition-transform">
-              <Image src="/blossoms_logo.webp" alt="Blossoms" width={28} height={28} className="object-contain" />
+            <div className="w-9 h-9 rounded-full bg-white border border-white/80 flex items-center justify-center overflow-hidden shadow-sm group-hover:scale-105 transition-transform">
+              <Image
+                src="/blossoms_logo_2026.webp"
+                alt="Blossoms SOS 2026–27"
+                width={36}
+                height={36}
+                className="w-full h-full object-contain"
+              />
             </div>
             <div className="flex flex-col text-left">
               <span className="font-angular font-black text-xs uppercase tracking-wider text-[#F9F5EB] leading-tight">
                 BLOSSOMS SOS
               </span>
               <span className="font-tech text-[9px] text-[#FFDBC3] tracking-widest uppercase font-bold">
-                School of Sciences
+                School of Sciences • 26–27
               </span>
             </div>
           </Link>
@@ -204,12 +229,17 @@ export function Navbar() {
         </div>
 
         {/* Scrollable Navigation Links */}
-        <nav className="flex-1 overflow-y-auto px-4 py-5 space-y-1.5 font-tech" aria-label="Mobile Navigation Links">
+        <nav
+          className="flex-1 overflow-y-auto px-4 py-5 space-y-1.5 font-tech"
+          aria-label="Mobile Navigation Links"
+        >
           <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#FFDBC3]/80 px-3 block mb-2">
             Festival Navigation
           </span>
           {NAV_LINKS.map((link) => {
-            const isActive = pathname === link.href || (link.href !== '/' && !link.href.startsWith('/#') && pathname.startsWith(link.href));
+            const isActive =
+              pathname === link.href ||
+              (link.href !== '/' && !link.href.startsWith('/#') && pathname.startsWith(link.href));
             return (
               <Link
                 key={link.href}
@@ -236,8 +266,8 @@ export function Navbar() {
           })}
         </nav>
 
-        {/* Drawer Bottom Brand Footer */}
-        <div className="p-4 sm:p-5 border-t border-white/15 bg-[#2B1750]/60 backdrop-blur-md space-y-4 font-tech">
+        {/* Drawer Bottom Brand Footer with CHRIST University Badge */}
+        <div className="p-4 sm:p-5 border-t border-white/15 bg-[#2B1750]/60 backdrop-blur-md space-y-3.5 font-tech">
           {siteConfig.registrationUrl && (
             <a
               href={siteConfig.registrationUrl}
@@ -248,7 +278,26 @@ export function Navbar() {
               <span>Register for Events</span>
             </a>
           )}
-          <div className="flex items-center justify-between text-[11px] text-[#F9F5EB]/80">
+
+          <a
+            href="https://www.christuniversity.in"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-white/95 hover:bg-white shadow-sm transition-colors"
+          >
+            <Image
+              src="/christ_university_official_logo.webp"
+              alt="CHRIST (Deemed to be University)"
+              width={132}
+              height={45}
+              className="h-6 w-auto object-contain"
+            />
+            <span className="font-mono text-[9px] font-bold uppercase tracking-wider text-[#1c4c96]">
+              Central Campus
+            </span>
+          </a>
+
+          <div className="flex items-center justify-between text-[11px] text-[#F9F5EB]/80 pt-0.5">
             <div>
               <p className="font-semibold text-[#F9F5EB]">Team Onyx</p>
               <p className="text-[10px] text-[#FFDBC3] font-bold">Be the Best</p>
