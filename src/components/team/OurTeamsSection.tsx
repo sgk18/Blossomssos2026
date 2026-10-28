@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import Image from 'next/image';
 import { 
   Users, 
   GraduationCap, 
@@ -196,22 +195,11 @@ export function OurTeamsSection() {
                 - Protrudes over the card pediment shoulder
               */}
               <div className="relative z-10 w-28 sm:w-32 h-36 sm:h-40 rounded-t-[40px] rounded-b-md overflow-hidden bg-[#FFDBC3]/30 border-2 border-white shadow-md ring-1 ring-[#5C4B99]/20 group-hover:scale-105 group-hover:ring-[#5C4B99]/45 transition-all duration-300">
-                {member.image ? (
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    sizes="(max-width: 640px) 128px, 144px"
-                    className="object-cover"
-                  />
-                ) : (
-                  /* Fallback Monogram matching MN1, MN2 */
-                  <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-[#9F91CC]/25 to-white">
+                <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-[#9F91CC]/25 to-white">
                     <span className="font-serif text-3xl font-bold text-[#5C4B99] select-none">
                       {member.initials || `MN${index + 1}`}
                     </span>
                   </div>
-                )}
               </div>
 
               {/* 
@@ -269,19 +257,9 @@ export function OurTeamsSection() {
               {/* Arched Portrait in Modal */}
               <div className="flex flex-col items-center space-y-3">
                 <div className="relative w-28 h-36 rounded-t-[36px] rounded-b-md overflow-hidden bg-[#FFDBC3]/30 border-2 border-white shadow-md ring-1 ring-[#5C4B99]/25">
-                  {activeMember.image ? (
-                    <Image
-                      src={activeMember.image}
-                      alt={activeMember.name}
-                      fill
-                      sizes="112px"
-                      className="object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center font-serif font-bold text-2xl text-[#5C4B99]">
+                  <div className="w-full h-full flex items-center justify-center font-serif font-bold text-3xl text-[#5C4B99] bg-gradient-to-b from-[#9F91CC]/25 to-white">
                       {activeMember.initials}
                     </div>
-                  )}
                 </div>
 
                 <div className="space-y-1">
