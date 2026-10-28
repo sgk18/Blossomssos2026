@@ -86,14 +86,14 @@ export default function HomePage() {
             </div>
 
             {/* Official Slogan Graphic Banner */}
-            <div className="flex flex-col items-center gap-3 max-w-3xl w-full px-2 sm:px-4">
-              <div className="relative w-full max-w-sm sm:max-w-xl md:max-w-2xl h-24 sm:h-36 md:h-44 my-1 sm:my-2 flex items-center justify-center">
+            <div className="flex flex-col items-center gap-3 max-w-4xl w-full px-2 sm:px-4">
+              <div className="relative w-full max-w-md sm:max-w-2xl md:max-w-3xl h-28 sm:h-40 md:h-52 my-1 sm:my-2 flex items-center justify-center">
                 <Image
                   src="/blossoms_slogan.webp"
                   alt="From flames to flights, White Onyx Ignites"
                   fill
-                  sizes="(max-width: 640px) 384px, (max-width: 768px) 576px, 672px"
-                  className="object-contain drop-shadow-[0_2px_14px_rgba(61,36,108,0.22)] scale-105 sm:scale-115 transition-transform"
+                  sizes="(max-width: 640px) 448px, (max-width: 768px) 672px, 768px"
+                  className="object-contain drop-shadow-[0_2px_14px_rgba(61,36,108,0.22)] transition-transform"
                   priority
                 />
               </div>
