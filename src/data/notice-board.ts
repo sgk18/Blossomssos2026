@@ -121,6 +121,36 @@ export const FESTIVAL_WEEKS_2026: FestivalWeek[] = [
 
 export const NOTICE_BOARD_ITEMS: NoticeItem[] = [
   {
+    id: 'nb-2026-launch',
+    refCode: 'SOS/BLSM/26-27/00',
+    weekId: 'week-0',
+    category: 'weekly-update',
+    categoryLabel: 'Official Launch',
+    title: 'Official Launch: Blossoms Website & Social Media Page',
+    summary:
+      'Join us for the official launch of the Blossoms School of Sciences website and social media handles this Thursday, 29 October 2026 at 2:00 PM in Meeting Hall III, Block 1 Main!',
+    details: [
+      'Event: Official Launch of Blossoms Website & Social Media Page.',
+      'Theme & Slogan: Flames to Flight — White Onyx Ignites.',
+      'Date & Time: Thursday, 29 October 2026 at 2:00 PM.',
+      'Venue: Meeting Hall III, Room 329, Third Floor, Block I Main, CHRIST (Deemed to be University), Bengaluru Central Campus.',
+      'We are delighted to invite all School of Sciences students and faculty delegates to celebrate the official digital launch of Blossoms 2026–27. Explore • Engage • Be a part of the journey!',
+    ],
+    postedLabel: 'Pre-Fest Dispatch • Web & Media Desk',
+    departmentStamp: 'SCHOOL OF SCIENCES • OFFICIAL LAUNCH',
+    stampBadge: '29 OCT • 2:00 PM',
+    pinColor: 'crimson',
+    paperTone: 'sticky-yellow',
+    tiltDeg: -0.9,
+    isPinnedTop: true,
+    featuredOnMiniBoard: true,
+    isTentative: false,
+    imageUrl: '/website_launch_poster.jpg',
+    imageAlt: 'Blossoms Website & Social Media Page Launch Poster',
+    actionLabel: 'Explore Festival Schedule',
+    actionHref: '/schedule',
+  },
+  {
     id: 'nb-2026-01',
     refCode: 'SOS/BLSM/26-27/01',
     weekId: 'week-0',

@@ -46,6 +46,8 @@ export interface NoticeItem {
   actionLabel?: string;
   actionHref?: string;
   isExternalAction?: boolean;
+  imageUrl?: string;
+  imageAlt?: string;
 }
 
 export interface WeekDaySlot {
