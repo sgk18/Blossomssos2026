@@ -27,7 +27,7 @@ export function EventCategoriesCarouselSkeleton() {
       </nav>
 
       {/* Visual Shimmer Skeleton */}
-      <div className="w-full flex flex-col items-center animate-pulse" aria-hidden="true">
+      <div className="w-full flex flex-col items-center" aria-hidden="true">
         {/* Pills skeleton */}
         <div className="w-full max-w-5xl flex flex-wrap items-center justify-center gap-2 mb-6 px-2">
           {CORE_CATEGORIES.map((cat) => (
@@ -44,7 +44,7 @@ export function EventCategoriesCarouselSkeleton() {
             <div className="h-4 w-28 bg-[#FFDBC3]/70 rounded mb-2" />
             <div className="h-3 w-40 bg-[#FFDBC3]/70 rounded" />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
+
         </div>
 
         {/* Detail card skeleton */}

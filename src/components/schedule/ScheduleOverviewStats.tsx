@@ -31,7 +31,7 @@ export function ScheduleOverviewStats({
             <div className="space-y-1">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold font-mono tracking-wider uppercase bg-[#5C4B99]/20 text-[#3D246C] border border-[#5C4B99]/40">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#5C4B99] animate-pulse" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#5C4B99]" />
                   {metadata.statusLabel}
                 </span>
                 <span className="text-xs text-[#3D246C]/70 font-mono">

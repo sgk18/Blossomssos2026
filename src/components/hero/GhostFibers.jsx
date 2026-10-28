@@ -293,7 +293,7 @@ out vec4 outColor;
 vec3 pick(vec2 uv) {
   vec3 c = texture(uSource, uv).rgb;
   float peak = max(max(c.r, c.g), c.b);
-  return c * smoothstep(0.35, 1.2, peak);
+  return c * smoothstep(0.08, 0.9, peak);
 }
 void main() {
   vec2 o = uTexel;
@@ -368,11 +368,13 @@ void main() {
   vec2 cell = floor(vUv * uView / max(uDpr, 1.0));
   float grain = hash(cell + uFrame * 17.31) + hash(cell * 1.31 + uFrame * 3.7 + 9.1) - 1.0;
   if (uLightMode > 0.5) {
-    float amount = scene.a * uBrightness;
-    float ink = (1.0 - exp(-amount * 1.5)) * mask;
-    ink = clamp(ink * (1.0 + grain * uGrain * 2.0), 0.0, 1.0);
-    vec3 hue = clamp(scene.rgb / max(scene.a, 1e-4), 0.0, 1.0);
-    vec3 tone = hue * mix(1.0, 0.72, clamp(amount * 0.35, 0.0, 1.0));
+    float core = scene.a;
+    float aura = length(bloom) * uGlow;
+    float amount = (core * 2.0 + aura * 0.7) * uBrightness;
+    float ink = (1.0 - exp(-amount * 3.2)) * mask;
+    ink = clamp(ink * (1.0 + grain * uGrain * 2.0), 0.0, 0.48);
+    vec3 fiberColor = scene.a > 1e-4 ? (scene.rgb / max(scene.a, 1e-4)) : (length(bloom) > 1e-4 ? normalize(bloom) * 0.8 : vec3(0.55, 0.48, 0.75));
+    vec3 tone = mix(fiberColor * 0.95, fiberColor, clamp(core * 1.5, 0.0, 1.0));
     outColor = vec4(tone * ink, ink);
     return;
   }
@@ -558,7 +560,7 @@ const GhostFibers = ({
   depthOfField = 0.85,
   focusDepth = 0,
   particles = 0.5,
-  sparkle = 0.5,
+  sparkle = 0,
   glow = 0.8,
   brightness = 1,
   vignette = 0.3,
@@ -566,7 +568,7 @@ const GhostFibers = ({
   mouseInteraction = true,
   hoverEffect = 'focus',
   mouseStrength = 1,
-  pulseOnClick = true,
+  pulseOnClick = false,
   intro = true,
   lightMode = false,
   paused = false,
@@ -886,7 +888,7 @@ const GhostFibers = ({
       }
       gl.disable(gl.BLEND);
 
-      const blooming = s.glow > 0.001 && !s.lightMode;
+      const blooming = s.glow > 0.001;
       gl.bindVertexArray(vao);
       if (blooming) {
         chain.forEach((target, index) => {
