@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 import React, { useState } from 'react';
 import { Flame } from 'lucide-react';
 import { TRENDING_SOCIAL_CARDS } from '@/data/gallery-data';
@@ -124,14 +126,13 @@ export function GalleryFannedDeck({ onSelectImage }: GalleryFannedDeckProps) {
                   }}
                 >
                   <div className="relative w-full h-full bg-[#3D246C]">
-                    <div className="w-full h-full flex flex-col items-center justify-center p-4 text-center bg-gradient-to-br from-[#3D246C] via-[#5C4B99] to-[#3D246C]">
-                    <div className="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center mb-2 shadow-inner">
-                      <Flame className="w-6 h-6 text-[#FFDBC3]" />
-                    </div>
-                    <span className="font-tech text-[10px] text-[#FFDBC3]/75 uppercase tracking-wider font-semibold">
-                      {card.category}
-                    </span>
-                  </div>
+                    <Image
+                    src={card.image}
+                    alt={card.alt}
+                    fill
+                    sizes="(max-width: 640px) 140px, (max-width: 768px) 190px, 220px"
+                    className="object-cover"
+                  />
 
                     {/* Gradient Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-[#3D246C]/90 via-transparent to-transparent pointer-events-none" />

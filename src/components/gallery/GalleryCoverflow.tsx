@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Camera, ChevronLeft, ChevronRight, MapPin, Calendar, Maximize2 } from 'lucide-react';
 import { COVERFLOW_SLIDES, CoverflowSlide } from '@/data/gallery-data';
@@ -136,14 +138,14 @@ export function GalleryCoverflow({ onSelectImage }: GalleryCoverflowProps) {
                 }}
               >
                 <div className="relative w-full h-full bg-[#3D246C]">
-                  <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-[#3D246C] via-[#5C4B99] to-[#3D246C]">
-                    <div className="w-16 h-16 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center mb-3 shadow-inner">
-                      <Camera className="w-8 h-8 text-[#FFDBC3]/90" />
-                    </div>
-                    <span className="font-tech text-xs text-[#FFDBC3]/75 uppercase tracking-widest font-semibold">
-                      {slide.pillar}
-                    </span>
-                  </div>
+                  <Image
+                    src={slide.image}
+                    alt={slide.alt}
+                    fill
+                    sizes="(max-width: 640px) 240px, (max-width: 768px) 300px, 350px"
+                    className="object-cover transition-transform duration-700 ease-out"
+                    priority={absOffset <= 1}
+                  />
                   {/* Subtle vignette gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#3D246C]/90 via-[#3D246C]/25 to-transparent pointer-events-none" />
 

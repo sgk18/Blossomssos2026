@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { 
   Camera,
@@ -194,14 +196,14 @@ export function GalleryBentoGrid() {
                     }
                   }}
                 >
-                  <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center bg-gradient-to-br from-[#3D246C] via-[#5C4B99] to-[#3D246C]">
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center mb-2 shadow-inner group-hover:scale-110 transition-transform duration-300">
-                      <Camera className="w-6 h-6 sm:w-7 sm:h-7 text-[#FFDBC3]/90" />
-                    </div>
-                    <span className="font-tech text-[10px] sm:text-xs text-[#FFDBC3]/70 uppercase tracking-widest font-semibold">
-                      {item.categoryLabel}
-                    </span>
-                  </div>
+                  <Image
+                    src={item.image}
+                    alt={item.alt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                    loading={index < 4 ? 'eager' : 'lazy'}
+                  />
 
                   {/* Gradient Scrim */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#3D246C]/90 via-[#3D246C]/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300 pointer-events-none" />
@@ -267,17 +269,14 @@ export function GalleryBentoGrid() {
           >
             {/* Modal Image Area */}
             <div className="relative w-full md:w-3/5 h-[280px] sm:h-[400px] md:h-auto bg-[#3D246C]">
-              <div className="w-full h-full flex flex-col items-center justify-center p-8 text-center bg-gradient-to-br from-[#3D246C] via-[#5C4B99] to-[#3D246C]">
-                  <div className="w-16 h-16 rounded-3xl bg-white/10 border border-white/20 flex items-center justify-center mb-3 shadow-inner">
-                    <Camera className="w-8 h-8 text-[#FFDBC3]" />
-                  </div>
-                  <span className="font-tech text-xs text-[#FFDBC3]/80 uppercase tracking-widest font-bold">
-                    {activeModalItem.categoryLabel}
-                  </span>
-                  <p className="font-angular text-base text-white/95 font-bold mt-1">
-                    {activeModalItem.title}
-                  </p>
-                </div>
+              <Image
+                  src={activeModalItem.image}
+                  alt={activeModalItem.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 60vw"
+                  className="object-cover"
+                  priority
+                />
 
               {/* Prev / Next Buttons inside modal */}
               <button
