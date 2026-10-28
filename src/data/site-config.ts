@@ -21,7 +21,7 @@ export const siteConfig: SiteConfig = {
   availableEditions: ['2025'],
   
   canonicalUrl: 'https://blossomssos.vercel.app',
-  registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeFKorn7aP-rWXOkLGzED0MBoe9TDMcE8Rzf-tjaJrBP936zA/viewform?usp=sharing&ouid=114906650785065612305',
+  registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSc50XPwp4jbLpfkuxmIwJanuHqMNGcxVL3S3OLVWIHKFjbkcA/viewform?usp=sharing&ouid=116834052241795042670',
   rulebookUrl: 'https://www.canva.com/design/DAG3QRRsCDk/aPmAeYyCw9B-Q3pigaoNBQ/view?utm_content=DAG3QRRsCDk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton',
   knowmorePdfUrl: '/blossoms_knowmore.pdf',
   contactEmail: 'blossoms.sos@christuniversity.in',

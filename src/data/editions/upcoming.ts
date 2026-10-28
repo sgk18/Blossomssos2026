@@ -28,8 +28,8 @@ export const upcomingEditionConfig: EditionConfig = {
   displayDateRange: 'Dates & Official Schedule to be Announced',
 
   // Registration status
-  registrationOpen: false,
-  registrationUrl: null,
+  registrationOpen: true,
+  registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSc50XPwp4jbLpfkuxmIwJanuHqMNGcxVL3S3OLVWIHKFjbkcA/viewform?usp=sharing&ouid=116834052241795042670',
   rulebookUrl: null,
 
   // Team identity (unconfirmed for upcoming run)

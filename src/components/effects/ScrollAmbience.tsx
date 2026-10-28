@@ -76,6 +76,7 @@ function pickButterflyVariant(): number {
  * Renders authentic 2D pixel-art sprite sheets authored & exported via Aseprite CLI:
  * - `/sprites/sakura_blossoms.png` (32x32, 4 soft pastel flower variants x 8 frames)
  * - `/sprites/sakura_petals.png`   (20x20, 4 bright-pink & white blended variants x 8 frames)
+ * - `/sprites/sakura_branch.png`   (144x104, 6-frame pastel cherry blossom garden boughs)
  * - `/sprites/butterflies.png`     (48x48, 3 butterfly variants x 8 silky wing-flutter frames)
  */
 export function ScrollAmbience() {
@@ -127,14 +128,15 @@ export function ScrollAmbience() {
     Promise.all([
       loadSprite('/sprites/sakura_blossoms.png'),
       loadSprite('/sprites/sakura_petals.png'),
+      loadSprite('/sprites/sakura_branch.png'),
       loadSprite('/sprites/butterflies.png'),
     ])
-      .then(([blossomSheet, petalSheet, butterflySheet]) => {
+      .then(([blossomSheet, petalSheet, branchSheet, butterflySheet]) => {
         if (isDisposed) return;
 
-        const isMobile = width < 768;
-        const baseParticleCount = isMobile ? 22 : 40;
-        const maxParticles = isMobile ? 34 : 64;
+        const initialMobile = width < 768;
+        const baseParticleCount = initialMobile ? 22 : 40;
+        const maxParticles = initialMobile ? 34 : 64;
 
         const particles: SakuraSpriteParticle[] = [];
         const butterflies: ButterflySprite[] = [];
@@ -148,11 +150,27 @@ export function ScrollAmbience() {
         let mouseY = -1000;
         let mouseActive = false;
 
+        let branchFrame = 0;
+        let branchTimer = 0;
+
+        const getBelowLogoY = () => {
+          if (width >= 1280) return 120;
+          if (width >= 1024) return 112;
+          if (width >= 640) return 96;
+          return 78;
+        };
+
+        // 0 = resting below top corner logos; 1 = nestled flush in the top screen corners
+        const initRaw = Math.min(1, Math.max(0, window.scrollY / (getBelowLogoY() + 28)));
+        let cornerProgress = initRaw * initRaw * (3 - 2 * initRaw);
+        let liveBranchTopY = getBelowLogoY() * (1 - cornerProgress) + (-7) * cornerProgress;
+
         const createSakuraParticle = (
           customX?: number,
           customY?: number,
           forceKind?: SakuraKind
         ): SakuraSpriteParticle => {
+          const isMobileNow = width < 768;
           const kind: SakuraKind =
             forceKind ?? (Math.random() < 0.30 ? 'blossom' : 'petal');
           const isBlossom = kind === 'blossom';
@@ -169,8 +187,8 @@ export function ScrollAmbience() {
             vy: baseVy,
             baseVy,
             scale: isBlossom
-              ? (isMobile ? 0.90 : 1.08) + Math.random() * 0.42
-              : (isMobile ? 1.10 : 1.32) + Math.random() * 0.52,
+              ? (isMobileNow ? 0.90 : 1.08) + Math.random() * 0.42
+              : (isMobileNow ? 1.10 : 1.32) + Math.random() * 0.52,
             angle: Math.random() * Math.PI * 2,
             rotSpeed: (Math.random() - 0.5) * (isBlossom ? 0.011 : 0.017),
             swayPhase: Math.random() * Math.PI * 2,
@@ -195,16 +213,17 @@ export function ScrollAmbience() {
           if (now - lastButterflySpawnMs < 1300) return;
           lastButterflySpawnMs = now;
 
+          const isMobileNow = width < 768;
           const dir: 1 | -1 = Math.random() < 0.68 ? 1 : -1;
           const startX = dir === 1 ? -36 : width + 36;
           const startY = height * (0.48 + Math.random() * 0.40);
-          const baseSpeed = isMobile ? 2.6 : 3.2;
+          const baseSpeed = isMobileNow ? 2.6 : 3.2;
 
           for (let i = 0; i < count; i++) {
             const speed = baseSpeed + (Math.random() - 0.5) * 0.65;
             const climbDeg = 18 + Math.random() * 14;
             const climbRad = (climbDeg * Math.PI) / 180;
-            const bScale = (isMobile ? 1.30 : 1.60) + Math.random() * 0.42;
+            const bScale = (isMobileNow ? 1.30 : 1.60) + Math.random() * 0.42;
 
             butterflies.push({
               variant: pickButterflyVariant(),
@@ -231,12 +250,16 @@ export function ScrollAmbience() {
           }
         };
 
-        const shedScrollPetals = (amount: number) => {
+        const shedBranchPetals = (amount: number) => {
+          const branchSpanX = width < 768 ? 120 : 195;
           for (let i = 0; i < amount; i++) {
             if (particles.length >= maxParticles) break;
-            const px = Math.random() * width;
-            const py = -16 + Math.random() * 64;
-            particles.push(createSakuraParticle(px, py, 'petal'));
+            const fromLeft = Math.random() < 0.5;
+            const bx = fromLeft
+              ? 18 + Math.random() * branchSpanX
+              : width - (18 + Math.random() * branchSpanX);
+            const by = Math.max(8, liveBranchTopY + 18) + Math.random() * 95;
+            particles.push(createSakuraParticle(bx, by, 'petal'));
           }
         };
 
@@ -250,13 +273,13 @@ export function ScrollAmbience() {
           if (delta > 3) {
             scrollAccumulator += delta;
             if (Math.random() < 0.35) {
-              shedScrollPetals(1);
+              shedBranchPetals(1);
             }
             if (scrollAccumulator > 220) {
               scrollAccumulator = 0;
               // Echoes the 2-3 butterflies taking flight on the "Flames to Flight" banner!
               spawnButterflies(Math.random() > 0.35 ? 3 : 2);
-              shedScrollPetals(isMobile ? 2 : 4);
+              shedBranchPetals(width < 768 ? 2 : 4);
             }
           } else if (delta < -3) {
             scrollAccumulator = Math.max(0, scrollAccumulator + delta * 0.5);
@@ -297,6 +320,76 @@ export function ScrollAmbience() {
           window.removeEventListener('mouseleave', handleMouseLeave);
         };
 
+        const drawSakuraBranches = (dtMs: number) => {
+          branchTimer += dtMs;
+          const effectiveBranchInterval =
+            Math.abs(scrollImpulse) > 1 ? 115 : 185;
+          if (branchTimer >= effectiveBranchInterval) {
+            branchTimer = 0;
+            branchFrame = (branchFrame + 1) % 6;
+          }
+
+          const isMobileNow = width < 768;
+          const scrollYNow = Math.max(0, window.scrollY);
+          const belowLogoY = getBelowLogoY();
+          const cornerY = isMobileNow ? -5 : -7;
+
+          // Smoothly glide from below the top logos into the exact top corners once logos scroll away
+          const rawT = Math.min(1, scrollYNow / (belowLogoY + 28));
+          const targetProgress = rawT * rawT * (3 - 2 * rawT);
+          const damp = 1 - Math.exp(-dtMs * 0.015);
+          cornerProgress += (targetProgress - cornerProgress) * damp;
+
+          const glidedY = belowLogoY + (cornerY - belowLogoY) * cornerProgress;
+          const logoLiveClearY = belowLogoY - scrollYNow;
+          const finalY = Math.max(glidedY, logoLiveClearY);
+          liveBranchTopY = finalY;
+
+          const effectiveT = Math.min(
+            1,
+            Math.max(0, (belowLogoY - finalY) / (belowLogoY - cornerY))
+          );
+
+          const srcW = 144;
+          const srcH = 104;
+          const sx = branchFrame * srcW;
+          const baseScale = isMobileNow
+            ? 1.08
+            : width < 1024
+              ? 1.48
+              : 1.72 + 0.12 * effectiveT;
+          const dstW = Math.round(srcW * baseScale);
+          const dstH = Math.round(srcH * baseScale);
+
+          // Rotate upward slightly (-6 deg) as it settles into (0, 0) / (width, 0) so the
+          // entire upper blossom canopy & trunk hug BOTH the top edge and side edge flush.
+          const cornerNestleAngle = isMobileNow ? -0.09 : -0.105;
+          const restAngle = 0.015;
+          const branchAngle =
+            restAngle + (cornerNestleAngle - restAngle) * effectiveT + scrollImpulse * 0.008;
+          const edgeX = -8 + 2 * effectiveT; // -8px below logo -> -6px flush in corner
+
+          if (!isMobileNow || effectiveT > 0.15) {
+            const leftAlpha = isMobileNow
+              ? 0.78 * Math.min(1, (effectiveT - 0.15) / 0.55)
+              : 0.88;
+            ctx.save();
+            ctx.globalAlpha = leftAlpha;
+            ctx.translate(edgeX, finalY);
+            ctx.rotate(branchAngle);
+            ctx.drawImage(branchSheet, sx, 0, srcW, srcH, 0, 0, dstW, dstH);
+            ctx.restore();
+          }
+
+          ctx.save();
+          ctx.globalAlpha = isMobileNow ? 0.80 : 0.88;
+          ctx.translate(width - edgeX, finalY);
+          ctx.scale(-1, 1);
+          ctx.rotate(branchAngle);
+          ctx.drawImage(branchSheet, sx, 0, srcW, srcH, 0, 0, dstW, dstH);
+          ctx.restore();
+        };
+
         let lastTime = performance.now();
 
         const render = (now: number) => {
@@ -316,7 +409,10 @@ export function ScrollAmbience() {
           scrollImpulse *= 0.93;
           if (Math.abs(scrollImpulse) < 0.01) scrollImpulse = 0;
 
-          // 1. Pastel Sakura Blossoms & Bright Pink/White Blended Petals
+          // 1. Overhanging Pastel Cherry Blossom Boughs (glide into top corners on scroll)
+          drawSakuraBranches(dtMs);
+
+          // 2. Pastel Sakura Blossoms & Bright Pink/White Blended Petals
           for (let i = particles.length - 1; i >= 0; i--) {
             const p = particles[i];
 
@@ -383,7 +479,7 @@ export function ScrollAmbience() {
             ctx.restore();
           }
 
-          // 2. Fluttering 2D Aseprite Butterflies
+          // 3. Fluttering 2D Aseprite Butterflies
           for (let i = butterflies.length - 1; i >= 0; i--) {
             const b = butterflies[i];
             b.elapsedMs += dtMs;

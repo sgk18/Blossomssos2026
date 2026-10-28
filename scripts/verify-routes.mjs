@@ -48,11 +48,26 @@ const layoutSrc = fs.readFileSync(path.resolve(process.cwd(), 'src/app/layout.ts
 const ambienceSrc = fs.readFileSync(path.resolve(process.cwd(), 'src/components/effects/ScrollAmbience.tsx'), 'utf8');
 assert(layoutSrc.includes('<ScrollAmbience />'), 'RootLayout must mount <ScrollAmbience />');
 assert(ambienceSrc.includes('z-30'), 'ScrollAmbience canvas must use z-30 above z-20 sections');
-for (const sprite of ['sakura_blossoms.png', 'sakura_petals.png', 'butterflies.png']) {
+for (const sprite of ['sakura_blossoms.png', 'sakura_petals.png', 'sakura_branch.png', 'butterflies.png']) {
   const spritePath = path.resolve(process.cwd(), 'public/sprites', sprite);
   assert(fs.existsSync(spritePath) && fs.statSync(spritePath).size > 500, `Missing or empty sprite sheet: ${sprite}`);
 }
 console.log('✔ ScrollAmbience mount, z-30 layering, and 2D sprite sheets verified.');
+
+// 3.6 Verify Self-Hosted Brand Variable Fonts & Non-Cyclic @theme Tokens
+const globalsCss = fs.readFileSync(path.resolve(process.cwd(), 'src/styles/globals.css'), 'utf8');
+assert(!globalsCss.includes('--font-body: var(--font-body)'), 'globals.css must not have a cyclic --font-body self-reference');
+assert(globalsCss.includes('--font-sans: var(--font-jakarta)'), 'globals.css must map --font-sans to --font-jakarta');
+for (const fontFile of [
+  'Orbitron-Variable.woff2',
+  'SpaceGrotesk-Variable.woff2',
+  'PlusJakartaSans-Variable.woff2',
+  'CormorantGaramond-Variable.woff2',
+]) {
+  const fontPath = path.resolve(process.cwd(), 'src/fonts', fontFile);
+  assert(fs.existsSync(fontPath) && fs.statSync(fontPath).size > 5000, `Missing variable font: ${fontFile}`);
+}
+console.log('✔ Self-hosted Orbitron, Space Grotesk, Plus Jakarta Sans & Cormorant Garamond fonts verified.');
 
 // 4. If a live server is running on port 3000, test live responses
 try {
@@ -70,6 +85,7 @@ try {
       ['/gallery', 200],
       ['/sprites/sakura_blossoms.png', 200],
       ['/sprites/sakura_petals.png', 200],
+      ['/sprites/sakura_branch.png', 200],
       ['/sprites/butterflies.png', 200],
       ['/unknown-test-route-404', 404],
     ];

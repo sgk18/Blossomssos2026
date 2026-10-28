@@ -56,11 +56,11 @@ export function Navbar() {
 
   return (
     <>
-      {/* Floating Top Header: Left Blossoms Crest • Center Glass Pill Nav • Right CHRIST Logo */}
-      <header className="fixed top-2.5 sm:top-3.5 inset-x-0 z-40 px-3 sm:px-6 lg:px-10 pointer-events-none">
-        <div className="relative w-full max-w-[1440px] mx-auto flex items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr] gap-2 sm:gap-4">
-          {/* 1. Far Left: Enlarged Blossoms 2026–27 Official Circular Crest */}
-          <div className="pointer-events-auto flex items-center justify-self-start shrink-0">
+      {/* 1. Top-Anchored Brand Logos (Stay at top of page; scroll naturally out of view) */}
+      <div className="absolute top-2.5 sm:top-3.5 inset-x-0 z-40 px-3 sm:px-6 lg:px-10 pointer-events-none">
+        <div className="relative w-full max-w-[1440px] mx-auto flex items-center justify-between gap-2 sm:gap-4">
+          {/* Far Left: Enlarged Blossoms 2026–27 Official Circular Crest */}
+          <div className="pointer-events-auto flex items-center shrink-0">
             <Link
               href="/"
               className="group relative flex items-center gap-2.5 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99] transition-transform duration-200 hover:scale-105"
@@ -81,8 +81,35 @@ export function Navbar() {
             </Link>
           </div>
 
-          {/* 2. Center: Pure Liquid Glass Pill Navigation (Desktop) */}
-          <div className="hidden md:inline-flex pointer-events-auto justify-self-center md:self-start md:mt-2 lg:mt-3 relative items-center px-3 lg:px-4 h-11 lg:h-12 rounded-full liquid-glass-nav overflow-hidden transition-all duration-300">
+          {/* Far Right: Enlarged Transparent CHRIST University Official Logo */}
+          <div className="pointer-events-auto flex items-center shrink-0 mr-12 sm:mr-14 md:mr-0">
+            <a
+              href="https://www.christuniversity.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center py-1 bg-transparent transition-transform duration-200 hover:scale-[1.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99] rounded-xl"
+              aria-label="CHRIST (Deemed to be University), Bangalore"
+              title="CHRIST (Deemed to be University), Bangalore"
+            >
+              <Image
+                src="/christ_university_official_logo.webp"
+                alt="CHRIST (Deemed to be University)"
+                width={260}
+                height={88}
+                sizes="(max-width: 640px) 136px, (max-width: 1024px) 180px, 240px"
+                className="h-11 sm:h-14 lg:h-[72px] xl:h-[80px] w-auto object-contain drop-shadow-[0_2px_10px_rgba(255,255,255,0.65)]"
+                priority
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* 2. Floating Sticky Navigation Header (Center Glass Pill Nav & Mobile Toggle follow scroll) */}
+      <header className="fixed top-5 sm:top-7 md:top-[22px] lg:top-[26px] inset-x-0 z-40 px-3 sm:px-6 lg:px-10 pointer-events-none">
+        <div className="relative w-full max-w-[1440px] mx-auto flex items-center justify-end md:justify-center">
+          {/* Desktop Center: Pure Liquid Glass Pill Navigation */}
+          <div className="hidden md:inline-flex pointer-events-auto relative items-center px-3 lg:px-4 h-11 lg:h-12 rounded-full liquid-glass-nav overflow-hidden transition-all duration-300">
             {/* Continuous Fluid Surface Gloss (Smooth Liquid Glass Sheen) */}
             <div
               className="absolute inset-0 bg-gradient-to-b from-white/18 via-white/[0.04] to-transparent pointer-events-none rounded-full"
@@ -132,43 +159,22 @@ export function Navbar() {
             </nav>
           </div>
 
-          {/* 3. Far Right: Enlarged Official CHRIST University Badge + Mobile Menu Toggle */}
-          <div className="pointer-events-auto flex items-center justify-self-end gap-2 sm:gap-2.5 shrink-0">
-            <a
-              href="https://www.christuniversity.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center py-1 bg-transparent transition-transform duration-200 hover:scale-[1.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99] rounded-xl"
-              aria-label="CHRIST (Deemed to be University), Bangalore"
-              title="CHRIST (Deemed to be University), Bangalore"
+          {/* Mobile Right: Floating Hamburger Toggle */}
+          <div className="flex md:hidden pointer-events-auto items-center">
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="w-10 h-10 sm:w-11 sm:h-11 rounded-full liquid-glass-nav text-[#F9F5EB] flex items-center justify-center shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFDBC3] transition-transform active:scale-95"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation-menu"
+              aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
             >
-              <Image
-                src="/christ_university_official_logo.webp"
-                alt="CHRIST (Deemed to be University)"
-                width={260}
-                height={88}
-                sizes="(max-width: 640px) 136px, (max-width: 1024px) 180px, 240px"
-                className="h-11 sm:h-14 lg:h-[72px] xl:h-[80px] w-auto object-contain drop-shadow-[0_2px_10px_rgba(255,255,255,0.65)]"
-                priority
-              />
-            </a>
-
-            <div className="flex md:hidden items-center">
-              <button
-                type="button"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="w-10 h-10 sm:w-11 sm:h-11 rounded-full liquid-glass-nav text-[#F9F5EB] flex items-center justify-center shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFDBC3] transition-transform active:scale-95"
-                aria-expanded={mobileMenuOpen}
-                aria-controls="mobile-navigation-menu"
-                aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
-              >
-                {mobileMenuOpen ? (
-                  <X className="w-5 h-5 text-[#F9F5EB]" />
-                ) : (
-                  <Menu className="w-5 h-5 text-[#F9F5EB]" />
-                )}
-              </button>
-            </div>
+              {mobileMenuOpen ? (
+                <X className="w-5 h-5 text-[#F9F5EB]" />
+              ) : (
+                <Menu className="w-5 h-5 text-[#F9F5EB]" />
+              )}
+            </button>
           </div>
         </div>
       </header>

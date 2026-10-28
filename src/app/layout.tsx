@@ -1,38 +1,38 @@
 import type { Metadata, Viewport } from 'next';
-import { Plus_Jakarta_Sans, Orbitron, Space_Grotesk, Cormorant_Garamond } from 'next/font/google';
+import localFont from 'next/font/local';
 import '@/styles/globals.css';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { siteConfig } from '@/data/site-config';
 import { ScrollAmbience } from '@/components/effects/ScrollAmbience';
 
-const sansFont = Plus_Jakarta_Sans({
-  subsets: ['latin'],
-  variable: '--font-body',
+const sansFont = localFont({
+  src: '../fonts/PlusJakartaSans-Variable.woff2',
+  variable: '--font-jakarta',
+  weight: '200 800',
   display: 'swap',
 });
 
-const orbitronFont = Orbitron({
-  subsets: ['latin'],
+const orbitronFont = localFont({
+  src: '../fonts/Orbitron-Variable.woff2',
   variable: '--font-orbitron',
-  weight: ['600', '700', '800', '900'],
+  weight: '400 900',
   display: 'swap',
 });
 
-const spaceFont = Space_Grotesk({
-  subsets: ['latin'],
+const spaceFont = localFont({
+  src: '../fonts/SpaceGrotesk-Variable.woff2',
   variable: '--font-space',
+  weight: '300 700',
   display: 'swap',
-  weight: ['400', '500', '600', '700'],
 });
 
-const cormorantFont = Cormorant_Garamond({
-  subsets: ['latin'],
-  variable: '--font-serif',
+const cormorantFont = localFont({
+  src: '../fonts/CormorantGaramond-Variable.woff2',
+  variable: '--font-cormorant',
+  weight: '300 700',
   display: 'swap',
-  weight: ['400', '500', '600', '700'],
 });
-
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -149,7 +149,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebSite) }}
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-[#FFDBC3] text-[#3D246C] font-sans antialiased selection:bg-[#5C4B99] selection:text-white" style={{ backgroundColor: "#FFDBC3" }}>
+      <body className="relative min-h-screen flex flex-col bg-[#FFDBC3] text-[#3D246C] font-sans antialiased selection:bg-[#5C4B99] selection:text-white" style={{ backgroundColor: "#FFDBC3" }}>
 
         {/* Skip to Content for WCAG 2.2 AA Keyboard Accessibility */}
         <a 
