@@ -1,45 +1,23 @@
 'use client';
 
 import Image from 'next/image';
-import React, { useState, useMemo, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { 
   ChevronDown, 
   Maximize2, 
   X, 
   ChevronLeft, 
   ChevronRight, 
-  Calendar, 
-  MapPin, 
-  Share2, 
-  Check,
-  Play,
-  ExternalLink
+  Play
 } from 'lucide-react';
 import { BENTO_GALLERY_ITEMS, GalleryItem } from '@/data/gallery-data';
 
-const FILTER_CATEGORIES = [
-  { id: 'all', label: 'All Highlights' },
-  { id: 'dance', label: 'Dance & Stage' },
-  { id: 'music', label: 'Music & Bands' },
-  { id: 'theatre', label: 'Theatre & Mime' },
-  { id: 'art', label: 'Art & Creative' },
-  { id: 'crowd', label: 'Crowd & Spirit' },
-] as const;
-
 export function GalleryBentoGrid() {
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [visibleCount, setVisibleCount] = useState<number>(12);
   const [activeModalItem, setActiveModalItem] = useState<GalleryItem | null>(null);
-  const [copiedLink, setCopiedLink] = useState(false);
 
-  // Filter items
-  const filteredItems = useMemo(() => {
-    if (selectedCategory === 'all') return BENTO_GALLERY_ITEMS;
-    return BENTO_GALLERY_ITEMS.filter((item) => item.category === selectedCategory);
-  }, [selectedCategory]);
-
-  const displayedItems = filteredItems.slice(0, visibleCount);
-  const hasMore = visibleCount < filteredItems.length;
+  const displayedItems = BENTO_GALLERY_ITEMS.slice(0, visibleCount);
+  const hasMore = visibleCount < BENTO_GALLERY_ITEMS.length;
 
   const handleOpenModal = (item: GalleryItem) => {
     setActiveModalItem(item);
@@ -51,17 +29,17 @@ export function GalleryBentoGrid() {
 
   const handleModalNext = useCallback(() => {
     if (!activeModalItem) return;
-    const currentIndex = filteredItems.findIndex((it) => it.id === activeModalItem.id);
-    const nextIndex = (currentIndex + 1) % filteredItems.length;
-    setActiveModalItem(filteredItems[nextIndex]);
-  }, [activeModalItem, filteredItems]);
+    const currentIndex = BENTO_GALLERY_ITEMS.findIndex((it) => it.id === activeModalItem.id);
+    const nextIndex = (currentIndex + 1) % BENTO_GALLERY_ITEMS.length;
+    setActiveModalItem(BENTO_GALLERY_ITEMS[nextIndex]);
+  }, [activeModalItem]);
 
   const handleModalPrev = useCallback(() => {
     if (!activeModalItem) return;
-    const currentIndex = filteredItems.findIndex((it) => it.id === activeModalItem.id);
-    const prevIndex = (currentIndex - 1 + filteredItems.length) % filteredItems.length;
-    setActiveModalItem(filteredItems[prevIndex]);
-  }, [activeModalItem, filteredItems]);
+    const currentIndex = BENTO_GALLERY_ITEMS.findIndex((it) => it.id === activeModalItem.id);
+    const prevIndex = (currentIndex - 1 + BENTO_GALLERY_ITEMS.length) % BENTO_GALLERY_ITEMS.length;
+    setActiveModalItem(BENTO_GALLERY_ITEMS[prevIndex]);
+  }, [activeModalItem]);
 
   // Keyboard navigation inside modal
   useEffect(() => {
@@ -79,17 +57,8 @@ export function GalleryBentoGrid() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [activeModalItem, handleCloseModal, handleModalNext, handleModalPrev]);
 
-  const handleShare = (item: GalleryItem) => {
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(window.location.origin + '/gallery#' + item.id);
-      setCopiedLink(true);
-      setTimeout(() => setCopiedLink(false), 2000);
-    }
-  };
-
   // Helper for Bento grid cell classes - ensures zero overlap and consistent gaps
   const getBentoClasses = (index: number, total: number) => {
-    // When filtered to a small subset (e.g. 2 items)
     if (total <= 2) {
       return 'col-span-12 md:col-span-6 h-[260px] sm:h-[340px] md:h-[380px]';
     }
@@ -99,17 +68,17 @@ export function GalleryBentoGrid() {
     if (total === 4) {
       if (index === 0) return 'col-span-12 md:col-span-8 h-[260px] sm:h-[340px] md:h-[380px]';
       if (index === 1) return 'col-span-12 md:col-span-4 h-[260px] sm:h-[340px] md:h-[380px]';
-      return 'col-span-12 sm:col-span-6 md:col-span-6 h-[240px] sm:h-[280px] md:h-[320px]';
+      return 'col-span-12 sm:col-span-6 md:col-span-6 h-[240px] sm:h-[300px] md:h-[340px]';
     }
 
-    // Default bento collage rhythm (cycles of 12)
-    const pos = index % 12;
-    switch (pos) {
+    // 12-item periodic bento rhythm
+    const patternIndex = index % 12;
+    switch (patternIndex) {
       case 0:
-        // Wide hero capture (8 cols)
+        // Featured prominent card (8 cols on desktop)
         return 'col-span-12 md:col-span-8 h-[260px] sm:h-[340px] md:h-[400px]';
       case 1:
-        // Accent companion (4 cols)
+        // Portrait/tall side card (4 cols on desktop)
         return 'col-span-12 md:col-span-4 h-[260px] sm:h-[340px] md:h-[400px]';
       case 2:
       case 3:
@@ -150,30 +119,6 @@ export function GalleryBentoGrid() {
           </p>
         </div>
 
-        {/* Category Filter Pills (Matches homepage palette) */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 mb-10">
-          {FILTER_CATEGORIES.map((cat) => {
-            const isSelected = selectedCategory === cat.id;
-            return (
-              <button
-                key={cat.id}
-                onClick={() => {
-                  setSelectedCategory(cat.id);
-                  setVisibleCount(12);
-                }}
-                className={`px-4 py-2 rounded-full text-xs font-bold tracking-wide transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99] ${
-                  isSelected
-                    ? 'bg-[#5C4B99] text-white shadow-md shadow-[#5C4B99]/25'
-                    : 'bg-white/90 hover:bg-white text-[#3D246C] hover:text-[#5C4B99] border border-[#3D246C]/15'
-                }`}
-                aria-pressed={isSelected}
-              >
-                {cat.label}
-              </button>
-            );
-          })}
-        </div>
-
         {/* Bento Grid Container */}
         <div className="p-4 sm:p-6 lg:p-8 rounded-3xl bg-[#FFDBC3] border border-[#3D246C]/15 shadow-sm"
           style={{ backgroundColor: '#FFDBC3' }}>
@@ -189,7 +134,7 @@ export function GalleryBentoGrid() {
                   className={`group relative rounded-2xl overflow-hidden cursor-pointer bg-[#3D246C] border border-[#3D246C]/15 transition-all duration-300 hover:shadow-xl hover:border-[#5C4B99]/50 ${cellClasses}`}
                   role="button"
                   tabIndex={0}
-                  aria-label={`Open photo: ${item.title}`}
+                  aria-label={`Preview capture ${index + 1}`}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                       handleOpenModal(item);
@@ -205,24 +150,13 @@ export function GalleryBentoGrid() {
                     loading={index < 4 ? 'eager' : 'lazy'}
                   />
 
-                  {/* Gradient Scrim */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#3D246C]/90 via-[#3D246C]/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300 pointer-events-none" />
+                  {/* Subtle Gradient Scrim on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#3D246C]/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
-                  {/* Top Category Badge & Expand Icon */}
-                  <div className="absolute top-3 inset-x-3 flex items-center justify-between z-10">
-                    <div className="flex items-center gap-1.5">
-                      <span className="px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold tracking-wider uppercase bg-white/95 backdrop-blur-md text-[#5C4B99] shadow-xs">
-                        {item.categoryLabel}
-                      </span>
-                      {item.mediaType === 'video' && (
-                        <span className="px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-wider bg-[#5C4B99] text-white flex items-center gap-1 shadow-xs">
-                          <Play className="w-2.5 h-2.5 fill-current" />
-                          <span>Video</span>
-                        </span>
-                      )}
-                    </div>
-                    <span className="w-7 h-7 rounded-full bg-black/40 backdrop-blur-sm text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                      <Maximize2 className="w-3.5 h-3.5" />
+                  {/* Top-Right Expand Icon (Only on hover, no top-left title/badge) */}
+                  <div className="absolute top-3 right-3 z-10">
+                    <span className="w-8 h-8 rounded-full bg-black/50 backdrop-blur-md text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 shadow-md">
+                      <Maximize2 className="w-4 h-4" />
                     </span>
                   </div>
 
@@ -234,22 +168,6 @@ export function GalleryBentoGrid() {
                       </div>
                     </div>
                   )}
-
-                  {/* Bottom Text Content */}
-                  <div className="absolute bottom-3 inset-x-3.5 text-left z-10">
-                    <h3 className="font-angular font-black text-sm sm:text-base text-white tracking-tight leading-snug line-clamp-1 group-hover:text-[#FFDBC3] transition-colors">
-                      {item.title}
-                    </h3>
-                    <div className="flex items-center gap-2 text-[10px] sm:text-xs text-[#FFDBC3]/85 mt-1">
-                      {item.date && <span>{item.date}</span>}
-                      {item.venue && (
-                        <>
-                          <span>&bull;</span>
-                          <span className="truncate">{item.venue}</span>
-                        </>
-                      )}
-                    </div>
-                  </div>
                 </div>
               );
             })}
@@ -262,7 +180,7 @@ export function GalleryBentoGrid() {
                 onClick={() => setVisibleCount((prev) => prev + 8)}
                 className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white hover:bg-[#FFDBC3]/30 text-[#3D246C] hover:text-[#5C4B99] font-bold text-xs sm:text-sm border border-[#3D246C]/15 hover:border-[#5C4B99]/40 shadow-xs transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
               >
-                <span>Load More Captures ({filteredItems.length - displayedItems.length} remaining)</span>
+                <span>Load More Captures ({BENTO_GALLERY_ITEMS.length - displayedItems.length} remaining)</span>
                 <ChevronDown className="w-4 h-4" />
               </button>
             </div>
@@ -271,132 +189,71 @@ export function GalleryBentoGrid() {
 
       </div>
 
-      {/* Lightbox Modal */}
+      {/* Pure Image/Video Preview Lightbox Modal (No text details) */}
       {activeModalItem && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-[#3D246C]/85 backdrop-blur-md animate-fadeIn"
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 md:p-10 bg-[#3D246C]/90 backdrop-blur-lg animate-fadeIn select-none"
           onClick={handleCloseModal}
           role="dialog"
           aria-modal="true"
-          aria-label={activeModalItem.title}
+          aria-label="Image Preview"
         >
+          {/* Floating Close Button */}
+          <button
+            onClick={handleCloseModal}
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 z-50 p-2.5 sm:p-3 rounded-full bg-black/60 hover:bg-[#5C4B99] text-white backdrop-blur-md transition-all shadow-xl active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            aria-label="Close Preview"
+          >
+            <X className="w-5 h-5 sm:w-6 sm:h-6" />
+          </button>
+
+          {/* Floating Previous Arrow Button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              handleModalPrev();
+            }}
+            className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-50 p-2.5 sm:p-3.5 rounded-full bg-black/60 hover:bg-[#5C4B99] text-white backdrop-blur-md transition-all shadow-xl active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            aria-label="Previous Image"
+          >
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+          </button>
+
+          {/* Floating Next Arrow Button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              handleModalNext();
+            }}
+            className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-50 p-2.5 sm:p-3.5 rounded-full bg-black/60 hover:bg-[#5C4B99] text-white backdrop-blur-md transition-all shadow-xl active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            aria-label="Next Image"
+          >
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+          </button>
+
+          {/* Media Preview Box (Pure Image / Video Preview Only) */}
           <div 
-            className="relative w-full max-w-4xl bg-white rounded-3xl overflow-hidden shadow-2xl border border-[#3D246C]/15 flex flex-col md:flex-row max-h-[90vh]"
+            className="relative w-full max-w-5xl h-[75vh] sm:h-[82vh] md:h-[86vh] rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center bg-black/40 border border-white/10"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal Image/Video Area */}
-            <div className="relative w-full md:w-3/5 min-h-[300px] sm:min-h-[420px] md:h-auto bg-[#3D246C] flex items-center justify-center">
-              {activeModalItem.mediaType === 'video' && activeModalItem.driveId ? (
-                <div className="relative w-full h-full min-h-[320px] sm:min-h-[440px] bg-black">
-                  <iframe
-                    src={`https://drive.google.com/file/d/${activeModalItem.driveId}/preview`}
-                    className="w-full h-full border-0 absolute inset-0"
-                    allow="autoplay; encrypted-media"
-                    allowFullScreen
-                    title={activeModalItem.title}
-                  />
-                </div>
-              ) : (
-                <Image
-                  src={activeModalItem.image}
-                  alt={activeModalItem.alt}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 60vw"
-                  className="object-cover"
-                  priority
-                />
-              )}
-
-              {/* Prev / Next Buttons inside modal */}
-              <button
-                onClick={handleModalPrev}
-                className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 hover:bg-[#5C4B99] text-white backdrop-blur-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99] z-20"
-                aria-label="Previous Item"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                onClick={handleModalNext}
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 hover:bg-[#5C4B99] text-white backdrop-blur-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99] z-20"
-                aria-label="Next Item"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* Modal Information Sidebar */}
-            <div className="w-full md:w-2/5 p-6 sm:p-8 flex flex-col justify-between bg-white overflow-y-auto">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FFDBC3]/60 text-[#3D246C] border border-[#3D246C]/15">
-                    {activeModalItem.categoryLabel}
-                  </span>
-                  <button
-                    onClick={handleCloseModal}
-                    className="p-1.5 rounded-full hover:bg-[#FFDBC3]/30 text-[#5C4B99] hover:text-[#3D246C] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
-                    aria-label="Close Lightbox"
-                  >
-                    <X className="w-5 h-5" />
-                  </button>
-                </div>
-
-                <h3 className="font-angular text-2xl font-black text-[#3D246C] tracking-tight leading-tight mb-2">
-                  {activeModalItem.title}
-                </h3>
-
-                <div className="space-y-1.5 text-xs text-[#5C4B99] mb-4">
-                  {activeModalItem.date && (
-                    <div className="flex items-center gap-2">
-                      <Calendar className="w-3.5 h-3.5 text-[#5C4B99]" />
-                      <span>{activeModalItem.date}</span>
-                    </div>
-                  )}
-                  {activeModalItem.venue && (
-                    <div className="flex items-center gap-2">
-                      <MapPin className="w-3.5 h-3.5 text-[#5C4B99]" />
-                      <span>{activeModalItem.venue}</span>
-                    </div>
-                  )}
-                </div>
-
-                <p className="text-sm text-[#5C4B99] font-body leading-relaxed font-medium">
-                  {activeModalItem.description}
-                </p>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="pt-6 border-t border-[#3D246C]/15 mt-6 flex flex-wrap items-center justify-between gap-3">
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={() => handleShare(activeModalItem)}
-                    className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#FFDBC3]/30 hover:bg-[#FFDBC3]/60 text-[#3D246C] hover:text-[#5C4B99] text-xs font-semibold border border-[#3D246C]/15 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
-                  >
-                    {copiedLink ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Share2 className="w-3.5 h-3.5" />}
-                    <span>{copiedLink ? 'Link Copied!' : 'Share Frame'}</span>
-                  </button>
-
-                  {activeModalItem.driveId && (
-                    <a
-                      href={`https://drive.google.com/file/d/${activeModalItem.driveId}/view`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#FFDBC3]/30 hover:bg-[#FFDBC3]/60 text-[#3D246C] hover:text-[#5C4B99] text-xs font-semibold border border-[#3D246C]/15 transition-colors"
-                      title="Open full file in Google Drive"
-                    >
-                      <ExternalLink className="w-3.5 h-3.5" />
-                      <span>Drive</span>
-                    </a>
-                  )}
-                </div>
-
-                <button
-                  onClick={handleCloseModal}
-                  className="px-4 py-1.5 rounded-xl bg-[#5C4B99] hover:bg-[#4C3C82] text-white text-xs font-bold transition-all shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
-                >
-                  Done
-                </button>
-              </div>
-            </div>
+            {activeModalItem.mediaType === 'video' && activeModalItem.driveId ? (
+              <iframe
+                src={`https://drive.google.com/file/d/${activeModalItem.driveId}/preview`}
+                className="w-full h-full border-0"
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+                title={activeModalItem.title}
+              />
+            ) : (
+              <Image
+                src={activeModalItem.image}
+                alt={activeModalItem.alt}
+                fill
+                sizes="(max-width: 1280px) 100vw, 1200px"
+                className="object-contain"
+                priority
+              />
+            )}
           </div>
         </div>
       )}
