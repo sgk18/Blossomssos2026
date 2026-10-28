@@ -223,14 +223,6 @@ export function Footer() {
                     Festival Gallery
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    href="/team"
-                    className="text-gray-500 hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 rounded font-semibold text-[#5C4B99]"
-                  >
-                    Organising Team
-                  </Link>
-                </li>
               </ul>
             </div>
 
@@ -373,12 +365,6 @@ export function Footer() {
                   className="hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 rounded"
                 >
                   Gallery
-                </Link>
-                <Link
-                  href="/team"
-                  className="hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 rounded font-bold text-[#5C4B99]"
-                >
-                  Team
                 </Link>
               </div>
 
