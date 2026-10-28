@@ -2,17 +2,17 @@
 
 import React, { useEffect } from 'react';
 import Image from 'next/image';
-import { 
-  X, 
-  CheckCircle2, 
-  MapPin, 
-  Mail, 
+import {
+  X,
+  CheckCircle2,
+  MapPin,
+  Mail,
   Info,
-  ShieldCheck, 
-  Truck, 
-  Camera, 
-  HeartHandshake, 
-  Sparkles, 
+  ShieldCheck,
+  Truck,
+  Camera,
+  HeartHandshake,
+  Sparkles,
   Users,
   UserCheck
 } from 'lucide-react';
@@ -56,14 +56,14 @@ export function DepartmentModal({ department, onClose }: DepartmentModalProps) {
   const IconComponent = ICONS[department.iconName] || Users;
 
   return (
-    <div 
+    <div
       className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
       role="dialog"
       aria-modal="true"
       aria-labelledby="dept-modal-title"
     >
       {/* Light Backdrop with Glass Blur */}
-      <div 
+      <div
         className="fixed inset-0 bg-[#3D246C]/60 backdrop-blur-sm transition-opacity"
         onClick={onClose}
         aria-hidden="true"
@@ -71,9 +71,9 @@ export function DepartmentModal({ department, onClose }: DepartmentModalProps) {
 
       {/* Modal Dialog Card */}
       <div className="relative w-full max-w-3xl bg-white rounded-3xl border border-[#3D246C]/15 shadow-2xl overflow-hidden z-10 my-8 animate-in fade-in duration-150">
-        
+
         {/* Visual Accent Top Bar */}
-        <div 
+        <div
           className="h-2 w-full bg-[#5C4B99]"
           aria-hidden="true"
         />
@@ -81,13 +81,13 @@ export function DepartmentModal({ department, onClose }: DepartmentModalProps) {
         {/* Modal Header & Close Button */}
         <div className="p-5 sm:p-7 pb-4 flex items-start justify-between gap-4 border-b border-[#3D246C]/15">
           <div className="flex items-center gap-3">
-            <div 
+            <div
               className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 border border-[#3D246C]/15 bg-[#FFDBC3]/40 text-[#5C4B99] shadow-xs"
             >
               <IconComponent className="w-6 h-6" />
             </div>
             <div>
-              <span 
+              <span
                 className="text-[11px] font-tech font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full inline-block mb-1 bg-[#FFDBC3]/70 text-[#3D246C] border border-[#3D246C]/15"
               >
                 {department.groupLabel}
@@ -110,7 +110,7 @@ export function DepartmentModal({ department, onClose }: DepartmentModalProps) {
 
         {/* Scrollable Content Body */}
         <div className="p-5 sm:p-7 space-y-6 max-h-[75vh] overflow-y-auto">
-          
+
           {/* Representative Image Banner */}
           <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden border border-[#3D246C]/15 bg-[#FFDBC3]/30">
             {department.image ? (
@@ -161,13 +161,13 @@ export function DepartmentModal({ department, onClose }: DepartmentModalProps) {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {department.members.map((member) => (
-                <div 
+                <div
                   key={member.id}
                   className="p-3.5 rounded-2xl bg-[#FFDBC3]/25 border border-[#3D246C]/15 hover:border-[#5C4B99]/40 transition-all flex flex-col justify-between space-y-2.5"
                 >
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <div 
+                      <div
                         className="w-7 h-7 rounded-lg flex items-center justify-center font-tech font-bold text-xs shrink-0 bg-[#5C4B99] text-white"
                       >
                         {member.name.charAt(0)}
@@ -234,8 +234,8 @@ export function DepartmentModal({ department, onClose }: DepartmentModalProps) {
             </h3>
             <div className="flex flex-wrap gap-1.5">
               {department.venuesCovered.map((venue, i) => (
-                <span 
-                  key={i} 
+                <span
+                  key={i}
                   className="px-2.5 py-1 rounded-full text-xs font-tech font-medium bg-white border border-[#3D246C]/15 text-[#3D246C] shadow-2xs"
                 >
                   {venue}
@@ -255,7 +255,7 @@ export function DepartmentModal({ department, onClose }: DepartmentModalProps) {
             </p>
             <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-[#3D246C]/15 text-xs">
               <span className="font-semibold text-[#3D246C]">Designation: {department.contactRole}</span>
-              <a 
+              <a
                 href={`mailto:${siteConfig.contactEmail}`}
                 className="font-tech font-bold text-[#5C4B99] hover:text-[#3D246C] hover:underline flex items-center gap-1"
               >
