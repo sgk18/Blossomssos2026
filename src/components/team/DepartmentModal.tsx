@@ -14,7 +14,7 @@ import {
   MapPin, 
   Mail, 
   Info,
-  Calendar
+  UserCheck
 } from 'lucide-react';
 import { Department } from '@/data/team-departments';
 import { siteConfig } from '@/data/site-config';
@@ -59,20 +59,20 @@ export function DepartmentModal({ department, onClose }: DepartmentModalProps) {
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
       role="dialog"
       aria-modal="true"
       aria-labelledby="dept-modal-title"
     >
       {/* Light Backdrop with Glass Blur */}
       <div 
-        className="fixed inset-0 bg-[#1B1B26]/40 backdrop-blur-sm transition-opacity"
+        className="fixed inset-0 bg-[#1B1B26]/50 backdrop-blur-sm transition-opacity"
         onClick={onClose}
         aria-hidden="true"
       />
 
       {/* Modal Dialog Card */}
-      <div className="relative w-full max-w-2xl bg-white rounded-3xl border border-[#EAE6F2] shadow-2xl overflow-hidden z-10 my-8 animate-in fade-in zoom-in-95 duration-200">
+      <div className="relative w-full max-w-3xl bg-white rounded-3xl border border-[#EAE6F2] shadow-2xl overflow-hidden z-10 my-8 animate-in fade-in zoom-in-95 duration-200">
         
         {/* Visual Accent Top Bar */}
         <div 
@@ -82,7 +82,7 @@ export function DepartmentModal({ department, onClose }: DepartmentModalProps) {
         />
 
         {/* Modal Header & Close Button */}
-        <div className="p-6 sm:p-8 pb-4 flex items-start justify-between gap-4 border-b border-[#EAE6F2]">
+        <div className="p-5 sm:p-7 pb-4 flex items-start justify-between gap-4 border-b border-[#EAE6F2]">
           <div className="flex items-center gap-3">
             <div 
               className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 border shadow-xs"
@@ -96,7 +96,7 @@ export function DepartmentModal({ department, onClose }: DepartmentModalProps) {
             </div>
             <div>
               <span 
-                className="text-xs font-tech font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full inline-block mb-1"
+                className="text-[11px] font-tech font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full inline-block mb-1"
                 style={{
                   backgroundColor: department.pastel,
                   color: department.accent,
@@ -121,15 +121,15 @@ export function DepartmentModal({ department, onClose }: DepartmentModalProps) {
         </div>
 
         {/* Scrollable Content Body */}
-        <div className="p-6 sm:p-8 space-y-6 max-h-[70vh] overflow-y-auto">
+        <div className="p-5 sm:p-7 space-y-6 max-h-[75vh] overflow-y-auto">
           
-          {/* Representative Image */}
+          {/* Representative Image Banner */}
           <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden border border-[#EAE6F2] bg-[#F6F3FF]">
             <Image
               src={department.image}
               alt={department.imageAlt}
               fill
-              sizes="(max-width: 768px) 100vw, 672px"
+              sizes="(max-width: 768px) 100vw, 768px"
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1B1B26]/60 via-transparent to-transparent" />
@@ -141,13 +141,71 @@ export function DepartmentModal({ department, onClose }: DepartmentModalProps) {
           </div>
 
           {/* Detailed Narrative */}
-          <div className="space-y-2">
-            <h3 className="font-display text-sm font-bold uppercase tracking-wider text-[#1B1B26]">
+          <div className="space-y-1.5">
+            <h3 className="font-display text-xs font-bold uppercase tracking-wider text-[#1B1B26]">
               Department Overview
             </h3>
             <p className="font-body text-sm text-[#686478] leading-relaxed">
               {department.description}
             </p>
+          </div>
+
+          {/* Department Members & Leads Showcase (Phase 2.C) */}
+          <div className="space-y-3 pt-1">
+            <div className="flex items-center justify-between border-b border-[#EAE6F2] pb-2">
+              <h3 className="font-display text-xs font-bold uppercase tracking-wider text-[#1B1B26] flex items-center gap-1.5">
+                <UserCheck className="w-4 h-4 text-[#7452F5]" />
+                <span>Department Members &amp; Roster</span>
+              </h3>
+              <span className="text-[11px] font-tech text-[#928EA3]">
+                {department.members.length} Confirmed Leads
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {department.members.map((member) => (
+                <div 
+                  key={member.id}
+                  className="p-3.5 rounded-2xl bg-[#FBFAFF] border border-[#EAE6F2] hover:border-[#7452F5]/30 transition-all flex flex-col justify-between space-y-2.5"
+                >
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2">
+                      <div 
+                        className="w-7 h-7 rounded-lg flex items-center justify-center font-tech font-bold text-xs shrink-0"
+                        style={{
+                          backgroundColor: department.pastel,
+                          color: department.accent
+                        }}
+                      >
+                        {member.name.charAt(0)}
+                      </div>
+                      <div className="overflow-hidden">
+                        <p className="font-tech font-bold text-xs text-[#1B1B26] truncate">
+                          {member.name}
+                        </p>
+                        <p className="text-[10px] font-tech font-semibold text-[#7452F5] truncate">
+                          {member.role}
+                        </p>
+                      </div>
+                    </div>
+                    <p className="text-[11px] font-body text-[#686478] line-clamp-3 leading-snug">
+                      {member.bio}
+                    </p>
+                  </div>
+
+                  <div className="pt-2 border-t border-[#EAE6F2]/60 flex items-center justify-between text-[10px] font-tech text-[#928EA3]">
+                    <span>{department.shortName}</span>
+                    <a
+                      href={`mailto:${member.contactEmail}`}
+                      className="text-[#7452F5] hover:underline flex items-center gap-1 font-semibold"
+                    >
+                      <Mail className="w-3 h-3" />
+                      <span>Contact</span>
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Operational Scope */}
@@ -161,13 +219,13 @@ export function DepartmentModal({ department, onClose }: DepartmentModalProps) {
           </div>
 
           {/* Full Responsibilities */}
-          <div className="space-y-3">
-            <h3 className="font-display text-sm font-bold uppercase tracking-wider text-[#1B1B26]">
+          <div className="space-y-2.5">
+            <h3 className="font-display text-xs font-bold uppercase tracking-wider text-[#1B1B26]">
               Core Responsibilities &amp; Deliverables
             </h3>
-            <ul className="grid grid-cols-1 gap-2.5">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-[#686478]">
               {department.responsibilities.map((resp, i) => (
-                <li key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#686478]">
+                <li key={i} className="flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-[#7452F5] shrink-0 mt-0.5" />
                   <span>{resp}</span>
                 </li>
@@ -177,15 +235,15 @@ export function DepartmentModal({ department, onClose }: DepartmentModalProps) {
 
           {/* Venues Managed */}
           <div className="space-y-2">
-            <h3 className="font-display text-sm font-bold uppercase tracking-wider text-[#1B1B26] flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-[#7452F5]" />
+            <h3 className="font-display text-xs font-bold uppercase tracking-wider text-[#1B1B26] flex items-center gap-1.5">
+              <MapPin className="w-3.5 h-3.5 text-[#7452F5]" />
               <span>Key Venues &amp; Operating Zones</span>
             </h3>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5">
               {department.venuesCovered.map((venue, i) => (
                 <span 
                   key={i} 
-                  className="px-3 py-1 rounded-full text-xs font-tech font-medium bg-white border border-[#EAE6F2] text-[#1B1B26] shadow-xs"
+                  className="px-2.5 py-1 rounded-full text-xs font-tech font-medium bg-white border border-[#EAE6F2] text-[#1B1B26] shadow-2xs"
                 >
                   {venue}
                 </span>
@@ -217,11 +275,14 @@ export function DepartmentModal({ department, onClose }: DepartmentModalProps) {
         </div>
 
         {/* Modal Footer */}
-        <div className="p-4 sm:p-6 bg-[#FBFAFF] border-t border-[#EAE6F2] flex items-center justify-end">
+        <div className="p-4 sm:p-5 bg-[#FBFAFF] border-t border-[#EAE6F2] flex items-center justify-between">
+          <span className="text-[11px] font-tech text-[#928EA3]">
+            CHRIST (Deemed to be University) · School of Sciences
+          </span>
           <button
             type="button"
             onClick={onClose}
-            className="font-tech px-6 py-2.5 rounded-xl bg-white border border-[#EAE6F2] text-[#1B1B26] hover:bg-[#F6F3FF] font-semibold text-xs transition-colors shadow-xs"
+            className="font-tech px-5 py-2 rounded-xl bg-white border border-[#EAE6F2] text-[#1B1B26] hover:bg-[#F6F3FF] font-semibold text-xs transition-colors shadow-2xs"
           >
             Close Scope
           </button>

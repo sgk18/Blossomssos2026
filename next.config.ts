@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: '/gallery', destination: '/#gallery', permanent: false },
-      { source: '/team', destination: '/#team', permanent: false },
+      { source: '/team.html', destination: '/team', permanent: true },
       // 1. Legacy HTML pages mapped to modern App Router routes
       { source: '/index.html', destination: '/', permanent: true },
       { source: '/about.html', destination: '/about', permanent: true },

@@ -11,6 +11,7 @@ const requiredAppRoutes = [
   'src/app/events/page.tsx',
   'src/app/events/[category]/page.tsx',
   'src/app/schedule/page.tsx',
+  'src/app/team/page.tsx',
   'src/app/winners/page.tsx',
   'src/app/not-found.tsx',
 ];
