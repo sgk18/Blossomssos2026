@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic';
 // Dynamically import GhostFibers with SSR disabled for WebGL canvas
 const GhostFibers = dynamic(() => import('./GhostFibers'), {
   ssr: false,
-  loading: () => <div className="absolute inset-0 bg-[#06110C]" aria-hidden="true" />,
+  loading: () => <div className="absolute inset-0 bg-[#FFDBC3]" aria-hidden="true" />,
 });
 
 interface HeroBackgroundProps {
@@ -17,21 +17,21 @@ interface HeroBackgroundProps {
  * HeroBackground — Visual Architecture
  * 
  * Minimalist, high-end visual background with React Bits GhostFibers.
- * Palette:
- * - Base: Deep Forest Green (#06110C)
- * - Fiber Glow: Sage Mint (#A8CBB7)
- * - Fiber Highlights: Soft Ivory (#F2EFE8)
- * - Secondary Accent: Crimson Red (#A31C1B)
+ * Official Colour Hunt Palette:
+ * - Base: Peach (#FFDBC3)
+ * - Fiber Glow: Soft Lavender (#9F91CC)
+ * - Fiber Line: Royal Purple (#5C4B99)
+ * - Secondary Accent: Deep Purple (#3D246C)
  */
 export function HeroBackground({ children }: HeroBackgroundProps) {
   return (
-    <div className="relative w-full min-h-[640px] md:min-h-[720px] flex items-center justify-center overflow-hidden bg-[#06110C]">
+    <div className="relative w-full min-h-[640px] md:min-h-[720px] flex items-center justify-center overflow-hidden bg-[#FFDBC3]">
       {/* Layer 0: React Bits GhostFibers Canvas */}
       <div className="absolute inset-0 z-0 pointer-events-auto opacity-75">
         <GhostFibers
-          glowColor="#A8CBB7"
-          lineColor="#F2EFE8"
-          secondaryColor="#A31C1B"
+          glowColor="#9F91CC"
+          lineColor="#5C4B99"
+          secondaryColor="#3D246C"
           gradient="depth"
           layers={3}
           twist={1.1}
@@ -52,7 +52,7 @@ export function HeroBackground({ children }: HeroBackgroundProps) {
       <div 
         className="absolute inset-0 z-1 pointer-events-none"
         style={{
-          background: 'radial-gradient(circle at 50% 45%, rgba(6, 17, 12, 0.25) 0%, rgba(6, 17, 12, 0.75) 70%, #06110C 100%)',
+          background: 'radial-gradient(circle at 50% 45%, rgba(255, 219, 195, 0.2) 0%, rgba(255, 219, 195, 0.6) 70%, #FFDBC3 100%)',
         }}
         aria-hidden="true"
       />

@@ -86,7 +86,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   };
 
   return (
-    <div className="pt-28 pb-16 md:pt-36 md:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-[#171717] text-[#F2EFE8] selection:bg-[#A31C1B]/30 selection:text-[#F2EFE8]">
+    <div className="min-h-screen pt-28 pb-16 md:pt-36 md:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-[#FFDBC3] text-[#3D246C] selection:bg-[#5C4B99] selection:text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
@@ -95,7 +95,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       <div className="mb-8">
         <Link 
           href="/events" 
-          className="inline-flex items-center gap-2 text-xs font-semibold text-[#F2EFE8]/75 hover:text-[#A8CBB7] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
+          className="inline-flex items-center gap-2 text-xs font-semibold text-[#3D246C]/80 hover:text-[#5C4B99] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to All Disciplines</span>
@@ -103,38 +103,37 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       </div>
 
       {/* Category Hero Banner */}
-      <div className="p-8 sm:p-12 rounded-3xl bg-[#06110C]/85 border border-[#A8CBB7]/20 shadow-xl mb-14 relative overflow-hidden backdrop-blur-md">
+      <div className="p-8 sm:p-12 rounded-3xl bg-white/90 border border-[#3D246C]/20 shadow-xl mb-14 relative overflow-hidden backdrop-blur-md">
         {/* Accent bar */}
         <div 
-          className="absolute top-0 inset-x-0 h-1.5"
-          style={{ backgroundColor: category.accentColor }}
+          className="absolute top-0 inset-x-0 h-1.5 bg-[#5C4B99]"
         />
 
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
           <div className="max-w-2xl space-y-4">
             <div className="flex items-center gap-3">
               <span 
-                className="px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase shadow-sm border border-[#A8CBB7]/30 bg-[#171717] text-[#A8CBB7]"
+                className="px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase shadow-sm border border-[#3D246C]/20 bg-[#9F91CC]/25 text-[#3D246C]"
               >
                 {category.name}
               </span>
-              <span className="text-xs text-[#A8CBB7]/80 font-mono">
+              <span className="text-xs text-[#5C4B99]/80 font-mono">
                 /{category.slug}
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#F2EFE8] tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#3D246C] tracking-tight leading-tight">
               {category.tagline}
             </h1>
 
-            <p className="text-sm sm:text-base text-[#F2EFE8]/75 leading-relaxed font-normal">
+            <p className="text-sm sm:text-base text-[#3D246C]/80 leading-relaxed font-normal">
               {category.description}
             </p>
 
-            <div className="pt-2 flex items-center gap-4 text-xs text-[#F2EFE8]/70">
+            <div className="pt-2 flex items-center gap-4 text-xs text-[#3D246C]/75">
               <div className="flex items-center gap-1.5 font-semibold">
-                <Layers className="w-4 h-4 text-[#A8CBB7]" />
-                <span className="text-[#F2EFE8]">{countsByCategory[category.slug as EventCategory] ?? category.events.length} Official Competitions</span>
+                <Layers className="w-4 h-4 text-[#5C4B99]" />
+                <span className="text-[#3D246C]">{countsByCategory[category.slug as EventCategory] ?? category.events.length} Official Competitions</span>
               </div>
               <span>•</span>
               <span>Deanery Preliminary Rounds</span>
@@ -142,21 +141,21 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           </div>
 
           {/* Minimal Discipline Emblem Panel */}
-          <div className="flex flex-col items-center justify-center p-6 rounded-2xl bg-[#171717] border border-[#A8CBB7]/20 shrink-0 shadow-inner">
-            <div className="w-14 h-14 rounded-2xl bg-[#06110C] border border-[#A8CBB7]/25 flex items-center justify-center text-[#A8CBB7] mb-3">
+          <div className="flex flex-col items-center justify-center p-6 rounded-2xl bg-[#FFDBC3]/50 border border-[#3D246C]/20 shrink-0 shadow-inner">
+            <div className="w-14 h-14 rounded-2xl bg-white/80 border border-[#3D246C]/20 flex items-center justify-center text-[#5C4B99] mb-3">
               <CategoryIcon category={category.slug} size={32} />
             </div>
-            <span className="text-[11px] font-mono font-bold text-[#F2EFE8] tracking-wider uppercase">
+            <span className="text-[11px] font-mono font-bold text-[#3D246C] tracking-wider uppercase">
               {category.name} Pillar
             </span>
-            <span className="text-[10px] text-[#A8CBB7]/80 mt-0.5">
+            <span className="text-[10px] text-[#5C4B99] mt-0.5 font-semibold">
               School of Sciences
             </span>
           </div>
         </div>
 
         {/* Guidelines Callout */}
-        <div className="mt-8 pt-6 border-t border-[#A8CBB7]/15 text-xs text-[#F2EFE8]/70">
+        <div className="mt-8 pt-6 border-t border-[#3D246C]/15 text-xs text-[#3D246C]/75">
           <p>
             Evaluation rubrics and criteria below reflect verified inter-deanery guidelines. Venue allocations from previous cycles are noted for spatial reference.
           </p>
@@ -166,10 +165,10 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       {/* Sub-Events Grid */}
       <section aria-labelledby="sub-events-heading" className="space-y-6">
         <div className="flex items-center justify-between">
-          <h2 id="sub-events-heading" className="text-2xl font-bold text-[#F2EFE8]">
+          <h2 id="sub-events-heading" className="text-2xl font-bold text-[#3D246C]">
             {category.name} Competitions &amp; Evaluation Criteria
           </h2>
-          <span className="text-xs text-[#A8CBB7] font-mono">
+          <span className="text-xs text-[#5C4B99] font-mono">
             {category.events.length} Events Listed
           </span>
         </div>
@@ -179,24 +178,24 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             <SubEventCard 
               key={event.id} 
               event={event} 
-              accentColor={category.accentColor} 
+              accentColor="#5C4B99" 
             />
           ))}
         </div>
       </section>
 
       {/* Back Navigation Bar */}
-      <div className="mt-16 pt-8 border-t border-[#A8CBB7]/15 flex items-center justify-between">
+      <div className="mt-16 pt-8 border-t border-[#3D246C]/15 flex items-center justify-between">
         <Link 
           href="/events" 
-          className="inline-flex items-center gap-2 text-xs font-bold text-[#A8CBB7] hover:text-[#F2EFE8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
+          className="inline-flex items-center gap-2 text-xs font-bold text-[#5C4B99] hover:text-[#3D246C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Return to All Categories</span>
         </Link>
         <Link 
           href="/schedule" 
-          className="inline-flex items-center gap-1.5 text-xs text-[#F2EFE8]/70 hover:text-[#A8CBB7] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
+          className="inline-flex items-center gap-1.5 text-xs text-[#3D246C]/75 hover:text-[#5C4B99] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
         >
           <span>Check Event Dates &amp; Venues</span>
           <ArrowRight className="w-3.5 h-3.5" />

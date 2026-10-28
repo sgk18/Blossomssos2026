@@ -135,12 +135,12 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebSite) }}
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-[#171717] text-[#F2EFE8] font-sans antialiased selection:bg-[#A31C1B]/40 selection:text-[#F2EFE8]">
+      <body className="min-h-screen flex flex-col bg-[#FFDBC3] text-[#3D246C] font-sans antialiased selection:bg-[#5C4B99] selection:text-white">
 
         {/* Skip to Content for WCAG 2.2 AA Keyboard Accessibility */}
         <a 
           href="#main-content" 
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 px-4 py-2 bg-[#A8CBB7] text-[#06110C] font-bold rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-[#A31C1B]"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 px-4 py-2 bg-[#5C4B99] text-white font-bold rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-[#3D246C]"
         >
           Skip to main content
         </a>

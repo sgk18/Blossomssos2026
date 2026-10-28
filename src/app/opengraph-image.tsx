@@ -17,12 +17,12 @@ export default async function Image() {
           flexDirection: 'column',
           justifyContent: 'space-between',
           padding: '60px 70px',
-          backgroundColor: '#171717',
+          backgroundColor: '#FFDBC3',
           backgroundImage:
-            'radial-gradient(circle at 85% 15%, rgba(168, 203, 183, 0.18) 0%, transparent 45%), radial-gradient(circle at 15% 85%, rgba(163, 28, 27, 0.22) 0%, transparent 50%)',
-          color: '#F2EFE8',
+            'radial-gradient(circle at 85% 15%, rgba(159, 145, 204, 0.35) 0%, transparent 45%), radial-gradient(circle at 15% 85%, rgba(92, 75, 153, 0.25) 0%, transparent 50%)',
+          color: '#3D246C',
           fontFamily: 'sans-serif',
-          border: '12px solid #06110C',
+          border: '12px solid #3D246C',
           boxSizing: 'border-box',
         }}
       >
@@ -49,9 +49,9 @@ export default async function Image() {
                 justifyContent: 'center',
                 padding: '8px 20px',
                 borderRadius: '9999px',
-                backgroundColor: '#06110C',
-                border: '1px solid rgba(168, 203, 183, 0.35)',
-                color: '#A8CBB7',
+                backgroundColor: '#FFFFFF',
+                border: '1px solid rgba(61, 36, 108, 0.2)',
+                color: '#3D246C',
                 fontSize: 16,
                 fontWeight: 700,
                 letterSpacing: '2px',
@@ -66,9 +66,9 @@ export default async function Image() {
                 alignItems: 'center',
                 padding: '8px 16px',
                 borderRadius: '9999px',
-                backgroundColor: 'rgba(255, 224, 130, 0.12)',
-                border: '1px solid rgba(255, 224, 130, 0.3)',
-                color: '#FFE082',
+                backgroundColor: 'rgba(92, 75, 153, 0.15)',
+                border: '1px solid rgba(92, 75, 153, 0.3)',
+                color: '#3D246C',
                 fontSize: 14,
                 fontWeight: 600,
               }}
@@ -80,9 +80,9 @@ export default async function Image() {
           <div
             style={{
               display: 'flex',
-              color: 'rgba(242, 239, 232, 0.75)',
+              color: 'rgba(61, 36, 108, 0.8)',
               fontSize: 15,
-              fontWeight: 500,
+              fontWeight: 600,
             }}
           >
             CHRIST (Deemed to be University)
@@ -103,7 +103,7 @@ export default async function Image() {
               fontWeight: 900,
               letterSpacing: '-2px',
               lineHeight: 1.0,
-              color: '#F2EFE8',
+              color: '#3D246C',
               display: 'flex',
               alignItems: 'center',
               gap: '20px',
@@ -114,11 +114,11 @@ export default async function Image() {
               style={{
                 fontSize: 32,
                 fontWeight: 800,
-                color: '#A8CBB7',
-                backgroundColor: '#06110C',
+                color: '#FFFFFF',
+                backgroundColor: '#5C4B99',
                 padding: '6px 18px',
                 borderRadius: '12px',
-                border: '1px solid rgba(168, 203, 183, 0.3)',
+                border: '1px solid #3D246C',
                 letterSpacing: '3px',
               }}
             >
@@ -130,7 +130,7 @@ export default async function Image() {
             style={{
               fontSize: 28,
               fontWeight: 700,
-              color: '#A8CBB7',
+              color: '#5C4B99',
               letterSpacing: '1px',
             }}
           >
@@ -140,7 +140,7 @@ export default async function Image() {
           <div
             style={{
               fontSize: 18,
-              color: 'rgba(242, 239, 232, 0.8)',
+              color: 'rgba(61, 36, 108, 0.85)',
               maxWidth: '900px',
               lineHeight: 1.5,
               marginTop: '4px',
@@ -157,7 +157,7 @@ export default async function Image() {
             alignItems: 'center',
             justifyContent: 'space-between',
             paddingTop: '20px',
-            borderTop: '1px solid rgba(168, 203, 183, 0.2)',
+            borderTop: '1px solid rgba(61, 36, 108, 0.15)',
           }}
         >
           <div
@@ -173,9 +173,9 @@ export default async function Image() {
                 style={{
                   padding: '6px 14px',
                   borderRadius: '10px',
-                  backgroundColor: '#06110C',
-                  border: '1px solid rgba(168, 203, 183, 0.25)',
-                  color: '#F2EFE8',
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid rgba(61, 36, 108, 0.2)',
+                  color: '#3D246C',
                   fontSize: 14,
                   fontWeight: 600,
                 }}
@@ -188,8 +188,8 @@ export default async function Image() {
           <div
             style={{
               fontSize: 14,
-              color: '#A8CBB7',
-              fontWeight: 600,
+              color: '#5C4B99',
+              fontWeight: 700,
               letterSpacing: '1px',
             }}
           >

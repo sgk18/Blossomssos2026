@@ -57,15 +57,15 @@ export function Navbar() {
     <>
       {/* Floating Glass Navigation Header (Top Pill Nav) */}
       <header className="fixed top-3 sm:top-4 inset-x-0 z-40 flex justify-center px-3 sm:px-6 pointer-events-none">
-        <div className="pointer-events-auto w-full max-w-6xl inline-flex items-center justify-between p-1.5 sm:p-2 rounded-full bg-[#171717]/85 backdrop-blur-xl border border-[#A8CBB7]/20 shadow-2xl shadow-black/80 ring-1 ring-[#A8CBB7]/10 transition-all">
+        <div className="pointer-events-auto w-full max-w-6xl inline-flex items-center justify-between p-1.5 sm:p-2 rounded-full bg-[#FFDBC3]/90 backdrop-blur-xl border border-[#3D246C]/15 shadow-xl shadow-[#3D246C]/10 ring-1 ring-[#3D246C]/10 transition-all">
           
           {/* 1. Left: Blossoms Brand Mark */}
           <Link 
             href="/" 
-            className="flex items-center gap-2.5 pl-2 pr-3 py-1 rounded-full hover:bg-white/5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] transition-colors"
+            className="flex items-center gap-2.5 pl-2 pr-3 py-1 rounded-full hover:bg-white/50 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99] transition-colors"
             aria-label="Blossoms SOS Homepage"
           >
-            <div className="relative w-8 h-8 sm:w-9 sm:h-9 shrink-0 flex items-center justify-center rounded-full bg-[#06110C] border border-[#A8CBB7]/25 overflow-hidden shadow-sm group-hover:scale-105 transition-transform">
+            <div className="relative w-8 h-8 sm:w-9 sm:h-9 shrink-0 flex items-center justify-center rounded-full bg-white/80 border border-[#3D246C]/20 overflow-hidden shadow-sm group-hover:scale-105 transition-transform">
               <Image 
                 src="/blossoms_logo.webp" 
                 alt="Blossoms Logo" 
@@ -76,10 +76,10 @@ export function Navbar() {
               />
             </div>
             <div className="flex flex-col text-left">
-              <span className="font-angular font-black text-xs sm:text-sm tracking-wider text-[#F2EFE8] leading-tight">
+              <span className="font-angular font-black text-xs sm:text-sm tracking-wider text-[#3D246C] leading-tight">
                 BLOSSOMS
               </span>
-              <span className="font-tech text-[9px] sm:text-[10px] text-[#A8CBB7] tracking-widest uppercase leading-none font-semibold">
+              <span className="font-tech text-[9px] sm:text-[10px] text-[#5C4B99] tracking-widest uppercase leading-none font-semibold">
                 SOS
               </span>
             </div>
@@ -94,10 +94,10 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`font-tech px-2.5 lg:px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-150 flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] ${
+                  className={`font-tech px-2.5 lg:px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-150 flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99] ${
                     isActive
-                      ? 'bg-[#06110C] text-[#F2EFE8] font-bold border border-[#A8CBB7]/35 shadow-md shadow-black/40'
-                      : 'text-[#F2EFE8]/75 hover:text-[#F2EFE8] hover:bg-white/5'
+                      ? 'bg-[#5C4B99] text-white font-bold shadow-md shadow-[#5C4B99]/30'
+                      : 'text-[#3D246C]/80 hover:text-[#3D246C] hover:bg-[#9F91CC]/25'
                   }`}
                   aria-current={isActive ? 'page' : undefined}
                 >
@@ -115,7 +115,7 @@ export function Navbar() {
                 href={siteConfig.registrationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden sm:flex font-tech clay-btn-accent px-4 py-1.5 rounded-full text-[11px] font-bold items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
+                className="hidden sm:flex font-tech clay-btn-primary bg-[#5C4B99] hover:bg-[#4C3C82] text-white px-4 py-1.5 rounded-full text-[11px] font-bold items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3D246C]"
               >
                 <span>Register</span>
               </a>
@@ -126,12 +126,12 @@ export function Navbar() {
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-full text-[#F2EFE8] bg-white/5 hover:bg-white/10 border border-[#A8CBB7]/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] transition-all flex items-center justify-center"
+                className="p-2 rounded-full text-[#3D246C] bg-white/70 hover:bg-white border border-[#3D246C]/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99] transition-all flex items-center justify-center"
                 aria-expanded={mobileMenuOpen}
                 aria-controls="mobile-navigation-menu"
                 aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
               >
-                {mobileMenuOpen ? <X className="w-5 h-5 text-[#A8CBB7]" /> : <Menu className="w-5 h-5 text-[#F2EFE8]" />}
+                {mobileMenuOpen ? <X className="w-5 h-5 text-[#3D246C]" /> : <Menu className="w-5 h-5 text-[#3D246C]" />}
               </button>
             </div>
           </div>
@@ -141,7 +141,7 @@ export function Navbar() {
       {/* Mobile Off-Canvas Sliding Drawer (Left to Right) */}
       {/* 1. Dimmed Backdrop Overlay */}
       <div 
-        className={`md:hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 transition-opacity duration-300 ${
+        className={`md:hidden fixed inset-0 bg-[#3D246C]/60 backdrop-blur-sm z-50 transition-opacity duration-300 ${
           mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
         onClick={() => setMobileMenuOpen(false)}
@@ -151,7 +151,7 @@ export function Navbar() {
       {/* 2. Left-to-Right Sliding Side Drawer */}
       <aside
         id="mobile-navigation-menu"
-        className={`md:hidden fixed inset-y-0 left-0 w-[290px] sm:w-[320px] max-w-[85vw] h-full bg-[#171717] border-r border-[#A8CBB7]/20 shadow-2xl shadow-black z-[60] flex flex-col justify-between transition-transform duration-300 ease-in-out ${
+        className={`md:hidden fixed inset-y-0 left-0 w-[290px] sm:w-[320px] max-w-[85vw] h-full bg-[#FFDBC3] border-r border-[#3D246C]/20 shadow-2xl shadow-[#3D246C]/30 z-[60] flex flex-col justify-between transition-transform duration-300 ease-in-out ${
           mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
         role="dialog"
@@ -159,20 +159,20 @@ export function Navbar() {
         aria-label="Mobile Navigation Menu"
       >
         {/* Drawer Header with Brand & Close Button */}
-        <div className="p-4 sm:p-5 border-b border-[#A8CBB7]/15 flex items-center justify-between bg-[#06110C]/80">
+        <div className="p-4 sm:p-5 border-b border-[#3D246C]/15 flex items-center justify-between bg-[#9F91CC]/25">
           <Link 
             href="/" 
             onClick={() => setMobileMenuOpen(false)}
-            className="flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] rounded-lg group"
+            className="flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99] rounded-lg group"
           >
-            <div className="w-8 h-8 rounded-full bg-[#06110C] border border-[#A8CBB7]/25 p-0.5 flex items-center justify-center overflow-hidden shadow-sm group-hover:scale-105 transition-transform">
+            <div className="w-8 h-8 rounded-full bg-white/80 border border-[#3D246C]/20 p-0.5 flex items-center justify-center overflow-hidden shadow-sm group-hover:scale-105 transition-transform">
               <Image src="/blossoms_logo.webp" alt="Blossoms" width={28} height={28} className="object-contain" />
             </div>
             <div className="flex flex-col text-left">
-              <span className="font-angular font-black text-xs uppercase tracking-wider text-[#F2EFE8] leading-tight">
+              <span className="font-angular font-black text-xs uppercase tracking-wider text-[#3D246C] leading-tight">
                 BLOSSOMS SOS
               </span>
-              <span className="font-tech text-[9px] text-[#A8CBB7] tracking-widest uppercase font-semibold">
+              <span className="font-tech text-[9px] text-[#5C4B99] tracking-widest uppercase font-semibold">
                 School of Sciences
               </span>
             </div>
@@ -180,16 +180,16 @@ export function Navbar() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(false)}
-            className="p-1.5 rounded-xl text-[#F2EFE8]/80 hover:text-[#F2EFE8] hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] transition-colors"
+            className="p-1.5 rounded-xl text-[#3D246C]/80 hover:text-[#3D246C] hover:bg-[#9F91CC]/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99] transition-colors"
             aria-label="Close navigation menu"
           >
-            <X className="w-5 h-5 text-[#A8CBB7]" />
+            <X className="w-5 h-5 text-[#3D246C]" />
           </button>
         </div>
 
         {/* Scrollable Navigation Links */}
         <nav className="flex-1 overflow-y-auto px-4 py-5 space-y-1.5 font-tech" aria-label="Mobile Navigation Links">
-          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#A8CBB7]/70 px-3 block mb-2">
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#5C4B99] px-3 block mb-2">
             Festival Navigation
           </span>
           {NAV_LINKS.map((link) => {
@@ -199,39 +199,39 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`px-3.5 py-3 rounded-xl text-sm font-semibold flex items-center justify-between transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] ${
+                className={`px-3.5 py-3 rounded-xl text-sm font-semibold flex items-center justify-between transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99] ${
                   isActive
-                    ? 'bg-[#06110C] text-[#F2EFE8] font-bold border border-[#A8CBB7]/35 shadow-md shadow-black/50'
-                    : 'text-[#F2EFE8]/75 hover:text-[#F2EFE8] hover:bg-white/5'
+                    ? 'bg-[#5C4B99] text-white font-bold shadow-md shadow-[#5C4B99]/25'
+                    : 'text-[#3D246C]/80 hover:text-[#3D246C] hover:bg-[#9F91CC]/25'
                 }`}
                 aria-current={isActive ? 'page' : undefined}
               >
                 <span>{link.label}</span>
-                {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#A8CBB7]" />}
+                {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#FFDBC3]" />}
               </Link>
             );
           })}
         </nav>
 
         {/* Drawer Bottom Actions & Brand Footer */}
-        <div className="p-4 sm:p-5 border-t border-[#A8CBB7]/15 bg-[#06110C]/90 space-y-4 font-tech">
+        <div className="p-4 sm:p-5 border-t border-[#3D246C]/15 bg-[#9F91CC]/25 space-y-4 font-tech">
           {siteConfig.registrationUrl && (
             <a
               href={siteConfig.registrationUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full clay-btn-accent py-3 rounded-xl text-xs font-bold flex items-center justify-center shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full clay-btn-primary bg-[#5C4B99] hover:bg-[#4C3C82] text-white py-3 rounded-xl text-xs font-bold flex items-center justify-center shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98]"
             >
               <span>Register for Events</span>
             </a>
           )}
 
-          <div className="pt-2 flex items-center justify-between text-[11px] text-[#F2EFE8]/70 border-t border-[#A8CBB7]/10">
+          <div className="pt-2 flex items-center justify-between text-[11px] text-[#3D246C]/80 border-t border-[#3D246C]/10">
             <div>
-              <p className="font-semibold text-[#F2EFE8]">Team Onyx</p>
-              <p className="text-[10px] text-[#A8CBB7]">Be the Best</p>
+              <p className="font-semibold text-[#3D246C]">Team Onyx</p>
+              <p className="text-[10px] text-[#5C4B99]">Be the Best</p>
             </div>
-            <span className="font-mono text-[10px] px-2.5 py-1 rounded-full bg-[#06110C] text-[#A8CBB7] border border-[#A8CBB7]/20">
+            <span className="font-mono text-[10px] px-2.5 py-1 rounded-full bg-white/80 text-[#3D246C] border border-[#3D246C]/20">
               School of Sciences
             </span>
           </div>
