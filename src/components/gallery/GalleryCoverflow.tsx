@@ -3,7 +3,7 @@
 import Image from 'next/image';
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { ChevronLeft, ChevronRight, MapPin, Calendar, Maximize2 } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 import { COVERFLOW_SLIDES, CoverflowSlide } from '@/data/gallery-data';
 
 interface GalleryCoverflowProps {
@@ -181,15 +181,6 @@ export function GalleryCoverflow({ onSelectImage }: GalleryCoverflowProps) {
                       <Maximize2 className="w-3.5 h-3.5" />
                     </button>
                   )}
-
-                  {/* On-card title preview for side items */}
-                  {!isActive && (
-                    <div className="absolute bottom-4 inset-x-4 text-center pointer-events-none">
-                      <p className="font-angular font-black text-sm text-white truncate drop-shadow-md">
-                        {slide.title}
-                      </p>
-                    </div>
-                  )}
                 </div>
               </div>
             );
@@ -203,22 +194,6 @@ export function GalleryCoverflow({ onSelectImage }: GalleryCoverflowProps) {
             <h3 className="font-angular text-xl sm:text-2xl font-black text-[#3D246C] tracking-tight">
               {currentSlide.title}
             </h3>
-            
-            <div className="flex items-center justify-center flex-wrap gap-x-3 gap-y-1 text-xs text-[#5C4B99] font-semibold mt-1">
-              <span className="flex items-center gap-1">
-                <Calendar className="w-3.5 h-3.5" />
-                {currentSlide.date}
-              </span>
-              <span className="text-[#3D246C]/30">•</span>
-              <span className="flex items-center gap-1 text-[#3D246C]/80">
-                <MapPin className="w-3.5 h-3.5 text-[#5C4B99]" />
-                {currentSlide.venue}
-              </span>
-            </div>
-
-            <p className="text-xs sm:text-sm text-[#5C4B99] font-body mt-2 leading-relaxed max-w-lg mx-auto line-clamp-2 sm:line-clamp-none font-medium">
-              {currentSlide.description}
-            </p>
           </div>
 
           {/* Carousel Slide Indicators */}
