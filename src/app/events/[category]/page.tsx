@@ -6,7 +6,6 @@ import { EVENT_CATEGORIES } from '@/content/events';
 import { SubEventCard } from '@/components/events/SubEventCard';
 import { CategoryIcon } from '@/components/ui/CategoryIcon';
 import { ArrowLeft, Layers, ArrowRight } from 'lucide-react';
-
 import { countsByCategory, type EventCategory } from '@/data/events';
 import { siteConfig } from '@/data/site-config';
 
@@ -27,8 +26,9 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   const category = EVENT_CATEGORIES.find((c) => c.slug === slug);
   if (!category) return {};
 
-  const title = `${category.name} Competitions (${category.events.length} Events) | Blossoms SOS`;
-  const description = `${category.description} Explore rules, evaluation criteria, and guidelines for all ${category.events.length} official ${category.name} competitions at Blossoms School of Sciences.`;
+  const categoryCount = countsByCategory[category.slug as EventCategory] ?? category.events.length;
+  const title = `${category.name} Competitions (${categoryCount} Events) | Blossoms SOS`;
+  const description = `${category.description} Explore rules, evaluation criteria, and guidelines for all ${categoryCount} official ${category.name} competitions at Blossoms School of Sciences.`;
   const url = `${siteConfig.canonicalUrl}/events/${category.slug}`;
 
   return {

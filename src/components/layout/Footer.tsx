@@ -5,14 +5,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { siteConfig } from '@/data/site-config';
 import { countsByCategory } from '@/data/events';
-import { MapPin, Mail, Compass, Building, ArrowUp } from 'lucide-react';
+import { MapPin, Mail, Compass, Building } from 'lucide-react';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
   return (
     <footer className="w-full border-t border-[#A8CBB7]/15 bg-[#171717] text-[#F2EFE8] text-sm relative overflow-hidden z-20" role="contentinfo">
@@ -52,14 +48,14 @@ export function Footer() {
               The premier annual intra-deanery cultural celebration of the School of Sciences at CHRIST (Deemed to be University), Bangalore, selecting Team Onyx for the university inter-deanery finals. Where scientific rigor converges with creative expression.
             </p>
 
-            {/* Official CHRIST Logo & Badge */}
-            <div className="pt-2 flex flex-wrap items-center gap-3">
+            {/* Official CHRIST Logo & Central Campus Unified Button */}
+            <div className="pt-2 flex items-center">
               <a 
                 href="https://www.christuniversity.in" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center bg-white hover:bg-white/95 px-3.5 py-1.5 rounded-xl shadow-md border border-white/30 transition-all hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
-                title="CHRIST (Deemed to be University) Official Website"
+                className="inline-flex items-center gap-2.5 sm:gap-3 bg-white hover:bg-neutral-50 px-3.5 py-1.5 rounded-xl shadow-md border border-white/30 transition-all hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7]"
+                title="CHRIST (Deemed to be University) - Central Campus"
               >
                 <Image
                   src="/christ_university_official_logo.png"
@@ -68,10 +64,11 @@ export function Footer() {
                   height={61}
                   className="h-8 sm:h-9 w-auto object-contain"
                 />
+                <span className="h-5 w-px bg-slate-300" aria-hidden="true" />
+                <span className="font-tech text-[11px] sm:text-xs font-bold text-[#1c4c96] tracking-wider uppercase whitespace-nowrap">
+                  Central Campus
+                </span>
               </a>
-              <span className="font-tech text-[11px] px-3 py-1 rounded-full bg-[#06110C] text-[#A8CBB7] border border-[#A8CBB7]/25 font-semibold shadow-sm">
-                Central Campus
-              </span>
             </div>
           </div>
 
@@ -203,37 +200,22 @@ export function Footer() {
 
         </div>
 
-        {/* Bottom Utility Bar: Copyright, Navigation Links & Tactile Back to Top */}
+        {/* Bottom Utility Bar: Copyright & Navigation Links */}
         <div className="mt-14 pt-8 border-t border-[#A8CBB7]/15 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-[#F2EFE8]/60">
-          <div className="font-body flex flex-col sm:flex-row items-center sm:items-start gap-2 text-center sm:text-left">
+          <div className="font-body text-center sm:text-left">
             <p>© {currentYear} School of Sciences, CHRIST (Deemed to be University). All rights reserved.</p>
-            <span className="hidden sm:inline text-[#A8CBB7]/40">•</span>
-            <p className="font-tech text-[11px] text-[#A8CBB7]">Curated for Inter-Deanery Excellence</p>
           </div>
 
-          <div className="flex items-center gap-6">
-            <div className="font-tech flex items-center gap-5 text-xs">
-              <Link href="/about" className="hover:text-[#A8CBB7] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] rounded">
-                About
-              </Link>
-              <Link href="/events" className="hover:text-[#A8CBB7] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] rounded">
-                Disciplines
-              </Link>
-              <Link href="/schedule" className="hover:text-[#A8CBB7] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] rounded">
-                Schedule
-              </Link>
-            </div>
-
-            {/* Tactile Back to Top Button */}
-            <button
-              type="button"
-              onClick={scrollToTop}
-              className="font-tech clay-btn-accent px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] transition-transform hover:scale-105 active:scale-95"
-              aria-label="Scroll back to top of page"
-            >
-              <span>Top</span>
-              <ArrowUp className="w-3.5 h-3.5" />
-            </button>
+          <div className="font-tech flex items-center gap-5 text-xs">
+            <Link href="/about" className="hover:text-[#A8CBB7] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] rounded">
+              About
+            </Link>
+            <Link href="/events" className="hover:text-[#A8CBB7] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] rounded">
+              Disciplines
+            </Link>
+            <Link href="/schedule" className="hover:text-[#A8CBB7] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8CBB7] rounded">
+              Schedule
+            </Link>
           </div>
         </div>
 
