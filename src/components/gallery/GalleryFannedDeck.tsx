@@ -53,20 +53,20 @@ export function GalleryFannedDeck({ onSelectImage }: GalleryFannedDeckProps) {
   return (
     <section 
       aria-label="Trending on Socials Highlights" 
-      className="relative w-full py-16 sm:py-24 bg-[#FBFAFF] overflow-hidden border-y border-[#EAE6F2]/80"
+      className="relative w-full py-16 sm:py-24 overflow-hidden border-y border-[#3D246C]/15"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         
         {/* Section Header matching Image 1: "What's Trending ON SOCIALS" */}
         <div className="max-w-xl mx-auto mb-10 sm:mb-14">
-          <span className="font-serif italic text-xl sm:text-2xl text-[#1B1B26]/80 block font-normal tracking-wide">
+          <span className="font-serif italic text-xl sm:text-2xl text-[#3D246C]/85 block font-normal tracking-wide">
             What&apos;s Trending
           </span>
-          <h2 className="font-angular text-3xl sm:text-5xl font-black text-[#1B1B26] tracking-tight uppercase mt-0.5">
+          <h2 className="font-angular text-3xl sm:text-5xl font-black text-[#3D246C] tracking-tight uppercase mt-0.5">
             ON SOCIALS
           </h2>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F0EBFF] text-[#7452F5] text-xs font-bold mt-3">
-            <Flame className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-[#3D246C]/15 text-[#5C4B99] text-xs font-bold mt-3 shadow-xs">
+            <Flame className="w-3.5 h-3.5 text-[#5C4B99]" />
             <span>Campus Viral Frames &bull; #TeamOnyx2026</span>
           </div>
         </div>
@@ -74,9 +74,9 @@ export function GalleryFannedDeck({ onSelectImage }: GalleryFannedDeckProps) {
         {/* Fanned Cards Showcase with Organic Lavender Backdrop */}
         <div className="relative max-w-4xl mx-auto h-[320px] sm:h-[400px] md:h-[440px] flex items-center justify-center">
           
-          {/* Organic Fluid Silhouette in soft lavender (matches Reference Image 1) */}
+          {/* Organic Fluid Silhouette in soft lavender #9F91CC (matches palette) */}
           <div 
-            className="absolute inset-0 m-auto w-[85%] max-w-[620px] h-[75%] rounded-[48%_52%_45%_55%_/_50%_45%_55%_50%] bg-[#F0EBFF]/80 -rotate-3 blur-xs pointer-events-none transition-all duration-700" 
+            className="absolute inset-0 m-auto w-[85%] max-w-[620px] h-[75%] rounded-[48%_52%_45%_55%_/_50%_45%_55%_50%] bg-[#9F91CC]/35 -rotate-3 blur-xs pointer-events-none transition-all duration-700" 
             aria-hidden="true" 
           />
 
@@ -102,9 +102,9 @@ export function GalleryFannedDeck({ onSelectImage }: GalleryFannedDeckProps) {
                       });
                     }
                   }}
-                  className={`absolute w-[140px] sm:w-[190px] md:w-[220px] aspect-[9/14] rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer bg-white border border-[#EAE6F2] transition-all duration-300 ease-out shadow-lg ${
+                  className={`absolute w-[140px] sm:w-[190px] md:w-[220px] aspect-[9/14] rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer bg-white border border-[#3D246C]/15 transition-all duration-300 ease-out shadow-lg ${
                     isHovered 
-                      ? 'shadow-2xl shadow-[#7452F5]/25 ring-3 ring-[#7452F5]' 
+                      ? 'shadow-2xl shadow-[#5C4B99]/30 ring-3 ring-[#5C4B99]' 
                       : 'hover:shadow-xl'
                   }`}
                   role="button"
@@ -124,7 +124,7 @@ export function GalleryFannedDeck({ onSelectImage }: GalleryFannedDeckProps) {
                     }
                   }}
                 >
-                  <div className="relative w-full h-full bg-[#1B1B26]">
+                  <div className="relative w-full h-full bg-[#3D246C]">
                     <Image
                       src={card.image}
                       alt={card.alt}
@@ -134,18 +134,18 @@ export function GalleryFannedDeck({ onSelectImage }: GalleryFannedDeckProps) {
                     />
 
                     {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1B1B26]/85 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#3D246C]/90 via-transparent to-transparent pointer-events-none" />
 
                     {/* Stats Pill */}
                     <div className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3">
-                      <span className="px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold bg-white/90 backdrop-blur-md text-[#7452F5] shadow-xs">
+                      <span className="px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold bg-white/95 backdrop-blur-md text-[#5C4B99] shadow-xs">
                         {card.stats}
                       </span>
                     </div>
 
                     {/* Card Title & Pillar Footer */}
                     <div className="absolute bottom-3 inset-x-3 text-left">
-                      <span className="text-[9px] sm:text-[10px] font-tech font-bold uppercase tracking-wider text-white/80 block">
+                      <span className="text-[9px] sm:text-[10px] font-tech font-bold uppercase tracking-wider text-[#FFDBC3] block">
                         {card.category}
                       </span>
                       <p className="font-angular font-bold text-xs sm:text-sm text-white truncate mt-0.5">
@@ -159,9 +159,9 @@ export function GalleryFannedDeck({ onSelectImage }: GalleryFannedDeckProps) {
           </div>
         </div>
 
-        {/* Social Media Follow Section (Matches Reference Image 1 "Follow Revels MIT") */}
+        {/* Social Media Follow Section */}
         <div className="mt-8 sm:mt-12 flex flex-col items-center">
-          <h3 className="font-serif text-lg sm:text-xl text-[#1B1B26] font-medium tracking-tight mb-4">
+          <h3 className="font-serif text-lg sm:text-xl text-[#3D246C] font-semibold tracking-tight mb-4">
             Follow Blossoms SOS &bull; Team Onyx
           </h3>
 
@@ -171,13 +171,13 @@ export function GalleryFannedDeck({ onSelectImage }: GalleryFannedDeckProps) {
               href="https://www.youtube.com/@christuniversitybangalore"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white hover:bg-[#F0EBFF] text-[#1B1B26] hover:text-[#7452F5] border border-[#EAE6F2] hover:border-[#7452F5]/30 shadow-xs transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7452F5]"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 hover:bg-white text-[#3D246C] hover:text-[#5C4B99] border border-[#3D246C]/15 hover:border-[#5C4B99]/30 shadow-xs transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
             >
-              <svg className="w-4 h-4 fill-currentColor text-[#7452F5]" viewBox="0 0 24 24" aria-hidden="true">
+              <svg className="w-4 h-4 fill-currentColor text-[#5C4B99]" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
               </svg>
               <span>YouTube</span>
-              <ExternalLink className="w-3 h-3 text-[#686478]" />
+              <ExternalLink className="w-3 h-3 text-[#5C4B99]/60" />
             </a>
 
             {/* Instagram */}
@@ -185,19 +185,19 @@ export function GalleryFannedDeck({ onSelectImage }: GalleryFannedDeckProps) {
               href="https://www.instagram.com/christ_university_bangalore"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white hover:bg-[#F0EBFF] text-[#1B1B26] hover:text-[#7452F5] border border-[#EAE6F2] hover:border-[#7452F5]/30 shadow-xs transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7452F5]"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 hover:bg-white text-[#3D246C] hover:text-[#5C4B99] border border-[#3D246C]/15 hover:border-[#5C4B99]/30 shadow-xs transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
             >
-              <svg className="w-4 h-4 fill-currentColor text-[#7452F5]" viewBox="0 0 24 24" aria-hidden="true">
+              <svg className="w-4 h-4 fill-currentColor text-[#5C4B99]" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
               </svg>
               <span>Instagram</span>
-              <ExternalLink className="w-3 h-3 text-[#686478]" />
+              <ExternalLink className="w-3 h-3 text-[#5C4B99]/60" />
             </a>
 
             {/* University Portal */}
             <Link
               href="/schedule"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#F0EBFF] hover:bg-[#7452F5] text-[#7452F5] hover:text-white border border-[#7452F5]/25 shadow-xs transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7452F5]"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#5C4B99] hover:bg-[#4C3C82] text-white border border-white/20 shadow-xs transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
             >
               <Compass className="w-4 h-4" />
               <span>Full Schedule &amp; Arenas</span>
@@ -209,4 +209,3 @@ export function GalleryFannedDeck({ onSelectImage }: GalleryFannedDeckProps) {
     </section>
   );
 }
-
