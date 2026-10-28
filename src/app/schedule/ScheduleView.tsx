@@ -12,7 +12,6 @@ import {
 } from 'lucide-react';
 import {
   BLOSSOMS_SCHEDULE_2026,
-  SCHEDULE_METADATA_2026,
   SCHEDULE_CATEGORY_CONFIG,
   groupEventsByDate,
 } from '@/data/schedule-2026-27';
@@ -128,7 +127,6 @@ export function ScheduleView() {
       {/* Schedule Overview & Summary Statistics */}
       <ScheduleOverviewStats
         events={BLOSSOMS_SCHEDULE_2026}
-        metadata={SCHEDULE_METADATA_2026}
         filteredCount={filteredEvents.length}
       />
 
