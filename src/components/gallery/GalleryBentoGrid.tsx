@@ -85,18 +85,53 @@ export function GalleryBentoGrid() {
     }
   };
 
-  // Helper for Bento grid cell classes
-  const getBentoClasses = (item: GalleryItem, index: number) => {
-    if (item.featured || index === 0) {
-      return 'col-span-12 md:col-span-8 lg:col-span-8 row-span-2 min-h-[340px] sm:min-h-[420px]';
+  // Helper for Bento grid cell classes - ensures zero overlap and consistent gaps
+  const getBentoClasses = (index: number, total: number) => {
+    // When filtered to a small subset (e.g. 2 items)
+    if (total <= 2) {
+      return 'col-span-12 md:col-span-6 h-[260px] sm:h-[340px] md:h-[380px]';
     }
-    if (item.aspect === 'portrait') {
-      return 'col-span-6 md:col-span-4 lg:col-span-4 row-span-2 min-h-[320px] sm:min-h-[400px]';
+    if (total === 3) {
+      return 'col-span-12 sm:col-span-6 md:col-span-4 h-[240px] sm:h-[280px] md:h-[320px]';
     }
-    if (item.aspect === 'panoramic') {
-      return 'col-span-12 md:col-span-8 lg:col-span-8 min-h-[220px] sm:min-h-[280px]';
+    if (total === 4) {
+      if (index === 0) return 'col-span-12 md:col-span-8 h-[260px] sm:h-[340px] md:h-[380px]';
+      if (index === 1) return 'col-span-12 md:col-span-4 h-[260px] sm:h-[340px] md:h-[380px]';
+      return 'col-span-12 sm:col-span-6 md:col-span-6 h-[240px] sm:h-[280px] md:h-[320px]';
     }
-    return 'col-span-6 md:col-span-4 lg:col-span-4 min-h-[220px] sm:min-h-[280px]';
+
+    // Default bento collage rhythm (cycles of 12)
+    const pos = index % 12;
+    switch (pos) {
+      case 0:
+        // Wide hero capture (8 cols)
+        return 'col-span-12 md:col-span-8 h-[260px] sm:h-[340px] md:h-[400px]';
+      case 1:
+        // Accent companion (4 cols)
+        return 'col-span-12 md:col-span-4 h-[260px] sm:h-[340px] md:h-[400px]';
+      case 2:
+      case 3:
+      case 4:
+        // Triplet row (4 cols + 4 cols + 4 cols)
+        return 'col-span-12 sm:col-span-6 md:col-span-4 h-[220px] sm:h-[260px] md:h-[290px]';
+      case 5:
+      case 6:
+      case 7:
+        // Secondary triplet row (4 cols + 4 cols + 4 cols)
+        return 'col-span-12 sm:col-span-6 md:col-span-4 h-[220px] sm:h-[260px] md:h-[290px]';
+      case 8:
+        // Accent companion (4 cols)
+        return 'col-span-12 md:col-span-4 h-[260px] sm:h-[340px] md:h-[400px]';
+      case 9:
+        // Wide hero capture (8 cols)
+        return 'col-span-12 md:col-span-8 h-[260px] sm:h-[340px] md:h-[400px]';
+      case 10:
+      case 11:
+        // Duo finale (6 cols + 6 cols)
+        return 'col-span-12 sm:col-span-6 md:col-span-6 h-[240px] sm:h-[300px] md:h-[340px]';
+      default:
+        return 'col-span-12 sm:col-span-6 md:col-span-4 h-[220px] sm:h-[260px] md:h-[290px]';
+    }
   };
 
   return (
@@ -140,9 +175,9 @@ export function GalleryBentoGrid() {
         {/* Bento Grid Container */}
         <div className="p-4 sm:p-6 lg:p-8 rounded-3xl bg-[#FFDBC3] border border-[#3D246C]/15 shadow-sm"
           style={{ backgroundColor: '#FFDBC3' }}>
-          <div className="grid grid-cols-12 gap-3 sm:gap-4 md:gap-5 auto-rows-[160px] sm:auto-rows-[180px]">
+          <div className="grid grid-cols-12 gap-3 sm:gap-4 md:gap-5">
             {displayedItems.map((item, index) => {
-              const cellClasses = getBentoClasses(item, index);
+              const cellClasses = getBentoClasses(index, displayedItems.length);
 
               return (
                 <div
