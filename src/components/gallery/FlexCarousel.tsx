@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-nocheck
 'use client';
 
@@ -258,13 +259,7 @@ const Digits = ({ value }: { value: number }) => (
 );
 
 
-export interface FlexCarouselItem {
-  src: string;
-  alt?: string;
-  title?: string;
-  subtitle?: string;
-  [key: string]: any;
-}
+export type { FlexCarouselItem } from '@/data/gallery-data';
 
 export interface FlexCarouselProps {
   items?: FlexCarouselItem[];
@@ -291,7 +286,7 @@ export interface FlexCarouselProps {
   captions?: boolean;
   captureWheel?: boolean;
   onChange?: (index: number) => void;
-  onSelect?: (index: number, item: any) => void;
+  onSelect?: (index: number, item: FlexCarouselItem) => void;
   className?: string;
   style?: React.CSSProperties;
 }
