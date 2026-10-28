@@ -12,6 +12,7 @@ const requiredAppRoutes = [
   'src/app/events/[category]/page.tsx',
   'src/app/schedule/page.tsx',
   'src/app/team/page.tsx',
+  'src/app/gallery/page.tsx',
   'src/app/winners/page.tsx',
   'src/app/not-found.tsx',
 ];
@@ -51,6 +52,8 @@ try {
       ['/events', 200],
       ['/events/art', 200],
       ['/schedule', 200],
+      ['/team', 200],
+      ['/gallery', 200],
       // ['/winners', 307] (redirects to / for now),
       ['/unknown-test-route-404', 404]
     ];

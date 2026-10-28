@@ -104,7 +104,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/#gallery" className="text-[#686478] hover:text-[#7452F5] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7452F5] rounded font-medium">
+                <Link href="/gallery" className="text-[#686478] hover:text-[#7452F5] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7452F5] rounded font-medium">
                   Festival Gallery
                 </Link>
               </li>

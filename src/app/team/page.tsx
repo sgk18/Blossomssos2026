@@ -6,12 +6,12 @@ import { siteConfig } from '@/data/site-config';
 import { OurTeamsSection } from '@/components/team/OurTeamsSection';
 
 export const metadata: Metadata = {
-  title: 'Our Teams | Blossoms SOS — Team Onyx',
+  title: 'Our Team | Blossoms SOS — Team Onyx',
   description:
     'Meet our Blossoms team members across Logistics, Hospitality, Media, Discipline, and Core Committee representing the School of Sciences at CHRIST (Deemed to be University), Bangalore.',
   alternates: { canonical: '/team' },
   openGraph: {
-    title: 'Our Teams | Blossoms SOS Organising Committee',
+    title: 'Our Team | Blossoms SOS Organising Committee',
     description:
       'Meet our Blossoms team members across Logistics, Hospitality, Media, Discipline, and Core Committee representing the School of Sciences at CHRIST (Deemed to be University), Bangalore.',
     url: `${siteConfig.canonicalUrl}/team`,
@@ -37,34 +37,34 @@ export default function TeamPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
-      <div className="min-h-screen pt-24 pb-20 md:pt-28 md:pb-24 bg-[#FBFAFF] text-[#1B1B26]">
+      <div className="min-h-screen pt-24 pb-20 md:pt-28 md:pb-24 bg-[#FBFAFF] text-[#1B1B26] selection:bg-[#F0EBFF] selection:text-[#7452F5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
 
           {/* ── Breadcrumb Navigation ── */}
-          <div className="flex items-center justify-between border-b border-[#EAE6F2] pb-3">
+          <div className="flex items-center justify-between border-b border-[#EAE6F2] pb-3 text-xs font-tech">
             <Link
               href="/"
-              className="inline-flex items-center gap-1.5 text-xs font-tech font-semibold text-[#686478] hover:text-[#7452F5] transition-colors"
+              className="inline-flex items-center gap-1.5 font-semibold text-[#686478] hover:text-[#7452F5] transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Back to Home</span>
             </Link>
 
-            <span className="text-[11px] font-tech text-[#928EA3] hidden sm:inline">
-              CHRIST (Deemed to be University) · School of Sciences
+            <span className="text-[11px] text-[#928EA3] hidden sm:inline">
+              CHRIST (Deemed to be University) · School of Sciences &bull; Team Onyx
             </span>
           </div>
 
-          {/* ── Main "Our Teams" Section (Matches User Reference Images) ── */}
+          {/* ── Main "Our Team" Section (Brand Color Theme: Pearl White, Onyx & Electric Violet) ── */}
           <main>
             <OurTeamsSection />
           </main>
 
-          {/* ── Clean Footer Bar ── */}
+          {/* ── Editorial Footer Bar ── */}
           <footer className="border-t border-[#EAE6F2] pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-tech text-[#686478]">
-            <p>&ldquo;From Flames to Flights, White Onyx Ignites&rdquo;</p>
-            <div className="flex items-center gap-4">
-              <span>School of Sciences Cultural Committee</span>
+            <p className="font-serif italic text-sm text-[#7452F5]">&ldquo;From Flames to Flights, White Onyx Ignites&rdquo;</p>
+            <div className="flex items-center gap-4 text-xs font-tech">
+              <span>School of Sciences Cultural Delegation</span>
               <a
                 href={`mailto:${siteConfig.contactEmail}`}
                 className="text-[#7452F5] hover:underline flex items-center gap-1 font-semibold"

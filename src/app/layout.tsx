@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Plus_Jakarta_Sans, Orbitron, Space_Grotesk } from 'next/font/google';
+import { Plus_Jakarta_Sans, Orbitron, Space_Grotesk, Cormorant_Garamond } from 'next/font/google';
 import '@/styles/globals.css';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
@@ -21,6 +21,13 @@ const orbitronFont = Orbitron({
 const spaceFont = Space_Grotesk({
   subsets: ['latin'],
   variable: '--font-space',
+  display: 'swap',
+  weight: ['400', '500', '600', '700'],
+});
+
+const cormorantFont = Cormorant_Garamond({
+  subsets: ['latin'],
+  variable: '--font-serif',
   display: 'swap',
   weight: ['400', '500', '600', '700'],
 });
@@ -121,7 +128,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${sansFont.variable} ${orbitronFont.variable} ${spaceFont.variable}`}>
+    <html lang="en" className={`${sansFont.variable} ${orbitronFont.variable} ${spaceFont.variable} ${cormorantFont.variable}`}>
       <head>
         <link rel="icon" href="/blossoms_logo.webp" type="image/webp" />
         <link rel="alternate icon" href="/blossoms_logo.png" type="image/png" />

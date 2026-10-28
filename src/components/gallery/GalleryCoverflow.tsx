@@ -1,0 +1,256 @@
+'use client';
+
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import Image from 'next/image';
+import { ChevronLeft, ChevronRight, Sparkles, MapPin, Calendar, Maximize2 } from 'lucide-react';
+import { COVERFLOW_SLIDES, CoverflowSlide } from '@/data/gallery-data';
+
+interface GalleryCoverflowProps {
+  onSelectImage?: (image: CoverflowSlide) => void;
+}
+
+export function GalleryCoverflow({ onSelectImage }: GalleryCoverflowProps) {
+  const [activeIndex, setActiveIndex] = useState(2); // Start at index 2 (center item)
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const total = COVERFLOW_SLIDES.length;
+
+  const handlePrev = useCallback(() => {
+    setActiveIndex((prev) => (prev > 0 ? prev - 1 : total - 1));
+  }, [total]);
+
+  const handleNext = useCallback(() => {
+    setActiveIndex((prev) => (prev < total - 1 ? prev + 1 : 0));
+  }, [total]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (document.activeElement?.tagName === 'INPUT' || document.activeElement?.tagName === 'TEXTAREA') {
+        return;
+      }
+      if (e.key === 'ArrowLeft') {
+        handlePrev();
+      } else if (e.key === 'ArrowRight') {
+        handleNext();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [handlePrev, handleNext]);
+
+  // Touch gesture handling
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+    }
+    setTouchStartX(null);
+  };
+
+  const currentSlide = COVERFLOW_SLIDES[activeIndex];
+
+  return (
+    <section 
+      aria-label="Interactive 3D Stage Exhibition" 
+      className="relative w-full py-10 sm:py-16 overflow-hidden select-none"
+      ref={containerRef}
+    >
+      {/* 1. Giant Background Editorial Watermark (Inspired by "OBSCURA" in Reference Image 2) */}
+      <div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[65%] w-full pointer-events-none z-0 flex flex-col items-center justify-center opacity-[0.06] sm:opacity-[0.08]"
+        aria-hidden="true"
+      >
+        <span className="font-angular text-[18vw] font-black tracking-tighter text-[#1B1B26] leading-none whitespace-nowrap text-center">
+          BLOSSOMS
+        </span>
+        <span className="font-sans text-[2vw] tracking-[0.45em] uppercase font-bold text-[#7452F5] -mt-2">
+          CENTRAL CAMPUS STAGE ARCHIVE
+        </span>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F0EBFF] border border-[#7452F5]/20 text-[#7452F5] text-xs font-bold tracking-widest uppercase mb-3">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Interactive Cover Flow</span>
+          </div>
+          <h2 className="font-angular text-3xl sm:text-5xl font-black text-[#1B1B26] tracking-tight">
+            The Spotlight Carousel
+          </h2>
+          <p className="mt-2 text-sm sm:text-base text-[#686478] font-body">
+            Swipe or use arrow keys to navigate highlighted festival performances and central stage captures.
+          </p>
+        </div>
+
+        {/* 2. 3D Curved Perspective Carousel Stage */}
+        <div 
+          className="relative w-full h-[320px] sm:h-[420px] md:h-[480px] flex items-center justify-center perspective-[1200px]"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          {COVERFLOW_SLIDES.map((slide, idx) => {
+            const offset = idx - activeIndex;
+            const absOffset = Math.abs(offset);
+            
+            // Only render items within 3 steps of active
+            if (absOffset > 3) return null;
+
+            // 3D positioning calculations
+            const isActive = offset === 0;
+            const translateX = offset * 115; // px spacing in desktop
+            const translateZ = absOffset * -120; // push side cards back
+            const rotateY = offset < 0 ? 32 : offset > 0 ? -32 : 0; // curve flanking cards
+            const scale = 1 - absOffset * 0.12;
+            const opacity = Math.max(0.2, 1 - absOffset * 0.25);
+            const zIndex = 30 - absOffset;
+
+            return (
+              <div
+                key={slide.id}
+                onClick={() => setActiveIndex(idx)}
+                style={{
+                  transform: `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
+                  zIndex,
+                  opacity,
+                }}
+                className={`absolute w-[240px] sm:w-[300px] md:w-[350px] aspect-[4/5] rounded-3xl overflow-hidden cursor-pointer transition-all duration-500 ease-out will-change-transform shadow-xl ${
+                  isActive 
+                    ? 'ring-4 ring-[#7452F5]/30 shadow-2xl shadow-[#7452F5]/15 cursor-default' 
+                    : 'hover:opacity-90 hover:brightness-105'
+                }`}
+                role="button"
+                tabIndex={0}
+                aria-label={`Slide ${idx + 1}: ${slide.title}`}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    setActiveIndex(idx);
+                  }
+                }}
+              >
+                <div className="relative w-full h-full bg-[#1B1B26]">
+                  <Image
+                    src={slide.image}
+                    alt={slide.alt}
+                    fill
+                    sizes="(max-width: 640px) 240px, (max-width: 768px) 300px, 350px"
+                    className="object-cover transition-transform duration-700 ease-out"
+                    priority={absOffset <= 1}
+                  />
+                  {/* Subtle vignette gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1B1B26]/90 via-[#1B1B26]/20 to-transparent pointer-events-none" />
+
+                  {/* Card Badge */}
+                  <div className="absolute top-3.5 left-3.5 sm:top-4 sm:left-4 z-10">
+                    <span className="inline-block px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold tracking-wider uppercase bg-white/90 backdrop-blur-md text-[#7452F5] border border-white/50 shadow-xs">
+                      {slide.pillar}
+                    </span>
+                  </div>
+
+                  {/* Quick Expand Icon if selected */}
+                  {isActive && onSelectImage && (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onSelectImage(slide);
+                      }}
+                      className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 z-10 p-2 rounded-full bg-white/90 hover:bg-white text-[#1B1B26] hover:text-[#7452F5] transition-all shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7452F5]"
+                      title="View Full Resolution"
+                      aria-label="View Full Resolution"
+                    >
+                      <Maximize2 className="w-3.5 h-3.5" />
+                    </button>
+                  )}
+
+                  {/* On-card title preview for side items */}
+                  {!isActive && (
+                    <div className="absolute bottom-4 inset-x-4 text-center pointer-events-none">
+                      <p className="font-angular font-black text-sm text-white truncate drop-shadow-md">
+                        {slide.title}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* 3. Navigation Controls & Active Caption (Inspired by Image 2 caption & arrows) */}
+        <div className="max-w-2xl mx-auto mt-6 sm:mt-10 flex flex-col items-center text-center">
+          <div className="flex items-center justify-center gap-4 sm:gap-6 w-full mb-4">
+            {/* Left Button */}
+            <button
+              onClick={handlePrev}
+              className="p-3 sm:p-3.5 rounded-full bg-white hover:bg-[#F0EBFF] text-[#1B1B26] hover:text-[#7452F5] border border-[#EAE6F2] hover:border-[#7452F5]/30 shadow-md transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7452F5]"
+              aria-label="Previous Highlight"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+
+            {/* Active Details Card */}
+            <div className="flex-1 px-3 sm:px-6">
+              <h3 className="font-angular text-xl sm:text-2xl font-black text-[#1B1B26] tracking-tight">
+                {currentSlide.title}
+              </h3>
+              
+              <div className="flex items-center justify-center flex-wrap gap-x-3 gap-y-1 text-xs text-[#7452F5] font-semibold mt-1">
+                <span className="flex items-center gap-1">
+                  <Calendar className="w-3.5 h-3.5" />
+                  {currentSlide.date}
+                </span>
+                <span className="text-[#686478]/40">•</span>
+                <span className="flex items-center gap-1 text-[#686478]">
+                  <MapPin className="w-3.5 h-3.5 text-[#7452F5]" />
+                  {currentSlide.venue}
+                </span>
+              </div>
+
+              <p className="text-xs sm:text-sm text-[#686478] font-body mt-2 leading-relaxed max-w-lg mx-auto line-clamp-2 sm:line-clamp-none">
+                {currentSlide.description}
+              </p>
+            </div>
+
+            {/* Right Button */}
+            <button
+              onClick={handleNext}
+              className="p-3 sm:p-3.5 rounded-full bg-white hover:bg-[#F0EBFF] text-[#1B1B26] hover:text-[#7452F5] border border-[#EAE6F2] hover:border-[#7452F5]/30 shadow-md transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7452F5]"
+              aria-label="Next Highlight"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+
+          {/* Carousel Slide Indicators */}
+          <div className="flex items-center justify-center gap-1.5 mt-2" aria-label="Slide indicators">
+            {COVERFLOW_SLIDES.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveIndex(idx)}
+                className={`h-2 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7452F5] ${
+                  idx === activeIndex 
+                    ? 'w-7 bg-[#7452F5]' 
+                    : 'w-2 bg-[#EAE6F2] hover:bg-[#7452F5]/40'
+                }`}
+                aria-label={`Go to slide ${idx + 1}`}
+                aria-current={idx === activeIndex ? 'true' : undefined}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
