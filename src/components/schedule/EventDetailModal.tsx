@@ -91,7 +91,7 @@ export function EventDetailModal({ event, isOpen, onClose }: EventDetailModalPro
       role="dialog"
       aria-modal="true"
       aria-labelledby="event-modal-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
+      className="fixed inset-0 z-[70] flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
     >
       {/* Backdrop overlay */}
       <div

@@ -59,19 +59,19 @@ export default function EventsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {/* Page Header */}
-      <div className="max-w-3xl mb-10">
+      <div className="text-center max-w-3xl mx-auto mb-10">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 border border-[#3D246C]/20 text-xs font-semibold text-[#3D246C] mb-4 shadow-sm">
           <span>Curated Disciplines • {totalEvents} Official Sub-Events</span>
         </div>
         <h1 className="text-4xl sm:text-5xl font-extrabold text-[#3D246C] tracking-tight leading-tight">
           Explore Festival Disciplines.
         </h1>
-        <p className="mt-4 text-base text-[#3D246C]/80 leading-relaxed font-normal">
+        <p className="mt-4 text-base text-[#3D246C]/80 leading-relaxed font-normal max-w-2xl mx-auto">
           Blossoms SOS brings together five foundational creative and expressive pillars. Interact with the 3D discipline ring below or toggle the grid view to discover competition formats, evaluation criteria, and performance parameters.
         </p>
 
         {/* Registration Notice */}
-        <div className="mt-6 p-4 rounded-xl bg-white/85 border border-[#3D246C]/15 backdrop-blur-sm text-xs text-[#3D246C]/85 flex items-center justify-between flex-wrap gap-3">
+        <div className="mt-6 p-4 rounded-xl bg-white/85 border border-[#3D246C]/15 backdrop-blur-sm text-xs text-[#3D246C]/85 flex items-center justify-between flex-wrap gap-3 max-w-2xl mx-auto text-left">
           <p>
             <strong className="text-[#3D246C]">Registration Open:</strong> Slots for School of Sciences preliminary auditions are active. Fill the official form to participate.
           </p>
@@ -106,8 +106,8 @@ export default function EventsPage() {
             </p>
           </div>
         </div>
-        <Link 
-          href="/schedule" 
+        <Link
+          href="/schedule"
           className="shrink-0 clay-btn-primary bg-[#5C4B99] hover:bg-[#4C3C82] text-white px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5"
         >
           <span>View Schedule</span>

@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react';
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import { ArrowLeft, Loader2, Pin } from 'lucide-react';
+import { Loader2, Pin } from 'lucide-react';
 import { siteConfig } from '@/data/site-config';
 import { SCHEDULE_METADATA_2026 } from '@/data/schedule-2026-27';
 import { NoticeBoardView } from '@/components/notice-board/NoticeBoardView';
@@ -53,23 +52,8 @@ export default function NoticeBoardPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
-      {/* Breadcrumb Bar */}
-      <div className="flex items-center justify-between border-b border-[#3D246C]/15 pb-3 mb-8 text-xs font-tech">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-1.5 font-semibold text-[#5C4B99] hover:text-[#3D246C] transition-colors"
-        >
-          <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Back to Home</span>
-        </Link>
-
-        <span className="text-[11px] text-[#5C4B99]/85 hidden sm:inline">
-          CHRIST (Deemed to be University) • School of Sciences • Team Onyx
-        </span>
-      </div>
-
       {/* Page Header */}
-      <header className="max-w-3xl mb-10 sm:mb-12 space-y-3">
+      <header className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 space-y-4">
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/85 border border-[#3D246C]/20 text-xs font-bold text-[#3D246C] shadow-xs">
           <Pin className="w-3.5 h-3.5 text-[#5C4B99]" />
           <span className="font-mono uppercase tracking-wider">
@@ -81,7 +65,7 @@ export default function NoticeBoardPage() {
           Notice Board &amp; Weekly Radar.
         </h1>
 
-        <p className="font-body text-sm sm:text-base text-[#3D246C]/80 leading-relaxed max-w-2xl">
+        <p className="font-body text-sm sm:text-base text-[#3D246C]/80 leading-relaxed max-w-2xl mx-auto">
           Follow weekly dispatches from the Blossoms Core Committee, check what competitions are happening this week, and inspect pinned circulars on our School of Sciences green board.
         </p>
       </header>

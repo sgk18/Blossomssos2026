@@ -59,7 +59,7 @@ export default function AboutPage() {
       />
       
       {/* Header Banner */}
-      <div className="max-w-4xl mb-16 space-y-4">
+      <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/85 border border-[#3D246C]/15 text-xs font-semibold text-[#3D246C] shadow-sm font-tech">
           <span>School of Sciences • Team Onyx</span>
         </div>
@@ -68,7 +68,7 @@ export default function AboutPage() {
           About Blossoms &amp; The School of Sciences Legacy
         </h1>
 
-        <div className="pt-2 flex flex-wrap items-center gap-4">
+        <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
           <div className="relative h-11 w-44 px-2 py-1 rounded-xl bg-white/95 border border-[#3D246C]/20 shadow-md flex items-center justify-center">
             <Image
               src="/blossoms_team.webp"

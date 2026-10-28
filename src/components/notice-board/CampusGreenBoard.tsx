@@ -1,10 +1,9 @@
 'use client';
 
-import React, { useState, useMemo, useEffect, useSyncExternalStore } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
-  Bookmark,
   Share2,
   Check,
   ExternalLink,
@@ -26,70 +25,6 @@ import { NoticeCategory, NoticeItem, PaperTone, PinColor } from '@/types/notice-
 import { ScheduleEvent } from '@/types/schedule';
 import { useMounted, usePrefersReducedMotion } from '@/lib/hooks';
 import { EventDetailModal } from '@/components/schedule/EventDetailModal';
-
-/* =========================================================
-   LOCALSTORAGE BOOKMARK STORE (React 19 useSyncExternalStore)
-   ========================================================= */
-const SAVED_NOTICES_KEY = 'blossoms_sos_pinned_notices_v1';
-const EMPTY_SAVED: string[] = [];
-let cachedRawString: string | null = null;
-let cachedIds: string[] = EMPTY_SAVED;
-const listeners = new Set<() => void>();
-
-function subscribeSavedNotices(listener: () => void) {
-  listeners.add(listener);
-  const onStorage = (e: StorageEvent) => {
-    if (e.key === SAVED_NOTICES_KEY) listener();
-  };
-  if (typeof window !== 'undefined') {
-    window.addEventListener('storage', onStorage);
-  }
-  return () => {
-    listeners.delete(listener);
-    if (typeof window !== 'undefined') {
-      window.removeEventListener('storage', onStorage);
-    }
-  };
-}
-
-function getSavedNoticesSnapshot(): string[] {
-  if (typeof window === 'undefined') return EMPTY_SAVED;
-  try {
-    const raw = window.localStorage.getItem(SAVED_NOTICES_KEY);
-    if (raw === cachedRawString) return cachedIds;
-    cachedRawString = raw;
-    if (!raw) {
-      cachedIds = EMPTY_SAVED;
-      return cachedIds;
-    }
-    const parsed = JSON.parse(raw);
-    cachedIds = Array.isArray(parsed) ? parsed : EMPTY_SAVED;
-    return cachedIds;
-  } catch {
-    return EMPTY_SAVED;
-  }
-}
-
-function getSavedNoticesServerSnapshot(): string[] {
-  return EMPTY_SAVED;
-}
-
-function toggleSavedNoticeId(id: string) {
-  if (typeof window === 'undefined') return;
-  try {
-    const current = getSavedNoticesSnapshot();
-    const next = current.includes(id)
-      ? current.filter((item) => item !== id)
-      : [...current, id];
-    const serialized = JSON.stringify(next);
-    window.localStorage.setItem(SAVED_NOTICES_KEY, serialized);
-    cachedRawString = serialized;
-    cachedIds = next;
-    listeners.forEach((l) => l());
-  } catch {
-    // Ignore private-browsing quota errors
-  }
-}
 
 /* =========================================================
    3D VECTOR THUMBTACK / PUSHPIN SVG
@@ -186,13 +121,7 @@ export function CampusGreenBoard({
 }: CampusGreenBoardProps) {
   const mounted = useMounted();
   const prefersReducedMotion = usePrefersReducedMotion();
-  const savedIds = useSyncExternalStore(
-    subscribeSavedNotices,
-    getSavedNoticesSnapshot,
-    getSavedNoticesServerSnapshot
-  );
-
-  const [selectedCategory, setSelectedCategory] = useState<NoticeCategory | 'all' | 'saved'>('all');
+  const [selectedCategory, setSelectedCategory] = useState<NoticeCategory | 'all'>('all');
   const [activeNotice, setActiveNotice] = useState<NoticeItem | null>(null);
   const [internalModalEvent, setInternalModalEvent] = useState<ScheduleEvent | null>(null);
   const [copiedId, setCopiedId] = useState<string | null>(null);
@@ -233,15 +162,13 @@ export function CampusGreenBoard({
         return false;
       }
 
-      if (selectedCategory === 'saved') {
-        if (!savedIds.includes(item.id)) return false;
-      } else if (selectedCategory !== 'all' && item.category !== selectedCategory) {
+      if (selectedCategory !== 'all' && item.category !== selectedCategory) {
         return false;
       }
 
       return true;
     });
-  }, [mode, weekScope, selectedWeekId, selectedCategory, savedIds]);
+  }, [mode, weekScope, selectedWeekId, selectedCategory]);
 
   const handleShareNotice = async (notice: NoticeItem, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
@@ -354,19 +281,7 @@ export function CampusGreenBoard({
               );
             })}
 
-            <button
-              type="button"
-              onClick={() => setSelectedCategory('saved')}
-              aria-pressed={selectedCategory === 'saved'}
-              className={`px-3 py-1 rounded-full text-xs font-tech inline-flex items-center gap-1.5 transition-all ${
-                selectedCategory === 'saved'
-                  ? 'bg-[#3D246C] text-[#FFDBC3] font-bold shadow-xs'
-                  : 'bg-white text-[#3D246C] hover:bg-[#9F91CC]/20 border border-[#3D246C]/20 font-semibold'
-              }`}
-            >
-              <Bookmark className="w-3 h-3 fill-current" />
-              <span>My Saved ({savedIds.length})</span>
-            </button>
+            
           </div>
         </div>
       )}
@@ -406,11 +321,10 @@ export function CampusGreenBoard({
         {/* Top-Center Engraved Brass & Enamel Department Plaque */}
         <div className="relative z-20 flex justify-center -mt-1 mb-2.5 sm:mb-3.5">
           <div className="inline-flex items-center gap-2 px-3.5 sm:px-5 py-1 rounded-full bg-gradient-to-r from-[#2A1B12] via-[#3A2518] to-[#2A1B12] border border-[#EAB308]/55 shadow-md">
-            <span className="w-2 h-2 rounded-full bg-[#34D399] shadow-[0_0_8px_#34D399]" aria-hidden="true" />
             <span className="font-tech text-[10px] sm:text-xs font-bold tracking-[0.18em] uppercase text-[#FDE68A]">
-              SOS • Official Green Notice Board
+              SOS &bull; Official Green Notice Board
             </span>
-            <span className="hidden sm:inline text-[#FDE68A]/45">•</span>
+            <span className="hidden sm:inline text-[10px] text-[#FDE68A]/80 font-bold">&bull;</span>
             <span className="hidden sm:inline font-mono text-[10px] text-[#FFDBC3]/90 uppercase">
               Block II Corridor
             </span>
@@ -471,9 +385,7 @@ export function CampusGreenBoard({
                 No circulars pinned under this filter right now.
               </p>
               <p className="font-body text-xs text-emerald-100/80 max-w-md mx-auto">
-                {selectedCategory === 'saved'
-                  ? 'Tap the bookmark icon on any pinned slip to save important deadlines or theme reveals to your personal board.'
-                  : 'Try switching to "All Pinned Circulars" or selecting another filter category.'}
+                Try switching to &quot;All Pinned Circulars&quot; or selecting another filter category.
               </p>
               <button
                 type="button"
@@ -495,8 +407,7 @@ export function CampusGreenBoard({
             >
               {visibleNotices.map((notice) => {
                 const paper = PAPER_STYLES[notice.paperTone];
-                const isSaved = savedIds.includes(notice.id);
-                const rotationStyle = prefersReducedMotion
+                                const rotationStyle = prefersReducedMotion
                   ? undefined
                   : { transform: `rotate(${notice.tiltDeg}deg)` };
                 const weekMeta = FESTIVAL_WEEKS_2026.find((w) => w.id === notice.weekId);
@@ -609,24 +520,6 @@ export function CampusGreenBoard({
                       </span>
 
                       <div className="flex items-center gap-1 shrink-0">
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            toggleSavedNoticeId(notice.id);
-                          }}
-                          aria-label={isSaved ? 'Remove notice from saved' : 'Pin notice to my saved'}
-                          aria-pressed={isSaved}
-                          title={isSaved ? 'Saved to My Board' : 'Save notice'}
-                          className={`p-1.5 rounded-lg border transition-colors ${
-                            isSaved
-                              ? 'bg-[#5C4B99] text-white border-[#5C4B99]'
-                              : 'bg-white/80 text-[#3D246C]/75 border-[#3D246C]/15 hover:text-[#5C4B99] hover:border-[#5C4B99]/40'
-                          }`}
-                        >
-                          <Bookmark className={`w-3.5 h-3.5 ${isSaved ? 'fill-current' : ''}`} />
-                        </button>
-
                         <button
                           type="button"
                           onClick={(e) => handleShareNotice(notice, e)}
@@ -915,23 +808,6 @@ export function CampusGreenBoard({
                 {/* Modal Actions */}
                 <div className="mt-5 pt-4 border-t border-[#3D246C]/15 flex flex-wrap items-center justify-between gap-3">
                   <div className="flex flex-wrap items-center gap-2">
-                    <button
-                      type="button"
-                      onClick={() => toggleSavedNoticeId(activeNotice.id)}
-                      className={`px-3.5 py-2 rounded-xl text-xs font-tech font-bold inline-flex items-center gap-1.5 border transition-colors ${
-                        savedIds.includes(activeNotice.id)
-                          ? 'bg-[#5C4B99] text-white border-[#5C4B99]'
-                          : 'bg-white text-[#3D246C] border-[#3D246C]/20 hover:border-[#5C4B99]'
-                      }`}
-                    >
-                      <Bookmark
-                        className={`w-3.5 h-3.5 ${
-                          savedIds.includes(activeNotice.id) ? 'fill-current' : ''
-                        }`}
-                      />
-                      <span>{savedIds.includes(activeNotice.id) ? 'Saved on Board' : 'Save Circular'}</span>
-                    </button>
-
                     <button
                       type="button"
                       onClick={() => handleShareNotice(activeNotice)}

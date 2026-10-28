@@ -7,12 +7,12 @@ import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { siteConfig } from '@/data/site-config';
 
-const NAV_LINKS: Array<{ href: string; label: string; hasLiveDot?: boolean }> = [
+const NAV_LINKS: Array<{ href: string; label: string }> = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
   { href: '/events', label: 'Events' },
   { href: '/schedule', label: 'Schedule' },
-  { href: '/notice-board', label: 'Notice Board', hasLiveDot: true },
+  { href: '/notice-board', label: 'Notice Board' },
   { href: '/gallery', label: 'Gallery' },
   // { href: '/team', label: 'Team' }, // Deactivated for now
 ];
@@ -143,16 +143,6 @@ export function Navbar() {
                     aria-current={isActive ? 'page' : undefined}
                   >
                     <span>{link.label}</span>
-                    {link.hasLiveDot && (
-                      <span
-                        aria-hidden="true"
-                        className={`w-1.5 h-1.5 rounded-full shrink-0 ${
-                          isActive
-                            ? 'bg-[#FFDBC3] shadow-[0_0_6px_#FFDBC3]'
-                            : 'bg-[#FFDBC3]/90'
-                        }`}
-                      />
-                    )}
                   </Link>
                 );
               })}
@@ -260,11 +250,6 @@ export function Navbar() {
               >
                 <span className="flex items-center gap-2">
                   <span>{link.label}</span>
-                  {link.hasLiveDot && !isActive && (
-                    <span className="px-1.5 py-0.5 rounded-full bg-[#FFDBC3]/20 text-[#FFDBC3] font-mono text-[9px] font-bold uppercase tracking-wider">
-                      Live
-                    </span>
-                  )}
                 </span>
                 {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#3D246C]" />}
               </Link>

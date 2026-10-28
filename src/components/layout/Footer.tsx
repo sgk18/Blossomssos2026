@@ -69,9 +69,24 @@ export function Footer() {
     window.addEventListener('resize', handleScroll, { passive: true });
     checkScrollPosition();
 
+    const checkModalState = () => {
+      checkScrollPosition();
+    };
+
+    const modalObserver = new MutationObserver(checkModalState);
+    if (typeof document !== 'undefined') {
+      modalObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['style', 'class'],
+        childList: true,
+        subtree: true,
+      });
+    }
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
+      modalObserver.disconnect();
     };
   }, []);
 
