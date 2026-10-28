@@ -8,12 +8,9 @@ import {
   Check,
   ExternalLink,
   ArrowRight,
-  Search,
   X,
   Calendar,
   Sparkles,
-  LayoutGrid,
-  Pin,
   FileText,
 } from 'lucide-react';
 import {
@@ -194,8 +191,6 @@ export function CampusGreenBoard({
   );
 
   const [selectedCategory, setSelectedCategory] = useState<NoticeCategory | 'all' | 'saved'>('all');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [neatGrid, setNeatGrid] = useState(false);
   const [activeNotice, setActiveNotice] = useState<NoticeItem | null>(null);
   const [internalModalEvent, setInternalModalEvent] = useState<ScheduleEvent | null>(null);
   const [copiedId, setCopiedId] = useState<string | null>(null);
@@ -225,8 +220,6 @@ export function CampusGreenBoard({
       return NOTICE_BOARD_ITEMS.filter((item) => item.featuredOnMiniBoard).slice(0, 4);
     }
 
-    const q = searchQuery.trim().toLowerCase();
-
     return NOTICE_BOARD_ITEMS.filter((item) => {
       // Week scope filter (when user toggles "This Selected Week" vs "All Board Slips")
       if (
@@ -244,14 +237,9 @@ export function CampusGreenBoard({
         return false;
       }
 
-      if (q) {
-        const hay = `${item.title} ${item.summary} ${item.departmentStamp} ${item.refCode} ${item.details.join(' ')}`.toLowerCase();
-        if (!hay.includes(q)) return false;
-      }
-
       return true;
     });
-  }, [mode, weekScope, selectedWeekId, selectedCategory, savedIds, searchQuery]);
+  }, [mode, weekScope, selectedWeekId, selectedCategory, savedIds]);
 
   const handleShareNotice = async (notice: NoticeItem, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
@@ -299,89 +287,43 @@ export function CampusGreenBoard({
           ========================================================= */}
       {mode === 'full' && (
         <div className="mb-5 p-3.5 sm:p-4 rounded-2xl bg-white/90 border border-[#3D246C]/15 backdrop-blur-md shadow-md space-y-3">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
-            {/* Scope Switcher + Layout Toggle */}
+          {onSelectWeekScope && selectedWeekId !== 'all' && (
             <div className="flex flex-wrap items-center gap-2">
-              {onSelectWeekScope && selectedWeekId !== 'all' && (
-                <div
-                  className="inline-flex p-1 rounded-xl bg-[#FFDBC3]/60 border border-[#3D246C]/15"
-                  role="group"
-                  aria-label="Notice Board Scope"
-                >
-                  <button
-                    type="button"
-                    onClick={() => onSelectWeekScope('all')}
-                    aria-pressed={weekScope === 'all'}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-tech font-bold transition-all ${
-                      weekScope === 'all'
-                        ? 'bg-[#5C4B99] text-white shadow-xs'
-                        : 'text-[#3D246C]/80 hover:text-[#3D246C]'
-                    }`}
-                  >
-                    All Pinned Circulars ({NOTICE_BOARD_ITEMS.length})
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => onSelectWeekScope('week')}
-                    aria-pressed={weekScope === 'week'}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-tech font-bold transition-all ${
-                      weekScope === 'week'
-                        ? 'bg-[#5C4B99] text-white shadow-xs'
-                        : 'text-[#3D246C]/80 hover:text-[#3D246C]'
-                    }`}
-                  >
-                    Selected Week Slips
-                  </button>
-                </div>
-              )}
-
-              <button
-                type="button"
-                onClick={() => setNeatGrid((prev) => !prev)}
-                aria-pressed={neatGrid}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-[#3D246C]/15 hover:border-[#5C4B99]/40 text-xs font-tech font-semibold text-[#3D246C] transition-colors"
-                title="Toggle between organic pinboard angles and straight grid"
+              <div
+                className="inline-flex p-1 rounded-xl bg-[#FFDBC3]/60 border border-[#3D246C]/15"
+                role="group"
+                aria-label="Notice Board Scope"
               >
-                {neatGrid ? (
-                  <>
-                    <Pin className="w-3.5 h-3.5 text-[#5C4B99]" />
-                    <span>Organic Pin Angles</span>
-                  </>
-                ) : (
-                  <>
-                    <LayoutGrid className="w-3.5 h-3.5 text-[#5C4B99]" />
-                    <span>Straighten Slips</span>
-                  </>
-                )}
-              </button>
-            </div>
-
-            {/* Search Input */}
-            <div className="relative w-full lg:w-80">
-              <Search className="w-3.5 h-3.5 text-[#5C4B99] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search circulars, rooms, deadlines..."
-                aria-label="Search pinned notices"
-                className="w-full pl-8.5 pr-8 py-1.5 rounded-xl bg-white border border-[#3D246C]/20 text-xs font-body text-[#3D246C] placeholder-[#3D246C]/45 focus:outline-none focus:ring-2 focus:ring-[#5C4B99]"
-              />
-              {searchQuery && (
                 <button
                   type="button"
-                  onClick={() => setSearchQuery('')}
-                  aria-label="Clear notice search"
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#3D246C]/50 hover:text-[#3D246C]"
+                  onClick={() => onSelectWeekScope('all')}
+                  aria-pressed={weekScope === 'all'}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-tech font-bold transition-all ${
+                    weekScope === 'all'
+                      ? 'bg-[#5C4B99] text-white shadow-xs'
+                      : 'text-[#3D246C]/80 hover:text-[#3D246C]'
+                  }`}
                 >
-                  <X className="w-3.5 h-3.5" />
+                  All Pinned Circulars ({NOTICE_BOARD_ITEMS.length})
                 </button>
-              )}
+                <button
+                  type="button"
+                  onClick={() => onSelectWeekScope('week')}
+                  aria-pressed={weekScope === 'week'}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-tech font-bold transition-all ${
+                    weekScope === 'week'
+                      ? 'bg-[#5C4B99] text-white shadow-xs'
+                      : 'text-[#3D246C]/80 hover:text-[#3D246C]'
+                  }`}
+                >
+                  Selected Week Slips
+                </button>
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Category Filter Chips */}
-          <div className="pt-2 border-t border-[#3D246C]/10 flex flex-wrap items-center gap-1.5">
+          <div className={`flex flex-wrap items-center gap-1.5 ${onSelectWeekScope && selectedWeekId !== 'all' ? 'pt-2 border-t border-[#3D246C]/10' : ''}`}>
             {(
               [
                 { key: 'all', label: 'All Notices' },
@@ -529,13 +471,12 @@ export function CampusGreenBoard({
               <p className="font-body text-xs text-emerald-100/80 max-w-md mx-auto">
                 {selectedCategory === 'saved'
                   ? 'Tap the bookmark icon on any pinned slip to save important deadlines or theme reveals to your personal board.'
-                  : 'Try switching to "All Pinned Circulars" or clearing your search query.'}
+                  : 'Try switching to "All Pinned Circulars" or selecting another filter category.'}
               </p>
               <button
                 type="button"
                 onClick={() => {
                   setSelectedCategory('all');
-                  setSearchQuery('');
                   if (onSelectWeekScope) onSelectWeekScope('all');
                 }}
                 className="mt-2 px-4 py-2 rounded-xl bg-[#FFFCF5] text-[#3D246C] font-tech text-xs font-bold shadow-md hover:bg-[#FFDBC3] transition-colors"
@@ -553,10 +494,9 @@ export function CampusGreenBoard({
               {visibleNotices.map((notice) => {
                 const paper = PAPER_STYLES[notice.paperTone];
                 const isSaved = savedIds.includes(notice.id);
-                const rotationStyle =
-                  prefersReducedMotion || neatGrid
-                    ? undefined
-                    : { transform: `rotate(${notice.tiltDeg}deg)` };
+                const rotationStyle = prefersReducedMotion
+                  ? undefined
+                  : { transform: `rotate(${notice.tiltDeg}deg)` };
                 const weekMeta = FESTIVAL_WEEKS_2026.find((w) => w.id === notice.weekId);
 
                 return (

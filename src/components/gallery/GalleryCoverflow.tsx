@@ -3,7 +3,7 @@
 import Image from 'next/image';
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { Camera, ChevronLeft, ChevronRight, MapPin, Calendar, Maximize2 } from 'lucide-react';
+import { ChevronLeft, ChevronRight, MapPin, Calendar, Maximize2 } from 'lucide-react';
 import { COVERFLOW_SLIDES, CoverflowSlide } from '@/data/gallery-data';
 
 interface GalleryCoverflowProps {
