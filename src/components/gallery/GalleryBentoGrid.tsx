@@ -138,7 +138,8 @@ export function GalleryBentoGrid() {
         </div>
 
         {/* Bento Grid Container */}
-        <div className="p-4 sm:p-6 lg:p-8 rounded-3xl bg-white/95 border border-[#3D246C]/15 shadow-sm">
+        <div className="p-4 sm:p-6 lg:p-8 rounded-3xl bg-[#FFDBC3] border border-[#3D246C]/15 shadow-sm"
+          style={{ backgroundColor: '#FFDBC3' }}>
           <div className="grid grid-cols-12 gap-3 sm:gap-4 md:gap-5 auto-rows-[160px] sm:auto-rows-[180px]">
             {displayedItems.map((item, index) => {
               const cellClasses = getBentoClasses(item, index);

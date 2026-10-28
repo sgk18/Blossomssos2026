@@ -37,7 +37,8 @@ export default function TeamPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
-      <div className="min-h-screen pt-24 pb-20 md:pt-28 md:pb-24 bg-[#FFDBC3] text-[#3D246C] selection:bg-[#5C4B99] selection:text-white">
+      <div className="min-h-screen pt-24 pb-20 md:pt-28 md:pb-24 bg-[#FFDBC3] text-[#3D246C] selection:bg-[#5C4B99] selection:text-white"
+        style={{ backgroundColor: '#FFDBC3' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
 
           {/* ── Breadcrumb Navigation ── */}

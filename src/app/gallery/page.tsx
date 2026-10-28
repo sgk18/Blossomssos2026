@@ -23,8 +23,10 @@ const STATS_PILLS = [
 
 export default function GalleryPage() {
   return (
-    <main className="min-h-screen bg-[#FFDBC3] text-[#3D246C] selection:bg-[#5C4B99] selection:text-white pt-24 sm:pt-28 pb-16">
-      
+    <div 
+      className="min-h-screen bg-[#FFDBC3] text-[#3D246C] selection:bg-[#5C4B99] selection:text-white pt-24 sm:pt-28 pb-16"
+      style={{ backgroundColor: '#FFDBC3' }}
+    >
       {/* 1. Page Header */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4 sm:mb-8">
         <div className="text-center max-w-3xl mx-auto space-y-4">
@@ -59,15 +61,15 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* 2. Section 1: Interactive 3D Cover Flow Carousel (Inspiration: Reference Image 2) */}
+      {/* 2. Section 1: Interactive 3D Cover Flow Carousel */}
       <GalleryCoverflow />
 
-      {/* 3. Section 2: Fanned 3D Deck & Social Highlights (Inspiration: Reference Image 1) */}
+      {/* 3. Section 2: Fanned 3D Deck & Social Highlights */}
       <GalleryFannedDeck />
 
-      {/* 4. Section 3: Curated Bento Collage & Lightbox (Inspiration: Reference Image 3) */}
+      {/* 4. Section 3: Curated Bento Collage & Lightbox */}
       <GalleryBentoGrid />
 
-    </main>
+    </div>
   );
 }

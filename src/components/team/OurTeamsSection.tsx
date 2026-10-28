@@ -40,7 +40,8 @@ export function OurTeamsSection() {
   }, [activeSection, selectedSubTeam]);
 
   return (
-    <div className="relative w-full rounded-3xl bg-white/95 text-[#3D246C] py-12 px-4 sm:px-6 lg:px-10 overflow-hidden shadow-sm border border-[#3D246C]/15">
+    <div className="relative w-full rounded-3xl bg-[#FFDBC3] text-[#3D246C] py-12 px-4 sm:px-6 lg:px-10 overflow-hidden shadow-sm border border-[#3D246C]/15"
+      style={{ backgroundColor: '#FFDBC3' }}>
       
       {/* ── Subtle Ambient Refractions (Homepage Palette: Lavender #9F91CC & Royal Purple #5C4B99) ── */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#9F91CC]/15 rounded-full blur-3xl pointer-events-none" />

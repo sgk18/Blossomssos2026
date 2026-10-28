@@ -63,7 +63,8 @@ export function GalleryCoverflow({ onSelectImage }: GalleryCoverflowProps) {
   return (
     <section 
       aria-label="Interactive 3D Stage Exhibition" 
-      className="relative w-full py-10 sm:py-16 overflow-hidden select-none"
+      className="relative w-full py-10 sm:py-16 overflow-hidden select-none bg-[#FFDBC3]"
+      style={{ backgroundColor: '#FFDBC3' }}
       ref={containerRef}
     >
       {/* 1. Giant Background Editorial Watermark (Themed to Deep Purple #3D246C) */}

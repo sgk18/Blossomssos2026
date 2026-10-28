@@ -142,7 +142,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebSite) }}
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-[#FFDBC3] text-[#3D246C] font-sans antialiased selection:bg-[#5C4B99] selection:text-white">
+      <body className="min-h-screen flex flex-col bg-[#FFDBC3] text-[#3D246C] font-sans antialiased selection:bg-[#5C4B99] selection:text-white" style={{ backgroundColor: "#FFDBC3" }}>
 
         {/* Skip to Content for WCAG 2.2 AA Keyboard Accessibility */}
         <a 
@@ -156,7 +156,7 @@ export default function RootLayout({
         <Navbar />
 
         {/* Main Route Content Landmark */}
-        <main id="main-content" className="flex-1 flex flex-col">
+        <main id="main-content" className="flex-1 flex flex-col bg-[#FFDBC3]" style={{ backgroundColor: "#FFDBC3" }}>
           {children}
         </main>
 

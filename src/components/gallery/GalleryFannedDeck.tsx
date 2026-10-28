@@ -53,7 +53,8 @@ export function GalleryFannedDeck({ onSelectImage }: GalleryFannedDeckProps) {
   return (
     <section 
       aria-label="Trending on Socials Highlights" 
-      className="relative w-full py-16 sm:py-24 overflow-hidden border-y border-[#3D246C]/15"
+      className="relative w-full py-16 sm:py-24 overflow-hidden border-y border-[#3D246C]/15 bg-[#FFDBC3]"
+      style={{ backgroundColor: '#FFDBC3' }}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         

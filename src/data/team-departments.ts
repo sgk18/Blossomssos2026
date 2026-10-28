@@ -818,3 +818,4 @@ export const DEPARTMENT_GROUPS = [
   { id: 'creative', label: 'Media & Creative' },
   { id: 'experience', label: 'Guest & Student Experience' },
 ] as const;
+
