@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo, useEffect, useSyncExternalStore } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Bookmark,
   Share2,
@@ -12,6 +13,10 @@ import {
   Calendar,
   Sparkles,
   FileText,
+  ZoomIn,
+  ZoomOut,
+  Maximize2,
+  Eye,
 } from 'lucide-react';
 import {
   NOTICE_BOARD_ITEMS,
@@ -194,6 +199,7 @@ export function CampusGreenBoard({
   const [activeNotice, setActiveNotice] = useState<NoticeItem | null>(null);
   const [internalModalEvent, setInternalModalEvent] = useState<ScheduleEvent | null>(null);
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [isImageZoomed, setIsImageZoomed] = useState(false);
 
   const activeLiveWeek = useMemo(() => {
     return mounted ? getActiveFestivalWeek(new Date()) : FESTIVAL_WEEKS_2026[0];
@@ -559,15 +565,46 @@ export function CampusGreenBoard({
                         )}
                       </div>
 
+                      {/* Attached Flyer / Poster Thumbnail if available */}
+                      {notice.imageUrl && (
+                        <div className="relative mt-2 mb-2.5 rounded-lg overflow-hidden border-2 border-[#3D246C]/30 shadow-xs aspect-[16/10] bg-[#231942]/10 group/flyer">
+                          <Image
+                            src={notice.imageUrl}
+                            alt={notice.imageAlt || notice.title}
+                            fill
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+                          <div className="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white text-[10px] font-mono">
+                            <span className="bg-black/60 backdrop-blur-xs px-1.5 py-0.5 rounded border border-white/20 flex items-center gap-1 font-semibold">
+                              <Sparkles className="w-2.5 h-2.5 text-[#FFDBC3]" />
+                              <span>Official Poster</span>
+                            </span>
+                            <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-[#5C4B99]/90 px-1.5 py-0.5 rounded text-[9px] font-tech font-bold uppercase tracking-wide">
+                              Inspect Split View
+                            </span>
+                          </div>
+                        </div>
+                      )}
+
                       {/* Notice Title */}
                       <h3 className="font-tech font-extrabold text-sm sm:text-base text-[#231942] group-hover:text-[#5C4B99] transition-colors leading-snug">
                         {notice.title}
                       </h3>
 
-                      {/* Notice Summary */}
-                      <p className="mt-2 font-body text-xs text-[#231942]/85 leading-relaxed line-clamp-3">
-                        {notice.summary}
-                      </p>
+                      {/* Thick Border Callout (1-sentence website launch highlight) */}
+                      {notice.imageUrl ? (
+                        <div className="mt-2 p-2 rounded-md border-2 border-[#3D246C] bg-white/95 shadow-xs">
+                          <p className="font-tech font-bold text-xs text-[#231942] leading-snug">
+                            🌐 Official Launch of Blossoms Website &amp; Social Media Page — Flames to Flight, White Onyx Ignites!
+                          </p>
+                        </div>
+                      ) : (
+                        <p className="mt-2 font-body text-xs text-[#231942]/85 leading-relaxed line-clamp-3">
+                          {notice.summary}
+                        </p>
+                      )}
                     </div>
 
                     {/* Circular Footer: Stamp + Quick Save / Share */}
@@ -643,165 +680,435 @@ export function CampusGreenBoard({
           role="dialog"
           aria-modal="true"
           aria-labelledby="notice-reader-title"
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
         >
           <div
             className="fixed inset-0 bg-[#3D246C]/65 backdrop-blur-md"
-            onClick={() => setActiveNotice(null)}
+            onClick={() => {
+              setActiveNotice(null);
+              setIsImageZoomed(false);
+            }}
             aria-hidden="true"
           />
 
-          <div className="relative z-10 w-full max-w-xl rounded-2xl bg-[#FFFCF7] border-2 border-[#3D246C]/20 shadow-2xl p-5 sm:p-7 text-[#231942] my-auto">
-            {/* Decorative Thumbtack at Top */}
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+          <div className={`relative z-10 w-full my-auto ${activeNotice.imageUrl ? 'max-w-5xl' : 'max-w-xl'}`}>
+            {/* Decorative Thumbtack at Top of Circular */}
+            <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-20 pointer-events-none drop-shadow-md">
               <ThumbtackSvg color={activeNotice.pinColor} idSuffix="modal-active" />
             </div>
 
-            {/* Modal Top Header */}
-            <div className="flex items-start justify-between gap-3 pb-3.5 border-b border-dashed border-[#3D246C]/20">
-              <div>
-                <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#5C4B99] block">
-                  {activeNotice.departmentStamp}
-                </span>
-                <span className="font-mono text-[10px] text-[#3D246C]/65">
-                  Circular Ref: {activeNotice.refCode} • {activeNotice.postedLabel}
-                </span>
-              </div>
+            <div className="w-full rounded-2xl bg-[#FFFCF7] border-2 border-[#3D246C]/20 shadow-2xl p-4 sm:p-7 text-[#231942] max-h-[88vh] overflow-y-auto">
 
-              <button
-                type="button"
-                onClick={() => setActiveNotice(null)}
-                aria-label="Close circular reader"
-                className="p-1.5 rounded-xl bg-[#FFDBC3]/65 hover:bg-[#FFDBC3] text-[#3D246C] border border-[#3D246C]/15 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
+            {activeNotice.imageUrl ? (
+              /* Two-Column Split Layout for Notices with Poster/Flyer Attached */
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6 items-start">
+                {/* Left Column: Interactive Image Preview Pane */}
+                <div className="md:col-span-5 flex flex-col gap-2.5">
+                  <div className="flex items-center justify-between text-xs font-mono text-[#3D246C]/80">
+                    <span className="font-bold flex items-center gap-1.5 text-[#5C4B99]">
+                      <Eye className="w-3.5 h-3.5" />
+                      <span>Poster Preview</span>
+                    </span>
+                    <span className="text-[10px] bg-[#5C4B99]/10 px-2 py-0.5 rounded border border-[#5C4B99]/20 font-semibold">
+                      CHRIST • SOS 2026
+                    </span>
+                  </div>
 
-            {/* Badges */}
-            <div className="mt-4 flex flex-wrap items-center gap-2">
-              <span
-                className={`px-2.5 py-0.5 rounded-md text-xs font-tech font-bold border ${
-                  NOTICE_CATEGORY_META[activeNotice.category].badgeBg
-                } ${NOTICE_CATEGORY_META[activeNotice.category].badgeText} ${
-                  NOTICE_CATEGORY_META[activeNotice.category].badgeBorder
-                }`}
-              >
-                {activeNotice.categoryLabel}
-              </span>
-              {activeNotice.isTentative && (
-                <span className="px-2.5 py-0.5 rounded-md text-[11px] font-mono font-bold bg-[#5C4B99]/12 text-[#3D246C] border border-[#5C4B99]/30">
-                  TENTATIVE SCHEDULE
-                </span>
-              )}
-              {activeNotice.stampBadge && (
-                <span className="px-2.5 py-0.5 rounded-md text-[11px] font-mono font-bold bg-[#FFDBC3]/80 text-[#3D246C] border border-[#3D246C]/20">
-                  {activeNotice.stampBadge}
-                </span>
-              )}
-            </div>
-
-            {/* Title & Summary */}
-            <h3
-              id="notice-reader-title"
-              className="mt-3 font-tech text-xl sm:text-2xl font-extrabold text-[#231942] leading-snug"
-            >
-              {activeNotice.title}
-            </h3>
-            <p className="mt-2 font-body text-sm text-[#231942]/85 leading-relaxed">
-              {activeNotice.summary}
-            </p>
-
-            {/* Detailed Bullet Points */}
-            <div className="mt-4 p-4 rounded-xl bg-white border border-[#3D246C]/12 space-y-2.5">
-              <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#5C4B99] flex items-center gap-1.5">
-                <FileText className="w-3.5 h-3.5" />
-                <span>Official Circular Notes</span>
-              </span>
-              <ul className="space-y-2 text-xs sm:text-sm font-body text-[#231942]/90">
-                {activeNotice.details.map((line, i) => (
-                  <li key={i} className="flex items-start gap-2 leading-relaxed">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#5C4B99] mt-2 shrink-0" />
-                    <span>{line}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Modal Actions */}
-            <div className="mt-5 pt-4 border-t border-[#3D246C]/15 flex flex-wrap items-center justify-between gap-3">
-              <div className="flex flex-wrap items-center gap-2">
-                <button
-                  type="button"
-                  onClick={() => toggleSavedNoticeId(activeNotice.id)}
-                  className={`px-3.5 py-2 rounded-xl text-xs font-tech font-bold inline-flex items-center gap-1.5 border transition-colors ${
-                    savedIds.includes(activeNotice.id)
-                      ? 'bg-[#5C4B99] text-white border-[#5C4B99]'
-                      : 'bg-white text-[#3D246C] border-[#3D246C]/20 hover:border-[#5C4B99]'
-                  }`}
-                >
-                  <Bookmark
-                    className={`w-3.5 h-3.5 ${
-                      savedIds.includes(activeNotice.id) ? 'fill-current' : ''
+                  {/* High-Fidelity Poster Container */}
+                  <div
+                    className={`relative w-full rounded-xl overflow-hidden border-2 border-[#3D246C]/25 bg-[#1B1429] shadow-lg transition-all ${
+                      isImageZoomed ? 'cursor-zoom-out' : 'cursor-zoom-in'
                     }`}
-                  />
-                  <span>{savedIds.includes(activeNotice.id) ? 'Saved on Board' : 'Save Circular'}</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => handleShareNotice(activeNotice)}
-                  className="px-3.5 py-2 rounded-xl bg-white hover:bg-[#FFDBC3]/40 text-[#3D246C] border border-[#3D246C]/20 text-xs font-tech font-bold inline-flex items-center gap-1.5 transition-colors"
-                >
-                  {copiedId === activeNotice.id ? (
-                    <>
-                      <Check className="w-3.5 h-3.5 text-emerald-700" />
-                      <span>Copied for WhatsApp!</span>
-                    </>
-                  ) : (
-                    <>
-                      <Share2 className="w-3.5 h-3.5 text-[#5C4B99]" />
-                      <span>Share Circular</span>
-                    </>
-                  )}
-                </button>
-              </div>
-
-              <div className="flex items-center gap-2">
-                {activeNotice.linkedEventId && (
-                  <button
-                    type="button"
-                    onClick={() => handleLinkedEventOpen(activeNotice.linkedEventId!)}
-                    className="clay-btn-primary bg-[#5C4B99] hover:bg-[#4C3C82] text-white px-4 py-2 rounded-xl text-xs font-tech font-bold inline-flex items-center gap-1.5"
+                    onClick={() => setIsImageZoomed((prev) => !prev)}
+                    title={isImageZoomed ? 'Click to reset zoom' : 'Click to zoom in'}
                   >
-                    <Calendar className="w-3.5 h-3.5" />
-                    <span>Event Details &amp; .ics</span>
-                  </button>
-                )}
+                    <div className="absolute inset-0 bg-radial from-[#5C4B99]/20 to-transparent pointer-events-none" />
 
-                {activeNotice.actionHref && (
-                  activeNotice.isExternalAction ? (
+                    <div className="relative w-full aspect-[2/3] max-h-[540px] overflow-hidden flex items-center justify-center p-2">
+                      <div
+                        className={`relative w-full h-full transition-transform duration-300 ease-out origin-top ${
+                          isImageZoomed ? 'scale-135 translate-y-6' : 'scale-100'
+                        }`}
+                      >
+                        <Image
+                          src={activeNotice.imageUrl}
+                          alt={activeNotice.imageAlt || activeNotice.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 45vw"
+                          className="object-contain drop-shadow-md rounded"
+                          priority
+                        />
+                      </div>
+                    </div>
+
+                    <div className="absolute top-3 left-3 pointer-events-none">
+                      <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-black/75 backdrop-blur-md text-[10px] font-mono text-white border border-white/20 shadow">
+                        {isImageZoomed ? (
+                          <>
+                            <ZoomOut className="w-3 h-3 text-[#FFDBC3]" />
+                            <span>Zoomed 135%</span>
+                          </>
+                        ) : (
+                          <>
+                            <ZoomIn className="w-3 h-3 text-[#FFDBC3]" />
+                            <span>Click to Zoom</span>
+                          </>
+                        )}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Interactive Toolbar below Poster */}
+                  <div className="flex items-center justify-between gap-2 pt-1">
+                    <button
+                      type="button"
+                      onClick={() => setIsImageZoomed((prev) => !prev)}
+                      className="px-3 py-1.5 rounded-lg bg-[#5C4B99]/10 hover:bg-[#5C4B99]/20 text-[#3D246C] border border-[#3D246C]/15 text-xs font-tech font-bold inline-flex items-center gap-1.5 transition-colors"
+                    >
+                      {isImageZoomed ? (
+                        <>
+                          <ZoomOut className="w-3.5 h-3.5 text-[#5C4B99]" />
+                          <span>Reset Zoom</span>
+                        </>
+                      ) : (
+                        <>
+                          <ZoomIn className="w-3.5 h-3.5 text-[#5C4B99]" />
+                          <span>Inspect Fine Print</span>
+                        </>
+                      )}
+                    </button>
+
                     <a
-                      href={activeNotice.actionHref}
+                      href={activeNotice.imageUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="clay-btn-primary bg-[#5C4B99] hover:bg-[#4C3C82] text-white px-4 py-2 rounded-xl text-xs font-tech font-bold inline-flex items-center gap-1.5"
+                      className="px-3 py-1.5 rounded-lg bg-white hover:bg-[#FFDBC3]/30 text-[#3D246C] border border-[#3D246C]/20 text-xs font-tech font-bold inline-flex items-center gap-1.5 transition-colors"
+                      title="Open full resolution poster in new tab"
                     >
-                      <span>{activeNotice.actionLabel || 'Open Link'}</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
+                      <Maximize2 className="w-3.5 h-3.5 text-[#5C4B99]" />
+                      <span>High-Res Original</span>
                     </a>
-                  ) : (
-                    <Link
-                      href={activeNotice.actionHref}
-                      onClick={() => setActiveNotice(null)}
-                      className="clay-btn-accent bg-[#9F91CC] hover:bg-[#8D7DBE] text-[#3D246C] px-4 py-2 rounded-xl text-xs font-tech font-bold inline-flex items-center gap-1.5"
+                  </div>
+                </div>
+
+                {/* Right Column: Full Official Circular Slip */}
+                <div className="md:col-span-7 flex flex-col justify-between">
+                  <div>
+                    {/* Header */}
+                    <div className="flex items-start justify-between gap-3 pb-3 border-b border-dashed border-[#3D246C]/20">
+                      <div>
+                        <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#5C4B99] block">
+                          {activeNotice.departmentStamp}
+                        </span>
+                        <span className="font-mono text-[10px] text-[#3D246C]/65">
+                          Circular Ref: {activeNotice.refCode} • {activeNotice.postedLabel}
+                        </span>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setActiveNotice(null);
+                          setIsImageZoomed(false);
+                        }}
+                        aria-label="Close circular reader"
+                        className="p-1.5 rounded-xl bg-[#FFDBC3]/65 hover:bg-[#FFDBC3] text-[#3D246C] border border-[#3D246C]/15 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    </div>
+
+                    {/* Badges */}
+                    <div className="mt-3.5 flex flex-wrap items-center gap-2">
+                      <span
+                        className={`px-2.5 py-0.5 rounded-md text-xs font-tech font-bold border ${
+                          NOTICE_CATEGORY_META[activeNotice.category].badgeBg
+                        } ${NOTICE_CATEGORY_META[activeNotice.category].badgeText} ${
+                          NOTICE_CATEGORY_META[activeNotice.category].badgeBorder
+                        }`}
+                      >
+                        {activeNotice.categoryLabel}
+                      </span>
+                      {activeNotice.isTentative && (
+                        <span className="px-2.5 py-0.5 rounded-md text-[11px] font-mono font-bold bg-[#5C4B99]/12 text-[#3D246C] border border-[#5C4B99]/30">
+                          TENTATIVE SCHEDULE
+                        </span>
+                      )}
+                      {activeNotice.stampBadge && (
+                        <span className="px-2.5 py-0.5 rounded-md text-[11px] font-mono font-bold bg-[#FFDBC3]/80 text-[#3D246C] border border-[#3D246C]/20">
+                          {activeNotice.stampBadge}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Title */}
+                    <h3
+                      id="notice-reader-title"
+                      className="mt-3 font-tech text-xl sm:text-2xl font-extrabold text-[#231942] leading-snug"
                     >
-                      <span>{activeNotice.actionLabel || 'View Details'}</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
-                  )
-                )}
+                      {activeNotice.title}
+                    </h3>
+
+                    {/* Thick Border Callout (Website Launch 1-Sentence Box) */}
+                    <div className="mt-3 p-3 rounded-lg border-2 border-[#3D246C] bg-[#FFDBC3]/25 shadow-xs">
+                      <p className="font-tech font-bold text-xs sm:text-sm text-[#231942] leading-snug">
+                        🌐 Official Launch of Blossoms Website &amp; Social Media Page — Flames to Flight, White Onyx Ignites!
+                      </p>
+                    </div>
+
+                    {/* Summary */}
+                    <p className="mt-2.5 font-body text-xs sm:text-sm text-[#231942]/85 leading-relaxed">
+                      {activeNotice.summary}
+                    </p>
+
+                    {/* Detailed Bullet Points */}
+                    <div className="mt-4 p-3.5 sm:p-4 rounded-xl bg-white border border-[#3D246C]/12 space-y-2">
+                      <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#5C4B99] flex items-center gap-1.5">
+                        <FileText className="w-3.5 h-3.5" />
+                        <span>Official Circular Notes</span>
+                      </span>
+                      <ul className="space-y-1.5 text-xs sm:text-sm font-body text-[#231942]/90">
+                        {activeNotice.details.map((line, i) => (
+                          <li key={i} className="flex items-start gap-2 leading-relaxed">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#5C4B99] mt-2 shrink-0" />
+                            <span>{line}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Modal Actions */}
+                  <div className="mt-5 pt-3.5 border-t border-[#3D246C]/15 flex flex-wrap items-center justify-between gap-3">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={() => toggleSavedNoticeId(activeNotice.id)}
+                        className={`px-3.5 py-2 rounded-xl text-xs font-tech font-bold inline-flex items-center gap-1.5 border transition-colors ${
+                          savedIds.includes(activeNotice.id)
+                            ? 'bg-[#5C4B99] text-white border-[#5C4B99]'
+                            : 'bg-white text-[#3D246C] border-[#3D246C]/20 hover:border-[#5C4B99]'
+                        }`}
+                      >
+                        <Bookmark
+                          className={`w-3.5 h-3.5 ${
+                            savedIds.includes(activeNotice.id) ? 'fill-current' : ''
+                          }`}
+                        />
+                        <span>{savedIds.includes(activeNotice.id) ? 'Saved on Board' : 'Save Circular'}</span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => handleShareNotice(activeNotice)}
+                        className="px-3.5 py-2 rounded-xl bg-white hover:bg-[#FFDBC3]/40 text-[#3D246C] border border-[#3D246C]/20 text-xs font-tech font-bold inline-flex items-center gap-1.5 transition-colors"
+                      >
+                        {copiedId === activeNotice.id ? (
+                          <>
+                            <Check className="w-3.5 h-3.5 text-emerald-700" />
+                            <span>Copied for WhatsApp!</span>
+                          </>
+                        ) : (
+                          <>
+                            <Share2 className="w-3.5 h-3.5 text-[#5C4B99]" />
+                            <span>Share Circular</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      {activeNotice.linkedEventId && (
+                        <button
+                          type="button"
+                          onClick={() => handleLinkedEventOpen(activeNotice.linkedEventId!)}
+                          className="clay-btn-primary bg-[#5C4B99] hover:bg-[#4C3C82] text-white px-4 py-2 rounded-xl text-xs font-tech font-bold inline-flex items-center gap-1.5"
+                        >
+                          <Calendar className="w-3.5 h-3.5" />
+                          <span>Event Details &amp; .ics</span>
+                        </button>
+                      )}
+
+                      {activeNotice.actionHref && (
+                        activeNotice.isExternalAction ? (
+                          <a
+                            href={activeNotice.actionHref}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="clay-btn-primary bg-[#5C4B99] hover:bg-[#4C3C82] text-white px-4 py-2 rounded-xl text-xs font-tech font-bold inline-flex items-center gap-1.5"
+                          >
+                            <span>{activeNotice.actionLabel || 'Open Link'}</span>
+                            <ExternalLink className="w-3.5 h-3.5" />
+                          </a>
+                        ) : (
+                          <Link
+                            href={activeNotice.actionHref}
+                            onClick={() => {
+                              setActiveNotice(null);
+                              setIsImageZoomed(false);
+                            }}
+                            className="clay-btn-accent bg-[#9F91CC] hover:bg-[#8D7DBE] text-[#3D246C] px-4 py-2 rounded-xl text-xs font-tech font-bold inline-flex items-center gap-1.5"
+                          >
+                            <span>{activeNotice.actionLabel || 'View Details'}</span>
+                            <ArrowRight className="w-3.5 h-3.5" />
+                          </Link>
+                        )
+                      )}
+                    </div>
+                  </div>
+                </div>
               </div>
+            ) : (
+              /* Single-Column Classic View for Text-Only Circulars */
+              <div>
+                {/* Modal Top Header */}
+                <div className="flex items-start justify-between gap-3 pb-3.5 border-b border-dashed border-[#3D246C]/20">
+                  <div>
+                    <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#5C4B99] block">
+                      {activeNotice.departmentStamp}
+                    </span>
+                    <span className="font-mono text-[10px] text-[#3D246C]/65">
+                      Circular Ref: {activeNotice.refCode} • {activeNotice.postedLabel}
+                    </span>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => setActiveNotice(null)}
+                    aria-label="Close circular reader"
+                    className="p-1.5 rounded-xl bg-[#FFDBC3]/65 hover:bg-[#FFDBC3] text-[#3D246C] border border-[#3D246C]/15 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+
+                {/* Badges */}
+                <div className="mt-4 flex flex-wrap items-center gap-2">
+                  <span
+                    className={`px-2.5 py-0.5 rounded-md text-xs font-tech font-bold border ${
+                      NOTICE_CATEGORY_META[activeNotice.category].badgeBg
+                    } ${NOTICE_CATEGORY_META[activeNotice.category].badgeText} ${
+                      NOTICE_CATEGORY_META[activeNotice.category].badgeBorder
+                    }`}
+                  >
+                    {activeNotice.categoryLabel}
+                  </span>
+                  {activeNotice.isTentative && (
+                    <span className="px-2.5 py-0.5 rounded-md text-[11px] font-mono font-bold bg-[#5C4B99]/12 text-[#3D246C] border border-[#5C4B99]/30">
+                      TENTATIVE SCHEDULE
+                    </span>
+                  )}
+                  {activeNotice.stampBadge && (
+                    <span className="px-2.5 py-0.5 rounded-md text-[11px] font-mono font-bold bg-[#FFDBC3]/80 text-[#3D246C] border border-[#3D246C]/20">
+                      {activeNotice.stampBadge}
+                    </span>
+                  )}
+                </div>
+
+                {/* Title & Summary */}
+                <h3
+                  id="notice-reader-title"
+                  className="mt-3 font-tech text-xl sm:text-2xl font-extrabold text-[#231942] leading-snug"
+                >
+                  {activeNotice.title}
+                </h3>
+                <p className="mt-2 font-body text-sm text-[#231942]/85 leading-relaxed">
+                  {activeNotice.summary}
+                </p>
+
+                {/* Detailed Bullet Points */}
+                <div className="mt-4 p-4 rounded-xl bg-white border border-[#3D246C]/12 space-y-2.5">
+                  <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#5C4B99] flex items-center gap-1.5">
+                    <FileText className="w-3.5 h-3.5" />
+                    <span>Official Circular Notes</span>
+                  </span>
+                  <ul className="space-y-2 text-xs sm:text-sm font-body text-[#231942]/90">
+                    {activeNotice.details.map((line, i) => (
+                      <li key={i} className="flex items-start gap-2 leading-relaxed">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#5C4B99] mt-2 shrink-0" />
+                        <span>{line}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Modal Actions */}
+                <div className="mt-5 pt-4 border-t border-[#3D246C]/15 flex flex-wrap items-center justify-between gap-3">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => toggleSavedNoticeId(activeNotice.id)}
+                      className={`px-3.5 py-2 rounded-xl text-xs font-tech font-bold inline-flex items-center gap-1.5 border transition-colors ${
+                        savedIds.includes(activeNotice.id)
+                          ? 'bg-[#5C4B99] text-white border-[#5C4B99]'
+                          : 'bg-white text-[#3D246C] border-[#3D246C]/20 hover:border-[#5C4B99]'
+                      }`}
+                    >
+                      <Bookmark
+                        className={`w-3.5 h-3.5 ${
+                          savedIds.includes(activeNotice.id) ? 'fill-current' : ''
+                        }`}
+                      />
+                      <span>{savedIds.includes(activeNotice.id) ? 'Saved on Board' : 'Save Circular'}</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => handleShareNotice(activeNotice)}
+                      className="px-3.5 py-2 rounded-xl bg-white hover:bg-[#FFDBC3]/40 text-[#3D246C] border border-[#3D246C]/20 text-xs font-tech font-bold inline-flex items-center gap-1.5 transition-colors"
+                    >
+                      {copiedId === activeNotice.id ? (
+                        <>
+                          <Check className="w-3.5 h-3.5 text-emerald-700" />
+                          <span>Copied for WhatsApp!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Share2 className="w-3.5 h-3.5 text-[#5C4B99]" />
+                          <span>Share Circular</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    {activeNotice.linkedEventId && (
+                      <button
+                        type="button"
+                        onClick={() => handleLinkedEventOpen(activeNotice.linkedEventId!)}
+                        className="clay-btn-primary bg-[#5C4B99] hover:bg-[#4C3C82] text-white px-4 py-2 rounded-xl text-xs font-tech font-bold inline-flex items-center gap-1.5"
+                      >
+                        <Calendar className="w-3.5 h-3.5" />
+                        <span>Event Details &amp; .ics</span>
+                      </button>
+                    )}
+
+                    {activeNotice.actionHref && (
+                      activeNotice.isExternalAction ? (
+                        <a
+                          href={activeNotice.actionHref}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="clay-btn-primary bg-[#5C4B99] hover:bg-[#4C3C82] text-white px-4 py-2 rounded-xl text-xs font-tech font-bold inline-flex items-center gap-1.5"
+                        >
+                          <span>{activeNotice.actionLabel || 'Open Link'}</span>
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        </a>
+                      ) : (
+                        <Link
+                          href={activeNotice.actionHref}
+                          onClick={() => setActiveNotice(null)}
+                          className="clay-btn-accent bg-[#9F91CC] hover:bg-[#8D7DBE] text-[#3D246C] px-4 py-2 rounded-xl text-xs font-tech font-bold inline-flex items-center gap-1.5"
+                        >
+                          <span>{activeNotice.actionLabel || 'View Details'}</span>
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </Link>
+                      )
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
             </div>
           </div>
         </div>

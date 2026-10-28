@@ -251,10 +251,11 @@ export function ScrollAmbience() {
         };
 
         const shedBranchPetals = (amount: number) => {
-          const branchSpanX = width < 768 ? 120 : 195;
+          const isMobileNow = width < 768;
+          const branchSpanX = isMobileNow ? 120 : 195;
           for (let i = 0; i < amount; i++) {
             if (particles.length >= maxParticles) break;
-            const fromLeft = Math.random() < 0.5;
+            const fromLeft = isMobileNow ? true : Math.random() < 0.5;
             const bx = fromLeft
               ? 18 + Math.random() * branchSpanX
               : width - (18 + Math.random() * branchSpanX);
@@ -381,13 +382,16 @@ export function ScrollAmbience() {
             ctx.restore();
           }
 
-          ctx.save();
-          ctx.globalAlpha = isMobileNow ? 0.80 : 0.88;
-          ctx.translate(width - edgeX, finalY);
-          ctx.scale(-1, 1);
-          ctx.rotate(branchAngle);
-          ctx.drawImage(branchSheet, sx, 0, srcW, srcH, 0, 0, dstW, dstH);
-          ctx.restore();
+          // Right branch: desktop only (omitted on mobile/phone so it never clashes with the fixed hamburger menu)
+          if (!isMobileNow) {
+            ctx.save();
+            ctx.globalAlpha = 0.88;
+            ctx.translate(width - edgeX, finalY);
+            ctx.scale(-1, 1);
+            ctx.rotate(branchAngle);
+            ctx.drawImage(branchSheet, sx, 0, srcW, srcH, 0, 0, dstW, dstH);
+            ctx.restore();
+          }
         };
 
         let lastTime = performance.now();
