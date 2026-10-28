@@ -155,7 +155,7 @@ export function ScheduleCalendarView({
             {Array.from({ length: activeMonth.startDayOfWeek }).map((_, idx) => (
               <div
                 key={`empty-${idx}`}
-                className="aspect-square sm:aspect-[4/3] rounded-xl bg-transparent"
+                className="aspect-square sm:aspect-[4/3] rounded-xl bg-transparent border-2 border-transparent"
                 aria-hidden="true"
               />
             ))}
@@ -186,21 +186,26 @@ export function ScheduleCalendarView({
                   aria-label={`${dayNum} ${activeMonth.name}${
                     hasEvents ? `, ${dayEvents.length} scheduled events` : ', no events'
                   }`}
-                  className={`group relative aspect-square sm:aspect-[4/3] p-1.5 sm:p-2 rounded-xl flex flex-col justify-between transition-all duration-150 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99] ${
+                  className={`group relative aspect-square sm:aspect-[4/3] p-1.5 sm:p-2 rounded-xl flex flex-col justify-between transition-colors duration-150 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99] ${
                     isSelected
-                      ? 'bg-[#5C4B99] text-white font-bold shadow-lg ring-2 ring-[#5C4B99]'
+                      ? 'bg-white text-[#3D246C] border-2 border-[#5C4B99] shadow-md ring-2 ring-[#5C4B99]/20'
                       : hasEvents
-                      ? 'bg-white hover:bg-[#FFDBC3]/30 text-[#3D246C] border border-[#3D246C]/20 hover:border-[#5C4B99]/60 cursor-pointer shadow-sm'
-                      : 'bg-transparent text-[#3D246C]/30 hover:text-[#3D246C]/60 border border-transparent'
+                      ? 'bg-white hover:bg-[#FFDBC3]/30 text-[#3D246C] border-2 border-[#3D246C]/15 hover:border-[#5C4B99]/60 cursor-pointer shadow-sm'
+                      : 'bg-transparent text-[#3D246C]/30 hover:text-[#3D246C]/60 border-2 border-transparent'
                   }`}
                 >
-                  <span
-                    className={`text-xs sm:text-sm font-mono ${
-                      isSelected ? 'font-black text-white' : 'font-medium'
-                    }`}
-                  >
-                    {dayNum}
-                  </span>
+                  <div className="flex items-center justify-between">
+                    <span
+                      className={`text-xs sm:text-sm font-mono ${
+                        isSelected ? 'font-bold text-[#5C4B99]' : 'font-medium text-[#3D246C]'
+                      }`}
+                    >
+                      {dayNum}
+                    </span>
+                    {isSelected && (
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#5C4B99]" aria-hidden="true" />
+                    )}
+                  </div>
 
                   {/* Scheduled events indicators */}
                   {hasEvents && (
@@ -208,13 +213,13 @@ export function ScheduleCalendarView({
                       <span
                         className={`inline-flex items-center justify-center text-[10px] sm:text-[11px] font-bold font-mono px-1.5 py-0.2 rounded-full ${
                           isSelected
-                            ? 'bg-white text-[#5C4B99]'
+                            ? 'bg-[#5C4B99] text-white'
                             : 'bg-[#FFDBC3] text-[#3D246C] border border-[#3D246C]/20'
                         }`}
                       >
                         {dayEvents.length}
                       </span>
-                      <span className="hidden sm:inline text-[9px] font-mono uppercase tracking-tight truncate opacity-80">
+                      <span className="hidden sm:inline text-[9px] font-mono uppercase tracking-tight truncate opacity-80 text-[#3D246C]">
                         {dayEvents.length === 1 ? 'event' : 'events'}
                       </span>
                     </div>
@@ -225,7 +230,7 @@ export function ScheduleCalendarView({
           </div>
 
           {/* Quick Legend */}
-          <div className="mt-6 pt-4 border-t border-[#3D246C]/15 flex flex-wrap items-center justify-between gap-3 text-xs text-[#3D246C]/70">
+          <div className="mt-6 pt-4 border-t border-[#3D246C]/15 flex flex-wrap items-center justify-between gap-3 text-xs text-[#3D246C]/70 min-h-[32px]">
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-[#5C4B99] inline-block" />
               <span>Dates with scheduled events</span>
@@ -244,7 +249,7 @@ export function ScheduleCalendarView({
 
         {/* Right Column: Events on Selected Date or Date Overview Panel (5 cols on lg) */}
         <div className="lg:col-span-5 space-y-4">
-          <div className="rounded-2xl bg-white/90 border border-[#3D246C]/20 p-5 sm:p-6 backdrop-blur-md shadow-xl shadow-[#3D246C]/5">
+          <div className="rounded-2xl bg-white/90 border border-[#3D246C]/20 p-5 sm:p-6 backdrop-blur-md shadow-xl shadow-[#3D246C]/5 min-h-[460px] flex flex-col justify-start">
             {selectedDate ? (
               <div className="space-y-4">
                 <div className="flex items-center justify-between pb-3 border-b border-[#3D246C]/15">
