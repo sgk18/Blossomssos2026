@@ -1,23 +1,68 @@
 'use client';
 
 import Image from 'next/image';
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useMemo } from 'react';
 import { 
-  ChevronDown, 
   Maximize2, 
   X, 
   ChevronLeft, 
   ChevronRight, 
-  Play
+  Play,
+  ArrowRight
 } from 'lucide-react';
 import { BENTO_GALLERY_ITEMS, GalleryItem } from '@/data/gallery-data';
 
+const ITEMS_PER_PAGE = 12;
+
 export function GalleryBentoGrid() {
-  const [visibleCount, setVisibleCount] = useState<number>(12);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [jumpPageInput, setJumpPageInput] = useState<string>('');
+  const [validationError, setValidationError] = useState<string | null>(null);
   const [activeModalItem, setActiveModalItem] = useState<GalleryItem | null>(null);
 
-  const displayedItems = BENTO_GALLERY_ITEMS.slice(0, visibleCount);
-  const hasMore = visibleCount < BENTO_GALLERY_ITEMS.length;
+  const totalItems = BENTO_GALLERY_ITEMS.length;
+  const totalPages = Math.max(1, Math.ceil(totalItems / ITEMS_PER_PAGE));
+
+  // Strict page bounds validation
+  const validatedPage = useMemo(() => {
+    if (currentPage < 1) return 1;
+    if (currentPage > totalPages) return totalPages;
+    return currentPage;
+  }, [currentPage, totalPages]);
+
+  // Paginated slice
+  const displayedItems = useMemo(() => {
+    const startIndex = (validatedPage - 1) * ITEMS_PER_PAGE;
+    return BENTO_GALLERY_ITEMS.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  }, [validatedPage]);
+
+  // Page navigation validator
+  const handlePageChange = useCallback((newPage: number) => {
+    if (!Number.isInteger(newPage) || newPage < 1 || newPage > totalPages) {
+      setValidationError(`Page must be between 1 and ${totalPages}`);
+      return;
+    }
+    setValidationError(null);
+    setCurrentPage(newPage);
+    setJumpPageInput('');
+    
+    // Smoothly scroll back to the section header
+    const headingElem = document.getElementById('bento-heading');
+    if (headingElem) {
+      headingElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [totalPages]);
+
+  // Jump input submission validator
+  const handleJumpSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const parsed = parseInt(jumpPageInput.trim(), 10);
+    if (isNaN(parsed) || parsed < 1 || parsed > totalPages) {
+      setValidationError(`Please enter a valid page between 1 and ${totalPages}`);
+      return;
+    }
+    handlePageChange(parsed);
+  };
 
   const handleOpenModal = (item: GalleryItem) => {
     setActiveModalItem(item);
@@ -75,35 +120,31 @@ export function GalleryBentoGrid() {
     const patternIndex = index % 12;
     switch (patternIndex) {
       case 0:
-        // Featured prominent card (8 cols on desktop)
         return 'col-span-12 md:col-span-8 h-[260px] sm:h-[340px] md:h-[400px]';
       case 1:
-        // Portrait/tall side card (4 cols on desktop)
         return 'col-span-12 md:col-span-4 h-[260px] sm:h-[340px] md:h-[400px]';
       case 2:
       case 3:
       case 4:
-        // Triplet row (4 cols + 4 cols + 4 cols)
         return 'col-span-12 sm:col-span-6 md:col-span-4 h-[220px] sm:h-[260px] md:h-[290px]';
       case 5:
       case 6:
       case 7:
-        // Secondary triplet row (4 cols + 4 cols + 4 cols)
         return 'col-span-12 sm:col-span-6 md:col-span-4 h-[220px] sm:h-[260px] md:h-[290px]';
       case 8:
-        // Accent companion (4 cols)
         return 'col-span-12 md:col-span-4 h-[260px] sm:h-[340px] md:h-[400px]';
       case 9:
-        // Wide hero capture (8 cols)
         return 'col-span-12 md:col-span-8 h-[260px] sm:h-[340px] md:h-[400px]';
       case 10:
       case 11:
-        // Duo finale (6 cols + 6 cols)
         return 'col-span-12 sm:col-span-6 md:col-span-6 h-[240px] sm:h-[300px] md:h-[340px]';
       default:
         return 'col-span-12 sm:col-span-6 md:col-span-4 h-[220px] sm:h-[260px] md:h-[290px]';
     }
   };
+
+  const startRecord = (validatedPage - 1) * ITEMS_PER_PAGE + 1;
+  const endRecord = Math.min(validatedPage * ITEMS_PER_PAGE, totalItems);
 
   return (
     <section aria-labelledby="bento-heading" className="w-full py-16 sm:py-24">
@@ -120,8 +161,10 @@ export function GalleryBentoGrid() {
         </div>
 
         {/* Bento Grid Container */}
-        <div className="p-4 sm:p-6 lg:p-8 rounded-3xl bg-[#FFDBC3] border border-[#3D246C]/15 shadow-sm"
-          style={{ backgroundColor: '#FFDBC3' }}>
+        <div 
+          className="p-4 sm:p-6 lg:p-8 rounded-3xl bg-[#FFDBC3] border border-[#3D246C]/15 shadow-sm"
+          style={{ backgroundColor: '#FFDBC3' }}
+        >
           <div className="grid grid-cols-12 gap-3 sm:gap-4 md:gap-5">
             {displayedItems.map((item, index) => {
               const cellClasses = getBentoClasses(index, displayedItems.length);
@@ -134,7 +177,7 @@ export function GalleryBentoGrid() {
                   className={`group relative rounded-2xl overflow-hidden cursor-pointer bg-[#3D246C] border border-[#3D246C]/15 transition-all duration-300 hover:shadow-xl hover:border-[#5C4B99]/50 ${cellClasses}`}
                   role="button"
                   tabIndex={0}
-                  aria-label={`Preview capture ${index + 1}`}
+                  aria-label={`Preview capture ${startRecord + index}`}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                       handleOpenModal(item);
@@ -153,7 +196,7 @@ export function GalleryBentoGrid() {
                   {/* Subtle Gradient Scrim on hover */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#3D246C]/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
-                  {/* Top-Right Expand Icon (Only on hover, no top-left title/badge) */}
+                  {/* Top-Right Expand Icon on hover */}
                   <div className="absolute top-3 right-3 z-10">
                     <span className="w-8 h-8 rounded-full bg-black/50 backdrop-blur-md text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 shadow-md">
                       <Maximize2 className="w-4 h-4" />
@@ -173,16 +216,105 @@ export function GalleryBentoGrid() {
             })}
           </div>
 
-          {/* Load More Button */}
-          {hasMore && (
-            <div className="mt-8 sm:mt-10 text-center">
-              <button
-                onClick={() => setVisibleCount((prev) => prev + 8)}
-                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white hover:bg-[#FFDBC3]/30 text-[#3D246C] hover:text-[#5C4B99] font-bold text-xs sm:text-sm border border-[#3D246C]/15 hover:border-[#5C4B99]/40 shadow-xs transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99]"
-              >
-                <span>Load More Captures ({BENTO_GALLERY_ITEMS.length - displayedItems.length} remaining)</span>
-                <ChevronDown className="w-4 h-4" />
-              </button>
+          {/* Validated Pagination Controls */}
+          {totalPages > 1 && (
+            <div className="mt-10 sm:mt-12 flex flex-col md:flex-row items-center justify-between gap-4 pt-6 border-t border-[#3D246C]/10">
+              {/* Counter status label */}
+              <div className="text-center md:text-left">
+                <p className="text-xs sm:text-sm font-semibold text-[#5C4B99]">
+                  Showing <span className="text-[#3D246C] font-bold">{startRecord}</span> to{' '}
+                  <span className="text-[#3D246C] font-bold">{endRecord}</span> of{' '}
+                  <span className="text-[#3D246C] font-bold">{totalItems}</span> captures
+                  <span className="mx-2 text-[#3D246C]/30">•</span>
+                  <span className="text-[#3D246C] font-bold">Page {validatedPage} of {totalPages}</span>
+                </p>
+                {validationError && (
+                  <p className="text-xs text-rose-600 font-semibold mt-1 animate-pulse">
+                    {validationError}
+                  </p>
+                )}
+              </div>
+
+              {/* Navigation buttons and page numbers */}
+              <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+                {/* Previous Page Button (Validated Disabled when on page 1) */}
+                <button
+                  onClick={() => handlePageChange(validatedPage - 1)}
+                  disabled={validatedPage <= 1}
+                  className={`inline-flex items-center gap-1 px-3 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold border transition-all ${
+                    validatedPage <= 1
+                      ? 'bg-white/40 text-[#3D246C]/30 border-[#3D246C]/10 cursor-not-allowed opacity-50'
+                      : 'bg-white text-[#3D246C] border-[#3D246C]/15 hover:bg-[#5C4B99] hover:text-white hover:border-[#5C4B99] shadow-xs active:scale-95'
+                  }`}
+                  aria-label="Previous Page"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                  <span className="hidden sm:inline">Prev</span>
+                </button>
+
+                {/* Page Number Buttons */}
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => {
+                  const isActive = pageNum === validatedPage;
+                  return (
+                    <button
+                      key={pageNum}
+                      onClick={() => handlePageChange(pageNum)}
+                      className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+                        isActive
+                          ? 'bg-[#5C4B99] text-white shadow-md shadow-[#5C4B99]/30 border border-[#5C4B99] scale-105'
+                          : 'bg-white text-[#3D246C] hover:bg-white/80 border border-[#3D246C]/15 active:scale-95'
+                      }`}
+                      aria-label={`Page ${pageNum}`}
+                      aria-current={isActive ? 'page' : undefined}
+                    >
+                      {pageNum}
+                    </button>
+                  );
+                })}
+
+                {/* Next Page Button (Validated Disabled when on last page) */}
+                <button
+                  onClick={() => handlePageChange(validatedPage + 1)}
+                  disabled={validatedPage >= totalPages}
+                  className={`inline-flex items-center gap-1 px-3 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold border transition-all ${
+                    validatedPage >= totalPages
+                      ? 'bg-white/40 text-[#3D246C]/30 border-[#3D246C]/10 cursor-not-allowed opacity-50'
+                      : 'bg-white text-[#3D246C] border-[#3D246C]/15 hover:bg-[#5C4B99] hover:text-white hover:border-[#5C4B99] shadow-xs active:scale-95'
+                  }`}
+                  aria-label="Next Page"
+                >
+                  <span className="hidden sm:inline">Next</span>
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+
+                {/* Quick Jump Page Input with validation */}
+                <form 
+                  onSubmit={handleJumpSubmit} 
+                  className="hidden lg:flex items-center gap-1.5 ml-2 pl-3 border-l border-[#3D246C]/15"
+                >
+                  <span className="text-xs font-semibold text-[#5C4B99]">Go to</span>
+                  <input
+                    type="number"
+                    min={1}
+                    max={totalPages}
+                    value={jumpPageInput}
+                    onChange={(e) => {
+                      setJumpPageInput(e.target.value);
+                      if (validationError) setValidationError(null);
+                    }}
+                    placeholder={String(validatedPage)}
+                    className="w-12 h-9 text-center text-xs font-bold rounded-lg bg-white border border-[#3D246C]/20 text-[#3D246C] focus:outline-none focus:ring-2 focus:ring-[#5C4B99]"
+                    aria-label="Go to page number"
+                  />
+                  <button
+                    type="submit"
+                    className="h-9 px-2.5 rounded-lg bg-[#5C4B99] text-white text-xs font-bold hover:bg-[#3D246C] transition-all shadow-xs active:scale-95"
+                    aria-label="Apply page jump"
+                  >
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </form>
+              </div>
             </div>
           )}
         </div>
