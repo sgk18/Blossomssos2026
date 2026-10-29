@@ -7,8 +7,7 @@ import {
   X, 
   ChevronLeft, 
   ChevronRight, 
-  Play,
-  ArrowRight
+  Play
 } from 'lucide-react';
 import { BENTO_GALLERY_ITEMS, GalleryItem } from '@/data/gallery-data';
 
@@ -16,8 +15,6 @@ const ITEMS_PER_PAGE = 12;
 
 export function GalleryBentoGrid() {
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [jumpPageInput, setJumpPageInput] = useState<string>('');
-  const [validationError, setValidationError] = useState<string | null>(null);
   const [activeModalItem, setActiveModalItem] = useState<GalleryItem | null>(null);
 
   const totalItems = BENTO_GALLERY_ITEMS.length;
@@ -38,31 +35,17 @@ export function GalleryBentoGrid() {
 
   // Page navigation validator
   const handlePageChange = useCallback((newPage: number) => {
-    if (!Number.isInteger(newPage) || newPage < 1 || newPage > totalPages) {
-      setValidationError(`Page must be between 1 and ${totalPages}`);
+    if (!Number.isInteger(newPage) || newPage < 1 || newPage > totalPages || newPage === validatedPage) {
       return;
     }
-    setValidationError(null);
     setCurrentPage(newPage);
-    setJumpPageInput('');
     
     // Smoothly scroll back to the section header
     const headingElem = document.getElementById('bento-heading');
     if (headingElem) {
       headingElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  }, [totalPages]);
-
-  // Jump input submission validator
-  const handleJumpSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const parsed = parseInt(jumpPageInput.trim(), 10);
-    if (isNaN(parsed) || parsed < 1 || parsed > totalPages) {
-      setValidationError(`Please enter a valid page between 1 and ${totalPages}`);
-      return;
-    }
-    handlePageChange(parsed);
-  };
+  }, [totalPages, validatedPage]);
 
   const handleOpenModal = (item: GalleryItem) => {
     setActiveModalItem(item);
@@ -228,11 +211,6 @@ export function GalleryBentoGrid() {
                   <span className="mx-2 text-[#3D246C]/30">•</span>
                   <span className="text-[#3D246C] font-bold">Page {validatedPage} of {totalPages}</span>
                 </p>
-                {validationError && (
-                  <p className="text-xs text-rose-600 font-semibold mt-1 animate-pulse">
-                    {validationError}
-                  </p>
-                )}
               </div>
 
               {/* Navigation buttons and page numbers */}
@@ -286,34 +264,6 @@ export function GalleryBentoGrid() {
                   <span className="hidden sm:inline">Next</span>
                   <ChevronRight className="w-4 h-4" />
                 </button>
-
-                {/* Quick Jump Page Input with validation */}
-                <form 
-                  onSubmit={handleJumpSubmit} 
-                  className="hidden lg:flex items-center gap-1.5 ml-2 pl-3 border-l border-[#3D246C]/15"
-                >
-                  <span className="text-xs font-semibold text-[#5C4B99]">Go to</span>
-                  <input
-                    type="number"
-                    min={1}
-                    max={totalPages}
-                    value={jumpPageInput}
-                    onChange={(e) => {
-                      setJumpPageInput(e.target.value);
-                      if (validationError) setValidationError(null);
-                    }}
-                    placeholder={String(validatedPage)}
-                    className="w-12 h-9 text-center text-xs font-bold rounded-lg bg-white border border-[#3D246C]/20 text-[#3D246C] focus:outline-none focus:ring-2 focus:ring-[#5C4B99]"
-                    aria-label="Go to page number"
-                  />
-                  <button
-                    type="submit"
-                    className="h-9 px-2.5 rounded-lg bg-[#5C4B99] text-white text-xs font-bold hover:bg-[#3D246C] transition-all shadow-xs active:scale-95"
-                    aria-label="Apply page jump"
-                  >
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </form>
               </div>
             </div>
           )}
