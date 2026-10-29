@@ -191,7 +191,7 @@ export default function HomePage() {
       {/* =========================================================
           4. OFFICIAL HANDOUTS & GUIDELINES (RULEBOOK SPOTLIGHT)
           ========================================================= */}
-      <section id="posters-section" className="py-20 bg-[#9F91CC]/15">
+      <section id="posters-section" className="pt-20 pb-8 sm:pb-10 bg-[#9F91CC]/15">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
 
           <div className="space-y-3 max-w-2xl mx-auto text-center">
@@ -279,13 +279,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Decorative Divider from Handouts to About / Team Onyx */}
-      <WavyDivider topColor="rgba(159, 145, 204, 0.15)" bottomFill="rgba(159, 145, 204, 0.20)" />
-
       {/* =========================================================
-          5. ABOUT BLOSSOMS & TEAM ONYX SECTION
+          5. ABOUT BLOSSOMS & TEAM ONYX SECTION (UNIFIED WITH HANDOUTS)
           ========================================================= */}
-      <section id="team" className="py-20 sm:py-24 bg-[#9F91CC]/20 scroll-mt-24 sm:scroll-mt-28">
+      <section id="team" className="pt-8 sm:pt-10 pb-20 sm:pb-24 bg-[#9F91CC]/15 scroll-mt-24 sm:scroll-mt-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
             <span className="text-xs font-tech font-bold uppercase tracking-[0.2em] text-[#5C4B99] block mb-2">
@@ -368,7 +365,7 @@ export default function HomePage() {
       </section>
 
       {/* Decorative Divider from About to Photo Marquee */}
-      <WavyDivider topColor="rgba(159, 145, 204, 0.20)" bottomFill="#FFDBC3" />
+      <WavyDivider topColor="rgba(159, 145, 204, 0.15)" bottomFill="#FFDBC3" />
 
       {/* =========================================================
           6. FESTIVAL HIGHLIGHTS & STAGE ENERGY (PHOTO MARQUEE)
