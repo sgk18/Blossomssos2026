@@ -4,9 +4,9 @@ import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { HeroBackground } from '@/components/hero/HeroBackground';
 import { siteConfig } from '@/data/site-config';
-import { 
-  ArrowRight, 
-  ExternalLink,  
+import {
+  ArrowRight,
+  ExternalLink,
   BookOpen,
   Camera
 } from 'lucide-react';
@@ -42,7 +42,7 @@ export default function HomePage() {
       <section aria-labelledby="hero-heading" className="relative">
         <HeroBackground>
           <div className="max-w-5xl mx-auto flex flex-col items-center text-center gap-5 sm:gap-6 pt-10 sm:pt-14 pb-12 px-4">
-            
+
             {/* Eyebrow Label */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-[#3D246C]/15 text-[#5C4B99] text-xs font-tech font-bold uppercase tracking-widest shadow-xs">
               <span>CHRIST (Deemed to be University) &bull; School of Sciences</span>
@@ -50,18 +50,18 @@ export default function HomePage() {
 
             {/* Dominant Title */}
             <div className="space-y-3 max-w-4xl flex flex-col items-center">
-              <h1 
-                id="hero-heading" 
+              <h1
+                id="hero-heading"
                 className="font-angular text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight text-[#3D246C] leading-none"
               >
                 BLOSSOMS
               </h1>
-              
+
               <div className="flex flex-wrap items-center justify-center gap-3">
                 <h2 className="font-angular text-2xl sm:text-4xl font-extrabold text-[#3D246C] tracking-tight">
                   School of Sciences &bull; 2026–27
                 </h2>
-                
+
                 {/* Team Onyx Emblem Badge */}
                 <div className="relative h-9 w-32 sm:h-11 sm:w-40 px-2 py-1 rounded-xl bg-white/95 border border-[#3D246C]/20 shadow-sm flex items-center justify-center">
                   <Image
@@ -76,13 +76,6 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Verified Event Window Pill */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 border border-[#3D246C]/20 text-xs sm:text-sm font-tech text-[#3D246C] shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-[#5C4B99] animate-pulse" />
-              <span className="font-bold">Prelims Window: Nov 12 – Dec 11, 2026</span>
-              <span className="text-[#5C4B99]/40 hidden sm:inline">•</span>
-              <span className="hidden sm:inline text-[#3D246C]/85">31 Competitions Across 5 Pillars</span>
-            </div>
 
             {/* Official Slogan Graphic Artwork */}
             <div className="relative w-full max-w-md sm:max-w-2xl md:max-w-3xl h-28 sm:h-36 md:h-44 my-1 flex items-center justify-center">
@@ -198,7 +191,7 @@ export default function HomePage() {
           ========================================================= */}
       <section id="posters-section" className="py-20 bg-[#9F91CC]/15">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          
+
           <div className="space-y-3 max-w-2xl mx-auto text-center">
             <span className="text-xs font-tech font-bold uppercase tracking-[0.2em] text-[#5C4B99]">
               Official Handouts &amp; Guidelines
@@ -302,7 +295,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Left Column: Descriptive Content & Team Onyx Details */}
             <div className="lg:col-span-7 space-y-8">
               <p className="font-body text-base sm:text-lg text-[#3D246C]/90 leading-relaxed font-normal">
@@ -393,8 +386,8 @@ export default function HomePage() {
           <div className="animate-marquee gap-6 flex">
             {/* Set 1 */}
             {MARQUEE_IMAGES.map((img, idx) => (
-              <div 
-                key={`m1-${idx}`} 
+              <div
+                key={`m1-${idx}`}
                 className="relative w-72 sm:w-80 h-48 sm:h-52 shrink-0 rounded-2xl overflow-hidden border border-[#3D246C]/15 shadow-lg bg-white group"
               >
                 <Image
@@ -412,8 +405,8 @@ export default function HomePage() {
             {/* Set 2 (Purely decorative clones for seamless infinite loop) */}
             <div aria-hidden="true" role="presentation" className="flex gap-6">
               {MARQUEE_IMAGES.map((img, idx) => (
-                <div 
-                  key={`m2-${idx}`} 
+                <div
+                  key={`m2-${idx}`}
                   className="relative w-72 sm:w-80 h-48 sm:h-52 shrink-0 rounded-2xl overflow-hidden border border-[#3D246C]/15 shadow-lg bg-white group"
                 >
                   <Image
