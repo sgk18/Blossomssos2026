@@ -51,14 +51,15 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/blossoms_logo_2026.webp', type: 'image/webp' },
-      { url: '/blossoms_logo_2026.png', type: 'image/png' },
       { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', type: 'image/png', sizes: '512x512' },
+      { url: '/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
+      { url: '/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
+      { url: '/blossoms_favicon.png', type: 'image/png' },
     ],
-    shortcut: '/blossoms_logo_2026.webp',
+    shortcut: '/favicon.ico',
     apple: [
-      { url: '/blossoms_logo_2026.webp', type: 'image/webp' },
-      { url: '/blossoms_logo_2026.png', type: 'image/png' },
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
     ],
   },
   openGraph: {
