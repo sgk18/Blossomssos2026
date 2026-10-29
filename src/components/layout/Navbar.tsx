@@ -230,9 +230,6 @@ export function Navbar() {
           className="flex-1 overflow-y-auto px-4 py-5 space-y-1.5 font-tech"
           aria-label="Mobile Navigation Links"
         >
-          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#FFDBC3]/80 px-3 block mb-2">
-            Festival Navigation
-          </span>
           {NAV_LINKS.map((link) => {
             const isActive =
               pathname === link.href ||

@@ -34,8 +34,8 @@ interface WavyDividerProps {
 export function WavyDivider({
   className = '',
   strokeColor = '#3D246C',
-  strokeOpacity = 0.3,
-  strokeWidth = 2,
+  strokeOpacity = 0.25,
+  strokeWidth = 1.5,
   topColor = '#FFDBC3',
   bottomFill = 'rgba(159, 145, 204, 0.15)',
   height = 16,
@@ -47,7 +47,7 @@ export function WavyDivider({
   return (
     <div
       className={`w-full overflow-hidden leading-none relative z-10 -mb-px block ${className}`}
-      style={{ backgroundColor: topColor, height: `${height}px` }}
+      style={{ height: `${height}px` }}
       aria-hidden="true"
     >
       <svg
@@ -62,6 +62,11 @@ export function WavyDivider({
             height={height}
             patternUnits="userSpaceOnUse"
           >
+            {/* Upper region matching top section background */}
+            <path
+              d="M 0 0 L 28 0 L 28 4 C 22.9 4, 19.1 12, 14 12 S 5.1 4, 0 4 Z"
+              fill={topColor}
+            />
             {/* Lower filled region matching the incoming section background */}
             <path
               d="M 0 4 C 5.1 4, 8.9 12, 14 12 S 22.9 4, 28 4 L 28 32 L 0 32 Z"
@@ -85,4 +90,3 @@ export function WavyDivider({
 }
 
 export default WavyDivider;
-

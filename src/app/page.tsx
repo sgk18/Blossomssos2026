@@ -44,8 +44,8 @@ export default function HomePage() {
           <div className="max-w-5xl mx-auto flex flex-col items-center text-center gap-5 sm:gap-6 pt-10 sm:pt-14 pb-12 px-4">
 
             {/* Eyebrow Label */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-[#3D246C]/15 text-[#5C4B99] text-xs font-tech font-bold uppercase tracking-widest shadow-xs">
-              <span>CHRIST (Deemed to be University) &bull; School of Sciences</span>
+            <div className="inline-flex items-center gap-2 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full bg-white/90 border border-[#3D246C]/15 text-[#5C4B99] text-sm sm:text-base font-tech font-bold uppercase tracking-wider shadow-sm">
+              <span>CHRIST (Deemed to be University)</span>
             </div>
 
             {/* Dominant Title */}
@@ -116,34 +116,36 @@ export default function HomePage() {
       </section>
 
       {/* Decorative Divider from Hero to Event Categories */}
-      <WavyDivider topColor="#FFDBC3" bottomFill="#FFDBC3" />
+      <WavyDivider topColor="#FFDBC3" bottomFill="#F1D0C5" />
 
       {/* =========================================================
           2. EVENT DISCOVERY: THE FIVE FOUNDATIONAL DISCIPLINES
           ========================================================= */}
-      <section id="events" className="py-20 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24 sm:scroll-mt-28" aria-labelledby="disciplines-heading">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-4">
-          <div>
-            <span className="text-xs uppercase tracking-[0.2em] text-[#5C4B99] font-tech font-bold block mb-2">
-              Foundational Disciplines
-            </span>
-            <h2 id="disciplines-heading" className="font-angular text-3xl sm:text-5xl font-black text-[#3D246C] tracking-tight">
-              Event Categories
-            </h2>
+      <section id="events" className="py-20 sm:py-24 bg-[#F1D0C5] scroll-mt-24 sm:scroll-mt-28" aria-labelledby="disciplines-heading">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-4">
+            <div>
+              <span className="text-xs uppercase tracking-[0.2em] text-[#5C4B99] font-tech font-bold block mb-2">
+                Foundational Disciplines
+              </span>
+              <h2 id="disciplines-heading" className="font-angular text-3xl sm:text-5xl font-black text-[#3D246C] tracking-tight">
+                Event Categories
+              </h2>
+            </div>
+            <p className="font-body text-sm sm:text-base text-[#3D246C]/85 max-w-md font-normal leading-relaxed">
+              Explore rules, evaluation rubrics, and schedules for all 31 official festival competitions across Art, Literary, Music, Theatre, and Dance.
+            </p>
           </div>
-          <p className="font-body text-sm sm:text-base text-[#3D246C]/85 max-w-md font-normal leading-relaxed">
-            Explore rules, evaluation rubrics, and schedules for all 31 official festival competitions across Art, Literary, Music, Theatre, and Dance.
-          </p>
-        </div>
 
-        {/* Interactive 3D Category Carousel Showcase with Grid Toggle */}
-        <div className="w-full">
-          <EventCategoriesCarousel initialViewMode="carousel" />
+          {/* Interactive 3D Category Carousel Showcase with Grid Toggle */}
+          <div className="w-full">
+            <EventCategoriesCarousel initialViewMode="carousel" />
+          </div>
         </div>
       </section>
 
       {/* Decorative Divider from Event Categories to Notice Board */}
-      <WavyDivider topColor="#FFDBC3" bottomFill="#FFDBC3" />
+      <WavyDivider topColor="#F1D0C5" bottomFill="#FFDBC3" />
 
       {/* =========================================================
           3. MINI CAMPUS GREEN NOTICE BOARD (WEEKLY UPDATES PREVIEW)
@@ -217,7 +219,7 @@ export default function HomePage() {
                   <div className="md:col-span-5 flex justify-center">
                     <div className="relative aspect-[3/4] w-full max-w-[280px] sm:max-w-[320px] rounded-2xl overflow-hidden bg-white border border-[#3D246C]/12 shadow-md">
                       <Image
-                        src="/blossoms_rulebook.webp"
+                        src="/blossoms_rulebook_2026_27.webp"
                         alt="Blossoms Rulebook 2026-27 Cover"
                         fill
                         sizes="(max-width: 768px) 100vw, 320px"
