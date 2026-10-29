@@ -20,7 +20,7 @@ export const siteConfig: SiteConfig = {
   activeEditionYear: '2025',
   availableEditions: ['2025'],
 
-  canonicalUrl: 'https://blossomssos.vercel.app',
+  canonicalUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://sosblossoms.christuniversity.in',
   registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSc50XPwp4jbLpfkuxmIwJanuHqMNGcxVL3S3OLVWIHKFjbkcA/viewform?usp=sharing&ouid=116834052241795042670',
   rulebookUrl: 'https://drive.google.com/file/d/10omRFijv37ulyTTohGb_TLOGMc464rng/view?usp=sharing',
 

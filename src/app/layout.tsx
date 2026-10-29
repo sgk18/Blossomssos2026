@@ -37,7 +37,7 @@ const cormorantFont = localFont({
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
+  themeColor: '#FFDBC3',
 };
 export const metadata: Metadata = {
   title: {
@@ -166,7 +166,7 @@ export default function RootLayout({
         <Navbar />
 
         {/* Main Route Content Landmark */}
-        <main id="main-content" className="flex-1 flex flex-col bg-[#FFDBC3]" style={{ backgroundColor: "#FFDBC3" }}>
+        <main id="main-content" tabIndex={-1} className="flex-1 flex flex-col bg-[#FFDBC3] outline-none" style={{ backgroundColor: "#FFDBC3" }}>
           {children}
         </main>
 

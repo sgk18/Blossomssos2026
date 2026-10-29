@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { siteConfig } from '@/data/site-config';
 
 const NAV_LINKS: Array<{ href: string; label: string }> = [
@@ -154,7 +154,7 @@ export function Navbar() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="w-10 h-10 sm:w-11 sm:h-11 rounded-full liquid-glass-nav text-[#F9F5EB] flex items-center justify-center shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFDBC3] transition-transform active:scale-95"
+              className="w-11 h-11 rounded-full liquid-glass-nav text-[#F9F5EB] flex items-center justify-center shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFDBC3] transition-transform active:scale-95"
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-navigation-menu"
               aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
@@ -183,8 +183,9 @@ export function Navbar() {
       <aside
         id="mobile-navigation-menu"
         className={`md:hidden fixed inset-y-0 left-0 w-[290px] sm:w-[320px] max-w-[85vw] h-full bg-[#3D246C]/90 backdrop-blur-2xl border-r border-white/20 shadow-2xl shadow-black/50 z-[60] flex flex-col justify-between transition-transform duration-300 ease-in-out ${
-          mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
+          mobileMenuOpen ? 'translate-x-0 visible' : '-translate-x-full invisible pointer-events-none'
         }`}
+        aria-hidden={!mobileMenuOpen}
         role="dialog"
         aria-modal="true"
         aria-label="Mobile Navigation Menu"
@@ -257,47 +258,20 @@ export function Navbar() {
           })}
         </nav>
 
-        {/* Drawer Bottom Brand Footer with CHRIST University Badge */}
-        <div className="p-4 sm:p-5 border-t border-white/15 bg-[#2B1750]/60 backdrop-blur-md space-y-3.5 font-tech">
-          {siteConfig.registrationUrl && (
+        {/* Drawer Footer CTA */}
+        {siteConfig.registrationUrl && (
+          <div className="p-4 sm:p-5 border-t border-white/10 bg-[#2B1750]/60 backdrop-blur-md font-tech pb-[calc(1.25rem+env(safe-area-inset-bottom))]">
             <a
               href={siteConfig.registrationUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full clay-btn-primary bg-[#5C4B99] hover:bg-[#4C3C82] text-white py-2.5 rounded-xl text-xs font-bold font-tech flex items-center justify-center shadow-md transition-all hover:scale-[1.02] active:scale-[0.98] border border-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFDBC3]"
+              className="w-full relative group overflow-hidden bg-gradient-to-r from-[#5C4B99] to-[#4C3C82] hover:from-[#6B58B0] hover:to-[#554394] text-white py-3 px-4 rounded-xl text-xs sm:text-sm font-bold font-tech flex items-center justify-center gap-2 shadow-lg shadow-black/20 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] border border-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFDBC3]"
             >
               <span>Register for Events</span>
+              <ArrowUpRight className="w-4 h-4 text-[#FFDBC3] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
-          )}
-
-          <a
-            href="https://www.christuniversity.in"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-white/95 hover:bg-white shadow-sm transition-colors"
-          >
-            <Image
-              src="/christ_university_official_logo.webp"
-              alt="CHRIST (Deemed to be University)"
-              width={132}
-              height={45}
-              className="h-6 w-auto object-contain"
-            />
-            <span className="font-mono text-[9px] font-bold uppercase tracking-wider text-[#1c4c96]">
-              Central Campus
-            </span>
-          </a>
-
-          <div className="flex items-center justify-between text-[11px] text-[#F9F5EB]/80 pt-0.5">
-            <div>
-              <p className="font-semibold text-[#F9F5EB]">Team Onyx</p>
-              <p className="text-[10px] text-[#FFDBC3] font-bold">Be the Best</p>
-            </div>
-            <span className="font-mono text-[10px] px-2.5 py-1 rounded-full bg-white/20 text-[#F9F5EB] border border-white/30">
-              School of Sciences
-            </span>
           </div>
-        </div>
+        )}
       </aside>
     </>
   );
