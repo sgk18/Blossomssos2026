@@ -22,7 +22,7 @@ export const siteConfig: SiteConfig = {
 
   canonicalUrl: 'https://blossomssos.vercel.app',
   registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSc50XPwp4jbLpfkuxmIwJanuHqMNGcxVL3S3OLVWIHKFjbkcA/viewform?usp=sharing&ouid=116834052241795042670',
-  rulebookUrl: 'https://drive.google.com/file/d/1oFqj_1q7e9oIzqm01wk6hpBo53DZb9b0/view?usp=sharing',
+  rulebookUrl: 'https://drive.google.com/file/d/10omRFijv37ulyTTohGb_TLOGMc464rng/view?usp=sharing',
 
   contactEmail: 'blossoms.sos@christuniversity.in',
 
