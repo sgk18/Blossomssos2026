@@ -23,6 +23,7 @@ export const siteConfig: SiteConfig = {
   canonicalUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://sosblossoms.christuniversity.in',
   registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSc50XPwp4jbLpfkuxmIwJanuHqMNGcxVL3S3OLVWIHKFjbkcA/viewform?usp=sharing&ouid=116834052241795042670',
   rulebookUrl: 'https://drive.google.com/file/d/10omRFijv37ulyTTohGb_TLOGMc464rng/view?usp=sharing',
+  knowMoreUrl: 'https://drive.google.com/file/d/1pXVpErGBYBy5-q79dRylKOPDd22B4iwn/view?usp=sharing',
 
   contactEmail: 'blossoms.sos@christuniversity.in',
 
