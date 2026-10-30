@@ -21,3 +21,6 @@ Thumbs.db
 **/*.md
 !README.md
 !**/README.md
+
+# Agent configs
+.agents/

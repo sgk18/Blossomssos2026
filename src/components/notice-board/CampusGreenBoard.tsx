@@ -4,8 +4,6 @@ import React, { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
-  Share2,
-  Check,
   ExternalLink,
   ArrowRight,
   X,
@@ -124,7 +122,6 @@ export function CampusGreenBoard({
   const [selectedCategory, setSelectedCategory] = useState<NoticeCategory | 'all'>('all');
   const [activeNotice, setActiveNotice] = useState<NoticeItem | null>(null);
   const [internalModalEvent, setInternalModalEvent] = useState<ScheduleEvent | null>(null);
-  const [copiedId, setCopiedId] = useState<string | null>(null);
 
   const activeLiveWeek = useMemo(() => {
     return mounted ? getActiveFestivalWeek(new Date()) : FESTIVAL_WEEKS_2026[0];
@@ -169,34 +166,6 @@ export function CampusGreenBoard({
       return true;
     });
   }, [mode, weekScope, selectedWeekId, selectedCategory]);
-
-  const handleShareNotice = async (notice: NoticeItem, e?: React.MouseEvent) => {
-    if (e) e.stopPropagation();
-    const shareText = `📌 BLOSSOMS SOS NOTICE (${notice.refCode})\n${notice.title}\n\n${notice.summary}\n• ${notice.details.join('\n• ')}\n\n Notice Board: ${typeof window !== 'undefined' ? `${window.location.origin}/notice-board` : ''}`;
-
-    if (typeof navigator !== 'undefined' && navigator.share) {
-      try {
-        await navigator.share({
-          title: `Blossoms SOS: ${notice.title}`,
-          text: shareText,
-          url: `${window.location.origin}/notice-board`,
-        });
-        return;
-      } catch {
-        // Fallback to clipboard
-      }
-    }
-
-    if (typeof navigator !== 'undefined' && navigator.clipboard) {
-      try {
-        await navigator.clipboard.writeText(shareText);
-        setCopiedId(notice.id);
-        setTimeout(() => setCopiedId((prev) => (prev === notice.id ? null : prev)), 2200);
-      } catch {
-        // Ignore clipboard errors
-      }
-    }
-  };
 
   const handleLinkedEventOpen = (eventId: string) => {
     const found = BLOSSOMS_SCHEDULE_2026.find((ev) => ev.id === eventId);
@@ -472,7 +441,7 @@ export function CampusGreenBoard({
                         )}
                       </div>
 
-                      {/* Attached Flyer / Poster Thumbnail if available */}
+                      {/* Attached Flyer / Poster or Dance Reel Thumbnail */}
                       {notice.imageUrl && (
                         <div className="relative mt-2 mb-2.5 rounded-lg overflow-hidden border-2 border-[#3D246C]/30 shadow-xs aspect-[16/10] bg-[#231942]/10 group/flyer">
                           <Image
@@ -482,13 +451,17 @@ export function CampusGreenBoard({
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                             className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
                           <div className="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white text-[10px] font-mono">
                             <span className="bg-black/60 backdrop-blur-xs px-1.5 py-0.5 rounded border border-white/20 flex items-center gap-1 font-semibold">
+                              {notice.embedUrl ? (
+                                <span>💃 Dance Reel Preview</span>
+                              ) : (
                                 <span>Official Poster</span>
+                              )}
                             </span>
                             <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-[#5C4B99]/90 px-1.5 py-0.5 rounded text-[9px] font-tech font-bold uppercase tracking-wide">
-                              Inspect Split View
+                              {notice.embedUrl ? '▶ Watch Reel' : 'Inspect'}
                             </span>
                           </div>
                         </div>
@@ -499,11 +472,16 @@ export function CampusGreenBoard({
                         {notice.title}
                       </h3>
 
-                      {/* Thick Border Callout (1-sentence website launch highlight) */}
-                      {notice.imageUrl ? (
+
+                      {/* Callout */}
+                      {notice.imageUrl || notice.embedUrl ? (
                         <div className="mt-2 p-2 rounded-md border-2 border-[#3D246C] bg-white/95 shadow-xs">
-                          <p className="font-tech font-bold text-xs text-[#231942] leading-snug">
-                            🌐 Official Launch of Blossoms Website &amp; Social Media Page — Flames to Flight, White Onyx Ignites!
+                          <p className="font-tech font-bold text-xs text-[#231942] leading-snug line-clamp-2">
+                            {notice.id === 'nb-2026-launch' ? (
+                              <>🌐 Official Launch of Blossoms Website &amp; Social Media Page — Flames to Flight, White Onyx Ignites!</>
+                            ) : (
+                              <>💃 {notice.summary}</>
+                            )}
                           </p>
                         </div>
                       ) : (
@@ -513,27 +491,11 @@ export function CampusGreenBoard({
                       )}
                     </div>
 
-                    {/* Circular Footer: Stamp + Quick Save / Share */}
+                    {/* Circular Footer: Stamp */}
                     <div className="mt-4 pt-2.5 border-t border-[#3D246C]/12 flex items-center justify-between gap-2">
                       <span className="font-mono text-[10px] text-[#3D246C]/70 truncate">
                         {notice.postedLabel}
                       </span>
-
-                      <div className="flex items-center gap-1 shrink-0">
-                        <button
-                          type="button"
-                          onClick={(e) => handleShareNotice(notice, e)}
-                          aria-label={`Copy or share ${notice.title}`}
-                          title="Copy / Share for Class Group"
-                          className="p-1.5 rounded-lg bg-white/80 text-[#3D246C]/75 border border-[#3D246C]/15 hover:text-[#5C4B99] hover:border-[#5C4B99]/40 transition-colors"
-                        >
-                          {copiedId === notice.id ? (
-                            <Check className="w-3.5 h-3.5 text-emerald-700" />
-                          ) : (
-                            <Share2 className="w-3.5 h-3.5" />
-                          )}
-                        </button>
-                      </div>
                     </div>
                   </article>
                 );
@@ -577,7 +539,7 @@ export function CampusGreenBoard({
             aria-hidden="true"
           />
 
-          <div className={`relative z-10 w-full my-auto ${activeNotice.imageUrl ? 'max-w-5xl' : 'max-w-xl'}`}>
+          <div className={`relative z-10 w-full my-auto ${(activeNotice.imageUrl || activeNotice.embedUrl) ? 'max-w-5xl' : 'max-w-xl'}`}>
             {/* Decorative Thumbtack at Top of Circular */}
             <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-20 pointer-events-none drop-shadow-md">
               <ThumbtackSvg color={activeNotice.pinColor} idSuffix="modal-active" />
@@ -585,23 +547,36 @@ export function CampusGreenBoard({
 
             <div className="w-full rounded-2xl bg-[#FFFCF7] border-2 border-[#3D246C]/20 shadow-2xl p-4 sm:p-7 text-[#231942] max-h-[88vh] overflow-y-auto">
 
-            {activeNotice.imageUrl ? (
-              /* Clean & Modern Two-Column Split Layout for Poster Circulars */
+            {(activeNotice.imageUrl || activeNotice.embedUrl) ? (
+              /* Clean & Modern Two-Column Split Layout for Poster / Embed Circulars */
               <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
-                {/* Left Column: Clean Gallery-Framed Poster */}
+                {/* Left Column: Poster Image OR Embedded Iframe */}
                 <div className="md:col-span-5 flex items-center justify-center">
-                  <div className="relative w-full aspect-[2/3] max-h-[510px] rounded-2xl overflow-hidden border border-[#3D246C]/20 shadow-md bg-gradient-to-b from-[#251A3E] to-[#160E28] flex items-center justify-center p-1.5">
-                    <div className="relative w-full h-full rounded-xl overflow-hidden">
-                      <Image
-                        src={activeNotice.imageUrl}
-                        alt={activeNotice.imageAlt || activeNotice.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 45vw"
-                        className="object-contain drop-shadow-sm"
-                        priority
+                  {activeNotice.embedUrl ? (
+                    <div className="relative w-full aspect-[9/16] max-h-[520px] rounded-2xl overflow-hidden border-2 border-[#3D246C]/25 shadow-xl bg-black">
+                      <iframe
+                        src={activeNotice.embedUrl}
+                        className="w-full h-full"
+                        frameBorder="0"
+                        scrolling="no"
+                        allowFullScreen
+                        title={activeNotice.title}
                       />
                     </div>
-                  </div>
+                  ) : activeNotice.imageUrl ? (
+                    <div className="relative w-full aspect-[2/3] max-h-[510px] rounded-2xl overflow-hidden border border-[#3D246C]/20 shadow-md bg-gradient-to-b from-[#251A3E] to-[#160E28] flex items-center justify-center p-1.5">
+                      <div className="relative w-full h-full rounded-xl overflow-hidden">
+                        <Image
+                          src={activeNotice.imageUrl}
+                          alt={activeNotice.imageAlt || activeNotice.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 45vw"
+                          className="object-contain drop-shadow-sm"
+                          priority
+                        />
+                      </div>
+                    </div>
+                  ) : null}
                 </div>
 
                 {/* Right Column: Clean & Modern Official Event Information */}
@@ -649,59 +624,109 @@ export function CampusGreenBoard({
                       {activeNotice.title}
                     </h3>
 
-                    {/* Highlight Card: Theme & Invite */}
+                    {/* Highlight Card */}
                     <div className="mt-3.5 p-3.5 rounded-xl border-2 border-[#3D246C] bg-white shadow-xs">
                       <div className="flex items-center gap-2 text-xs font-tech font-extrabold text-[#5C4B99] uppercase tracking-wider">
-                        <span>Flames to Flight — White Onyx Ignites</span>
+                        <span>
+                          {activeNotice.id === 'nb-2026-inauguration-dancers'
+                            ? 'Reignite the Flame with Team Onyx!'
+                            : activeNotice.id === 'nb-2026-reel-wind'
+                            ? 'Official Instagram Teaser • Team Onyx'
+                            : 'Flames to Flight — White Onyx Ignites'}
+                        </span>
                       </div>
                       <p className="mt-1.5 font-body text-xs sm:text-sm text-[#231942]/90 leading-relaxed">
-                        We are delighted to invite all School of Sciences students and faculty delegates to the official launch of Blossoms — our website and social media handles!
+                        {activeNotice.summary}
                       </p>
                     </div>
 
-                    {/* Event Logistics Cards (Date, Time, Venue) */}
-                    <div className="mt-3.5 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                      <div className="p-3 rounded-xl bg-white border border-[#3D246C]/12 flex items-start gap-2.5 shadow-2xs">
-                        <div className="p-2 rounded-lg bg-[#5C4B99]/10 text-[#5C4B99] shrink-0">
-                          <Calendar className="w-4 h-4" />
-                        </div>
-                        <div>
-                          <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#3D246C]/60 block">
-                            Date &amp; Time
-                          </span>
-                          <p className="font-tech font-bold text-xs sm:text-sm text-[#231942]">
-                            Thursday, 29 Oct 2026
-                          </p>
-                          <p className="font-mono text-[11px] text-[#5C4B99] font-bold flex items-center gap-1 mt-0.5">
-                            <Clock className="w-3 h-3 inline" />
-                            <span>2:00 PM IST</span>
-                          </p>
+                    {/* Tagged Departments & Handles */}
+                    {activeNotice.taggedHandles && activeNotice.taggedHandles.length > 0 && (
+                      <div className="mt-3.5 p-3 rounded-xl bg-white border border-[#3D246C]/15 space-y-1.5 shadow-2xs">
+                        <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#5C4B99] block">
+                          Tagged Departments &amp; Student Bodies
+                        </span>
+                        <div className="flex flex-wrap gap-1.5">
+                          {activeNotice.taggedHandles.map((handle) => (
+                            <a
+                              key={handle}
+                              href={`https://www.instagram.com/${handle.replace('@', '')}/`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#FFDBC3]/70 hover:bg-[#FFDBC3] text-[#3D246C] text-xs font-mono font-bold transition-all border border-[#3D246C]/20 hover:scale-105"
+                            >
+                              <span>{handle}</span>
+                              <ExternalLink className="w-2.5 h-2.5 opacity-60" />
+                            </a>
+                          ))}
                         </div>
                       </div>
+                    )}
 
-                      <div className="p-3 rounded-xl bg-white border border-[#3D246C]/12 flex items-start gap-2.5 shadow-2xs">
-                        <div className="p-2 rounded-lg bg-[#5C4B99]/10 text-[#5C4B99] shrink-0">
-                          <MapPin className="w-4 h-4" />
+                    {/* Event Logistics or Circular Details */}
+                    {activeNotice.id === 'nb-2026-launch' ? (
+                      <div className="mt-3.5 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        <div className="p-3 rounded-xl bg-white border border-[#3D246C]/12 flex items-start gap-2.5 shadow-2xs">
+                          <div className="p-2 rounded-lg bg-[#5C4B99]/10 text-[#5C4B99] shrink-0">
+                            <Calendar className="w-4 h-4" />
+                          </div>
+                          <div>
+                            <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#3D246C]/60 block">
+                              Date &amp; Time
+                            </span>
+                            <p className="font-tech font-bold text-xs sm:text-sm text-[#231942]">
+                              Thursday, 29 Oct 2026
+                            </p>
+                            <p className="font-mono text-[11px] text-[#5C4B99] font-bold flex items-center gap-1 mt-0.5">
+                              <Clock className="w-3 h-3 inline" />
+                              <span>2:00 PM IST</span>
+                            </p>
+                          </div>
                         </div>
-                        <div>
-                          <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#3D246C]/60 block">
-                            Venue
-                          </span>
-                          <p className="font-tech font-bold text-xs sm:text-sm text-[#231942]">
-                            Meeting Hall III, Room 329
-                          </p>
-                          <p className="font-mono text-[10px] text-[#3D246C]/75 mt-0.5">
-                            3rd Floor, Block I Main • Central Campus
-                          </p>
+
+                        <div className="p-3 rounded-xl bg-white border border-[#3D246C]/12 flex items-start gap-2.5 shadow-2xs">
+                          <div className="p-2 rounded-lg bg-[#5C4B99]/10 text-[#5C4B99] shrink-0">
+                            <MapPin className="w-4 h-4" />
+                          </div>
+                          <div>
+                            <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#3D246C]/60 block">
+                              Venue
+                            </span>
+                            <p className="font-tech font-bold text-xs sm:text-sm text-[#231942]">
+                              Meeting Hall III, Room 329
+                            </p>
+                            <p className="font-mono text-[10px] text-[#3D246C]/75 mt-0.5">
+                              3rd Floor, Block I Main • Central Campus
+                            </p>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    ) : (
+                      <div className="mt-3.5 p-3.5 rounded-xl bg-white border border-[#3D246C]/15 space-y-2">
+                        <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#5C4B99] flex items-center gap-1.5">
+                          <FileText className="w-3.5 h-3.5" />
+                          <span>Audition Brief &amp; Guidelines</span>
+                        </span>
+                        <ul className="space-y-1.5 text-xs sm:text-sm font-body text-[#231942]/90">
+                          {activeNotice.details.map((line, i) => (
+                            <li key={i} className="flex items-start gap-2 leading-relaxed">
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#5C4B99] mt-2 shrink-0" />
+                              <span>{line}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </div>
 
                   {/* Modal Action Bar */}
                   <div className="mt-5 pt-3.5 border-t border-[#3D246C]/15 flex items-center justify-between gap-3">
                     <span className="font-mono text-[11px] text-[#3D246C]/70 italic hidden sm:inline">
-                      Explore • Engage • Be a part of the journey
+                      {activeNotice.id === 'nb-2026-inauguration-dancers'
+                        ? 'From Flames to Flight, White Onyx Ignites!'
+                        : activeNotice.id === 'nb-2026-reel-wind'
+                        ? 'The wind knows what its doing • Team Onyx'
+                        : 'Explore • Engage • Be a part of the journey'}
                     </span>
 
                     {activeNotice.actionHref && (
@@ -806,27 +831,7 @@ export function CampusGreenBoard({
                 </div>
 
                 {/* Modal Actions */}
-                <div className="mt-5 pt-4 border-t border-[#3D246C]/15 flex flex-wrap items-center justify-between gap-3">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <button
-                      type="button"
-                      onClick={() => handleShareNotice(activeNotice)}
-                      className="px-3.5 py-2 rounded-xl bg-white hover:bg-[#FFDBC3]/40 text-[#3D246C] border border-[#3D246C]/20 text-xs font-tech font-bold inline-flex items-center gap-1.5 transition-colors"
-                    >
-                      {copiedId === activeNotice.id ? (
-                        <>
-                          <Check className="w-3.5 h-3.5 text-emerald-700" />
-                          <span>Copied for WhatsApp!</span>
-                        </>
-                      ) : (
-                        <>
-                          <Share2 className="w-3.5 h-3.5 text-[#5C4B99]" />
-                          <span>Share Circular</span>
-                        </>
-                      )}
-                    </button>
-                  </div>
-
+                <div className="mt-5 pt-4 border-t border-[#3D246C]/15 flex flex-wrap items-center justify-end gap-3">
                   <div className="flex items-center gap-2">
                     {activeNotice.linkedEventId && (
                       <button

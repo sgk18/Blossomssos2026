@@ -437,7 +437,7 @@ export function WeeklyRadarSection({
                     onClick={() => onInspectEvent(ev)}
                     className="text-xs font-tech font-bold text-[#5C4B99] hover:text-[#3D246C] inline-flex items-center gap-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5C4B99] rounded"
                   >
-                    <span>Event Details &amp; Share</span>
+                    <span>Event Details</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>

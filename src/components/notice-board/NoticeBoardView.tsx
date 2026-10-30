@@ -6,6 +6,8 @@ import {
   CalendarClock,
   ArrowRight,
   Pin,
+  ExternalLink,
+  Sparkles,
 } from 'lucide-react';
 import {
   getActiveFestivalWeek,
@@ -169,6 +171,90 @@ export function NoticeBoardView() {
                 </p>
               </div>
             )}
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================
+          OFFICIAL INSTAGRAM REEL SPOTLIGHT (IFRAME)
+          ========================================================= */}
+      <section
+        aria-label="Official Instagram Reel Teaser"
+        className="rounded-3xl bg-white/95 border-2 border-[#3D246C]/15 backdrop-blur-md shadow-xl overflow-hidden p-5 sm:p-7"
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          {/* Left Column: Instagram Reel Embedded Iframe */}
+          <div className="lg:col-span-5 flex justify-center">
+            <div className="relative w-full max-w-[340px] aspect-[9/16] max-h-[520px] rounded-2xl overflow-hidden border-2 border-[#3D246C]/20 shadow-xl bg-black">
+              <iframe
+                src="https://www.instagram.com/reel/DfHrjWlypfa/embed"
+                className="w-full h-full"
+                frameBorder="0"
+                scrolling="no"
+                allowFullScreen
+                title="The wind knows what its doing — Blossoms SOS Reel"
+              />
+            </div>
+          </div>
+
+          {/* Right Column: Title, Department Tags & Description */}
+          <div className="lg:col-span-7 space-y-4">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] text-white text-[11px] font-mono font-bold uppercase tracking-wider shadow-xs">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Official Dance Reel</span>
+              </span>
+              <span className="text-xs font-mono font-semibold text-[#5C4B99]">
+                Dance &amp; Cultural Desk • Team Onyx
+              </span>
+            </div>
+
+            <h2 className="font-angular text-2xl sm:text-4xl font-black text-[#3D246C] leading-tight">
+              Dance Reel — &ldquo;The wind knows what its doing&rdquo;
+            </h2>
+
+            <p className="font-body text-xs sm:text-sm text-[#3D246C]/85 leading-relaxed">
+              Experience the rhythm, choreography, and grace of Team Onyx. The official Blossoms 2026–27 Dance Reel is live — celebrating dance, expression, and our performers taking flight for the grand inauguration.
+            </p>
+
+            {/* Tagged Departments Pills */}
+            <div className="space-y-2 pt-1">
+              <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#5C4B99] block">
+                Tagged Departments &amp; Student Bodies
+              </span>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  { handle: '@computer_science_bangalore', label: 'Computer Science' },
+                  { handle: '@stds.christ.bangalore', label: 'Statistics & Data Science' },
+                  { handle: '@swo_centralcampus', label: 'SWO Central Campus' },
+                  { handle: '@chemistry.christuniversity', label: 'Chemistry' },
+                  { handle: '@lifesciences.christ.bangalore', label: 'Life Sciences' },
+                ].map(({ handle, label }) => (
+                  <a
+                    key={handle}
+                    href={`https://www.instagram.com/${handle.replace('@', '')}/`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white hover:bg-[#FFDBC3] text-[#3D246C] border border-[#3D246C]/20 text-xs font-mono font-bold shadow-2xs transition-all hover:scale-105"
+                  >
+                    <span>{handle}</span>
+                    <ExternalLink className="w-3 h-3 text-[#5C4B99] opacity-75" />
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div className="pt-2 flex flex-wrap items-center gap-3">
+              <a
+                href="https://www.instagram.com/reel/DfHrjWlypfa/?vrfl=ODk5d3FyNGFxOXll"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="clay-btn-primary bg-[#5C4B99] hover:bg-[#4C3C82] text-white px-5 py-2.5 rounded-xl text-xs font-tech font-bold inline-flex items-center gap-2 shadow-sm transition-transform hover:scale-[1.02]"
+              >
+                <span>Watch Reel on Instagram</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </div>
           </div>
         </div>
       </section>
